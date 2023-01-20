@@ -1,7 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { UserLayoutComponent } from './user-layout/user-layout.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'admin-layout',
+    component: AdminLayoutComponent, 
+    children: [
+    {
+      path: '',
+      loadChildren: () => import('./admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+    }]
+  },
+  { 
+    path: '', 
+    component: UserLayoutComponent,
+    children: [
+        {
+      path: '',
+      loadChildren: () => import('./user-layout/user-layout.module').then(x => x.UserLayoutModule)
+    }]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
