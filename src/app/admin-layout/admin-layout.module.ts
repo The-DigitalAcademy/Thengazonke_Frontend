@@ -5,13 +5,19 @@ import { AdminLayoutRoutingModule } from './admin-layout-routing.module';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { SideBarComponent } from '../components/side-bar/side-bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminHeaderComponent } from '../components/admin-header/admin-header.component';
+import { UserModalComponent } from '../components/user/user-modal/user-modal.component';
+import { ListUserComponent } from '../components/user/list-user/list-user.component';
 
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     SideBarComponent,
-    DashboardComponent
+    AdminHeaderComponent,
+    DashboardComponent,
+    UserModalComponent,
+    ListUserComponent
   ],
   imports: [
     CommonModule,
