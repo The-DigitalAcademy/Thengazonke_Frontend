@@ -20,14 +20,13 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     LandingComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    SearchComponent
   ],
   imports: [
 
   CommonModule,
-    UserLayoutRoutingModule,
-    UserLayoutRoutingModule, FormsModule, Ng2SearchPipeModule,
-    SearchComponent
+    UserLayoutRoutingModule, FormsModule, Ng2SearchPipeModule
   ]
 })
 export class UserLayoutModule { }
