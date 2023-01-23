@@ -1,4 +1,4 @@
-<div class="header top-0 w-full flex justify-between p-4 lg:px-11">
+ <div class="header top-0 w-full flex justify-between p-4 lg:px-11">
 
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl ">
     <img src="../../../assets/logo.png">
@@ -33,106 +33,65 @@
             </li>
         </ul>
     </div>
-        </div> 
-    
-        <nav id="header" class="w-full z-30 top-0 py-1 bg-neutral">
-          <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
 
-      <div class="small-nav hidden sm:flex gap-2">
 
-        <label for="menu-toggle" class="cursor-pointer md:hidden block">
-          <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-              <title>menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-          </svg>
-      </label>
+    <div class="mobile md:flex lg:hidden">
+      <div class="dropdown">
+        <label tabindex="0" class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+        </label>
+        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
 
-      <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-        <nav>
-          <ul class="menu menu-horizontal gap-4">
-  
-            <li class="mx-4">
-                <a href="#" routerLink="/home">Home</a>
-            </li>
-              <li class="mx-4">
-                <a href="#" routerLink="/rate">Rate</a>
-            </li >
-            <li class="mx-4">
-                <a href="#" routerLink="/notifications">Notifications</a>
-            </li>
-            <li class="mx-4">
-                <a href="#" routerLink="/seller">Seller</a>
-            </li>
-              <li class="mx-4">
-                <a href="#" routerLink="/order-history">Order history</a>
-            </li>
-              <li class="mx-4">
-                <a href="#" routerLink="/notification">Notifications</a>
-            </li>
-              <li class="mx-4">
-                <a href="#" routerLink="/order-request">Order request</a>
-            </li>
-              <li class="mx-4">
-                <a>logout</a>
-            </li>
+          <li class="mx-4">
+            <a href="#" routerLink="/home">Home</a>
+        </li>
+
+          <li class="mx-4 " *ngIf="accountType!='Buyer'">
+            <a href="#" routerLink="/rate">Rate</a>
+        </li >
+
+        <li class="mx-4" *ngIf="accountType!='Seller'">
+            <a href="#" routerLink="/notifications">Notifications</a>
+        </li>
+
+        <li class="mx-4 " *ngIf="accountType!='Seller'">
+          <a href="#" routerLink="/create-livestock">Create-livestock</a>
+      </li >
+
+        <li class="mx-4" *ngIf="accountType!='Seller'">
+            <a href="#" routerLink="/seller">Seller</a>
+        </li>
+
+      <li class="mx-4 " *ngIf="accountType!='Seller'">
+        <a href="#" routerLink="/review">Review</a>
+    </li >
+
+    <li class="mx-4 " *ngIf="accountType!='Buyer'">
+      <a href="#" routerLink="/profile">Profile </a>
+  </li >
+
+          <li class="mx-4" *ngIf="accountType!='Buyer'">
+            <a href="#" routerLink="/order-history">Order history</a>
+        </li>
+
+          <li class="mx-4" *ngIf="accountType!='Buyer'">
+            <a href="#" routerLink="/notification">Notifications</a>
+        </li>
+
+          <li class="mx-4" *ngIf="accountType!='Seller'">
+            <a href="#" routerLink="/order-request">Order request</a>
+        </li>
+
+          <li class="mx-4">
+            <a href="" class="" (click)="logout()">logout</a>
+        </li>
+
         </ul>
-        </nav>
       </div>
-
     </div>
-          </div>
-      
+ </div>
+    
+    
 
 
-
-
-
-<!-- 
-        <nav id="header" class="w-full z-30 top-0 py-1 bg-neutral">
-          <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
-        
-              <label for="menu-toggle" class="cursor-pointer md:hidden block">
-                  <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                      <title>menu</title>
-                      <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                  </svg>
-              </label>
-              <input class="hidden" type="checkbox" id="menu-toggle" />
-        
-              <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-                  <nav>
-                    <ul class="menu menu-horizontal gap-4">
-  
-                      <li class="mx-4">
-                          <a href="#" routerLink="/home">Home</a>
-                      </li>
-                        <li class="mx-4">
-                          <a href="#" routerLink="/rate">Rate</a>
-                      </li >
-                      <li class="mx-4">
-                          <a href="#" routerLink="/notifications">Notifications</a>
-                      </li>
-                      <li class="mx-4">
-                          <a href="#" routerLink="/seller">Seller</a>
-                      </li>
-                        <li class="mx-4">
-                          <a href="#" routerLink="/order-history">Order history</a>
-                      </li>
-                        <li class="mx-4">
-                          <a href="#" routerLink="/notification">Notifications</a>
-                      </li>
-                        <li class="mx-4">
-                          <a href="#" routerLink="/order-request">Order request</a>
-                      </li>
-                        <li class="mx-4">
-                          <a>logout</a>
-                      </li>
-                  </ul>
-                  </nav>
-              </div>
-        
-         
-        
-             
-          </div>
-        </nav> -->
+    

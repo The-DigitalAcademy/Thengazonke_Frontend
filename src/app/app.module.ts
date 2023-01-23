@@ -9,6 +9,9 @@ import { OrderRequestComponent } from './components/order-request/order-request.
 import { AccountComponent } from './components/account/account.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SellerComponent } from './components/seller/seller.component';
+import { ReviewComponent } from './components/review/review.component';
+import { CreateLivestockComponent } from './components/create-livestock/create-livestock.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { SellerComponent } from './components/seller/seller.component';
     AccountComponent,
     NotificationsComponent,
     SellerComponent,
+    ReviewComponent,
+    CreateLivestockComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
