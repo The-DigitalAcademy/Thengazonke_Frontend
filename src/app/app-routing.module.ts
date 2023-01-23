@@ -6,7 +6,9 @@ import { UserLayoutComponent } from './user-layout/user-layout.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'admin-layout',
+
+  { 
+    path: 'admin',
     component: AdminLayoutComponent, 
     children: [
     {

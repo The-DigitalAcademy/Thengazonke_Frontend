@@ -9,6 +9,9 @@ import { LandingComponent } from '../components/landing/landing.component';
 import { RouterModule } from '@angular/router';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { ContactUsComponent } from '../components/contact-us/contact-us.component';
+import { SearchComponent } from '../components/search/search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,13 +20,14 @@ import { ContactUsComponent } from '../components/contact-us/contact-us.componen
     FooterComponent,
     HeaderComponent,
     LandingComponent,
-  ContactUsComponent
+    ContactUsComponent
   ],
   imports: [
 
   CommonModule,
-    UserLayoutRoutingModule
-    // RouterModule.forChild(LayoutRoutes),
+    UserLayoutRoutingModule,
+    UserLayoutRoutingModule, FormsModule, Ng2SearchPipeModule,
+    SearchComponent
   ]
 })
 export class UserLayoutModule { }
