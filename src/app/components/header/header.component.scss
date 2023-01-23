@@ -6,6 +6,7 @@
 .header
 {
     box-shadow: 5px 0 10px #516951;
+    background-color: red;
     
 }
 
@@ -29,8 +30,49 @@ li:hover
     transition: 300ms;
     transform: scale(1.03);
 }
-.img{
-    width: 20%;
+img{
+    width: 30%;
+    margin: -2%;
 }
+
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+    .header
+{
+    box-shadow: 10px 0 10px #516951;
+    background-color: green;
+    
+}
+img{
+    width: 20%;
+    margin: -2%;
+}  
+}
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+    .header
+{
+    box-shadow: 10px 0 10px #516951;
+    background-color: orange;   
+}
+img{
+    width: 30%;
+    margin: -2%;
+}
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+    .header
+{
+    box-shadow: 10px 0 10px #516951;
+    background-color: purple; 
+}
+img{
+    width: 20%;
+    margin: -2%;
+}
+}
+
+
 
 
