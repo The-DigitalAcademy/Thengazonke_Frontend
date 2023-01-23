@@ -8,6 +8,9 @@ import { HeaderComponent } from '../components/header/header.component';
 import { LandingComponent } from '../components/landing/landing.component';
 import { RouterModule } from '@angular/router';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
+import { SearchComponent } from '../components/search/search.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +18,12 @@ import { UserLayoutRoutingModule } from './user-layout-routing.module';
     UserLayoutComponent,
     FooterComponent,
     HeaderComponent,
-    LandingComponent
+    LandingComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
-    UserLayoutRoutingModule
+    UserLayoutRoutingModule, FormsModule, Ng2SearchPipeModule
     // RouterModule.forChild(LayoutRoutes),
   ]
 })

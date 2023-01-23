@@ -1,0 +1,49 @@
+.searchInput{
+    //border-radius: 10px;
+    // border:solid 1rem;
+    border:solid var(--main-bg-color);
+    
+}
+.selectBox{
+    //background-color: red;
+    margin: 0rem;
+    padding: 1rem;
+}
+option{
+    background-color: red;
+}
+button{
+    background-color: var(--main-bg-color);
+}
+input:focus {
+    outline: none !important;
+    border: var(--main-bg-color);
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+.form-select{
+    padding: 10px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1200px){
+    select{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .tbs{
+        display: none;
+    }
+    select{
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 425px){
+    .tbs{
+        display: none;
+    }
+}
