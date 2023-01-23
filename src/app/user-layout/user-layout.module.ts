@@ -8,6 +8,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { LandingComponent } from '../components/landing/landing.component';
 import { RouterModule } from '@angular/router';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
+import { ContactUsComponent } from '../components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -15,10 +16,12 @@ import { UserLayoutRoutingModule } from './user-layout-routing.module';
     UserLayoutComponent,
     FooterComponent,
     HeaderComponent,
-    LandingComponent
+    LandingComponent,
+  ContactUsComponent
   ],
   imports: [
-    CommonModule,
+
+  CommonModule,
     UserLayoutRoutingModule
     // RouterModule.forChild(LayoutRoutes),
   ]
