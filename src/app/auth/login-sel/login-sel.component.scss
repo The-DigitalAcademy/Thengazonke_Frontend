@@ -1,6 +1,6 @@
 .main{
     // background-color: var(--main-green)
-    background-image: url('../../../assets/bg.jpg');
+    background-image: url('../../../assets/bg1.jpeg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -17,7 +17,7 @@ h1{
     font-weight: 800;
     font-size: 40px;
     line-height: 48px;
-    background: linear-gradient(180deg, var(--main-green) 50%, var(--gray-dark) 100%);
+    background: linear-gradient(180deg, var(--yellow-dark) 50%, var(--gray-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -27,7 +27,7 @@ h1{
 
 .ractangel
 {
-    background: rgba(81, 105, 81, 0.6);
+    background: rgba(0, 0, 0, 0.52);
     height: 100vh;
 }
 
@@ -43,22 +43,22 @@ h1{
     width: 164px;
     height: 41px;
 
-    background: var(--main-green);
-    box-shadow: 0px 4px 4px var(--gray);
+    background: var(--yellow-dark);
+    box-shadow: 0px 2px 2px var(--gray);
     border-radius: 9px;
     border-color: none;
 }
 
 .input
 {
-    color: var(--brown);
+    color: var(--yellow-dark);
     background-color: var(--white);
 }
 i{
     color: var(--white);
 }
 span{
-    background-color: var(--brown);
+    background-color: var(--yellow-dark);
 }
 
 .register-btn{
