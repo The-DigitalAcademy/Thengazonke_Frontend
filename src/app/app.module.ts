@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,12 +25,13 @@ import { ProfileComponent } from './components/profile/profile.component';
     SellerComponent,
     ReviewComponent,
     CreateLivestockComponent,
-    ProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
