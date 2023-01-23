@@ -1,0 +1,36 @@
+.header span
+{
+    font-size: 20px;
+}
+
+.header
+{
+    box-shadow: 5px 0 10px #516951;
+    
+}
+
+i{
+    font-size: 17px;
+}
+
+ul{
+    margin: auto;
+    
+}
+
+.btm-nav
+{
+    background-color: #516951;
+    box-shadow: 0px 0 5px rgba(87, 179, 210, 0.14);
+}
+
+li:hover
+{
+    transition: 300ms;
+    transform: scale(1.03);
+}
+.img{
+    width: 20%;
+}
+
+
