@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { HeaderComponent } from './components/header/header.component';
+
+import { OrderRequestComponent } from './components/order-request/order-request.component';
+
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
+
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 
 const routes: Routes = [
@@ -27,7 +32,13 @@ const routes: Routes = [
     }]
   },
   {path: 'header', component:HeaderComponent},
+
+  {path: 'order-request', component:OrderRequestComponent},
+  {path: 'admin-header', component:AdminHeaderComponent},
+  
+
   {path: 'order-history', component:OrderHistoryComponent},
+
 ];
 
 @NgModule({

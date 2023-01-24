@@ -13,28 +13,29 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ReviewComponent } from './components/review/review.component';
 import { CreateLivestockComponent } from './components/create-livestock/create-livestock.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserLayoutModule } from "./user-layout/user-layout.module";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RateComponent,
-    OrderHistoryComponent,
-    OrderRequestComponent,
-    AccountComponent,
-    NotificationsComponent,
-    SellerComponent,
-    ReviewComponent,
-    CreateLivestockComponent,
-    ProfileComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-   
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RateComponent,
+        OrderHistoryComponent,
+        OrderRequestComponent,
+        AccountComponent,
+        NotificationsComponent,
+        SellerComponent,
+        ReviewComponent,
+        CreateLivestockComponent,
+        ProfileComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        UserLayoutModule
+    ]
 })
 export class AppModule { }
