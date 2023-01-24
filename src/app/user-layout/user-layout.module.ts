@@ -11,6 +11,7 @@ import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { SearchComponent } from '../components/search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     LandingComponent,
-    SearchComponent
+    SearchComponent,
+    HomepageComponent
+
   ],
   imports: [
     CommonModule,

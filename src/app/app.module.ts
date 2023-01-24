@@ -6,11 +6,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { HomepageComponent } from './components/buyer/homepage/homepage.component';
 //import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // HomepageComponent,
   ],
   imports: [
     BrowserModule,

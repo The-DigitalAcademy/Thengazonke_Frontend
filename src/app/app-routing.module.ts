@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { HomepageComponent } from './components/buyer/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
     }]
   },
   {path: 'header', component:HeaderComponent},
+  {path: 'home', component:HomepageComponent},
 ];
 
 @NgModule({
