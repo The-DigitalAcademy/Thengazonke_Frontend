@@ -1,7 +1,7 @@
 .searchInput{
     //border-radius: 10px;
     // border:solid 1rem;
-    border:solid var(--main-bg-color);
+    border:solid var(--main-green);
     
 }
 .selectBox{
@@ -13,7 +13,7 @@ option{
     background-color: red;
 }
 button{
-    background-color: var(--main-bg-color);
+    background-color: var(--main-green);
 }
 input:focus {
     outline: none !important;
