@@ -8,7 +8,7 @@
     </div>
   </div> -->
 
-<div class="card3">
+<!-- 
     <div class="grid grid-cols-4 gap-4">
         <div class="card3" *ngFor="let user of userRecords | filter: filterTerm">
           <a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 card" *ngFor="let user of userRecords | filter: filterTerm">
@@ -20,5 +20,15 @@
         </a> 
         </div>
       
+      </div> -->
+
+      <div class="card w-96 bg-base-100 shadow-xl" *ngFor="let user of userRecords | filter: filterTerm">
+        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <div class="card-body">
+          <h2 class="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
       </div>
-</div>

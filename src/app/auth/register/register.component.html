@@ -1,1 +1,66 @@
-<p>register works!</p>
+<div class="main">
+    <div class="form flex justify-center ractangel">
+        <form>
+            <div class="form-text">
+              <div class="header flex justify-center">
+                <h1 class="content-center">REGISTER</h1>
+              </div>
+
+              <div class="form-control account-type">
+                <div class="flex justify-around ...">
+                  <div>
+                    <label class="label cursor-pointer">
+                      <p class="label-text text-white">Account type</p> 
+                    </label>
+                  </div>
+                  <div>
+                    <label class="label cursor-pointer">
+                      <input type="radio" name="radio" class="radio checked:bg-white bg-white" checked /><a class="px-2">Buyer </a>
+                      <input type="radio" name="radio" class="radio checked:bg-white bg-white" /><a class="px-2">Seller</a>
+                    </label>
+                  </div>
+                </div>
+    
+              </div>
+
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span>
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <input type="text" placeholder="Full name" class="input input-bordered input-sm w-100" />
+                </label>
+              </div>
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span>
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <input type="text" placeholder="Email" class="input input-bordered input-sm w-100" />
+                </label>
+              </div>
+
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span><i class="fas fa-lock"></i></span>
+                  <input type="text" placeholder="Password" class="input input-bordered input-sm w-full max-w-xs" />
+                </label>
+              </div>
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span><i class="fas fa-lock"></i></span>
+                  <input type="text" placeholder="Confirm Password" class="input input-bordered input-sm w-full max-w-xs" />
+                </label>
+              </div>
+            
+              <div  class="flex justify-center py-5">
+                <button class="btn border-transparent text-white">Submit</button>
+             </div>
+            
+             <div class="flex justify-center py-5">
+               <p class="text-center">Already have an account? <br><a class="login-btn" [routerLink]="['/auth/login']">Login</a></p>
+             </div>
+            </div>
+        </form> 
+    </div>
+</div>

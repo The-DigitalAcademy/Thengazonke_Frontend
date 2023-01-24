@@ -3,11 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { HomepageComponent } from './components/buyer/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'admin-layout',
+
+  { 
+    path: 'admin',
     component: AdminLayoutComponent, 
     children: [
     {
@@ -26,6 +29,7 @@ const routes: Routes = [
   },
   {path: 'header', component:HeaderComponent},
   {path: 'home', component:HomepageComponent},
+  {path: 'order-history', component:OrderHistoryComponent},
 ];
 
 @NgModule({

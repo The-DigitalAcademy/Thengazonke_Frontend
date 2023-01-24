@@ -8,10 +8,12 @@ import { HeaderComponent } from '../components/header/header.component';
 import { LandingComponent } from '../components/landing/landing.component';
 import { RouterModule } from '@angular/router';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
+import { ContactUsComponent } from '../components/contact-us/contact-us.component';
 import { SearchComponent } from '../components/search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
+import { CarouselComponent } from '../components/carousel/carousel.component';
 
 
 @NgModule({
@@ -21,13 +23,14 @@ import { HomepageComponent } from '../components/buyer/homepage/homepage.compone
     HeaderComponent,
     LandingComponent,
     SearchComponent,
-    HomepageComponent
-
+    HomepageComponent,
+    ContactUsComponent,
+    CarouselComponent
   ],
   imports: [
-    CommonModule,
+
+  CommonModule,
     UserLayoutRoutingModule, FormsModule, Ng2SearchPipeModule
-    // RouterModule.forChild(LayoutRoutes),
   ]
 })
 export class UserLayoutModule { }
