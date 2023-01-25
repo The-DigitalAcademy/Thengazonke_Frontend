@@ -13,6 +13,7 @@ import { OrderRequestComponent } from './components/order-request/order-request.
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path: 'header', component:HeaderComponent},
 
   {path: 'home', component:HomepageComponent},
+  {path: 'land', component:LandingComponent},
 
 
   {path: 'order-request', component:OrderRequestComponent},

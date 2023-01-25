@@ -16,28 +16,28 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 // import { CarouselComponent } from './components/carousel/carousel.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    RateComponent,
-    OrderHistoryComponent,
-    OrderRequestComponent,
-    AccountComponent,
-    NotificationsComponent,
-    SellerComponent,
-    ReviewComponent,
-    CreateLivestockComponent,
-    ProfileComponent,
+// @NgModule({
+//   declarations: [
+//     AppComponent,
+//     RateComponent,
+//     OrderHistoryComponent,
+//     OrderRequestComponent,
+//     AccountComponent,
+//     NotificationsComponent,
+//     SellerComponent,
+//     ReviewComponent,
+//     CreateLivestockComponent,
+//     ProfileComponent,
    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
+//   ],
+//   imports: [
+//     BrowserModule,
+//     AppRoutingModule,
+//     RouterModule,
    
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+//   ],
+//   providers: [],
+//   bootstrap: [AppComponent]
 
 import { UserLayoutModule } from "./user-layout/user-layout.module";
 
