@@ -30,7 +30,7 @@ import { CarouselComponent } from '../components/carousel/carousel.component';
   imports: [
 
   CommonModule,
-    UserLayoutRoutingModule, FormsModule, Ng2SearchPipeModule
+  UserLayoutRoutingModule, FormsModule,
   ]
 })
 export class UserLayoutModule { }
