@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { CreateLivestockComponent } from './components/create-livestock/create-livestock.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserLayoutModule } from "./user-layout/user-layout.module";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { UserLayoutModule } from "./user-layout/user-layout.module";
         SellerComponent,
         ReviewComponent,
         CreateLivestockComponent,
-        ProfileComponent
+        ProfileComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -35,7 +36,10 @@ import { UserLayoutModule } from "./user-layout/user-layout.module";
         BrowserModule,
         AppRoutingModule,
         RouterModule,
-        UserLayoutModule
+        UserLayoutModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class AppModule { }

@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
 
   CommonModule,
-  UserLayoutRoutingModule, FormsModule,
+  UserLayoutRoutingModule, FormsModule,Ng2SearchPipeModule
   ]
 })
 export class UserLayoutModule { }
