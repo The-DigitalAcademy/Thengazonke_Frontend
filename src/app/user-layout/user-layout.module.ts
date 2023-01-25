@@ -12,6 +12,11 @@ import { ContactUsComponent } from '../components/contact-us/contact-us.componen
 import { SearchComponent } from '../components/search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { OrderRequestComponent } from '../components/order-request/order-request.component';
+import { OrderHistoryComponent } from '../components/order-history/order-history.component';
+import { CreateLivestockComponent } from '../components/create-livestock/create-livestock.component';
+import { NotificationsComponent } from '../notifications/notifications.component';
+import { ProfileComponent } from '../components/profile/profile.component';
 
 
 @NgModule({
@@ -21,7 +26,12 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     LandingComponent,
     ContactUsComponent,
-    SearchComponent
+    SearchComponent,
+    OrderRequestComponent,
+    OrderHistoryComponent,
+    CreateLivestockComponent,
+    NotificationsComponent,
+    ProfileComponent
   ],
   imports: [
 

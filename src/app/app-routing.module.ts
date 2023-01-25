@@ -33,11 +33,10 @@ const routes: Routes = [
   },
   {path: 'header', component:HeaderComponent},
 
-  {path: 'order-request', component:OrderRequestComponent},
   {path: 'admin-header', component:AdminHeaderComponent},
   
 
-  {path: 'order-history', component:OrderHistoryComponent},
+  
 
 ];
 
