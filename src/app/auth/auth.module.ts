@@ -6,7 +6,10 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginSelComponent } from './login-sel/login-sel.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+// 
 
 @NgModule({
   declarations: [
@@ -17,7 +20,12 @@ import { LoginSelComponent } from './login-sel/login-sel.component';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // NgToastModule
   ]
 })
 export class AuthModule { }
