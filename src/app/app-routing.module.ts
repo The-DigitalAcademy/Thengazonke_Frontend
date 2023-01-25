@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+
+import { HomepageComponent } from './components/buyer/homepage/homepage.component';
+
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+
 import { HeaderComponent } from './components/header/header.component';
 
 import { OrderRequestComponent } from './components/order-request/order-request.component';
@@ -34,9 +38,6 @@ const routes: Routes = [
   {path: 'header', component:HeaderComponent},
 
   {path: 'admin-header', component:AdminHeaderComponent},
-  
-
-  
 
 ];
 

@@ -27,5 +27,6 @@ import { UserLayoutModule } from "./user-layout/user-layout.module";
         RouterModule,
         UserLayoutModule
     ]
+
 })
 export class AppModule { }

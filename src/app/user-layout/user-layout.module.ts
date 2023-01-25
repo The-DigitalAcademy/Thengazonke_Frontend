@@ -17,6 +17,8 @@ import { OrderHistoryComponent } from '../components/order-history/order-history
 import { CreateLivestockComponent } from '../components/create-livestock/create-livestock.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ProfileComponent } from '../components/profile/profile.component';
+import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
+import { CarouselComponent } from '../components/carousel/carousel.component';
 
 
 @NgModule({
@@ -25,13 +27,15 @@ import { ProfileComponent } from '../components/profile/profile.component';
     FooterComponent,
     HeaderComponent,
     LandingComponent,
-    ContactUsComponent,
     SearchComponent,
+    HomepageComponent,
+    ContactUsComponent,
     OrderRequestComponent,
     OrderHistoryComponent,
     CreateLivestockComponent,
     NotificationsComponent,
-    ProfileComponent
+    ProfileComponent,
+    CarouselComponent
   ],
   imports: [
 
