@@ -1,5 +1,16 @@
-  
-  <div class="serchB">
+
+<div class="tabs tabs-boxed" style="width:100% ;">
+    <a class="tab tab-active">
+        <p  class="tab-text">Available livestock</p>
+    </a> 
+    <a class="tab  tab-not-active" style="margin-left: 3rem;"> 
+        <p  class="tab-text">My livestock</p>
+    </a> 
+    <!-- <a class="tab">Tab 3</a> -->
+</div>
+
+
+  <div class="serchB" style="width: 100%;">
     <div class="form-group searchInput">
 
       <div class="relative">
@@ -44,11 +55,11 @@
 
 
 
-
+<!-- 
 <div class="divit">
 
     <div class="card card-compact shadow-xl" *ngFor="let user of userRecords | filter: filterTerm">
-      <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+      <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
       <div class="card-body">
         <div class="headingss">
           <h3 class="card-title">Cattle!</h3>
@@ -57,10 +68,12 @@
         </div>
           
         <h2 class="breed">Braford Cattle</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <!-- <button style="width: 60%;height:1rem;padding: 0rem;" class="btn btn-primary">Reserve</button> -->
+        <p><span> Description:</span> a dog chews shoes whose shoes does he choose?</p>
+        <p><span> Weight:</span> a dog chews shoes whose shoes does he choose?</p>
+        <p><span> Age:</span> a dog chews shoes whose shoes does he choose?</p>
+        <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+
+      
        
         <div class="card-actions">
           <h5>R6000</h5>
@@ -69,6 +82,35 @@
       </div>
     </div>
  
+</div> -->
+
+<div class="divit">
+
+  <div class="card card-compact shadow-xl" *ngFor="let user of userRecords | filter: filterTerm">
+    <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
+    <div class="card-body">
+      <div class="headingss">
+        <h3 class="card-title">Cattle!</h3>
+        
+        <h4>21 January 2023</h4>
+      </div>
+        
+      <h2 class="breed">Braford Cattle</h2>
+      <p><span> Description:</span> a dog chews shoes whose shoes does he choose?</p>
+      <p><span> Weight:</span> a dog chews shoes whose shoes does he choose?</p>
+      <p><span> Age:</span> a dog chews shoes whose shoes does he choose?</p>
+      <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+
+
+     
+      <div class="card-actions">
+        <h5>R6000</h5>
+        <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
+        <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
