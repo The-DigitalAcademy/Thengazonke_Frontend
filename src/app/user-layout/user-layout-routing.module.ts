@@ -13,8 +13,7 @@ const routes: Routes = [
   { path: 'order-history', component:OrderHistoryComponent },
   { path: 'create-livestock', component:CreateLivestockComponent },
   { path: 'profile', component:ProfileComponent },
-  { path: 'notification', component:NotificationsComponent },
-
+  { path: 'notification', component:NotificationsComponent }
 ];
 
 @NgModule({
