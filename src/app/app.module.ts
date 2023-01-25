@@ -17,31 +17,7 @@ import { UserLayoutModule } from './user-layout/user-layout.module';
 
 // import { CarouselComponent } from './components/carousel/carousel.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    RateComponent,
-    OrderHistoryComponent,
-    OrderRequestComponent,
-    AccountComponent,
-    NotificationsComponent,
-    SellerComponent,
-    ReviewComponent,
-    CreateLivestockComponent,
-    ProfileComponent,
-   
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-   
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
 
-
-})
 
 @NgModule({
     declarations: [
