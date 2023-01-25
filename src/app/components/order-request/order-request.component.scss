@@ -4,7 +4,13 @@
     border-radius: 2rem;
     border: solid 1px #516951;
     box-shadow: inset;
-
+}
+.header{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #516951;
+    font-size: 25px;
 }
 img{
     width: 250px;
@@ -68,4 +74,11 @@ button{
 }
 .btn2{
     background-color: red;
+}
+.btnn{
+    color: #516951;
+    
+}
+.card-title{
+    color: #516951;
 }

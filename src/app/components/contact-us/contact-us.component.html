@@ -1,18 +1,40 @@
 
 <div></div>
 <section id="contact" class="contact-clean">
-    <h2>Contact Us</h2>
-    <form>
-     <label class="form-label">Full Names</label>
-    <input type="tetx">
-    <label form-label>Email</label>
-    <input type="text">
-    <label form-label>Message</label>
-    <textarea></textarea>
-    <div class="send_button">
-        <button>Send</button>
-    </div>
-    </form>
+    <!-- <div class="container"> -->
+        <h1 style="text-align: center; color: white; font-size: 18px; font-weight: bolder;">Contact us</h1>
+        <form action="/action_page.php">
+        <div class="row">
+          <div class="col-25">
+            <label for="fname">Full Names</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="fname" name="firstname" placeholder="">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">Email Address</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="lname" name="lastname" placeholder="">
+          </div>
+        </div>
+       
+        <div class="row">
+          <div class="col-25">
+            <label for="subject">Message</label>
+          </div>
+          <div class="col-75">
+            <textarea id="subject" name="subject" placeholder="" style="height:65px"></textarea>
+          </div>
+        </div>
+        <br>
+        <div>
+          <input type="submit" value="Send">
+        </div>
+        </form>
+      <!-- </div> -->
     
 </section>
 
