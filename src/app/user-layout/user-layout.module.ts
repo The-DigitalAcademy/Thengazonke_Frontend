@@ -12,6 +12,8 @@ import { ContactUsComponent } from '../components/contact-us/contact-us.componen
 import { SearchComponent } from '../components/search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
+import { CarouselComponent } from '../components/carousel/carousel.component';
 
 
 @NgModule({
@@ -20,8 +22,10 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     LandingComponent,
+    SearchComponent,
+    HomepageComponent,
     ContactUsComponent,
-    SearchComponent
+    CarouselComponent
   ],
   imports: [
 
