@@ -13,6 +13,7 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ReviewComponent } from './components/review/review.component';
 import { CreateLivestockComponent } from './components/create-livestock/create-livestock.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UserLayoutModule } from './user-layout/user-layout.module';
 
 // import { CarouselComponent } from './components/carousel/carousel.component';
 
@@ -39,8 +40,8 @@ import { ProfileComponent } from './components/profile/profile.component';
   providers: [],
   bootstrap: [AppComponent]
 
-import { UserLayoutModule } from "./user-layout/user-layout.module";
 
+})
 
 @NgModule({
     declarations: [
