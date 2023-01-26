@@ -1,0 +1,63 @@
+<div class="main">
+    <div class="form flex justify-center ractangel">
+      
+      <form>
+        <div class="form-text">
+          <div class="header flex justify-center">
+            <h1 class="content-center">LOGIN</h1>
+          </div>
+  
+          <div class="form-control">
+            <div class="flex justify-around ...">
+              <div>
+                <label class="label cursor-pointer">
+                  <p class="label-text text-white">BUYER</p> 
+                  <input type="radio" name="radio" class="radio checked:bg-white" [routerLink]="['/auth/login']" />
+                </label>
+              </div>
+              <div>
+                <label class="label cursor-pointer">
+                  <p class="label-text text-white">SELLER</p> 
+                  <input type="radio" name="radio" class="radio checked:bg-white" checked/>
+                </label>
+              </div>
+            </div>
+  
+          </div>
+  
+           <div class="form-control">
+            <label class="input-group input-group-sm">
+              <span>
+                <i class="fas fa-envelope"></i>
+              </span>
+              <input type="text" placeholder="Email" class="input input-bordered input-sm w-100" />
+            </label>
+          </div>
+          <br>
+          <div class="form-control">
+            <label class="input-group input-group-sm">
+              <span><i class="fas fa-lock"></i></span>
+              <input type="text" placeholder="Password" class="input input-bordered input-sm w-full max-w-xs" />
+            </label>
+          </div>
+  
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <input type="checkbox" class="checkbox" />
+              <p class="label-text text-white">Remember me</p> 
+            </label>
+          </div>
+  
+          <div  class="flex justify-center py-5">
+             <button class="btn border-transparent text-white">Submit</button>
+          </div>
+         
+          <div class="flex justify-center py-5">
+            <p class="text-center">Don’t have an account? <a class="register-btn" [routerLink]="['/auth/register']">Register</a></p>
+          </div>
+  
+        </div>
+      </form>
+  
+    </div>
+  </div>

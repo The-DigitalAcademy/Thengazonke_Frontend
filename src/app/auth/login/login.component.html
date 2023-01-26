@@ -1,1 +1,74 @@
-<p>login works!</p>
+<div class="main">
+  <div class="form flex justify-center ractangel">
+    
+    <form [formGroup] = "UserLoginForm" novalidate>
+      <div class="form-text">
+        <div class="header flex justify-center">
+          <h1 class="content-center">LOGIN</h1>
+        </div>
+
+        <div class="form-control">
+          <div class="flex justify-around ...">
+            <div>
+              <label class="label cursor-pointer">
+                <p class="label-text text-white">BUYER</p> 
+                <input type="radio" name="radio" class="radio checked:bg-white" checked />
+              </label>
+            </div>
+            <div>
+              <label class="label cursor-pointer">
+                <p class="label-text text-white">SELLER</p> 
+                <input type="radio" name="radio" class="radio checked:bg-white"  [routerLink]="['/auth/login-seller']" />
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+         <div class="form-control">
+          <label class="input-group input-group-sm">
+            <span>
+              <i class="fas fa-envelope"></i>
+            </span>
+            <input type="text" formControlName="email" class="input input-bordered input-sm w-100"  placeholder="Enter Email"
+            [ngClass]="{ 'is-invalid': submitted && formValidation['email'].errors }">
+                                                    
+          </label>
+              <div *ngIf="submitted && formValidation['email'].errors" class="invalid-feedback">
+                <div *ngIf="formValidation['email'].errors['required']" class="error-text">Email is required</div>
+                <div *ngIf="formValidation['email'].errors['email']" class="error-text">Email is invalid</div>
+              </div>
+        </div>
+        <br>
+        <div class="form-control">
+          <label class="input-group input-group-sm">
+            <span><i class="fas fa-lock"></i></span>
+            <input formControlName="password" type="password" class="input input-bordered input-sm w-full max-w-xs" placeholder="Enter Password"
+            [ngClass]="{ 'is-invalid': submitted && formValidation['password'].errors }">
+          </label>
+          
+            <div *ngIf="submitted && formValidation['password'].errors" class="invalid-feedback">
+              <div *ngIf="formValidation['password'].errors['required']">Password is required</div>
+            </div>
+        </div>
+
+        <div class="form-control">
+          <label class="label cursor-pointer">
+            <input type="checkbox" class="checkbox" />
+            <p class="label-text text-white">Remember me</p> 
+          </label>
+        </div>
+
+        <div  class="flex justify-center py-5">
+           <button (click)="UserLogin()" class="btn border-transparent text-white">Submit</button>
+        </div>
+       
+        <div class="flex justify-center py-5">
+          <p class="text-center">Don’t have an account? <a class="register-btn" [routerLink]="['/auth/register']">Register</a></p>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</div>

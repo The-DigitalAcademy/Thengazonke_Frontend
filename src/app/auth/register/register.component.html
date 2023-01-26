@@ -1,1 +1,93 @@
-<p>register works!</p>
+<div class="main">
+    <div class="form flex justify-center ractangel">
+        <form [formGroup] = "AddUserForm" novalidate>
+            <div class="form-text">
+              <div class="header flex justify-center">
+                <h1 class="content-center">REGISTER</h1>
+              </div>
+
+              <div class="form-control account-type">
+                <div class="flex justify-around ...">
+                  <div>
+                    <label class="label cursor-pointer">
+                      <p class="label-text text-white">Account type</p> 
+                    </label>
+                  </div>
+                  <div>
+                    <label class="label cursor-pointer">
+                      <input type="radio" value="Buyer" formControlName="usertype" class="radio checked:bg-white bg-white" checked /><a class="px-2">Buyer </a>
+                      <input type="radio" value="Seller" formControlName="usertype"  class="radio checked:bg-white bg-white" /><a class="px-2">Seller</a>
+                    </label>
+                  </div>
+                </div>
+    
+              </div>
+
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span>
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <input type="text" formControlName="fullname" class="input input-bordered input-sm w-100" placeholder="Enter full name"
+                    [ngClass]="{ 'is-invalid': submitted && formValidation['fullname'].errors }">
+                </label>
+
+                    <div *ngIf="submitted && formValidation['fullname'].errors" class="invalid-feedback error-text">
+                        <div *ngIf="formValidation['fullname'].errors['required']">Full name is required</div>
+                        <div *ngIf="formValidation['fullname'].errors['minlength']">Full name must be at least 3 characters</div>
+                        <div *ngIf="formValidation['fullname'].errors['maxlength']">Full name must not exceed 50 characters</div>
+                    </div>
+              </div>
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span>
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <input type="text" formControlName="email" class="input input-bordered input-sm w-100"  placeholder="Enter Email"
+                    [ngClass]="{ 'is-invalid': submitted && formValidation['email'].errors }">
+                                                    
+                </label>
+
+                <div *ngIf="submitted && formValidation['email'].errors" class="invalid-feedback error-text">
+                    <div *ngIf="formValidation['email'].errors['required']" class="error-text">Email is required</div>
+                    <div *ngIf="formValidation['email'].errors['email']" class="error-text">Email is invalid</div>
+                </div>
+              </div>
+
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span><i class="fas fa-lock"></i></span>
+                  <input type="password" formControlName="password" class="input input-bordered input-sm w-full max-w-xs" placeholder="Enter Password"
+                    [ngClass]="{ 'is-invalid': submitted && formValidation['password'].errors }">
+                </label>
+
+                    <div *ngIf="submitted && formValidation['password'].errors" class="invalid-feedback error-text">
+                    <div *ngIf="formValidation['password'].errors['required']">Password is required</div>
+                    <div *ngIf="formValidation['password'].errors['minlength']">Password must be at least 8 characters</div>
+                </div> 
+
+              </div>
+              <div class="form-control py-2">
+                <label class="input-group input-group-sm">
+                  <span><i class="fas fa-lock"></i></span>
+                  <input type="password" formControlName="confirmPassword" class="input input-bordered input-sm w-full max-w-xs"  placeholder="Re-enter Password"
+                [ngClass]="{ 'is-invalid': submitted && formValidation['confirmPassword'].errors }">
+                </label>
+
+                <div *ngIf="submitted && formValidation['confirmPassword'].errors" class="invalid-feedback error-text">
+                  <div *ngIf="formValidation['confirmPassword'].errors['required']">Confirm password is required</div>
+                  <div *ngIf="formValidation['confirmPassword'].errors['minlength']">Confirm Password must be at least 8 characters</div>
+                </div>
+              </div>
+            
+              <div  class="flex justify-center py-5">
+                <button (click)="AddUser()" class="btn border-transparent text-white">Submit</button>
+             </div>
+            
+             <div class="flex justify-center py-5">
+               <p class="text-center">Already have an account? <br><a class="login-btn" [routerLink]="['/auth/login']">Login</a></p>
+             </div>
+            </div>
+        </form> 
+    </div>
+</div>
