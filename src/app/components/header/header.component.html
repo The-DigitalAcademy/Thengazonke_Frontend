@@ -1,42 +1,39 @@
- <div class="header top-0 w-full flex justify-between p-4 lg:px-11">
+ <div class="header top-0 w-full flex justify-between p-2 lg:px-11" style="color: #516951">
 
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl ">
     <img src="../../../assets/logo.png">
   </div>
 
-  <div class="desktop-nav hidden lg:flex gap-2">
-      <ul class="menu menu-horizontal gap-4">
+  <div class="desktop-nav hidden lg:flex text-sm">
+
+      <ul  class="menu menu-horizontal">
   
-            <li class="mx-4">
+            <li class="">
                 <a href="#" routerLink="/home">Home</a>
             </li>
-              <li class="mx-4">
+              <li class="">
                 <a href="#" routerLink="/rate">Rate</a>
             </li >
-            <li class="mx-4">
+            <li class="">
                 <a href="#" routerLink="/notifications">Notifications</a>
             </li>
-            <li class="mx-4">
+            <li class="">
                 <a href="#" routerLink="/seller">Seller</a>
             </li>
-              <li class="mx-4">
+              <li class="">
                 <a href="#" routerLink="/order-history">Order history</a>
             </li>
-              <li class="mx-4">
-                <a href="#" routerLink="/notification">Notifications</a>
-            </li>
-              <li class="mx-4">
+              <li class="">
                 <a href="#" routerLink="/order-request">Order request</a>
             </li>
-              <li class="mx-4">
+              <li class="">
                 <a>logout</a>
             </li>
         </ul>
     </div>
 
-
-    <div class="mobile md:flex lg:hidden">
-      <div class="dropdown">
+    <div class="mobile md:flex lg:hidden ">
+      <div class="dropdown dropdown-end">
         <label tabindex="0" class="btn btn-ghost btn-circle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
         </label>
@@ -68,7 +65,7 @@
 
     <li class="mx-4 " *ngIf="accountType!='Buyer'">
       <a href="#" routerLink="/profile">Profile </a>
-  </li >
+    </li >
 
           <li class="mx-4" *ngIf="accountType!='Buyer'">
             <a href="#" routerLink="/order-history">Order history</a>
@@ -90,8 +87,6 @@
       </div>
     </div>
  </div>
-    
-    
 
 
-    
+  
