@@ -1,0 +1,329 @@
+// body {
+//     background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
+//     inear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+//     linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
+//     radial-gradient(gray 2px, transparent 0);
+//     background-size: 30px 30px, 30px 30px;
+// }
+.searchInput{
+    //border-radius: 10px;
+    // border:solid 1rem;
+    border:solid var(--main-green);
+    border-radius: 5px;
+
+}
+.selectBox{
+    // background-color: red;
+    margin-top:  .5rem;
+    //padding: 1.5rem;
+    box-shadow: 0 30px 8px 0 rgba(0,0,0,0.2);
+  
+}
+.svgB{
+    background-color: #CCCCCC;
+    padding-right: 1rem; 
+}
+.serchB{
+    // background-color: var(--main-green);
+    padding: 1rem;
+}
+option{
+    background-color: red;
+}
+button{
+    background-color: var(--main-green);
+}
+input:focus {
+    outline: none !important;
+    border: var(--main-bg-color);
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    padding-right: 1rem;
+    
+    
+}
+
+
+.form-select{
+    padding: 10px;
+    width: 100%;
+    border: solid 1px black;
+    border-radius: 5px;
+    
+}
+
+.card3{
+    background-color: pink;
+    // box-shadow: 0 15px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.card {
+  box-shadow: 3px 30px 8px 3px rgba(0,0,0,0.2);
+//     transition: 0.3s;
+//    margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+            
+  }
+  
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card-body{
+  padding: 7px;
+}
+.card-title{
+    font-weight: 200;
+    float: left;
+    font-size: 1rem;
+    margin: 0rem;
+}
+.card-actions{
+    // justify-content: right;
+    position: relative;
+    margin-bottom: 1rem;
+}
+h2{
+    font-size: large;
+}
+h4{
+    margin-top: 5px;
+    float: right;
+    color: #7E7C7C;
+    font-size: 8px;
+}
+h5{
+    float: left;
+    font-size: 10px;
+}
+p{
+    font-weight: bold;
+    font-size: 7px;
+    padding: 0rem;
+    margin: 0rem;
+    color: #7E7C7C;
+}
+span{
+    color: var(--main-green);
+    font-size: 10px;
+    margin: 0rem;
+    padding: 0rem;
+}
+button{
+    float: right;
+    position:absolute;right:0
+}
+.btn3{
+    
+        float: right;
+        position:absolute;right:2rem;
+    
+}
+.btn1{
+    padding:5px 30px;
+    margin: 0rem;
+    color: white;
+    border-radius: 5px;
+    border: solid 1.2px var(--yellow);
+}
+.tbs{
+    
+    padding:0 1rem;
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 1rem;
+
+}
+ul{
+    height: 2rem;
+}
+li{
+    background-color: var(--main-green);
+    border: solid 2px var(--yellow);
+    border-radius: 6px;
+    padding: 0rem;
+    height: 2rem;
+    margin-right: 1rem;
+}
+a{
+    height: 2rem;
+    
+}
+.divit{
+    
+        column-count: 5;
+        gap: 10px;
+        padding: 1rem;
+}
+figure{
+    padding: 0rem;
+    margin: 0rem;
+}
+img{
+    padding: 0rem;
+    margin: 0rem;
+}
+.tabs{
+    width: 100%;
+    background-color: white;
+    padding:1rem;
+}
+.tab{
+    margin-right: 1rem;
+}
+// .tab-active{
+ 
+    
+// }
+.tab-active{
+    width: 8rem;
+    height: .2rem;
+    background-color: var(--main-green);
+}
+.tab-not-active{
+    width: 8rem;
+    height: .2rem;
+    // background-color: var(--main-green);
+}
+.tab-text{
+    position: absolute;
+    font-size:small;
+    width: 8rem;
+    height: 3rem;
+}
+.tabs-boxed{
+
+}
+
+
+//////////////////////////
+/// phones and mobile/////
+/// //////////////////////
+
+@media only screen and (max-width: 1200px){
+    select{
+        display: none;
+    }
+ 
+    // .grid-cols-4{
+    //     display: block;
+    // } 
+    //  .grid-cols-4{
+    //     display: block;
+    // } 
+   
+}
+
+@media only screen and (max-width: 600px){
+    .tbs{
+        display: none;
+    }
+    select{
+        display: block;
+    }
+    // .grid-cols-2{
+    //     display: block;
+    // }
+    // .grid-cols-2{
+    //     display: block;
+    // } 
+    // .grid-cols-4{
+    //     display: none;
+    // } 
+}
+
+@media only screen and (max-width: 425px){
+    .tbs{
+        display: none;
+    }
+    .card2{
+        padding: .5rem;
+    }
+    // .grid-cols-2{
+    //     display: block;
+    // }
+    // .grid-cols-2{
+    //     display: none;
+    // } 
+    // .grid-cols-2{
+    //     display: block;
+    // } 
+}
+
+@media only screen and (min-device-width: 1200px)  {
+    .divit{
+    
+        column-count: 4;
+        gap: 10px;
+        padding: 1rem;
+}
+    
+}
+/* (1280x720) Galaxy Note 2, WXGA */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+    .divit{
+    
+        column-count: 4;
+        gap: 10px;
+        padding: 1rem;
+}
+    
+}
+/* (768x1024) iPad 1 & 2, Portrait */
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .divit{
+    
+        column-count: 3;
+        gap: 10px;
+        padding: 1rem;
+}
+}
+/* (1024x768) iPad 1 & 2, Landscape */
+@media only screen and (min-width: 591px) and (max-width: 767px)  {
+    .divit{
+    
+        column-count: 2;
+        gap: 10px;
+        padding: 1rem;
+}
+}
+ 
+/* (1024x768) iPad 1 & 2, Landscape */
+@media only screen and (min-width: 481px) and (max-width: 590px)  {
+    .divit{
+    
+        column-count: 1;
+        gap: 10px;
+        padding: 1rem;
+}
+}
+ 
+/* (2048x1536) iPad 3 */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .divit{
+    
+        column-count: 1;
+        gap: 10px;
+        padding: 1rem;
+}
+
+}
+@media only screen and (max-width: 319px){ 
+    .divit{
+    
+        column-count: 1;
+        gap: 10px;
+        padding: 1rem;
+}
+
+}
+ 
+ 
+
+
+ 
+ 

@@ -1,0 +1,120 @@
+.navbar{
+    text-align: center;
+    font-size: large;
+}
+
+.center{
+    text-align: center;
+    font-size: 35px;
+    font-weight: bolder;
+    margin-top: 50px;
+    color: #516951;
+  
+}
+
+.avatar {
+    /* Rounded border */
+    border-radius: 50%;
+    outline-style: solid;
+    outline-color: #516951;
+    margin-left: 30px; 
+    margin-right: 0;
+
+    /* Center the content */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    /* Size */
+    height: 6rem;
+    width: 6rem;
+}
+
+  
+//   .phone[type=text] {
+//     width: 90%;
+//     padding: 12px;
+//     border: 1px solid #516951;
+//     border-radius: 4px;
+//     resize: vertical;
+//     margin-top:40px;
+//     display: block;
+//    margin-right: auto;
+//    margin-left: auto;
+//    margin-top: 10px;
+//   }
+
+//   .email[type=text] {
+//     width: 90%;
+//     padding: 12px;
+//     border: 1px solid #516951;
+//     border-radius: 4px;
+//     resize: vertical;
+//     margin-top:40px;
+//     display: block;
+//    margin-right: auto;
+//    margin-left: auto;
+//    margin-top: 10px;
+  
+//   }
+
+
+//   .res[type=text] {
+//     width: 90%;
+//     padding: 12px;
+//     border: 1px solid #516951;
+//     border-radius: 4px;
+//     resize: vertical;
+//     margin-top:40px;
+//     display: block;
+//    margin-right: auto;
+//    margin-left: auto;
+//    margin-top: 10px;
+  
+//   }
+// .label-text{
+// padding: 22px;
+// float: none;
+// width: auto;
+// }
+.p{
+        width: 90%;
+        padding: 12px;
+        border: 1px solid #516951;
+        border-radius: 4px;
+        display: block;
+         margin-right: auto;
+         margin-left: auto;
+}
+.s{
+    
+    border: 1px solid #FED607;
+    background-color: #FED607;
+    height: 30px;
+    margin-right: auto;
+         margin-left: auto;
+         padding-right: 1px;
+         padding-right: 20px;
+         float: right;
+         margin-right: 5.5%;
+}
+.email{
+    padding-left: 1.4rem;
+}
+.address{
+    padding-left: 1.4rem;
+}
+.phone{
+    padding-left: 1.4rem;
+}
+.status{
+    padding-left: 1.4rem;
+}
+
+.file{
+    padding-left: 1.4rem;
+}
+
+.move{
+    padding-left: 1.4rem;
+}
