@@ -11,7 +11,6 @@ import { ReviewComponent } from './components/review/review.component';
 import { UserLayoutModule } from "./user-layout/user-layout.module";
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
     declarations: [
         AppComponent,

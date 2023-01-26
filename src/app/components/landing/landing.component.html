@@ -1,47 +1,133 @@
-  <div class="w-full carousel bdy">
-    <div id="slide1" class="relative w-full carousel-item">
-      <img src="../../../assets/cows-g4651f9a5c_1920.jpg" class="w-full"> 
-   
-      
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-10 top-1/2 land_button">
-       <button class="">get started</button>
-      </div>
 
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="/components/carousel#slide4" class="carousel-center" style="color: white;">❮</a> 
-        <a href="/components/carousel#slide2" class="carousel-center"  style="color: white;">❯</a>
+<section style="width: 100vw;height: 100vh;" class="carousel" aria-label="Gallery">
+  <ol class="carousel__viewport" >
+    <li id="carousel__slide1"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <img src="../../../assets/headr.jpeg" alt="">
       </div>
-    
-    </div> 
+        <a href="#carousel__slide4"
+           class="carousel__prev">Go to last slide</a>
+        <a href="#carousel__slide2"
+           class="carousel__next">Go to next slide</a>
+     
+    </li>
+    <li id="carousel__slide2"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <img src="../../../assets/headr.jpeg" alt="">
 
 
+      </div>
+      <a href="#carousel__slide1"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide3"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    <li id="carousel__slide3"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper container">
+       
+          <img src="../../../assets/headr.jpeg"  alt="Snow" style="width:100%;  background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;">
+          <div class="bottom-left" style="position: absolute;">Bottom Left</div>
+          <!-- <div class="top-left">Top Left</div>
+          <div class="top-right">Top Right</div>
+          <div class="bottom-right">Bottom Right</div>
+          <div class="centered">Centered</div> -->
+       
 
-    <div id="slide2" class="relative w-full pt-20 carousel-item">
-      <img src="https://picsum.photos/id/501/800/300" class="w-full"> 
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="/components/carousel#slide1" class="btn btn-circle">❮</a> 
-        <a href="/components/carousel#slide3" class="btn btn-circle">❯</a>
+
       </div>
-    </div> 
-    <div id="slide3" class="relative w-full pt-20 carousel-item">
-      <img src="https://picsum.photos/id/502/800/300" class="w-full"> 
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="/components/carousel#slide2" class="btn btn-circle">❮</a> 
-        <a href="/components/carousel#slide4" class="btn btn-circle">❯</a>
+      <a href="#carousel__slide2"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide4"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    <li id="carousel__slide4"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <img src="../../../assets/headr.jpeg" alt="">
+
+
       </div>
-    </div> 
-    <div id="slide4" class="relative w-full pt-20 carousel-item">
-      <img src="https://picsum.photos/id/503/800/300" class="w-full"> 
-      <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-        <a href="/components/carousel#slide3" class="btn btn-circle">❮</a> 
-        <a href="/components/carousel#slide1" class="btn btn-circle">❯</a>
-      </div>
-    </div>
-  </div>
+      <a href="#carousel__slide3"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide1"
+         class="carousel__next">Go to first slide</a>
+    </li>
+  </ol>
+  <aside class="carousel__navigation">
+    <ol class="carousel__navigation-list">
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide1"
+           class="carousel__navigation-button">Go to slide 1</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide2"
+           class="carousel__navigation-button">Go to slide 2</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide3"
+           class="carousel__navigation-button">Go to slide 3</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide4"
+           class="carousel__navigation-button">Go to slide 4</a>
+      </li>
+    </ol>
+  </aside>
+</section>
 
   <app-search></app-search>
 <app-contact-us></app-contact-us>
 
+<!-- <div class="w-full carousel bdy">
+  <div id="slide1" class="relative w-full carousel-item">
+    <img src="../../../assets/cows-g4651f9a5c_1920.jpg" class="w-full"> 
+ 
+    
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-10 top-1/2 land_button">
+     <button class="">get started</button>
+    </div>
 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="/components/carousel#slide4" class="carousel-center" style="color: white;">❮</a> 
+      <a href="/components/carousel#slide2" class="carousel-center"  style="color: white;">❯</a>
+    </div>
+  
+  </div> 
 
-<!--  -->
+  <div id="slide2" class="relative w-full pt-20 carousel-item">
+    <img src="https://picsum.photos/id/501/800/300" class="w-full"> 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="/components/carousel#slide1" class="btn btn-circle">❮</a> 
+      <a href="/components/carousel#slide3" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide3" class="relative w-full pt-20 carousel-item">
+    <img src="https://picsum.photos/id/502/800/300" class="w-full"> 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="/components/carousel#slide2" class="btn btn-circle">❮</a> 
+      <a href="/components/carousel#slide4" class="btn btn-circle">❯</a>
+    </div>
+  </div> 
+  <div id="slide4" class="relative w-full pt-20 carousel-item">
+    <img src="https://picsum.photos/id/503/800/300" class="w-full"> 
+    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="/components/carousel#slide3" class="btn btn-circle">❮</a> 
+      <a href="/components/carousel#slide1" class="btn btn-circle">❯</a>
+    </div>
+  </div>
+</div> -->
+
+<div class="bodysz">
+    <h1>Available livestock</h1>
+    <app-search></app-search> 
+ </div>
+ 
