@@ -1,120 +1,149 @@
-.navbar{
-    text-align: center;
-    font-size: large;
-}
+#change-me {
+    background-color: rgb(239,227,227);
+  }
 
-.center{
-    text-align: center;
-    font-size: 35px;
-    font-weight: bolder;
-    margin-top: 50px;
-    color: #516951;
-  
-}
-
-.avatar {
-    /* Rounded border */
+  div.avatar > img {
     border-radius: 50%;
-    outline-style: solid;
-    outline-color: #516951;
-    margin-left: 30px; 
-    margin-right: 0;
-
-    /* Center the content */
-    align-items: center;
-    display: flex;
-    justify-content: center;
-
-    /* Size */
-    height: 6rem;
-    width: 6rem;
-}
+  }
+  
+  div.container.profile {
+    padding: 10px 20px;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .no-marging {
+    margin: 0 !important;
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .absolue {
+    position: absolute;
+  }
+  
+  div.profile-row {
+    margin-top: 55px;
+  }
+  
+  .absolue.center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+  }
+  
+  div.alert {
+    width: 40%;
+  }
+  
+  .alert-col {
+  }
+  
+  .alert-col > .alert {
+    padding: 10px;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+  }
+  
+  .alert-col > .alert.display {
+    opacity: 1;
+  }
+  
+  hr {
+    height: 2px;
+  }
+  
+  .content-right > * {
+    float: right;
+  }
+  
+  .form-btn {
+    min-width: 100px;
+    margin: 0 5px;
+    max-width: 200px;
+  }
+  
+  img.avart-img {
+    max-width: 200px;
+  }
+  
+  div.avatar-bg {
+    background: url(https://www.gravatar.com/avatar/1234566?size=200&d=mm);
+    background-position: 50% 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: calc(50% - 100px);
+  }
+  
+  div.avatar {
+  }
 
   
-//   .phone[type=text] {
-//     width: 90%;
-//     padding: 12px;
-//     border: 1px solid #516951;
-//     border-radius: 4px;
-//     resize: vertical;
-//     margin-top:40px;
-//     display: block;
-//    margin-right: auto;
-//    margin-left: auto;
-//    margin-top: 10px;
-//   }
-
-//   .email[type=text] {
-//     width: 90%;
-//     padding: 12px;
-//     border: 1px solid #516951;
-//     border-radius: 4px;
-//     resize: vertical;
-//     margin-top:40px;
-//     display: block;
-//    margin-right: auto;
-//    margin-left: auto;
-//    margin-top: 10px;
+  div.container.profile {
+    padding: 10px 20px;
+  }
   
-//   }
-
-
-//   .res[type=text] {
-//     width: 90%;
-//     padding: 12px;
-//     border: 1px solid #516951;
-//     border-radius: 4px;
-//     resize: vertical;
-//     margin-top:40px;
-//     display: block;
-//    margin-right: auto;
-//    margin-left: auto;
-//    margin-top: 10px;
+  .center {
+    text-align: center;
+  }
   
-//   }
-// .label-text{
-// padding: 22px;
-// float: none;
-// width: auto;
-// }
-.p{
-        width: 90%;
-        padding: 12px;
-        border: 1px solid #516951;
-        border-radius: 4px;
-        display: block;
-         margin-right: auto;
-         margin-left: auto;
-}
-.s{
-    
-    border: 1px solid #FED607;
-    background-color: #FED607;
-    height: 30px;
-    margin-right: auto;
-         margin-left: auto;
-         padding-right: 1px;
-         padding-right: 20px;
-         float: right;
-         margin-right: 5.5%;
-}
-.email{
-    padding-left: 1.4rem;
-}
-.address{
-    padding-left: 1.4rem;
-}
-.phone{
-    padding-left: 1.4rem;
-}
-.status{
-    padding-left: 1.4rem;
-}
-
-.file{
-    padding-left: 1.4rem;
-}
-
-.move{
-    padding-left: 1.4rem;
-}
+  .relative {
+    position: relative;
+  }
+  
+  .absolue {
+    position: absolute;
+  }
+  
+  div.profile-row {
+    margin-top: 55px;
+  }
+  
+  .absolue.center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+  }
+  
+  div.alert {
+    width: 40%;
+  }
+  
+  .alert-col > .alert {
+    padding: 10px;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    opacity: 0;
+  }
+  
+  hr {
+    height: 2px;
+  }
+  
+  .content-right > * {
+    float: right;
+  }
+  
+  .form-btn {
+    min-width: 100px;
+    margin: 0 5px;
+    max-width: 200px;
+  }
+  
+  div.avatar-bg {
+    background: url(https://www.gravatar.com/avatar/1234566?size=200&d=mm);
+    background-position: 50% 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    border-radius: 50%;
+    margin-left: calc(50% - 100px);
+  }
+  
