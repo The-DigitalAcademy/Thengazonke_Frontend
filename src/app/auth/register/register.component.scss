@@ -24,7 +24,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    // text-fill-color: transparent;
     margin-bottom: 30px;
 }
 
@@ -64,4 +64,9 @@ span{
 .account-type a
 {
     font-size: 14px;
+}
+
+.error-text
+{
+    color: var(--red);
 }

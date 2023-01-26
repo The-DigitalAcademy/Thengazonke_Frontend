@@ -1,7 +1,7 @@
 <div class="main">
   <div class="form flex justify-center ractangel">
     
-    <form>
+    <form [formGroup] = "UserLoginForm" novalidate>
       <div class="form-text">
         <div class="header flex justify-center">
           <h1 class="content-center">LOGIN</h1>
@@ -30,15 +30,26 @@
             <span>
               <i class="fas fa-envelope"></i>
             </span>
-            <input type="text" placeholder="Email" class="input input-bordered input-sm w-100" />
+            <input type="text" formControlName="email" class="input input-bordered input-sm w-100"  placeholder="Enter Email"
+            [ngClass]="{ 'is-invalid': submitted && formValidation['email'].errors }">
+                                                    
           </label>
+              <div *ngIf="submitted && formValidation['email'].errors" class="invalid-feedback">
+                <div *ngIf="formValidation['email'].errors['required']" class="error-text">Email is required</div>
+                <div *ngIf="formValidation['email'].errors['email']" class="error-text">Email is invalid</div>
+              </div>
         </div>
         <br>
         <div class="form-control">
           <label class="input-group input-group-sm">
             <span><i class="fas fa-lock"></i></span>
-            <input type="text" placeholder="Password" class="input input-bordered input-sm w-full max-w-xs" />
+            <input formControlName="password" type="password" class="input input-bordered input-sm w-full max-w-xs" placeholder="Enter Password"
+            [ngClass]="{ 'is-invalid': submitted && formValidation['password'].errors }">
           </label>
+          
+            <div *ngIf="submitted && formValidation['password'].errors" class="invalid-feedback">
+              <div *ngIf="formValidation['password'].errors['required']">Password is required</div>
+            </div>
         </div>
 
         <div class="form-control">
@@ -49,7 +60,7 @@
         </div>
 
         <div  class="flex justify-center py-5">
-           <button class="btn border-transparent text-white">Submit</button>
+           <button (click)="UserLogin()" class="btn border-transparent text-white">Submit</button>
         </div>
        
         <div class="flex justify-center py-5">
