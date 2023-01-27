@@ -1,44 +1,52 @@
 .land_button{
-   
-    
-    
-   
+
     height: 2rem;
     top: 80%;
-    
     bottom: 0px;
-    //margin-bottom: 15%;
+    right: 10rem; 
+    top: 60%;
+    width: auto;
+
 }
 button{
-    position: absolute;
+   
     background-color: var(--main-green);
     filter: drop-shadow(0px 10px 10px rgb(170, 158, 101));
     box-shadow: 0px 1px 0px 0px rgb(236, 236, 148);
-    border: solid 1px var(--yellow);
+    //border: solid 1px var(--yellow);
     border-radius: 5px;
-    
     float: right;
     position:absolute;right:0;
     padding:5px 1rem;
+    width:7rem;
+    font-size: 10px;
+    height: 2rem;
+    color: white;
 }
 
 .carousel_pictures{
-
     fill: solid rgba(81, 105, 81, 0.6);
-
 }
+
 .carousel-item{
     height: 15rem;
     margin-bottom:0rem ;
     padding: 0rem;
 }
+
 img{
-    height: 100%;
+    height:100vh;
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .bodysz{
     padding: 2rem;
 }
 h1{
+    margin-top: 3rem;
     text-align: center;
     font-size: 40px;
     font-weight: 400;
@@ -49,7 +57,31 @@ h1{
     -webkit-background-clip: text;
     background-clip: text;
 }
-
+span{
+  font-weight: 700;
+  font-size: 3rem;
+}
+h3{
+ 
+  background-color: transparent;
+  color:white;
+  text-align: center;
+  background-color: transparent;
+  font-size: 2rem;
+  text-align: start;
+}
+h5{
+  font-style: italic;
+  margin: 0rem;
+}
+p{
+  padding: 0;margin: 0rem;font-style: italic;color: white;text-align: start;
+}
+.carousel-texts{
+  position: absolute;
+  top: 29%;
+  left: 5rem;
+}
 
 
 @media only screen and (min-width: 900px){
@@ -81,6 +113,11 @@ h1{
     .carousel-item{
         height: 18rem;
     }
+    .carousel-texts h4{
+      text-align: center;
+      color: red;
+      margin-bottom: 3rem;
+    }
 
 }
 
@@ -95,6 +132,23 @@ h1{
         height: 15rem;
         top: 80%;
     }
+    .carousel-texts{
+      text-align: center;
+      color: red;
+      margin-bottom: 3rem;
+    }
+    .land_button{
+      text-align: center;
+    }
+    button{
+      margin-top: 4rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      // right: 1rem;
+      justify-content: center;
+    }
+    
 
 }
 @media only screen and (max-width: 300px){
@@ -107,6 +161,17 @@ h1{
     .carousel-item{
         height: 12rem;
         top: 80%;
+    }
+    .carousel-texts{
+      text-align: center;
+      color: red;
+      margin-bottom: 3rem;
+    }
+    .land_button{
+      text-align: center;
+    }
+    button{
+      text-align: center;
     }
 
 }
@@ -157,12 +222,12 @@ h1{
     }
   }
   
-  body {
-    max-width: 37.5rem;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-    font-family: 'Lato', sans-serif;
-  }
+  // body {
+  //   max-width: 37.5rem;
+  //   margin: 0 auto;
+  //   padding: 0 1.25rem;
+  //   font-family: 'Lato', sans-serif;
+  // }
   
   * {
     box-sizing: border-box;
@@ -195,9 +260,12 @@ h1{
   
   .carousel {
     position: relative;
-    padding-top: 75%;
+    //padding-top: 75%;
     filter: drop-shadow(0 0 10px #0003);
     perspective: 100px;
+    height: 70vh;
+    padding: 0rem;
+    // background-color: #f99;
   }
   
   .carousel__viewport {
@@ -211,27 +279,28 @@ h1{
     counter-reset: item;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
+    //height: 100vh;
   }
   
   .carousel__slide {
     position: relative;
     flex: 0 0 100%;
     width: 100%;
-    background-color: #f99;
+    // background-color: orange;
     counter-increment: item;
   }
   
   .carousel__slide:nth-child(even) {
-    background-color: #99f;
+    // background-color: #99f;
   }
   
   .carousel__slide:before {
-    content: counter(item);
+    //content: counter(item);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate3d(-50%,-40%,70px);
-    color: #fff;
+    //color: #fff;
     font-size: 2em;
   }
   
@@ -242,6 +311,11 @@ h1{
     width: 100%;
     height: 100%;
     scroll-snap-align: center;
+    text-align: center; 
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../../../assets/images/Livestock_grazing_in_Armenia.jpeg);
     
   }
   
@@ -301,33 +375,34 @@ h1{
     position: absolute;
     top: 0;
     margin-top: 37.5%;
-    width: 4rem;
-    height: 4rem;
+    width: .5rem;
+    height: .5rem;
     transform: translateY(-50%);
     border-radius: 50%;
     font-size: 0;
     outline: 0;
+    top: -12rem;
   }
   
   .carousel::before,
   .carousel__prev {
-    left: -1rem;
+    left: 10px;
   }
   
   .carousel::after,
   .carousel__next {
-    right: -1rem;
+    right: 10px;
   }
   
   .carousel::before,
   .carousel::after {
     content: '';
     z-index: 1;
-    background-color: #333;
-    background-size: 1.5rem 1.5rem;
+    background-color: transparent;
+    //background-size: 1rem 1rem;
     background-repeat: no-repeat;
-    background-position: center center;
-    color: #fff;
+    background-position: center;
+    color: var(--yellow);
     font-size: 2.5rem;
     line-height: 4rem;
     text-align: center;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
 import { CreateLivestockComponent } from '../components/create-livestock/create-livestock.component';
 import { LandingComponent } from '../components/landing/landing.component';
 import { OrderHistoryComponent } from '../components/order-history/order-history.component';
@@ -9,6 +10,7 @@ import { NotificationsComponent } from '../notifications/notifications.component
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
+  { path: 'home', component:HomepageComponent },
   { path: 'order-request', component:OrderRequestComponent },
   { path: 'order-history', component:OrderHistoryComponent },
   { path: 'create-livestock', component:CreateLivestockComponent },
