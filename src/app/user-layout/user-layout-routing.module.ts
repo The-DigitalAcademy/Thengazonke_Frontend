@@ -8,6 +8,7 @@ import { OrderRequestComponent } from '../components/order-request/order-request
 import { ProfileComponent } from '../components/profile/profile.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 
+
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'home', component:HomepageComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  
+exports: [RouterModule]
 })
 export class UserLayoutRoutingModule { }
 
