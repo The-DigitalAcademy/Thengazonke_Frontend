@@ -5,11 +5,26 @@
 //     radial-gradient(gray 2px, transparent 0);
 //     background-size: 30px 30px, 30px 30px;
 // }
+
+.column {
+    float: left;
+    width: 25%;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+
+
 .searchInput{
     //border-radius: 10px;
     // border:solid 1rem;
     border:solid var(--main-green);
-    border-radius: 5px;
+    border-radius: 10px;
 
 }
 .selectBox{
@@ -35,7 +50,7 @@ button{
 }
 input:focus {
     outline: none !important;
-    border: var(--main-bg-color);
+    //border: var(--main-bg-color);
     background-color: transparent;
     resize: none;
     outline: none;
@@ -57,16 +72,18 @@ input:focus {
     background-color: pink;
     // box-shadow: 0 15px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    margin-bottom: 1rem;
+   
     padding: 1rem;
-    margin-bottom: 1rem;
+    
 }
 .card {
-  box-shadow: 3px 30px 8px 3px rgba(0,0,0,0.2);
+  //box-shadow: 3px 30px 8px 3px rgba(0,0,0,0.2);
 //     transition: 0.3s;
 //    margin-bottom: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 2px;
+    // margin-bottom: 1rem;
+    // border-radius: 2px;
+    border: solid #B4A5A5 .01px;
+
             
   }
   
@@ -74,7 +91,7 @@ input:focus {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card-body{
-  padding: 7px;
+    padding:.5rem 1rem;
 }
 .card-title{
     font-weight: 200;
@@ -102,9 +119,9 @@ h5{
 }
 p{
     font-weight: bold;
-    font-size: 7px;
+    font-size:.7rem;
     padding: 0rem;
-    margin: 0rem;
+    margin: -4px;
     color: #7E7C7C;
 }
 span{
@@ -128,7 +145,7 @@ button{
     margin: 0rem;
     color: white;
     border-radius: 5px;
-    border: solid 1.2px var(--yellow);
+    //border: solid 1.2px var(--yellow);
 }
 .tbs{
     
@@ -155,7 +172,7 @@ a{
 }
 .divit{
     
-        column-count: 5;
+        column-count: 4;
         gap: 10px;
         padding: 1rem;
 }
@@ -197,6 +214,15 @@ img{
 }
 .tabs-boxed{
 
+}
+.rsvBtn{
+    background-color: var(--yellow);
+    // filter: drop-shadow(0px 10px 10px rgb(170, 158, 101));
+    // box-shadow: 0px 1px 0px 0px rgb(236, 236, 148);
+    border: solid .5px var(--main-green);
+    border-radius:5px 2px;
+    padding: 2px 7px;
+    color: var(--main-green);
 }
 
 
