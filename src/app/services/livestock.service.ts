@@ -12,4 +12,12 @@ export class LivestockService {
 
   constructor(private httpClient: HttpClient) { }
 
+  GetAllPostedLivestock(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/livestock/getPostedLivestock').pipe();
+  }
+  GetAllLivestock(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/livestock/getLivestock').pipe();
+  }
+
+  
 }
