@@ -12,4 +12,9 @@ export class BreedService {
 
   constructor(private httpClient: HttpClient) { }
 
+  GetAllBreed(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/breed/getAllBreed').pipe();
+  }
+
+
 }

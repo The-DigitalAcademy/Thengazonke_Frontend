@@ -23,6 +23,10 @@ export class AuthService {
     return this.httpClient.post(API_URL, loginDetails)
   }
 
+  GetAllUsers(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/users/getUsers').pipe();
+  }
+
   ///////////
 
 /*
