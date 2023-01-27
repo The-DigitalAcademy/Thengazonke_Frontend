@@ -12,4 +12,9 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
+  GetAllCategory(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/category/getCategory').pipe();
+  }
+  
+
 }
