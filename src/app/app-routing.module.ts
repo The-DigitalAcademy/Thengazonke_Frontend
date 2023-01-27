@@ -4,6 +4,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { UserLayoutComponent } from './user-layout/user-layout.component';
+import { RateComponent } from './components/rate/rate.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
@@ -32,6 +33,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
