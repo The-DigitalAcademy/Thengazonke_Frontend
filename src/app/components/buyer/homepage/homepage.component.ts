@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import { AuthService } from 'src/app/services/auth.service';
+import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
   selector: 'app-homepage',
@@ -6,6 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
+
+  items = ['item1', 'item2', 'item3', 'item4'];
+  lid!:any;
+  livestok!:any;
+  results!:any;
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
+    this.lid = newItem;
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
+      this.results = messages
+      // console.log('i am livestock',this.livestocks)
+      
+    })
+
+    
+    this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+    console.log('One livestokokoko',this.livestok)
+  }
+
+  
 
   filterTerm!: string;
   userRecords = [
@@ -71,7 +96,7 @@ export class HomepageComponent implements OnInit {
     },
   ];
 
-  constructor() { }
+  constructor(private livestoc:LivestockService, private router: Router) { }
 
   ngOnInit(): void {
   }

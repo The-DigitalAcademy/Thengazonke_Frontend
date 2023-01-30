@@ -19,6 +19,8 @@ import { NotificationsComponent } from '../notifications/notifications.component
 import { ProfileComponent } from '../components/profile/profile.component';
 import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
 import { CarouselComponent } from '../components/carousel/carousel.component';
+import { AvailablelivestockComponent } from '../components/availablelivestock/availablelivestock.component';
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { CarouselComponent } from '../components/carousel/carousel.component';
     CreateLivestockComponent,
     NotificationsComponent,
     ProfileComponent,
-    CarouselComponent
+    CarouselComponent,
+    AvailablelivestockComponent
   ],
   imports: [
 

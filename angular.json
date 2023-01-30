@@ -34,12 +34,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/bootstrap/dist/css/bootstrap.scss"
+              "src/styles.scss"
             ],
             "scripts": [
-                          "./node_modules/jquery/dist/jquery.js",              
-                          "./node_modules/bootstrap/dist/js/bootstrap.js"            
+                          "./node_modules/jquery/dist/jquery.js"         
             ]
           },
           "configurations": {
