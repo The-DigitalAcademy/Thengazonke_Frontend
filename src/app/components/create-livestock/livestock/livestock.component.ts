@@ -16,9 +16,8 @@ export class LivestockComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.livestockService.GetAllPostedLivestock().subscribe((res:any) => {
+    this.livestockService.GetLivestockByUser().subscribe((res:any) => {
       this.livestock = res;
-      console.log(this.livestock);
     });
 
   }

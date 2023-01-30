@@ -26,7 +26,10 @@
           <td>{{user.address}}</td> 
           <td>{{user.status}}</td> 
           <td>{{user.usertype}}</td> 
-          <td></td> 
+          <td>
+            <a [routerLink]="['/admin/user',user.Userid]"><i class="fa fa-eye mx-2"></i></a>
+            <i class="fas fa-trash mx-2"></i>
+          </td> 
         </tr>
       </tbody> 
     </table>

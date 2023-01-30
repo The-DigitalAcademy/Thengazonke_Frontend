@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         password: this.UserLoginForm.value.password
       }
 
-      console.log(logingDetails)
+      // console.log(logingDetails)
 
       if(logingDetails.email != '' && logingDetails.password != '')
       {

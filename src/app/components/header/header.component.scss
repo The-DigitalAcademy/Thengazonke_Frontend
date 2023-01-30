@@ -1,6 +1,7 @@
 .header
 {
     box-shadow: 5px 0 10px #516951;
+    background-color: var(--white);
     
 }
 
@@ -73,4 +74,27 @@ img{
 .navbar{
     background-color: #516951;
 }
+
+.rounded-full{
+    background-color: var(--gray);
+
+}
+.rounded-full i{
+    color: var(--white);
+    margin: auto;
+    margin-top: 10%;
+    font-size: 20px;
+}
+
+// .dropdown
+// {
+//     width: 10px;
+// }
+
+// .mydropdown
+// {
+//     margin-right: -40px;
+//     margin-bottom: -150px;
+//     z-index: -1;
+// }
 
