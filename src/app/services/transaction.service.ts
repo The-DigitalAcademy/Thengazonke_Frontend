@@ -12,4 +12,8 @@ export class TransactionService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getTransaction (): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/transaction/getAllTransaction').pipe();
+  }
+
 }

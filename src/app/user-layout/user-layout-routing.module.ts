@@ -7,7 +7,7 @@ import { OrderHistoryComponent } from '../components/order-history/order-history
 import { OrderRequestComponent } from '../components/order-request/order-request.component';
 import { ProfileComponent } from '../components/profile/profile.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
-
+import { RateComponent } from '../components/rate/rate.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -16,12 +16,14 @@ const routes: Routes = [
   { path: 'order-history', component:OrderHistoryComponent },
   { path: 'create-livestock', component:CreateLivestockComponent },
   { path: 'profile', component:ProfileComponent },
-  { path: 'notification', component:NotificationsComponent }
+  { path: 'notification', component:NotificationsComponent },
+  {path: 'rate', component:RateComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  
+ 
+
 exports: [RouterModule]
 })
 export class UserLayoutRoutingModule { }
