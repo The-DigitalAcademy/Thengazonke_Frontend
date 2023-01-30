@@ -12,10 +12,16 @@ export class AvailablelivestockComponent implements OnInit {
   post_id:any
 
   @Output() newItemEvent = new EventEmitter<string>();
+  @Output('openModal') openModal = new EventEmitter()
 
   reserve(ind: any) {
     this.post_id = this.livestocks[ind].livestockID
     this.addNewItem(this.post_id)
+    this.openModal.emit(true)
+  }
+
+  onOpenModal():void {
+    this.openModal.emit(true)
   }
 
   addNewItem(post_id: any) {

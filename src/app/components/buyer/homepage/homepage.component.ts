@@ -10,6 +10,8 @@ import { LivestockService } from 'src/app/services/livestock.service';
 })
 export class HomepageComponent implements OnInit {
 
+  
+
   items = ['item1', 'item2', 'item3', 'item4'];
   lid!:any;
   livestok!:any;
@@ -19,15 +21,21 @@ export class HomepageComponent implements OnInit {
     this.items.push(newItem);
     this.lid = newItem;
 
+    
+
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.results = messages
       // console.log('i am livestock',this.livestocks)
-      
+
+      this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+      console.log('One livestokokoko',this.livestok)
     })
 
+    let modalCheckbox:any = document.getElementById('my-modal')
+      modalCheckbox.checked = event
+
     
-    this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
-    console.log('One livestokokoko',this.livestok)
+    
   }
 
   
@@ -99,6 +107,18 @@ export class HomepageComponent implements OnInit {
   constructor(private livestoc:LivestockService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+
+  // openModal(event:any):void {
+   
+  //   let modalCheckbox:any = document.getElementById('my-modal')
+  //  modalCheckbox.checked = event
+  // }
+
+  closeModal() {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
   }
 
 }

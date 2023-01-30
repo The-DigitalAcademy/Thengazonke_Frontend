@@ -46,7 +46,7 @@
 <div class="row">
     <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
       <div class="card card-compact shadow-sm" style="margin: 1rem;">
-        <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
+        <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
         <div class="card-body">
           <div class="headingss">
             <h3 class="card-title">{{animal.categoryName}}</h3>
@@ -62,7 +62,7 @@
             <div style="margin-bottom: 0rem;" class="card-actions">
               <h5 style="font-size: 1rem; color: #11998e;
               color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
-              <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
+              <button type="button" (click)="reserve(x)" (click)="onOpenModal()" class="rsvBtn" >Reserve</button>
               <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
               <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
             </div>
@@ -71,3 +71,5 @@
     </div>
   
   </div>
+
+  <!-- <button (click)="onOpenModal()">TEST</button> -->

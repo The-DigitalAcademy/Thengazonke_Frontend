@@ -15,44 +15,45 @@
 
   <div class="bodysz">
     <h1>Available livestock</h1>
+
     <app-availablelivestock (newItemEvent)="addItem($event)"></app-availablelivestock>
 
-<ul>
-  <li *ngFor="let item of items">{{item}}</li>
-</ul>
+<!-- <ul>
+  <li *ngFor="let item of livestok">{{item.breedName}}</li>
+</ul> -->
 
  </div>
- <!-- <app-footer></app-footer> -->
 
- <label for="my-modal"><i class="fas fa-eye"></i></label>
 
  <input type="checkbox" id="my-modal" class="modal-toggle" />
- <div class="modal">
-   <div class="modal-box">
+
+ <div class="modal" *ngFor="let animal of livestok">
+   <div class="modal-box" style="background-color: var(--main-green);">
+   
      
-     <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-      <h1>i am here</h1>
-       <div class="card-body" *ngFor="let animal of livestok">
-         <ul class="steps steps-horizontal lg:steps-horizonatl">
+     <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" style="background-color: white;margin: 0rem;width: 100%;">
+     
+       <div class="card-body" >
+         <!-- <ul class="steps steps-horizontal lg:steps-horizonatl">
            <li class="step step-primary">Pending</li>
            <li class="step step-primary">In-progress</li>
            <li class="step">Cancelled</li>
            <li class="step">Completed</li>
-         </ul>
-         <br>
-         <h4>Order: #2346</h4>
-         <figure><img src="../../../assets//bg1.jpeg" alt="" /></figure>
-         <h3 class="card-title justify-center">GOAT</h3>
-         <p class="w-3/4 mx-auto desc">Kalahari Goats R800.00 Each 6 to 13 Months</p>
+         </ul> -->
+         <!-- <br> -->
+         <!-- <h4>Order: #2346</h4> -->
+         <figure><img src="{{animal.image}}" alt="" /></figure>
+         <h3 class="card-title justify-center">{{animal.categoryName}}</h3>
+         <p class="w-3/4 mx-auto desc" style="color: black;">{{animal.description}}</p>
          <h3 class="color">Brown and black</h3>
-         <h3 class="weigh">Weight 40kg to 75kg </h3>
+         <h3 class="weigh">{{animal.weight}}</h3>
          <br>
          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-         <h3 class="price"><b>Price: R8000</b></h3>
+         <h3 class="price"><b>{{animal.price}}</b></h3>
          <br>
          <div class="card-actions justify-center">
-           <button class="btn btn-sm btn-ghost btn1"  for="my-modal" routerLink="/order-history">Back</button>
-           <button class=" btn btn-sm btn-ghost btn2" >Rate</button>
+           <button class="rsvBtn"  for="my-modal" (click)=closeModal()>Back</button>
+           <button class="rsvBtn" >Buy</button>
          </div>
        </div>
      </div>
