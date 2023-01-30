@@ -1,3 +1,149 @@
+
+<!-- 
+<div class="tabs tabs-boxed" style="width:100% ;">
+    <a class="tab tab-active">
+        <p  class="tab-text">Available livestock</p>
+    </a> 
+    <a class="tab  tab-not-active" style="margin-left: 3rem;"> 
+        <p  class="tab-text">My livestock</p>
+    </a> 
+   
+</div> -->
+
+
+  <div class="serchB" style="width: 100%;">
+    <div class="form-group searchInput">
+
+      <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none svg">
+              <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <input [(ngModel)]="filterTerm" type="search" id="default-search" class="form-control block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="    Search for livestock..." required>
+          <!-- <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
+      </div>
+    </div>
+
+    <div  class="selectBox">
+      <select  (change)="onCategoryChange($event)" class="form-select">
+          <option style="background-color: pink;" *ngFor="let category of categories" [value]="category">
+            {{category}}
+    
+          </option>
+      </select>
+      
+    </div>
+  </div>
+
+
+
+<div class="tbs">
+  <ul class="flex flex-wrap">
+    <li class="mr-2">
+        <a class="" href="#" aria-current="page" class="btn1 ">All</a>
+    </li>
+    <li class="mr-2">
+        <a href="#" class="btn1">Cattle</a>
+    </li>
+    <li class="mr-2">
+        <a href="#" class="btn1">Sheep</a>
+    </li>
+    <li class="mr-2">
+        <a href="#" class="btn1">Goat</a>
+    </li>
+
+</ul>
+</div>
+
+
+
+<!-- 
+<div class="divit">
+
+    <div class="card card-compact shadow-xl" *ngFor="let user of userRecords | filter: filterTerm">
+      <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
+      <div class="card-body">
+        <div class="headingss">
+          <h3 class="card-title">Cattle!</h3>
+          
+          <h4>21 January 2023</h4>
+        </div>
+          
+        <h2 class="breed">Braford Cattle</h2>
+        <p><span> Description:</span> a dog chews shoes whose shoes does he choose?</p>
+        <p><span> Weight:</span> a dog chews shoes whose shoes does he choose?</p>
+        <p><span> Age:</span> a dog chews shoes whose shoes does he choose?</p>
+        <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+
+      
+       
+        <div class="card-actions">
+          <h5>R6000</h5>
+          <button class="btn1">Reserve</button>
+        </div>
+      </div>
+    </div>
+ 
+</div> -->
+
+<div class="divit">
+
+  <!-- <div class="card card-compact shadow-xl" *ngFor="let user of userRecords | filter: filterTerm"> -->
+    <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
+    <div class="card-body">
+      <div class="headingss">
+        <h3 class="card-title">Cattle!</h3>
+        
+        <h4>21 January 2023</h4>
+      </div>
+        
+      <h2 class="breed">Braford Cattle</h2>
+      <p><span> Description:</span> a dog chews shoes whose shoes does he choose?</p>
+      <p><span> Weight:</span> a dog chews shoes whose shoes does he choose?</p>
+      <p><span> Age:</span> a dog chews shoes whose shoes does he choose?</p>
+      <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+
+
+     
+      <div class="card-actions">
+        <h5>R6000</h5>
+        <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
+        <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+
+<!-- </div> -->
+
+
+
+
+
+
+    <!-- <div class="card" *ngFor="let user of userRecords | filter: filterTerm">
+      <a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 card" *ngFor="let user of userRecords | filter: filterTerm">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://placeimg.com/200/280/arch" alt="">
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ user.name }}</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        </div>
+    </a> 
+    </div>   -->
+
+
+
+
+
+
+
+
+<!-- <div class="card2">
+
+ 
+
+
+
+</div> -->
+
 <!-- <div class="container mt-5">
     <div class="form-group">
       <input
@@ -27,25 +173,14 @@
     </table>
   </div> -->
 
-
-
-
-  
-  <div class="form-group searchInput">
     <!-- <input  
       type="text"
       class="form-control searchInput"
       placeholder="Search..."
       [(ngModel)]="filterTerm"
     /> -->
-    <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none" style="background-color: #CCCCCC;">
-            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        </div>
-        <input [(ngModel)]="filterTerm" type="search" id="default-search" class="form-control block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required>
-        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-    </div>
-  </div>
+
+
 
   <!-- <form class="form-group">   
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -64,43 +199,42 @@
 </div> -->
 
 
-<div class="tbs">
-  <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
-    <li class="mr-2">
-        <a href="#" aria-current="page" class="inline-block p-4 text-blue-600 bg-gray-100 rounded-t-lg active dark:bg-gray-800 dark:text-blue-500">All</a>
-    </li>
-    <li class="mr-2">
-        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Cattle</a>
-    </li>
-    <li class="mr-2">
-        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Sheep</a>
-    </li>
-    <li class="mr-2">
-        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300">Goat</a>
-    </li>
-    <li>
-        <a class="inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">Disabled</a>
-    </li>
-</ul>
-</div>
 
-<!-- <button class="quick-filter-button active" [class.active]="isActive('cat1')" (click)="myClickFunction('category1')"
-    type="button">Category1</button> -->
+<!-- <div class="grid grid-cols-4 gap-4">
+  <div class="card3" *ngFor="let user of userRecords | filter: filterTerm">
+    <a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 card" *ngFor="let user of userRecords | filter: filterTerm">
+      <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://placeimg.com/200/280/arch" alt="">
+      <div class="flex flex-col justify-between p-4 leading-normal">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ user.name }}</h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+      </div>
+  </a> 
+  </div>
 
-<div  class="selectBox">
-  <select  (change)="onCategoryChange($event)" class="form-select">
-      <option style="background-color: red;" *ngFor="let category of categories" [value]="category">
-        {{category}}
+</div> -->
 
-      </option>
-  </select>
-  
-</div>
+<!-- <div class="grid grid-cols-4 gap-4">
+  <div class="card3" *ngFor="let user of userRecords | filter: filterTerm">
+    <a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 card" *ngFor="let user of userRecords | filter: filterTerm">
+      <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://placeimg.com/200/280/arch" alt="">
+      <div class="flex flex-col justify-between p-4 leading-normal">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ user.name }}</h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+      </div>
+  </a> 
+  </div>
 
-<a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700" *ngFor="let user of userRecords | filter: filterTerm">
+</div> -->
+
+
+
+<!-- <a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 card" *ngFor="let user of userRecords | filter: filterTerm">
+
+ <a href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700" *ngFor="let user of userRecords | filter: filterTerm">
+
     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://placeimg.com/200/280/arch" alt="">
     <div class="flex flex-col justify-between p-4 leading-normal">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ user.name }}</h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
     </div>
-</a>
+</a> -->

@@ -7,9 +7,9 @@
     background-size: cover;
     color: var(--white);
 }
-h1{
-    // font-family: 'Inter';
-}
+// h1{
+//     // font-family: 'Inter';
+// }
 .header
 {
     
@@ -21,7 +21,7 @@ h1{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    // text-fill-color: transparent;
     margin-bottom: 30px;
 }
 
@@ -63,4 +63,13 @@ span{
 
 .register-btn{
     color: var(--yellow-dark);
+}
+.error-text
+{
+    color: var(--red);
+}
+.radio{
+    width: 15px;
+    height: 15px;
+    margin-left: 12px;
 }

@@ -50,6 +50,9 @@ img{
 }
 @media only screen and (max-width: 425px){
 	/*Small smartphones [325px -> 425px]*/
+    .mobile{
+        display: none;
+    }
     .header
 {
     box-shadow: 10px 0 10px #516951;
@@ -62,9 +65,12 @@ img{
 }
 
 @media (min-width: 768px) { 
+
     .mobile{
         display: none;
     }
 }
-
+.navbar{
+    background-color: #516951;
+}
 
