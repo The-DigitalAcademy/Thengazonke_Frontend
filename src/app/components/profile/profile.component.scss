@@ -1,13 +1,6 @@
 .profile-card {
   border-radius: 4px;
 }
-.rounded-circle{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  height: 150px;
-}
 
 .profile-card-img {
   border-top-left-radius: 4px;
@@ -17,29 +10,85 @@
 
 .form-inline{
   margin-top: 15px;
-  margin: 10px 10px 10px 10px;
 }
 
 .form-group{
   margin-top: 10px;
-  margin: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 0px;
+  padding-left: 10px;
 }
 label{
   margin-bottom: 10px;
+  
 }
 
 .status{
-  margin-left: 80%;
+  margin-left: 75%;
   border-radius: 4px;
   margin-top: -10px;
   border-color: #FED607 ;
+  // margin: 10px 10px 10px 0px;
+  // padding-left: 10px;
+  
 
 }
 
+.ss{
+  margin: 10px 10px 10px 0px;
+  padding-left: 10px;
+}
+
+.custom-file{
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: -45px;
+}
 .custom-file-input{
 padding-top: 25px;
 margin-top: -20px;
 margin-bottom: -10px;
+margin: 10px 10px 10px 0px;
+padding-left: 10px;
 }
+
+.custom-file-label{
+  margin: 10px 10px 10px 0px;
+padding-left: 10px;
+margin-top: -50px;
+
+}
+.rounded-circle{
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 40%;
+height: 150px;
+}
+
+span{
+  margin: 10px 10px 10px 0px;
+padding-left: 10px;
+}
+
+@media screen and (min-width: 576px) and (max-width: 992px) { 
+  .rounded-circle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 2600px) { 
+  .rounded-circle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+  }
+}
+
 
 @import "~bootstrap/dist/css/bootstrap.css"
