@@ -12,7 +12,7 @@ export class RateService {
 
   constructor(private http : HttpClient) { }
 
-  rateUser(rates:any):Observable <any>{
+  createRate(rates:any):Observable <any>{
     let API_URL = environment.REST_API + '/rate/createRate'
     return this.http.post(API_URL,rates).pipe();
   }
