@@ -12,6 +12,8 @@ import { UserLayoutModule } from "./user-layout/user-layout.module";
 import { HttpClientModule } from '@angular/common/http';
 
 
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -19,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
         AccountComponent,
         SellerComponent,
         ReviewComponent,
+        
+        
        
     ],
     providers: [],

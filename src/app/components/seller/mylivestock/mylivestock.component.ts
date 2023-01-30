@@ -1,14 +1,14 @@
 import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
-//import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
+
 @Component({
-  selector: 'app-availablelivestock',
-  templateUrl: './availablelivestock.component.html',
-  styleUrls: ['./availablelivestock.component.scss']
+  selector: 'app-mylivestock',
+  templateUrl: './mylivestock.component.html',
+  styleUrls: ['./mylivestock.component.scss']
 })
-export class AvailablelivestockComponent implements OnInit {
+export class MylivestockComponent implements OnInit {
   post_id:any
   livestocks!:any;
   categories!:any;
@@ -20,7 +20,8 @@ export class AvailablelivestockComponent implements OnInit {
   reserve(ind: any) {
     this.post_id = this.livestocks[ind].livestockID
     this.addNewItem(this.post_id)
-    this.openModal.emit(true)
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = event
   }
 
 
@@ -70,4 +71,10 @@ export class AvailablelivestockComponent implements OnInit {
     this.filterTerm=''
   }
 
+  closeModal() {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
+  }
+
 }
+
