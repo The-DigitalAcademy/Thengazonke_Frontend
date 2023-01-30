@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RateService } from 'src/app/services/rate.service';
 
 @Component({
   selector: 'app-rate',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private rateservice : RateService) { }
 
   ngOnInit(): void {
+    this.rateservice.getRates().subscribe((data:any)=>{
+      
+      console.log(data)
+    })
+
   }
 
 }
