@@ -1,6 +1,13 @@
 .profile-card {
   border-radius: 4px;
 }
+.rounded-circle{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: 150px;
+}
 
 .profile-card-img {
   border-top-left-radius: 4px;
@@ -10,10 +17,12 @@
 
 .form-inline{
   margin-top: 15px;
+  margin: 10px 10px 10px 10px;
 }
 
 .form-group{
   margin-top: 10px;
+  margin: 10px 10px 10px 10px;
 }
 label{
   margin-bottom: 10px;
@@ -26,6 +35,7 @@ label{
   border-color: #FED607 ;
 
 }
+
 .custom-file-input{
 padding-top: 25px;
 margin-top: -20px;
