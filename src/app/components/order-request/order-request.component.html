@@ -6,16 +6,16 @@
  
  <div class="flex flex-wrap w-fit mx-auto justify-center gap-4 ">
 
-    <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
+    <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content"  *ngFor="let tr of transaction" >
       <div class="card-body">
-        <h3 class="card-title justify-center">GOAT</h3>
+        <h3 class="card-title justify-center">{{tr.categoryName}}</h3>
         <button class="btn btn-ghost btnn" routerLink="/profile">Profile</button>
 
-        <figure><img src="../../../assets/bg1.jpeg" alt="" /></figure>
+        <figure><img src="{{tr.image}}" alt="" /></figure>
 
-        <p class="w-3/4 mx-auto desc">Kalahari Goats R800.00 Each 6 to 13 Months</p>
-        <h3 class="weigh">Weight 40kg to 75kg </h3>
-        <h3 class="price"><b>Price: R8000</b></h3>
+        <p class="w-3/4 mx-auto desc">{{tr.breedName}}. Age: {{tr.age}} Months</p>
+        <h3 class="weigh">Weight: {{tr.weight}} </h3>
+        <h3 class="price"><b>Price: {{tr.price}}</b></h3>
         <br>
         <div class="card-actions justify-center">
           <button class="btn btn-sm btn-ghost btn1" >Approve</button>
@@ -26,7 +26,7 @@
       
     </div>
 
-    <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
+    <!-- <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
         <div class="card-body">
           <h3 class="card-title justify-center">COW</h3>
 
@@ -79,7 +79,7 @@
   
         </div>
         
-      </div>
+      </div> -->
 
  </div>
  
