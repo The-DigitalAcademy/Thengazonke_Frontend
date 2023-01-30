@@ -2,35 +2,23 @@
     text-align: center;
     padding-top: 30px;
     padding-bottom: 30px;
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 48px;
     color: var(--main-green);
     font-size: 25px;
-    font-weight: bold;
 }
-
 .container{
  
     margin: auto;
 }
-
-.table
-{
-    background-color: var(--white);
-}
-
 .head{
     background-color: var(--main-green);
-    color: var(--white);
 }
 .act{
     text-align: center;
 }
 th{
     text-align: center;
-    background-color: var(--gray);
-    color: var(--main-green);
+    background-color: var(--main-green);
+    color: var(--white);
 }
 td{
     text-align: center;
@@ -40,10 +28,11 @@ td{
 .card{
     margin-top: 19px;
     background-color: white;
-    border-radius: 1rem;
+    border-radius: 2rem;
     border: solid 1px #f7fbf7;
     box-shadow: inset;
     margin: auto;
+
 }
 img{
     width: 250px;
@@ -113,4 +102,8 @@ h4{
 }
 .step{
     color: var(--main-green);
+}
+
+thead th{
+    width: 200px;
 }
