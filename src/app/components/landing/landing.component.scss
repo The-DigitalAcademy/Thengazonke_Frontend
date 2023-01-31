@@ -87,31 +87,31 @@ p{
 
 
 @media only screen and (min-width: 900px){
-    select{
-        display: none;
-    }
+    // select{
+    //     display: none;
+    // }
     .carousel-item{
         height: 30rem;
     }
    
 }
 @media only screen and (max-width: 900px){
-    select{
-        display: none;
-    }
-    .carousel-item{
-        height: 25rem;
-    }
+    // select{
+    //     display: none;
+    // }
+    // .carousel-item{
+    //     height: 25rem;
+    // }
    
 }
 
 @media only screen and (max-width: 600px){
-    .tbs{
-        display: none;
-    }
-    select{
-        display: block;
-    }
+    // .tbs{
+    //     display: none;
+    // }
+    // select{
+    //     display: block;
+    // }
     .carousel-item{
         height: 18rem;
     }

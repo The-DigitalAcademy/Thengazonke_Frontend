@@ -49,13 +49,13 @@
             color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
             >{{animal.breedName}}</h2>
             <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
-            <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+            <p><span> Weight:</span> {{animal.weight}}<span></span></p>
             <p><span> Age:</span> {{animal.age}}</p>
             <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
             <div style="margin-bottom: 0rem;" class="card-actions">
               <h5 style="font-size: 1rem; color: #11998e;
               color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
-              <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
+              <label type="label"for="my-modal-5" class="rsvBtn" >Reserve</label>
               <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
               <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
             </div>
@@ -64,4 +64,55 @@
     </div>
   
   </div>
+
+
+  <!-- <label for="my-modal-5" class="btn">open modal</label> -->
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal-5" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <figure><img src="../../../../assets/bg1.jpeg" alt="" /></figure>
+    <h3 class="card-title justify-center">Are you sure?</h3>
+    <p class="w-3/4 mx-auto desc">Binding<span>will be permanantely removed</span></p>
+    <br>
+    <div class="card-actions justify-center">
+      <button class="rsvBtn"  for="my-modal" >Back</button>
+      <button class="rsvBtn" >Buy</button>
+    </div>
+  </div>
+</div>
+
+  <!-- <label for="my-modal">modal</label>
+  <input type="checkbox" id="my-modal" class="modal-toggle" />
+
+  <div class="modal" *ngFor="let animal of livestok">
+    <div class="modal-box">
+ 
+      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
+      
+        <div class="card-body" >
+          <figure><img src="{{animal.image}}" alt="" /></figure>
+          <h3 class="card-title justify-center">{{animal.categoryName}}</h3>
+          <p class="w-3/4 mx-auto desc">{{animal.description}}</p>
+          <h3 class="color">Brown and black</h3>
+          <h3 class="weigh">{{animal.weight}}</h3>
+          <br>
+          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
+          <h3 class="price"><b>{{animal.price}}</b></h3>
+          <br>
+          <div class="card-actions justify-center">
+            <button class="rsvBtn"  for="my-modal" >Back</button>
+            <button class="rsvBtn" >Buy</button>
+          </div>
+        </div>
+      </div>
+ 
+      
+    </div>
+  </div> -->
+
+
+
+
 
