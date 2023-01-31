@@ -16,4 +16,9 @@ export class TransactionService {
     return this.httpClient.get(environment.REST_API + '/transaction/getAllTransaction').pipe();
   }
 
+  getFullTransaction (): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/transaction/getFullTransaction').pipe();
+  }
+  
+
 }

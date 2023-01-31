@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionService } from 'src/app/services/transaction.service';
 import { UserLayoutComponent } from 'src/app/user-layout/user-layout.component';
 import { UserLayoutModule } from 'src/app/user-layout/user-layout.module';
 
@@ -9,9 +10,17 @@ import { UserLayoutModule } from 'src/app/user-layout/user-layout.module';
 })
 export class OrderRequestComponent implements OnInit {
 
-  constructor() { }
+  transaction!:any;
+
+  constructor(private transactionService: TransactionService) { }
 
   ngOnInit(): void {
+
+    this.transactionService.getFullTransaction().subscribe(async(res:any) => {
+      this.transaction = res;
+      console.log(this.transaction);
+    });
+
   }
 
 }
