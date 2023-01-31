@@ -52,12 +52,20 @@
             <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
             <p><span> Age:</span> {{animal.age}}</p>
             <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
-            <div style="margin-bottom: 0rem;" class="card-actions">
-              <h5 style="font-size: 1rem; color: #11998e;
-              color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
+            <div style="margin-bottom: 0rem;" class="card-actions justify-between">
+
+              <div>
+                <h5 style="font-size: 1rem; color: #11998e;
+                color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>  
+              </div>
+             
+              <div>
+                <a [routerLink]="['/edit-livestock',animal.livestockID]" routerLinkActive="router-link-active" ><i class="fa fa-pencil-alt mx-2" aria-hidden="true"></i></a>
+                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </div>
               <!-- <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button> -->
-              <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
-              <button (click)="reserve(x)" style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button>
+              <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button> -->
+              <!-- <button (click)="reserve(x)" style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
             </div>
         </div>
       </div>

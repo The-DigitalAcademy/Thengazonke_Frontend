@@ -7,20 +7,20 @@
           </div>
           <form style="max-width: 700px;border-color: var(--bs-white);" role="form"  [formGroup] = "AddLivestockForm" novalidate>
               <div class="form-group mb-3">
-                <select class="form-select" required="" name="location" formControlName="categoryID" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
-                    <option disabled selected>Select Livestock</option>
+                <select class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
+                    <option value="" selected disabled hidden>Select Livestock</option>
                     <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option>
                 </select>
                 </div>
               <div class="form-group mb-3">
                 <select class="form-select" required="" name="location" formControlName="breedID" style="border-width: 2px;border-color: #516951;">
-                    <option disabled selected>Select Breed</option>
+                    <option  value="" selected disabled hidden>Select Breed</option>
                     <option  *ngFor="let br of breed" value="{{br.breedID}}" >{{br.breedName}}</option>
                 </select>
              </div>
             <div class="form-group mb-3">
                 <div class="form-group mb-3"><select class="form-select" required="" formControlName="price" name="gender" style="border-width: 2px;border-color: #516951;">
-                  <option disabled selected>Gender</option>
+                  <option value="" disabled selected hidden>Gender</option>
                           <option>Male</option>
                           <option>Female</option>
                     </select></div>

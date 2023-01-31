@@ -9,6 +9,7 @@ import { ProfileComponent } from '../components/profile/profile.component';
 import { MylivestockComponent } from '../components/seller/mylivestock/mylivestock.component';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { RateComponent } from '../components/rate/rate.component';
+import { LivestockModalComponent } from '../components/create-livestock/livestock-modal/livestock-modal.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'profile', component:ProfileComponent },
   { path: 'notification', component:NotificationsComponent },
   { path: 'homes', component:MylivestockComponent},
-  {path: 'rate', component:RateComponent}
+  { path: 'rate', component:RateComponent},
+  { path: 'edit-livestock/:id', component:LivestockModalComponent}
 ];
 
 @NgModule({
