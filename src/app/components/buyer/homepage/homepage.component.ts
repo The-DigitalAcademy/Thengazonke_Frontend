@@ -17,7 +17,7 @@ export class HomepageComponent implements OnInit {
   livestok!:any;
   results!:any;
 
-  addItem(newItem: string) {
+  addItem(newItem: any) {
     this.items.push(newItem);
     this.lid = newItem;
 

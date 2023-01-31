@@ -45,11 +45,14 @@ export class ProfileComponent implements OnInit {
   
       this.myForm();
   
-      this.sub = this.route.params.subscribe(params => {
-        return this.uid = params['id'];
-      });
-  
-      console.log(this.uid);
+      // this.sub = this.route.params.subscribe(params => {
+      //   return this.uid = params['id'];
+      // });
+      
+      // let logEmain =  sessionStorage.getItem('loggedEmail');
+      let logEmain =  'ravhugoni@gamil.com';
+
+      console.log();
   
       this.authservice.GetAllUsers().subscribe((res:any) => {
           let result = res;
@@ -89,10 +92,11 @@ export class ProfileComponent implements OnInit {
 
      
      
-      // this.authservice.updateUser(this.uid, userDetails).subscribe((next) => {
-      //   // console.log('Successfully Updated!');
-      //   // this.router.navigate(['/admin/users']);
-      // });
+      this.authservice.updateUser(this.uid, userDetails).subscribe((next) => {
+        // console.log('Successfully Updated!');
+        // this.router.navigate(['/admin/users']);
+      });
+
     }
   
   }
