@@ -2,4 +2,13 @@
 {
     background-color: var(--main-green);
     color: var(--white);
+    height: 100%;
+    margin: 0;
+}
+li:hover a {
+	color: var(--yellow)
+}
+
+li:active{
+    color: var(--yellow);
 }

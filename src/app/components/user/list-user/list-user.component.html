@@ -1,30 +1,36 @@
-<div class=" w-full bg-white">
-    <button class="btn btn-primary"></button>
-
-    <table class="table-auto">
-        <thead>
-          <tr>
-            <th>Song</th>
-            <th>Artist</th>
-            <th>Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-            <td>Malcolm Lockyer</td>
-            <td>1961</td>
-          </tr>
-          <tr>
-            <td>Witchy Woman</td>
-            <td>The Eagles</td>
-            <td>1972</td>
-          </tr>
-          <tr>
-            <td>Shining Star</td>
-            <td>Earth, Wind, and Fire</td>
-            <td>1975</td>
-          </tr>
-        </tbody>
-      </table>
+<div class="heading bold justify-center">
+    <h1>User List</h1>
 </div>
+
+<div class="container mx-auto justify-center">
+
+    <table class="table table-compact w-full table-auto">
+      <thead>
+        <tr>
+          <th class="head ">No</th> 
+          <th class="head">fullname</th> 
+          <th class="head">email</th> 
+          <th class="head">phone</th> 
+          <th class="head">address</th> 
+          <th class="head">status</th> 
+          <th class="head">user type</th> 
+          <th class="head">Action</th>
+        </tr>
+      </thead> 
+      <tbody>
+        <tr *ngFor="let user of users">
+          <th>{{user.Userid}}</th> 
+          <td>{{user.fullname}}</td> 
+          <td>{{user.email}}</td> 
+          <td>{{user.phone}}</td> 
+          <td>{{user.address}}</td> 
+          <td>{{user.status}}</td> 
+          <td>{{user.usertype}}</td> 
+          <td>
+            <a [routerLink]="['/admin/user',user.Userid]"><i class="fa fa-eye mx-2"></i></a>
+            <i class="fas fa-trash mx-2"></i>
+          </td> 
+        </tr>
+      </tbody> 
+    </table>
+  </div>

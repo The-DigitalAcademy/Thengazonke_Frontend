@@ -23,6 +23,15 @@ export class AuthService {
     return this.httpClient.post(API_URL, loginDetails)
   }
 
+  GetAllUsers(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/users/getUsers').pipe();
+  }
+
+  updateUser(id: any, data: any): Observable<any> {
+    let API_URL = environment.REST_API + '/users/updateUsers/'+id;
+    return this.httpClient.put(API_URL, data).pipe();
+  }
+
   ///////////
 
 /*

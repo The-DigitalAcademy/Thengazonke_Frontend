@@ -5,34 +5,46 @@
           <div class="block-heading" style="padding-top: 0px;">
               <h2 class="text-primary" style="border-color: #516951;"><span style="color: rgb(81, 105, 81);">Create Livestock</span><br></h2>
           </div>
-          <form style="max-width: 700px;border-color: var(--bs-white);" role="form" action="indexTeachers.html" method="post" enctype="multipart/form-data">
-              <div class="form-group mb-3"><select class="form-select" required="" name="location" style="border-width: 2px;border-color: #516951;">
-                <option disabled selected>Select Livestock</option>
-                <option>Cattle</option>
-                <option>Goat</option>
-                <option>Pig</option>
-                <option>Poultry</option>
-                <option>Sheep</option>
-          </select></div>
+          <form style="max-width: 700px;border-color: var(--bs-white);" role="form"  [formGroup] = "AddLivestockForm" novalidate>
               <div class="form-group mb-3">
-                  <div class="form-group mb-3"><select class="form-select" required="" name="location" style="border-width: 2px;border-color: #516951;">
-                    <option disabled selected>Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                      </select></div>
+                <select class="form-select" required="" name="location" formControlName="categoryID" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
+                    <option disabled selected>Select Livestock</option>
+                    <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option>
+                </select>
+                </div>
+              <div class="form-group mb-3">
+                <select class="form-select" required="" name="location" formControlName="breedID" style="border-width: 2px;border-color: #516951;">
+                    <option disabled selected>Select Breed</option>
+                    <option  *ngFor="let br of breed" value="{{br.breedID}}" >{{br.breedName}}</option>
+                </select>
+             </div>
+            <div class="form-group mb-3">
+                <div class="form-group mb-3"><select class="form-select" required="" formControlName="price" name="gender" style="border-width: 2px;border-color: #516951;">
+                  <option disabled selected>Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                    </select></div>
+            </div>
+              <div class="form-group mb-3">
+                <input class="form-control" type="text" autocomplete="off" required=""  formControlName="age" placeholder="Months" name="age" style="border-width: 2px;border-color: #516951;">
               </div>
-              <div class="form-group mb-3"><input class="form-control" type="text" name="breed" placeholder="Breed" style="border-width: 2px;border-color: #516951;"></div>
-              <div class="form-group mb-3"><input class="form-control" type="text" autocomplete="off" required="" placeholder="Months" name="age" style="border-width: 2px;border-color: #516951;"></div>
-              <div class="form-group mb-3"><input class="form-control" type="text" autocomplete="off" required="" placeholder="Weight" name="weight" style="border-width: 2px;border-color: #516951;"></div>
-              <div class="form-group mb-3"><input class="form-control" type="text" autocomplete="off" required="" placeholder="Price" name="price" style="border-width: 2px;border-color: #516951;"></div>
-              <div class="form-group mb-3"><textarea class="form-control" name="description" placeholder="Description" style="border-width: 2px;border-color: #516951;"></textarea></div>
+              <div class="form-group mb-3">
+                <input class="form-control" type="text" autocomplete="off" required="" formControlName="weight" placeholder="Weight" name="weight" style="border-width: 2px;border-color: #516951;">
+              </div>
+              <div class="form-group mb-3">
+                <input class="form-control" type="text" autocomplete="off" required="" formControlName="price" placeholder="Price" name="price" style="border-width: 2px;border-color: #516951;">
+              </div>
+              <div class="form-group mb-3">
+                <textarea class="form-control" name="description" placeholder="Description" style="border-width: 2px;border-color: #516951;"></textarea>
+               </div>
               <div class="color form-group mb-3"><label class="form-label" style="margin-top: 15px;height: 25px;">Livestock Image</label>
                   <section>
                       <div class="container-fluid">
                           <div class="row">
                               <div class="col-sm-12 col-md-12">
                                   <div class="file-upload-wrapper">
-                                      <div class="view file-upload" style="padding-bottom: 7px;padding-right: 4px;height: 60px;border-width: 2px;border-color: #516951;"><input class="form-control file_upload" type="file" id="input-file-now"></div>
+                                      <div class="view file-upload" style="padding-bottom: 7px;padding-right: 4px;height: 60px;border-width: 2px;border-color: #516951;">
+                                        <input class="form-control file_upload" type="file" id="input-file-now" (change)="onFileChange($event)"></div>
                                   </div>
                               </div>
                           </div>
@@ -40,7 +52,10 @@
                   </section>
               </div>
               <hr style="margin-top: 30px;margin-bottom: 10px;">
-              <div class="form-group mb-3"><button class="btn btn-primary d-block w-100" id="submitButton" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button><a class="btn btn-danger d-block w-100" role="button" href="indexTeachers.html" style="margin-top: 15px;">&nbsp;Cancel</a></div>
+              <div class="form-group mb-3">
+                <button class="btn btn-primary d-block w-100" id="submitButton" [disabled]="update_dp.invalid" (click)="addLivestock()" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button>
+                <a class="btn btn-danger d-block w-100" role="button" style="margin-top: 15px;">&nbsp;Cancel</a>
+              </div>
           </form>
       </div>
   </section>

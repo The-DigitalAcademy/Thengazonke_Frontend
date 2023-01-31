@@ -13,162 +13,88 @@
             </tr>
           </thead> 
           <tbody>
-            <tr>
-              <th >1</th> 
-              <td >G560872</td> 
-              <td >pending</td> 
-              <td ><label for="my-modal"><i class="fas fa-eye"></i></label></td> 
+            <tr *ngFor="let tra of trans; let i = index" >
+              <th  >{{ i + 1 }}</th> 
+              <td >G{{tra.transactionID}}</td> 
+              <td >{{tra.status}}</td> 
+              <td ><label for="my-modal"><a (click)="checkSelected(tra.livestockID, tra.transactionID)"><i class="fas fa-eye"></i></a></label></td> 
               <!-- The button to open modal -->
                   <!-- The button to open modal -->
                   <!-- Put this part before </body> tag -->
                   <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal">
-                    <div class="modal-box">
-                      
+                  <div class="modal" >
+                    <div class="modal-box"> 
                       <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
                         <div class="card-body">
-                          <ul class="steps steps-horizontal lg:steps-horizonatl">
-                            <li class="step step-primary">Pending</li>
-                            <li class="step step-primary">In-progress</li>
-                            <li class="step">Cancelled</li>
-                            <li class="step">Completed</li>
-                          </ul>
-                          <br>
-                          <h4>Order: #2346</h4>
-                          <figure><img src="../../../assets//bg1.jpeg" alt="" /></figure>
-                          <h3 class="card-title justify-center">GOAT</h3>
-                          <p class="w-3/4 mx-auto desc">Kalahari Goats R800.00 Each 6 to 13 Months</p>
-                          <h3 class="color">Brown and black</h3>
-                          <h3 class="weigh">Weight 40kg to 75kg </h3>
-                          <br>
-                          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-                          <h3 class="price"><b>Price: R8000</b></h3>
-                          <br>
-                          <div class="card-actions justify-center">
-                            <button class="btn btn-sm btn-ghost btn1"  for="my-modal" routerLink="/order-history">Back</button>
-                            <button class=" btn btn-sm btn-ghost btn2" >Rate</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </tr>
-            <tr>
-              <th >2</th> 
-              <td >G53086</td> 
-              <td >pending</td> 
-              <td ><label for="my-modal"><i class="fas fa-eye"></i></label></td> 
-              <!-- The button to open modal -->
-                  <!-- The button to open modal -->
-                  <!-- Put this part before </body> tag -->
-                  <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal">
-                    <div class="modal-box">
-                      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-                        <div class="card-body">
-                          <ul class="steps steps-horizontal lg:steps-vertical">
-                            <li class="step step-primary">Pending</li>
-                            <li class="step step-primary">In-progress</li>
-                            <li class="step">Cancelled</li>
-                            <li class="step">Completed</li>
-                          </ul>
-                          <br>
-                          <h4>Order: #2346</h4>
-                          <figure><img src="../../../assets//bg.jpeg" alt="" /></figure>
-                          <h3 class="card-title justify-center">GOAT</h3>
-                          <p class="w-3/4 mx-auto desc">Kalahari Goats R800.00 Each 6 to 13 Months</p>
-                          <h3 class="color">Brown and black</h3>
-                          <h3 class="weigh">Weight 40kg to 75kg </h3>
-                          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-                          <h3 class="price"><b>Price: R8000</b></h3>
-                          <br>
-                          <div class="card-actions justify-center">
-                            <button class="btn btn-sm btn-ghost btn1" routerLink="/order-history">Back</button>
-                            <button class=" btn btn-sm btn-ghost btn2" >Rate</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </tr>
-            <tr>
-              <th >3</th> 
-              <td >G2359</td> 
-              <td >completed</td> 
-              <td ><label for="my-modal"><i class="fas fa-eye"></i></label></td> 
-              <!-- The button to open modal -->
-                  <!-- The button to open modal -->
-                  <!-- Put this part before </body> tag -->
-                  <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal">
-                    <div class="modal-box">
-                      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-                        <div class="card-body">
-                          <ul class="steps steps-horizontal lg:steps-vertical">
-                            <li class="step step-primary">Pending</li>
-                            <li class="step step-primary">In-progress</li>
-                            <li class="step">Cancelled</li>
-                            <li class="step">Completed</li>
-                          </ul>
-                          <br>
-                          <h4>Order: #2346</h4>
-                          <figure><img src="../../../assets//bg1.jpeg" alt="" /></figure>
-                          <h3 class="card-title justify-center">GOAT</h3>
-                          <p class="w-3/4 mx-auto desc">Kalahari Goats R800.00 Each 6 to 13 Months</p>
-                          <h3 class="color">Brown and black</h3>
-                          <h3 class="weigh">Weight 40kg to 75kg </h3>
-                          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-                          <h3 class="price"><b>Price: R8000</b></h3>
-                          <br>
-                          <div class="card-actions justify-center">
-                            <button class="btn btn-sm btn-ghost btn1" routerLink="/order-history">Back</button>
-                            <button class=" btn btn-sm btn-ghost btn2" >Rate</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </tr>
 
-            <tr>
-              <th >5</th> 
-              <td >G45657</td> 
-              <td >completed</td> 
-              <td ><label for="my-modal"><i class="fas fa-eye"></i></label></td> 
-              <!-- The button to open modal -->
-                  <!-- The button to open modal -->
-                  <!-- Put this part before </body> tag -->
-                  <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal">
-                    <div class="modal-box">
-                      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-                        <div class="card-body">
-                          <ul class="steps steps-horizontal lg:steps-vertical">
-                            <li class="step step-primary">Pending</li>
-                            <li class="step step-primary">In-progress</li>
-                            <li class="step">Cancelled</li>
-                            <li class="step">Completed</li>
-                          </ul>
-                          <br>
-                          <h4>Order: #2346</h4>
-                          <figure><img src="../../../assets//bg.jpeg" alt="" /></figure>
-                          <h3 class="card-title justify-center">GOAT</h3>
-                          <p class="w-3/4 mx-auto desc">Kalahari Goats R800.00 Each 6 to 13 Months</p>
-                          <h3 class="color">Brown and black</h3>
-                          <h3 class="weigh">Weight 40kg to 75kg </h3>
-                          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-                          <h3 class="price"><b>Price: R8000</b></h3>
-                          <br>
-                          <div class="card-actions justify-center">
-                            <button class="btn btn-sm btn-ghost btn1" routerLink="/order-history">Back</button>
-                            <button class=" btn btn-sm btn-ghost btn2" >Rate</button>
+                          <div *ngFor="let tr of transaction">
+
+                    
+                            <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">
+                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                                <li class="step step-primary">Pending</li>
+                                <li class="step">In-progress</li>
+                                <li class="step">Cancelled</li>
+                                <li class="step">Completed</li>
+                              </ul>
+                            </div>
+                            
+
+                            <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
+                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                                <li class="step">Pending</li>
+                                <li class="step step-primary">In-progress</li>
+                                <li class="step">Cancelled</li>
+                                <li class="step">Completed</li>
+                              </ul>
+                            </div>
+
+                            <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">
+                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                                <li class="step">Pending</li>
+                                <li class="step">In-progress</li>
+                                <li class="step step-error">Cancelled</li>
+                                <li class="step">Completed</li>
+                              </ul>
+                            </div>
+
+                            <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
+                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                                <li class="step">Pending</li>
+                                <li class="step">In-progress</li>
+                                <li class="step">Cancelled</li>
+                                <li class="step step-accent">Completed</li>
+                              </ul>
+                            </div>
+
+
+                            <br>
+
+                            <h4>Order: #{{tr.transactionID}}</h4>
                           </div>
+
+                          <div *ngFor="let item of live"> 
+                            <figure><img src="../../../assets//bg1.jpeg" alt="" /></figure>
+                            <h3 class="card-title justify-center">{{item.categoryName}}</h3>
+                            <h2 class="w-3/4 mx-auto breed">{{item.breedName}}</h2>
+                            <h3 class="months">{{item.age}} months</h3>
+                            <h3 class="color">Brown and black</h3>
+                            <h3 class="weigh">Weight: {{item.weight}}kg</h3>
+                            <br>
+                            <!-- <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3> -->
+                            <h3 class="price"><b>Price: {{item.price}}</b></h3>
+                            <!-- <h3 class="price"><b>Price: {{item.price|currency:'ZAR':'symbol-narrow'}}</b></h3> -->
+                            <br>
+                            <div class="card-actions justify-center">
+                              <button class="btn btn-sm btn-ghost btn1"  for="my-modal" routerLink="/order-history">Back</button>
+                              <button class=" btn btn-sm btn-ghost btn2" [routerLink]="['/rate']" routerLinkActive="router-link-active"  >Rate</button>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>
                   </div>
-            </tr>
-            <tr>
             </tr>
           </tbody> 
         </table>

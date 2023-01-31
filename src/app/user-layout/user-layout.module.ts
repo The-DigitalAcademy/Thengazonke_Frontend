@@ -11,7 +11,7 @@ import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { ContactUsComponent } from '../components/contact-us/contact-us.component';
 import { SearchComponent } from '../components/search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderRequestComponent } from '../components/order-request/order-request.component';
 import { OrderHistoryComponent } from '../components/order-history/order-history.component';
 import { CreateLivestockComponent } from '../components/create-livestock/create-livestock.component';
@@ -21,6 +21,7 @@ import { HomepageComponent } from '../components/buyer/homepage/homepage.compone
 import { CarouselComponent } from '../components/carousel/carousel.component';
 import { AvailablelivestockComponent } from '../components/availablelivestock/availablelivestock.component';
 import { MylivestockComponent } from '../components/seller/mylivestock/mylivestock.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { MylivestockComponent } from '../components/seller/mylivestock/mylivesto
   imports: [
 
   CommonModule,
-  UserLayoutRoutingModule, FormsModule,Ng2SearchPipeModule 
+  UserLayoutRoutingModule, FormsModule,Ng2SearchPipeModule,
+  HttpClientModule,
+  ReactiveFormsModule
   ]
 })
 export class UserLayoutModule { }
