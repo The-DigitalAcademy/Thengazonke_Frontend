@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import { AuthService } from 'src/app/services/auth.service';
+import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
   selector: 'app-search',
@@ -8,26 +11,37 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
 
-  categories:string[] | null = null ;
+  // categories:string[] | null = null ;
   livestocks:string[] | null = null;
 
-  GetCategories(){
-    // fetch('http://fakestoreapi.com/products/categories')
-    // .then(res => res.json())
-    // .then(data => {
-    //   data.unshift('All')
-    //   this.categories =data;
-    // })
-    this.categories = ["All",'Goat','Cattle',"Pig"];
-  }
+  categories!:any;
 
+  
+
+  GetCategories(){
+
+    this.livestoc.GetLivestockCategories().subscribe((res) => { 
+      // res.unshift('All')
+      this.categories = res;
+      console.log('this are categories',this.categories)
+
+    })
+    // this.categories = ["All",'Goat','Cattle',"Pig"];
+  }
   GetProducts(){
-    fetch('http://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(data => {
-      this.livestocks =data;
+    this.livestoc.GetAllPostedLivestock().subscribe((res) => {
+      this.livestocks =res;
+      console.log('from funtion',this.livestocks)
     })
   }
+
+  // GetProducts(){
+  //   // fetch('http://fakestoreapi.com/products')
+  //   // .then(res => res.json())
+  //   // .then(data => {
+  //   //   this.livestocks =data;
+  //   // })
+  // }
 
   filterTerm!: string;
   userRecords = [
@@ -97,8 +111,9 @@ export class SearchComponent implements OnInit {
     // this.filteredList = data.filter(item => item.category === category );
     
     let projectNames = this.userRecords.map(item => {
-    return item.username;
-  });
+        return item.username;
+      });
+
     if(projectNames==category){
       console.log(projectNames)
       console.log(category)
@@ -107,18 +122,34 @@ export class SearchComponent implements OnInit {
 }
   
 
-  constructor() { }
+  constructor(private livestoc:LivestockService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
+      this.livestocks = messages
+      console.log('i am livestock',this.livestocks)
+    })
+    
     this.GetCategories();
     this.GetProducts();
   }
-
+  
   onCategoryChange(e:any){
-    alert(e.target.value)
-    // if(e.target.value=='All'){
-    //   // this.GetProducts('http://fakestoreapi.com/products');
-    // }
+    // alert(e.target.value)
+    this.filterTerm=e.target.value
+    // console.log(this.filterTerm)
+    if(e.target.value=='All'){
+      this.filterTerm='';
+      this.GetProducts();
+    }
+  }
+
+  onCategoryChange2(catItem:any){
+    this.filterTerm=catItem
+  }
+  onCategoryChange3(){
+    this.filterTerm=''
   }
 
 }

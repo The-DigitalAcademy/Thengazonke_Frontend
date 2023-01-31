@@ -16,9 +16,14 @@ export class ListUserComponent implements OnInit {
 
     this.authService.GetAllUsers().subscribe(async(res:any) => {
       this.users = res;
-      console.log(this.users);
     });
 
   }
+  // open_student_modal(usersID='') {
+
+  //   const modalRef = this.modalService.open(StudentModalComponent, { size: "xl" });
+  //   modalRef.componentInstance.usersID=usersID;
+    
+  // }
 
 }

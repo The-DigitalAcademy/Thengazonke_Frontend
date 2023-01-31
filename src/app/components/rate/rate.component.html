@@ -24,24 +24,24 @@
 <div class="card-container" >
     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 card-container-2">
         
-        <a href="#">
+        <div>
             <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white second_card_header">How do you rate the Seller?</h5>
-        </a>
+        </div>
      <div class="mb-3 font-normal text-gray-500 dark:text-gray-400">
 
-        <div class="rating rates">
-            <input type="radio" name="rating-1" class="mask mask-star"> 
-            <input type="radio" name="rating-1" checked="checked" class="mask mask-star"> 
-            <input type="radio" name="rating-1" class="mask mask-star"> 
-            <input type="radio" name="rating-1" class="mask mask-star"> 
-            <input type="radio" name="rating-1" class="mask mask-star">
+        <div class="rating rates" (change)="selectStar($event)" >
+            <input type="radio" value="1"    name="rating" class="mask mask-star"> 
+            <input type="radio" value="2"    name="rating" checked="checked" class="mask mask-star"> 
+            <input type="radio" value="3"    name="rating" class="mask mask-star"> 
+            <input type="radio" value="4"    name="rating" class="mask mask-star"> 
+            <input type="radio" value="5"    name="rating" class="mask mask-star">
         </div>
     </div>
-        <div class="inline-flex items-center text-blue-600 area">
-            <textarea placeholder="Write review..."></textarea>
+        <div class="inline-flex items-center area">
+            <textarea placeholder="Write review..." name="review"></textarea>
         </div>
         <div class="rate-button" >
-            <button>Submit</button>
+            <button (click)="createRate($event)" >Submit</button> 
         </div>
     </div>
     </div>

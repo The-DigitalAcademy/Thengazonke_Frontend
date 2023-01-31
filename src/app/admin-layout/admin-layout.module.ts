@@ -9,6 +9,11 @@ import { AdminHeaderComponent } from '../components/admin-header/admin-header.co
 import { UserModalComponent } from '../components/user/user-modal/user-modal.component';
 import { ListUserComponent } from '../components/user/list-user/list-user.component';
 import { LivestockComponent } from '../components/create-livestock/livestock/livestock.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminOrderHistoryComponent } from '../components/order-history/admin-order-history/admin-order-history.component';
+import { OrderHistoryModalComponent } from '../components/order-history/order-history-modal/order-history-modal.component';
 
 
 @NgModule({
@@ -19,11 +24,17 @@ import { LivestockComponent } from '../components/create-livestock/livestock/liv
     DashboardComponent,
     UserModalComponent,
     ListUserComponent,
-    LivestockComponent
+    LivestockComponent,
+    AdminOrderHistoryComponent,
+    OrderHistoryModalComponent
   ],
   imports: [
     CommonModule,
-    AdminLayoutRoutingModule
+    AdminLayoutRoutingModule,
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminLayoutModule { }

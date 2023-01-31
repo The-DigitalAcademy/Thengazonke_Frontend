@@ -14,6 +14,12 @@
  
     margin: auto;
 }
+
+.table
+{
+    background-color: var(--white);
+}
+
 .head{
     background-color: var(--main-green);
     color: var(--white);
@@ -23,18 +29,21 @@
 }
 th{
     text-align: center;
+    background-color: var(--gray);
+    color: var(--main-green);
 }
 td{
     text-align: center;
+    background-color: var(--gray);
+    color: var(--main-green);
 }
 .card{
     margin-top: 19px;
     background-color: white;
-    border-radius: 2rem;
+    border-radius: 1rem;
     border: solid 1px #f7fbf7;
     box-shadow: inset;
     margin: auto;
-
 }
 img{
     width: 250px;
