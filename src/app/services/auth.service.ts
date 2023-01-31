@@ -11,9 +11,9 @@ export class AuthService {
   EditUserForm(): any {
     throw new Error('Method not implemented.');
   }
-  updateUser(uid: any, userDetails: { fullname: any; email: any; phone: any; address: any; status: any; usertype: any; }) {
-    throw new Error('Method not implemented.');
-  }
+  // updateUser(uid: any, userDetails: { fullname: any; email: any; phone: any; address: any; status: any; usertype: any; }) {
+  //   throw new Error('Method not implemented.');
+  // }
 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 

@@ -93,7 +93,14 @@ AddUser()
 
           sessionStorage.setItem('loggedEmail', this.AddUserForm.value.email);
 
-          this.router.navigate(['/']);
+          if(this.AddUserForm.value.usertype === 'Buyer')
+          {
+            this.router.navigate(['/home']);
+          }
+          if(this.AddUserForm.value.usertype === 'Seller')
+          {
+            this.router.navigate(['/homes']);
+          }
 
           this.submitted = false;
         }, (err) => {

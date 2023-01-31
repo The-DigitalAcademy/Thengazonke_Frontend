@@ -76,11 +76,11 @@ export class LoginComponent implements OnInit {
             }
             if(this.users[0].usertype === 'Seller')
             {
-              this.router.navigate(['/']);
+              this.router.navigate(['/homes']);
             }
             if(this.users[0].usertype === 'Buyer')
             {
-              this.router.navigate(['/']);
+              this.router.navigate(['/home']);
             }
           
 
