@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
 decoded: any;
 
 submitted = false;
+passwordErr!:any;
 
 constructor(private authService:AuthService, private router: Router, public fb: FormBuilder) { }
 
@@ -89,10 +90,17 @@ AddUser()
       this.authService.RegisterUser(userDetails).subscribe((next:any) => {
           console.log('Add successfully!');
           // this.openSuccess();
-         
-          this.router.navigate(['/auth/login']);
 
-          sessionStorage.setItem('token', JSON.stringify(userDetails)); 
+          sessionStorage.setItem('loggedEmail', this.AddUserForm.value.email);
+
+          if(this.AddUserForm.value.usertype === 'Buyer')
+          {
+            this.router.navigate(['/home']);
+          }
+          if(this.AddUserForm.value.usertype === 'Seller')
+          {
+            this.router.navigate(['/homes']);
+          }
 
           this.submitted = false;
         }, (err) => {
@@ -104,6 +112,7 @@ AddUser()
     else
     {
       // this.openWarning();
+      this.passwordErr = "Password does not match";
     }
  
 }
