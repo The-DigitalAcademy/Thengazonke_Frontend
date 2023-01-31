@@ -89,7 +89,8 @@ AddUser()
       this.authService.RegisterUser(userDetails).subscribe((next:any) => {
           console.log('Add successfully!');
           // this.openSuccess();
-          this.router.navigate(['/login']);
+         
+          this.router.navigate(['/auth/login']);
 
           sessionStorage.setItem('token', JSON.stringify(userDetails)); 
 

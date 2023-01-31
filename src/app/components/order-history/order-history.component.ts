@@ -21,7 +21,7 @@ export class OrderHistoryComponent implements OnInit {
   ngOnInit(): void {
   
 
-  this.transactionService.getTransaction().subscribe((res:any) => {
+  this.transactionService.GetAllTransaction().subscribe((res:any) => {
     this.trans = res;
   }); 
 
@@ -36,7 +36,7 @@ checkSelected(event:any, transID:any)
     this.live = this.result.filter((res:any) => Number(res.livestockID) === Number(event));
   }); 
 
-  this.transactionService.getTransaction().subscribe((res:any) => {
+  this.transactionService.GetAllTransaction().subscribe((res:any) => {
     this.result2 = res;
     this.transaction = this.result2.filter((res:any) => Number(res.transactionID) === Number(transID));
     console.log(this.transaction);
