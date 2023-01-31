@@ -224,7 +224,9 @@ img{
     padding: 2px 7px;
     color: var(--main-green);
 }
-
+figure{
+    height: 200px;
+}
 
 //////////////////////////
 /// phones and mobile/////
@@ -279,6 +281,7 @@ img{
     //     display: block;
     // } 
 }
+
 
 @media only screen and (min-device-width: 1200px)  {
     .column{
