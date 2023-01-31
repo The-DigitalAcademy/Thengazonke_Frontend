@@ -8,17 +8,23 @@
         </div>
 
         <div class="form-control">
-          <div class="flex justify-around ...">
+          <div class="flex justify-between" (change)="checkSelected($event)">
             <div>
               <label class="label cursor-pointer">
                 <p class="label-text text-white">BUYER</p> 
-                <input type="radio" name="radio" class="radio checked:bg-white" checked />
+                <input type="radio" name="radio" value="Buyer" class="radio checked:bg-white" checked />
               </label>
             </div>
             <div>
               <label class="label cursor-pointer">
                 <p class="label-text text-white">SELLER</p> 
-                <input type="radio" name="radio" class="radio checked:bg-white"  [routerLink]="['/auth/login-seller']" />
+                <input type="radio" name="radio" value="Seller" class="radio checked:bg-white"/>
+              </label>
+            </div>
+            <div>
+              <label class="label cursor-pointer">
+                <p class="label-text text-white">ADMIN</p> 
+                <input type="radio" name="radio" value="Admin" class="radio checked:bg-white"/>
               </label>
             </div>
           </div>
@@ -30,7 +36,7 @@
             <span>
               <i class="fas fa-envelope"></i>
             </span>
-            <input type="text" formControlName="email" class="input input-bordered input-sm w-100"  placeholder="Enter Email"
+            <input type="text" formControlName="email" class="input input-bordered input-sm w-full max-w-xs"  placeholder="Enter Email"
             [ngClass]="{ 'is-invalid': submitted && formValidation['email'].errors }">
                                                     
           </label>

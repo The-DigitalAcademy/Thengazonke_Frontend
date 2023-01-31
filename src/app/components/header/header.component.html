@@ -8,13 +8,13 @@
 
       <ul  class="menu menu-horizontal">
         <li class="">
-            <a href="#" routerLink="/home">Home</a>
+            <a href="#" routerLink="/">Home</a>
         </li>
         <li class="" *ngIf="!logEmail">
-          <a>Login</a>
+          <a [routerLink]="['/auth/login']">Login</a>
         </li>
         <li class="" *ngIf="!logEmail">
-          <a>Register</a>
+          <a [routerLink]="['/auth/register']">Register</a>
         </li>
       </ul>
       
@@ -67,7 +67,7 @@
 
         <ul  class="menu menu-horizontal">
           <li class="">
-              <a href="#" routerLink="/home">Home</a>
+              <a href="#" routerLink="/">Home</a>
           </li>
           <li class="" *ngIf="!logEmail">
             <a>Login</a>

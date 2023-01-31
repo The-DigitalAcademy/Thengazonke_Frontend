@@ -12,7 +12,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class LoginComponent implements OnInit {
 
- 
+ selected: any = 'Buyer';
   
   UserLoginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   });
 
   decoded: any;
+  users!:any;
 
   submitted = false;
 
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
     return this.UserLoginForm.controls;
   }
 
-  UserLogin()
+  async UserLogin()
   {
     this.submitted = true;
    
@@ -56,12 +57,37 @@ export class LoginComponent implements OnInit {
       if(logingDetails.email != '' && logingDetails.password != '')
       {
 
-        this.authServive.UserLogin(logingDetails).subscribe(res => {
+        this.authServive.UserLogin(logingDetails).subscribe(async res => {
           this.decoded = jwt_decode(res.token); 
           
           // this.toast.success({detail:'Success',summary:'Successfully login!', sticky:false,position:'tr', duration:6000})
           console.log('success');
-          this.router.navigate(['/']);
+
+          await this.authServive.GetAllUsers().subscribe((ans:any) => {
+            let result = ans;
+            console.log(result)
+            console.log(this.decoded.email)
+            this.users = result.filter((ress:any) => String(ress.email) === String(this.decoded.email))
+            console.log(this.users);
+
+            if(this.users[0].usertype === 'Admin')
+            {
+              this.router.navigate(['/admin/users']);
+            }
+            if(this.users[0].usertype === 'Seller')
+            {
+              this.router.navigate(['/homes']);
+            }
+            if(this.users[0].usertype === 'Buyer')
+            {
+              this.router.navigate(['/home']);
+            }
+          
+
+          });
+          
+          
+
 
           sessionStorage.setItem('loggedInToken', res.token);
           sessionStorage.setItem('loggedEmail', this.decoded.email);
@@ -79,6 +105,10 @@ export class LoginComponent implements OnInit {
       }
       
    
-  };
+  }
+  checkSelected(event:any){
+    this.selected = event.target.value;
+    console.log(this.selected);
+  }
 
 }
