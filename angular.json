@@ -34,10 +34,25 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "src/styles.scss"
             ],
             "scripts": [
                           "./node_modules/jquery/dist/jquery.js"
+=======
+
+              "src/styles.scss"
+            ],
+            "scripts": [
+                              
+
+              "src/styles.scss",
+            
+            ],
+            "scripts": [
+                        
+
+>>>>>>> 9441f19ad23f6559166fba205dd2a84702a5eac9
             ]
           },
           "configurations": {
