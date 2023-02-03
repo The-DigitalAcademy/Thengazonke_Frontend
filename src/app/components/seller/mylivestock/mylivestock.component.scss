@@ -6,6 +6,19 @@
 //     background-size: 30px 30px, 30px 30px;
 // }
 
+h1{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    background-image: url(../../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 .column {
     float: left;
     width: 25%;

@@ -13,7 +13,7 @@
           <p >Number one livestock market</p>
         </div>
         <div class="absolute flex justify-between transform -translate-y-1/2  land_button" >
-          <button class="">get started</button>
+          <button class="" [routerLink]="['/auth/register']">get started</button>
          </div>
       </div>
         <a href="#carousel__slide4"
@@ -33,7 +33,7 @@
             <p>Sell vetted and healthy cows </p>
           </div>
           <div class="absolute flex justify-between transform -translate-y-1/2  land_button">
-            <button class="">Register</button>
+            <button class="" [routerLink]="['/auth/register']" routerLinkActive="router-link-active" >Register</button>
            </div>
         </div>
       <a href="#carousel__slide1"
@@ -52,7 +52,7 @@
             <p>Weight, quantity even <span style="color: var(--yellow);font-size: 1rem;">colour</span></p>
           </div>
           <div class="absolute flex justify-between transform -translate-y-1/2  land_button">
-            <button class="">Buy</button>
+            <button class="" [routerLink]="['/auth/login']" routerLinkActive="router-link-active" >Buy</button>
            </div>
         </div>
       <a href="#carousel__slide2"
@@ -180,10 +180,11 @@
        <h3 class="weigh head3">{{animal.weight}}</h3>
        <h3 class="address head3"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
        <h3 class="price head3"><b>{{animal.price}}</b></h3>
-       <br>
-       <div class="card-actions justify-center" style="margin-bottom: 2rem;text-align: center;padding-right: 20%;">
-         <button class="rsvBtn"  for="my-modal" (click)=closeModal()>Back</button>
-         <button class="rsvBtn" >Buy</button>
+    
+       <div class="card-actions justify-between">
+       <label for="my-modal"  style="color:black;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</label>
+         <button class=""  for="my-modal" (click)="closeModal()">Back</button>
+         <button class="rsvBtn" [routerLink]="['/auth/login']">Buy</button>
        </div>
      </div>
    </div>
