@@ -14,7 +14,6 @@ export class OrderHistoryComponent implements OnInit {
   live!:any;
   transaction!:any;
   users:any[] = [];
-
   result!:any;
   result2!:any;
 
