@@ -33,13 +33,13 @@ export class MylivestockComponent implements OnInit {
 
     this.livestoc.GetLivestockCategories().subscribe((res) => { 
       this.categories = res;
-      console.log('this are categories',this.categories)
+      // console.log('this are categories',this.categories)
     })
   }
   GetProducts(){
     this.livestoc.GetAllPostedLivestock().subscribe((res) => {
       this.livestocks =res;
-      console.log('from funtion',this.livestocks)
+      // console.log('from funtion',this.livestocks)
     })
   }
 
@@ -49,8 +49,7 @@ export class MylivestockComponent implements OnInit {
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.livestocks = messages
-      console.log('i am livestock',this.livestocks)
-
+      // console.log('i am livestock',this.livestocks)
     })
     
     this.GetCategories();
