@@ -22,6 +22,7 @@ import { CarouselComponent } from '../components/carousel/carousel.component';
 import { AvailablelivestockComponent } from '../components/availablelivestock/availablelivestock.component';
 import { MylivestockComponent } from '../components/seller/mylivestock/mylivestock.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LivestockModalComponent } from '../components/create-livestock/livestock-modal/livestock-modal.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     CarouselComponent,
     AvailablelivestockComponent,
-    MylivestockComponent
+    MylivestockComponent,
+    LivestockModalComponent,
    
   ],
   imports: [

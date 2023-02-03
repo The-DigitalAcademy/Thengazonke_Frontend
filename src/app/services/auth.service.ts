@@ -37,7 +37,13 @@ export class AuthService {
     let API_URL = environment.REST_API + '/users/updateUsers/'+id;
     return this.httpClient.put(API_URL, data).pipe();
   }
+  
+  DeleteUser(id: any, data: any): Observable<any> {
+    let API_URL = environment.REST_API + '/users/deleteUser/'+id;
+    return this.httpClient.put(API_URL, data).pipe();
+  }
 
+  
   ///////////
 
 /*
