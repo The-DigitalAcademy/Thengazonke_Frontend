@@ -18,15 +18,16 @@
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none svg">
               <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
-          <input [(ngModel)]="filterTerm" type="search" id="default-search" class="form-control block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="    Search for livestock..." required>
+          <input style="padding:.5rem 3rem;" [(ngModel)]="filterTerm" type="search" id="default-search" class="form-control block w-full pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="    Search for livestock..." required>
           <!-- <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
       </div>
     </div>
 
     <div  class="selectBox">
       <select  (change)="onCategoryChange($event)" class="form-select">
-          <option style="background-color: pink;" *ngFor="let category of categories" [value]="category">
-            {{category}}
+          <option style="background-color: pink;"  value="All">All</option>
+          <option style="background-color: pink;" *ngFor="let category of categories" [value]="category.categoryName">
+            {{category.categoryName}}
     
           </option>
       </select>
@@ -39,17 +40,12 @@
 <div class="tbs">
   <ul class="flex flex-wrap">
     <li class="mr-2">
-        <a class="" href="#" aria-current="page" class="btn1 ">All</a>
+        <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
     </li>
-    <li class="mr-2">
-        <a href="#" class="btn1">Cattle</a>
+   <li class="mr-2" *ngFor="let category of categories">
+        <a (click)="onCategoryChange2(category.categoryName)" class="btn1">{{category.categoryName}}</a>
     </li>
-    <li class="mr-2">
-        <a href="#" class="btn1">Sheep</a>
-    </li>
-    <li class="mr-2">
-        <a href="#" class="btn1">Goat</a>
-    </li>
+  
 
 </ul>
 </div>
@@ -85,34 +81,36 @@
  
 </div> -->
 
-<div class="divit">
-
-  <!-- <div class="card card-compact shadow-xl" *ngFor="let user of userRecords | filter: filterTerm"> -->
-    <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
-    <div class="card-body">
-      <div class="headingss">
-        <h3 class="card-title">Cattle!</h3>
-        
-        <h4>21 January 2023</h4>
-      </div>
-        
-      <h2 class="breed">Braford Cattle</h2>
-      <p><span> Description:</span> a dog chews shoes whose shoes does he choose?</p>
-      <p><span> Weight:</span> a dog chews shoes whose shoes does he choose?</p>
-      <p><span> Age:</span> a dog chews shoes whose shoes does he choose?</p>
-      <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
-
-
-     
-      <div class="card-actions">
-        <h5>R6000</h5>
-        <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
-        <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button>
+<div class="row">
+  <div class="column" *ngFor="let animal of livestocks | filter: filterTerm">
+    <div class="card card-compact shadow-sm" style="margin: 1rem;">
+      <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
+      <div class="card-body">
+        <div class="headingss">
+          <h3 class="card-title">{{animal.categoryName}}</h3>
+          <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
+        </div>
+          <h2 class="breed" style="margin-left: -5px; color: #11998e;
+          color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
+          >{{animal.breedName}}</h2>
+          <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
+          <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+          <p><span> Age:</span> {{animal.age}}</p>
+          <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+          <div style="margin-bottom: 0rem;" class="card-actions">
+            <h5 style="font-size: 1rem; color: #11998e;
+            color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
+            <button  class="rsvBtn" >Reserve</button>
+            <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
+            <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
+          </div>
       </div>
     </div>
   </div>
 
-<!-- </div> -->
+</div>
+
+
 
 
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import { AuthService } from 'src/app/services/auth.service';
+import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +10,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  
+
+  lid!:any;
+  livestok!:any;
+  results!:any;
+
+  addItem(newItem: string) {
+   
+    this.lid = newItem;
+
+    
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
+      this.results = messages
+      // console.log('i am livestock',this.livestocks)
+
+      this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+      console.log('One livestokokoko',this.livestok)
+    })
+
+    let modalCheckbox:any = document.getElementById('my-modal')
+      modalCheckbox.checked = event
+
+    
+    
+  }
+
+  
+
+  filterTerm!: string;
+
+
+  constructor(private livestoc:LivestockService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+
+  // openModal(event:any):void {
+   
+  //   let modalCheckbox:any = document.getElementById('my-modal')
+  //  modalCheckbox.checked = event
+  // }
+
+  closeModal() {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
   }
 
 }
