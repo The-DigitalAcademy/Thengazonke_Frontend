@@ -1,33 +1,38 @@
  <div class="header top-0 w-full flex justify-between p-2 lg:px-11" style="color: #516951">
 
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl ">
-    <a [routerLink]="['/']" ><img src="../../../assets/logo.png"></a>
+    <a [routerLink]="['/']"><img src="../../../assets/logo.png"></a>
+  </div>
+
+  <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl " *ngFor="let user of users">
+    <a [routerLink]="['/homes']" *ngIf="user.usertype == 'Seller'"><img src="../../../assets/logo.png"></a>
+    <a [routerLink]="['/home']" *ngIf="user.usertype == 'Buyer'"><img src="../../../assets/logo.png"></a>
   </div>
 
   <div class="desktop-nav hidden lg:flex text-sm">
 
       <ul  class="menu menu-horizontal">
-        <li class="">
-            <a href="#" routerLink="/home">Home</a>
+        <!-- <li class="">
+            <a href="#" routerLink="/">Home</a>
+        </li> -->
+        <li class="" *ngIf="!logEmail">
+          <a [routerLink]="['/auth/login']">Login</a>
         </li>
         <li class="" *ngIf="!logEmail">
-          <a>Login</a>
-        </li>
-        <li class="" *ngIf="!logEmail">
-          <a>Register</a>
+          <a [routerLink]="['/auth/register']">Register</a>
         </li>
       </ul>
       
       <ul  class="menu menu-horizontal" *ngFor="let user of users">
-            <li class="" *ngIf="user.usertype == 'Buyer'">
+            <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
               <a href="#" routerLink="/rate">Rate</a>
-            </li >
-            <li class="" *ngIf="user.usertype == 'Buyer'">
+            </li > -->
+            <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
                 <a href="#" routerLink="/notifications">Notifications</a>
-            </li>
-            <li class="" *ngIf="user.usertype == 'Seller'">
+            </li> -->
+            <!-- <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/notifications">Notifications</a>
-            </li>
+            </li> -->
             <li class="mx-4 " *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/create-livestock">create-livestock</a>
           </li >
@@ -65,43 +70,46 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
         </label>
 
-        <ul  class="menu menu-horizontal">
-          <li class="">
-              <a href="#" routerLink="/home">Home</a>
+        <ul  tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
+          <!-- <li class="">
+              <a href="#" routerLink="/">Home</a>
+          </li> -->
+          <li class="" *ngIf="!logEmail">
+            <a [routerLink]="['/auth/login']">Login</a>
           </li>
           <li class="" *ngIf="!logEmail">
-            <a>Login</a>
-          </li>
-          <li class="" *ngIf="!logEmail">
-            <a>Register</a>
+            <a [routerLink]="['/auth/register']">Register</a>
           </li>
         </ul>
 
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60" *ngFor="let user of users">
 
-          <li class="" *ngIf="accountType!='Buyer'">
+          <li class="">
+            <a href="#" routerLink="/">Home</a>
+        </li>
+          <!-- <li class="" *ngIf="user.usertype!='Buyer'">
             <a href="#" routerLink="/rate">Rate</a>
-          </li >
+          </li > -->
 
           <li class="" *ngIf="user.usertype == 'Seller'">
             <a href="#" routerLink="/create-livestock">create-livestock</a>
           </li >
 
-          <li class="" *ngIf="user.usertype == 'Seller'">
+          <!-- <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/seller">Seller</a>
           </li>
 
           <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/review">Review</a>
-          </li >
+          </li > -->
 
             <li class="" *ngIf="user.usertype == 'Buyer'">
               <a href="#" routerLink="/order-history">Order history</a>
           </li>
 
-            <li class="" *ngIf="user.usertype == 'Buyer'">
+            <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
               <a href="#" routerLink="/notification">Notifications</a>
-          </li>
+          </li> -->
 
             <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/order-request">Order request</a>

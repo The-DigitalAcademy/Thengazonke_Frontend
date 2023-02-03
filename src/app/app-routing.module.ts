@@ -16,7 +16,7 @@ import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'auth',  loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 
   { 
     path: 'admin',
@@ -30,6 +30,7 @@ const routes: Routes = [
   { 
     path: '', 
     component: UserLayoutComponent,
+    
     children: [
         {
       path: '',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentRouteService } from 'src/app/services/current-route.service';
 //import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
@@ -12,13 +13,12 @@ export class HomepageComponent implements OnInit {
 
   
 
-  items = ['item1', 'item2', 'item3', 'item4'];
   lid!:any;
   livestok!:any;
   results!:any;
 
   addItem(newItem: string) {
-    this.items.push(newItem);
+   
     this.lid = newItem;
 
     
@@ -43,9 +43,10 @@ export class HomepageComponent implements OnInit {
   filterTerm!: string;
 
 
-  constructor(private livestoc:LivestockService, private router: Router) { }
+  constructor(private livestoc:LivestockService, private router: Router,private currentRoute:CurrentRouteService) { }
 
   ngOnInit(): void {
+    this.currentRoute.currentRoute();
   }
 
 

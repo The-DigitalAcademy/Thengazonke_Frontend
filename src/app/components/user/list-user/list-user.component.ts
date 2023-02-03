@@ -9,21 +9,38 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ListUserComponent implements OnInit {
 
   users!:any;
+  deleteID!:any;
 
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
 
-    this.authService.GetAllUsers().subscribe(async(res:any) => {
-      this.users = res;
+    this.authService.GetAllUsers().subscribe((res:any) => {
+      let result = res;
+      this.users = result
+      console.log(this.users)
+      this.users = result.filter((res:any) => String(res.status) != String("archieved"));
+      // this.users = result.filter((res:any) => String(res.status) === String("archieved"));
     });
 
   }
-  // open_student_modal(usersID='') {
 
-  //   const modalRef = this.modalService.open(StudentModalComponent, { size: "xl" });
-  //   modalRef.componentInstance.usersID=usersID;
-    
-  // }
+  DeleteUser()
+  {
+    console.log('deleted') 
+    console.log(this.deleteID)
+    let status = "archieved"
+    this.authService.DeleteUser(this.deleteID, status).subscribe(async res => {
+      // this.decoded = jwt_decode(res.token);
+    })
+
+  }
+
+
+  deleteUsr(userid:any)
+  {
+    this.deleteID = userid;
+  }
+
 
 }
