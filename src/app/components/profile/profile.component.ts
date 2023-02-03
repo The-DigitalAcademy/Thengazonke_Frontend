@@ -45,16 +45,19 @@ export class ProfileComponent implements OnInit {
   
       this.myForm();
   
-      this.sub = this.route.params.subscribe(params => {
-        return this.uid = params['id'];
-      });
-  
-      console.log(this.uid);
+      // this.sub = this.route.params.subscribe(params => {
+      //   return this.uid = params['id'];
+      // });
+      
+
+      console.log();
   
       this.authservice.GetAllUsers().subscribe((res:any) => {
           let result = res;
-          this.users = result.filter((res:any) => Number(res.Userid) === Number(this.uid))
-  
+          
+          this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
+          console.log(this.users);
+
           if(this.users!= undefined)
           {
             this.EditUserForm.setValue({
@@ -75,24 +78,35 @@ export class ProfileComponent implements OnInit {
     updateUser(){
       
   
+      // let userDetails= {
+      //   fullname: this.EditUserForm.value.fullname,
+      //   email: this.EditUserForm.value.email,
+      //   phone: this.EditUserForm.value.phone,
+      //   address: this.EditUserForm.value.address,
+      //   identity: this.EditUserForm.value.address,
+      //   agric: this.EditUserForm.value.address,
+      //   status: this.EditUserForm.value.status,
+      //   usertype: this.users[0].usertype
+      // }
+
       let userDetails= {
         fullname: this.EditUserForm.value.fullname,
         email: this.EditUserForm.value.email,
         phone: this.EditUserForm.value.phone,
         address: this.EditUserForm.value.address,
-        identity: this.EditUserForm.value.address,
-        agric: this.EditUserForm.value.address,
         status: this.EditUserForm.value.status,
         usertype: this.users[0].usertype
       }
-  
+      
+      console.log(userDetails)
 
      
      
-      // this.authservice.updateUser(this.uid, userDetails).subscribe((next) => {
-      //   // console.log('Successfully Updated!');
-      //   // this.router.navigate(['/admin/users']);
-      // });
+      this.authservice.updateUser(this.users[0].Userid, userDetails).subscribe((next) => {
+        // console.log('Successfully Updated!');
+        this.router.navigate(['/profile']);
+      });
+
     }
   
   }

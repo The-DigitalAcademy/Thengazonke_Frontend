@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
         this.authService.GetAllUsers().subscribe((res:any) => {
           let result = res;   
           this.users = result.filter((res:any) => String(res.email) === String(this.logEmail))
-          console.log(this.users)
+          // console.log(this.users)
        });
 
        

@@ -12,13 +12,12 @@ export class HomepageComponent implements OnInit {
 
   
 
-  items = ['item1', 'item2', 'item3', 'item4'];
   lid!:any;
   livestok!:any;
   results!:any;
 
   addItem(newItem: string) {
-    this.items.push(newItem);
+   
     this.lid = newItem;
 
     
