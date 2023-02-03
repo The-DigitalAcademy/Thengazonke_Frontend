@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   // categories:string[] | null = null ;
   livestocks:string[] | null = null;
+  filterTerm1: string ='';
 
   categories!:any;
 
@@ -137,16 +138,20 @@ export class SearchComponent implements OnInit {
   
   onCategoryChange(e:any){
     // alert(e.target.value)
-    this.filterTerm=e.target.value
+    this.filterTerm1=e.target.value
     // console.log(this.filterTerm)
     if(e.target.value=='All'){
-      this.filterTerm='';
+      this.filterTerm1='';
       this.GetProducts();
     }
   }
 
   onCategoryChange2(catItem:any){
-    this.filterTerm=catItem
+ 
+      
+      this.filterTerm1 + catItem
+  
+    
   }
   onCategoryChange3(){
     this.filterTerm=''
