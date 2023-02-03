@@ -1,42 +1,20 @@
-
 <div></div>
-<section id="contact" class="contact-clean">
-    <!-- <div class="container"> -->
-        <h1 style="text-align: center; color: white; font-size: 18px; font-weight: bolder;">Contact us</h1>
-        <form action="/action_page.php">
-        <div class="row">
-          <div class="col-25">
-            <label for="fname">Full Names</label>
+
+
+<section class="position-relative py-4 py-xl-5" style="background-color: #516951;">
+  <div class="container position-relative">
+      <div class="row">
+          <div class="col">
+              <form class="p-3 p-xl-4" method="post">
+                  <h4 style="text-align: center; color:white;">Contact us</h4>
+                  <div class="mb-3"><label class="form-label" for="name" style="color: white;">Name</label><input class="form-control" type="text" id="name" name="name"></div>
+                  <div class="mb-3"><label class="form-label" for="email" style="color: white;">Email</label><input class="form-control" type="email" id="email" name="email"></div>
+                  <div class="mb-3"><label class="form-label" for="message" style="color: white;">Message</label><textarea class="form-control" id="message" name="message" rows="6"></textarea></div>
+                  <div class="mb-3 text-center"><button class="btn btn-primary  "type="submit">Send </button></div>
+              </form>
           </div>
-          <div class="col-75">
-            <input type="text" id="fname" name="firstname" placeholder="">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Email Address</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="lname" name="lastname" placeholder="">
-          </div>
-        </div>
-       
-        <div class="row">
-          <div class="col-25">
-            <label for="subject">Message</label>
-          </div>
-          <div class="col-75">
-            <textarea id="subject" name="subject" placeholder="" style="height:65px"></textarea>
-          </div>
-        </div>
-        <br>
-        <div class="text-center">
-   
-          <button type="button" class="btn "style="color: black ; background-color: #FED607; border-color:#FED607; " >Send</button>
       </div>
-        </form>
-      <!-- </div> -->
-    
+  </div>
 </section>
 
 
