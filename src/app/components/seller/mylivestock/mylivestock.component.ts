@@ -13,6 +13,11 @@ export class MylivestockComponent implements OnInit {
   livestocks!:any;
   categories!:any;
   filterTerm!: string;
+  lid!:any;;
+  usid!:any;
+  results!:any;
+
+  livestok!:any;
 
   @Output() newItemEvent = new EventEmitter<string>();
   @Output('openModal') openModal = new EventEmitter()
@@ -24,11 +29,31 @@ export class MylivestockComponent implements OnInit {
     modalCheckbox.checked = event
   }
 
-  addItem(newItem: string) {
-   
-    this.post_id = newItem;
+  addUserId(userID: string){
+    this.usid = userID;
+    console.log('i am user id',this.usid)
+  }
 
+
+  addItem(newItem: string) {
     
+ 
+    this.lid = newItem;
+    //this.usid = userID;
+
+    console.log('i am lisc if',this.lid)
+    
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
+      this.results = messages
+      // console.log('i am livestock',this.livestocks)
+
+      this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+      console.log('One livestokokoko',this.livestok)
+    })
+
+    let modalCheckbox:any = document.getElementById('my-modal')
+      modalCheckbox.checked = event
 
     
     
@@ -51,6 +76,34 @@ export class MylivestockComponent implements OnInit {
       this.livestocks =res;
       // console.log('from funtion',this.livestocks)
     })
+  }
+
+  deleteUser(){
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
+      this.results = messages
+      // console.log('i am livestock',this.livestocks)
+
+      this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+      console.log('One livestokokoko',this.livestok)
+    })
+    
+  }
+
+ 
+  deleteMyLivestock()
+  {
+    console.log('deleted') 
+    console.log(this.lid)
+    let st= {
+      status: "archieved"
+    }
+    this.livestoc.deleteLivestockl(this.lid, st).subscribe(async res => {
+     console.log('status archived')
+    })
+
+    this.closeModal();
+
   }
 
   constructor(private livestoc:LivestockService, private router: Router) { }

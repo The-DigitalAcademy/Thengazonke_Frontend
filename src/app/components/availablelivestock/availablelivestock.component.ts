@@ -82,6 +82,8 @@ export class AvailablelivestockComponent implements OnInit {
   delete(ind: any) {
     this.post_id = this.trans[ind].livestockID
     this.addNewItem(this.post_id,this.userId)
+    this.userId = this.livestocks[ind].UserID
+    
     console.log('delete id',this.post_id)
   }
 
@@ -125,7 +127,7 @@ export class AvailablelivestockComponent implements OnInit {
       this.result2 = res;
       
       let transTemp = this.result2.filter((res:any) => Number(res.UserID) === Number(this.users[0].Userid));
-      this.trans = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
+      this.trans = transTemp.filter((ress:any) => String(ress.status) != String('pending'));
       console.log('What i am looking for',this.trans);
     }); 
   }
