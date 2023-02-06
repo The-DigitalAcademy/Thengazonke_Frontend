@@ -14,21 +14,27 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
 
 import { UserLayoutComponent } from './user-layout/user-layout.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
 
 const routes: Routes = [
+
+  {path: 'snack', component:SnackbarComponent},
+
+
+
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 
-  { 
+  {
     path: 'admin',
-    component: AdminLayoutComponent, 
+    component: AdminLayoutComponent,
     children: [
     {
       path: '',
       loadChildren: () => import('./admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }]
   },
-  { 
-    path: '', 
+  {
+    path: '',
     component: UserLayoutComponent,
     children: [
         {
@@ -38,13 +44,14 @@ const routes: Routes = [
   },
   {path: 'header', component:HeaderComponent},
 
+
   {path: 'admin-header', component:AdminHeaderComponent},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  
+
 exports: [RouterModule]
 })
 export class AppRoutingModule { }
