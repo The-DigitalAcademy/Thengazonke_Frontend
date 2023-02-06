@@ -1,16 +1,4 @@
 
-<!-- 
-<div class="tabs tabs-boxed" style="width:100% ;">
-    <a class="tab tab-active">
-        <p  class="tab-text">Available livestock</p>
-    </a> 
-    <a class="tab  tab-not-active" style="margin-left: 3rem;"> 
-        <p  class="tab-text">My livestock</p>
-    </a> 
-   
-</div> -->
-
-
   <div class="serchB" style="width: 100%;">
     <div class="form-group searchInput">
 
@@ -26,9 +14,8 @@
     <div  class="selectBox">
       <select  (change)="onCategoryChange($event)" class="form-select">
           <option style="background-color: pink;"  value="All">All</option>
-          <option style="background-color: pink;" *ngFor="let category of categories" [value]="category.categoryName">
+          <option [(ngModel)]="filterTerm1" style="background-color: pink;" *ngFor="let category of categories" [value]="category.categoryName">
             {{category.categoryName}}
-    
           </option>
       </select>
       
@@ -45,8 +32,6 @@
    <li class="mr-2" *ngFor="let category of categories">
         <a (click)="onCategoryChange2(category.categoryName)" class="btn1">{{category.categoryName}}</a>
     </li>
-  
-
 </ul>
 </div>
 
@@ -82,7 +67,7 @@
 </div> -->
 
 <div class="row">
-  <div class="column" *ngFor="let animal of livestocks | filter: filterTerm">
+  <div class="column" *ngFor="let animal of livestocks | filter: filterTerm | filter: filterTerm1">
     <div class="card card-compact shadow-sm" style="margin: 1rem;">
       <figure><img src="../../../assets/bg1.jpeg" alt="Shoes" /></figure>
       <div class="card-body">
