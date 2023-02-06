@@ -1,9 +1,10 @@
 <div class="bodysz">
   <h1>My livestock</h1>
+  <app-availablelivestock (newItemEvent)="addItem($event)"></app-availablelivestock>
 </div>
 
 
-<div class="serchB" style="width: 100%;">
+<!-- <div class="serchB" style="width: 100%;">
     <div class="form-group searchInput">
 
       <div class="relative">
@@ -24,11 +25,11 @@
       </select>
       
     </div>
-  </div>
+  </div> -->
 
 
 
-<div class="tbs">
+<!-- <div class="tbs">
   <ul class="flex flex-wrap">
     <li class="mr-2">
         <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
@@ -39,7 +40,7 @@
   
 
 </ul>
-</div>
+</div> --
 
 <div class="row">
     <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
@@ -68,15 +69,15 @@
                 <a [routerLink]="['/edit-livestock',animal.livestockID]" routerLinkActive="router-link-active" ><i class="fa fa-pencil-alt mx-2" aria-hidden="true"></i></a>
                 <a><i class="fa fa-trash" aria-hidden="true"></i></a>
               </div>
-              <!-- <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button> -->
+              <-- <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button> -->
               <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button> -->
-              <!-- <button (click)="reserve(x)" style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
+              <!-- <button (click)="reserve(x)" style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> --
             </div>
         </div>
       </div>
     </div>
   
-  </div>
+  </div> -->
   <input type="checkbox" id="my-modal" class="modal-toggle" />
 
   <div class="modal">

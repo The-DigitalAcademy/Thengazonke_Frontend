@@ -1,11 +1,23 @@
 <div class="serchB" style="width: 100%;">
   <div class="form-group searchInput">
 
-    <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none svg">
-            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        </div>
-        <input style="padding:.5rem 3rem;" [(ngModel)]="filterTerm" type="search" id="default-search" class="form-control block w-full pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="    Search for livestock..." required>
+      <div class="relative">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none svg">
+              <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          </div>
+          <input style="padding:.5rem 3rem;" [(ngModel)]="filterSearch" type="search" id="default-search" class="form-control block w-full pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="    Search for livestock..." required>
+      </div>
+    </div>
+
+    <div  class="selectBox">
+      <select  (change)="onCategoryChange($event)" class="form-select">
+          <option style="background-color: pink;"  value="All">All</option>
+          <option [(ngModel)]="filterTerm" style="background-color: pink;" *ngFor="let category of categories" [value]="category.categoryName">
+            {{category.categoryName}}
+    
+          </option>
+      </select>
+      
     </div>
   </div>
 
@@ -24,15 +36,13 @@
 
 
 <div class="tbs">
-<ul class="flex flex-wrap">
-  <li class="mr-2">
-      <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
+  <ul class="flex flex-wrap">
+    <li class="mr-2">
+        <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
+    </li>
+   <li class="mr-2" *ngFor="let category of categories">
+        <a (click)="onCategoryChange2(category.categoryName)" class="btn1">{{category.categoryName}}</a>
   </li>
- <li class="mr-2" *ngFor="let category of categories">
-      <a (click)="onCategoryChange2(category.categoryName)" class="btn1">{{category.categoryName}}</a>
-  </li>
-
-
 </ul>
 </div>
 
@@ -62,7 +72,42 @@
       </div>
     </div>
   </div>
-
 </div>
 
+    <div *ngSwitchCase="'/homes'">  
+      <div class="row">
+        <div class="column" *ngFor="let animal of trans | filter: filterTerm | filter: filterSearch;let x = index">
+          <div class="card card-compact shadow-sm" style="margin: 1rem;">
+            <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+            <div class="card-body">
+              <div class="headingss">
+                <h3 class="card-title">{{animal.categoryName}}</h3>
+                <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
+              </div>
+                <h2 class="breed" style="margin-left: -5px; color: #11998e;
+                color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
+                >{{animal.breedName}}</h2>
+                <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
+                <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+                <p><span> Age:</span> {{animal.age}}</p>
+                <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+                <div style="margin-bottom: 0rem;" class="card-actions">
+                  <h5 style="font-size: 1rem; color: #11998e;
+                  color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
+              <div>
+                <a [routerLink]="['/edit-livestock',animal.livestockID]" routerLinkActive="router-link-active" ><i class="fa fa-pencil-alt mx-2" aria-hidden="true"></i></a>
+                <a (click)="delete(x)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </div>
+                   
+                </div>
+            </div>
+          </div>
+       
+        
+      </div>
+    </div>
+    </div>
 
+    
+ </div>
+ 

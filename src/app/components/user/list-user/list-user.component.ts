@@ -10,11 +10,16 @@ export class ListUserComponent implements OnInit {
 
   users!:any;
   deleteID!:any;
+  isAllUsers:boolean = false;
+  isArchievedUsers:boolean = true;
 
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
 
+  getUsers(){
     this.authService.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result
@@ -22,24 +27,51 @@ export class ListUserComponent implements OnInit {
       this.users = result.filter((res:any) => String(res.status) != String("archieved"));
       // this.users = result.filter((res:any) => String(res.status) === String("archieved"));
     });
-
   }
 
   DeleteUser()
   {
     console.log('deleted') 
     console.log(this.deleteID)
-    let status = "archieved"
-    this.authService.DeleteUser(this.deleteID, status).subscribe(async res => {
-      // this.decoded = jwt_decode(res.token);
+    let st= {
+      status: "archieved"
+    }
+    this.authService.DeleteUser(this.deleteID, st).subscribe(async res => {
+      await this.getUsers();
     })
 
+    this.closeModal();
+
+  }
+
+  achievedUsers()
+  {
+    this.authService.GetAllUsers().subscribe((res:any) => {
+      let result = res;
+      this.users = result
+      console.log(this.users)
+      this.users = result.filter((res:any) => String(res.status) === String("archieved"));
+    });
+    this.isAllUsers = true;
+    this.isArchievedUsers = false;
+  }
+
+  AllUsers()
+  {
+    this.getUsers();
+    this.isAllUsers = false;
+    this.isArchievedUsers = true;
   }
 
 
   deleteUsr(userid:any)
   {
     this.deleteID = userid;
+  }
+
+  closeModal() {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
   }
 
 

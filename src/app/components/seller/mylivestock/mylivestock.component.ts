@@ -24,6 +24,16 @@ export class MylivestockComponent implements OnInit {
     modalCheckbox.checked = event
   }
 
+  addItem(newItem: string) {
+   
+    this.post_id = newItem;
+
+    
+
+    
+    
+  }
+
 
   addNewItem(post_id: any) {
     this.newItemEvent.emit(post_id);

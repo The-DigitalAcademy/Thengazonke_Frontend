@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 //import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
@@ -17,6 +17,12 @@ export class SearchComponent implements OnInit {
 
   categories!:any;
 
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  
+    addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
   
 
   GetCategories(){
@@ -147,11 +153,7 @@ export class SearchComponent implements OnInit {
   }
 
   onCategoryChange2(catItem:any){
- 
-      
-      this.filterTerm1 + catItem
-  
-    
+      this.filterTerm1
   }
   onCategoryChange3(){
     this.filterTerm=''

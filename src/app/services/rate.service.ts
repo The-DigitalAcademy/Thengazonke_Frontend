@@ -21,4 +21,12 @@ export class RateService {
     return this.http.get(environment.REST_API +'/rate/getRatings').pipe();
   }
 
+  getRatesByUser():Observable<any> {
+    return this.http.get(environment.REST_API +'/rate/getRatingPerUser').pipe();
+  }
+
+  getReviewByUser():Observable<any> {
+    return this.http.get(environment.REST_API +'/rate/getReviewPerUser').pipe();
+  }
+
 }
