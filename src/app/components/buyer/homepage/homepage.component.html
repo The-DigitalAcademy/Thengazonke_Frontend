@@ -1,12 +1,12 @@
 
 
-  <div class="bodysz">
+<div class="bodysz">
     <h1>Find livestock</h1>
     <app-availablelivestock (newItemEvent)="addItem($event)" (useridd)="addUserId($event)" ></app-availablelivestock>
- </div>
+</div>
 
 
- <input type="checkbox" id="my-modal" class="modal-toggle" />
+<input type="checkbox" id="my-modal" class="modal-toggle" />
 
  <div class="modal" *ngFor="let animal of livestok">
    <div class="modal-box">

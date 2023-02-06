@@ -19,9 +19,9 @@
       </select>
       
     </div>
-  </div>
 
-  <div  class="selectBox">
+
+  <!-- <div  class="selectBox">
     <select  (change)="onCategoryChange($event)" class="form-select">
         <option style="background-color: pink;"  value="All">All</option>
         <option style="background-color: pink;" *ngFor="let category of categories" [value]="category.categoryName">
@@ -30,7 +30,9 @@
         </option>
     </select>
     
-  </div>
+  </div> -->
+
+
 </div>
 
 
@@ -46,14 +48,72 @@
 </ul>
 </div>
 
-<div class="row">
-  <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
-    <div class="card card-compact shadow-sm" style="margin: 1rem;">
-      <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
-      <div class="card-body">
-        <div class="headingss">
-          <h3 class="card-title">{{animal.categoryName}}</h3>
-          <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
+
+
+
+
+  
+  
+
+
+  <div [ngSwitch]="myCurrentRoute">
+
+    <div *ngSwitchCase="'/'">
+      <div class="row" >
+      <div class="column"  *ngFor="let animal of livestocks | filter: filterTerm | filter: filterSearch;let x = index">
+        <div class="card card-compact shadow-sm" style="margin: 1rem;" >
+          <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+          <div class="card-body">
+            <div class="headingss">
+              <h3 class="card-title">{{animal.categoryName}}</h3>
+              <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
+            </div>
+              <h2 class="breed" style="margin-left: -5px; color: #11998e;
+              color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
+              >{{animal.breedName}}</h2>
+              <p style="font-size: .5rem;" maxlength="4"><span> Description:</span> {{animal.description}}</p>
+              <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+              <p><span> Age:</span> {{animal.age}}</p>
+              <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+              <div style="margin-bottom: 0rem;" class="card-actions">
+                <h5 style="font-size: 1rem; color: #11998e;
+                color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
+            
+  
+                  <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
+                 
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'/home'">
+    <div class="row" >
+    <div class="column"  *ngFor="let animal of livestocks | filter: filterTerm | filter: filterSearch;let x = index">
+      <div class="card card-compact shadow-sm" style="margin: 1rem;" >
+        <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+        <div class="card-body">
+          <div class="headingss">
+            <h3 class="card-title">{{animal.categoryName}}</h3>
+            <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
+          </div>
+            <h2 class="breed" style="margin-left: -5px; color: #11998e;
+            color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
+            >{{animal.breedName}}</h2>
+            <p style="font-size: .5rem;" maxlength="4"><span> Description:</span> {{animal.description}}</p>
+            <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+            <p><span> Age:</span> {{animal.age}}</p>
+            <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+            <div style="margin-bottom: 0rem;" class="card-actions">
+              <h5 style="font-size: 1rem; color: #11998e;
+              color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
+          
+
+                <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
+               
+            </div>
         </div>
           <h2 class="breed" style="margin-left: -5px; color: #11998e;
           color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
