@@ -12,6 +12,12 @@ import { UserLayoutModule } from 'src/app/user-layout/user-layout.module';
 export class OrderRequestComponent implements OnInit {
 
   transaction!:any;
+  tr!:any;
+  live!:any;
+  // transaction!:any;
+  // users: Users[] = [];
+  result!:any;
+  // result2!:any;
 
   constructor(private transactionService: TransactionService, private authservice: AuthService) { }
 
@@ -22,24 +28,40 @@ export class OrderRequestComponent implements OnInit {
 
   }
 
-  getUser()
+  async getUser()
   {
-    this.authservice.GetAllUsers().subscribe((res:any) => {
+    this.authservice.GetAllUsers().subscribe(async(res:any) => {
       let result = res;
-      this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
+      this.users = await result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
        console.log(this.users)
 
        this.getTransaction();
     })
   }
 
-  getTransaction(){
-
-    this.transactionService.getFullTransaction().subscribe(async(res:any) => {
+  getTransaction()
+  {
+    this.transactionService.getFullTransaction().subscribe((res:any) => {
       this.transaction = res;
-      console.log(this.transaction);
-    });
-    
-  }
+      
+      console.log(this.transaction)
+      console.log(this.users[0].Userid)
 
+      let transTemp = this.transaction.filter((res:any) => Number(res.userID) === Number(this.users[0].Userid));
+      this.tr = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
+      console.log(this.tr);
+
+    }); 
+  }
 }
+
+//   getTransaction(){
+
+//     this.transactionService.getFullTransaction().subscribe(async(res:any) => {
+//       this.transaction = res;
+//       console.log(this.transaction);
+//     });
+    
+//   }
+
+// }

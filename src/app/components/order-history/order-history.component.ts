@@ -18,6 +18,8 @@ export class OrderHistoryComponent implements OnInit {
   users: Users[] = [];
   result!:any;
   result2!:any;
+  toggleModalButton :any;
+  deleteID!:any;
 
   constructor( private transactionService : TransactionService, private livestockService: LivestockService, private authservice: AuthService ) { 
     this.getUser();
@@ -52,6 +54,7 @@ export class OrderHistoryComponent implements OnInit {
       console.log(this.trans);
 
     }); 
+    console.log(this.trans)
   }
 
 
@@ -73,5 +76,44 @@ checkSelected(event:any, transID:any)
 
 }
 
+
+  getStatus(id:any){
+    this.toggleModalButton = this.result2[id].status;
+
+    console.log(id)
+
+    // this.getSpecificTransaction(id)
+    return console.log(this.toggleModalButton)
+  }
+
+  getSpecificTransaction(id:any){
+    this.transactionService.GetAllTransaction().subscribe(async(res:any) => {
+      this.result2 = await res;
+      this.transaction = this.result2.filter((res:any) => Number(res.transactionID) === Number(id));
+      console.log(this.transaction);
+    });
+  }
+
+  closeModal() {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
+  }
+
+  // DeleteTransaction()
+  // {
+  //   console.log('deleted') 
+  //   console.log(this.deleteID)
+  //   let status = "archieved"
+  //   this.transactionService.DeleteTransaction(this.deleteID, status).subscribe(async res => {
+  //     // this.decoded = jwt_decode(res.token);
+  //   })
+
+  // }
+
+
+  // deleteTrans(Transactionid:any)
+  // {
+  //   this.deleteID = Transactionid;
+  // }
 
 }

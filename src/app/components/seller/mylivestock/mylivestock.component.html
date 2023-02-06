@@ -66,7 +66,20 @@
              
               <div>
                 <a [routerLink]="['/edit-livestock',animal.livestockID]" routerLinkActive="router-link-active" ><i class="fa fa-pencil-alt mx-2" aria-hidden="true"></i></a>
-                <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <label for="my-modal"><i class="fa fa-trash" aria-hidden="true"></i></label>
+                <!-- The button to open modal -->
+                  <!-- <label for="my-modal" class="btn">open modal</label> -->
+
+                  <!-- Put this part before </body> tag -->
+                  <input type="checkbox" id="my-modal" class="modal-toggle" />
+                  <div class="modal">
+                    <div class="modal-box">
+                      <h3 class="text-lg text-center">Are you sure?</h3>
+                      <div class="modal-action">
+                        <label for="my-modal" class="btn ">Yes</label>
+                      </div>
+                    </div>
+                  </div>
               </div>
               <!-- <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button> -->
               <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button> -->
@@ -77,54 +90,6 @@
     </div>
   
   </div>
-  <input type="checkbox" id="my-modal" class="modal-toggle" />
+  
 
-  <div class="modal">
-    <div class="modal-box">
- 
-      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
-      
-        <div class="card-body">
-            <figure><img src="../../../../assets/bg1.jpeg" alt="" /></figure>
-            <h3 class="card-title justify-center">Are you sure?</h3>
-            <p class="w-3/4 mx-auto desc">Binding<span>will be permanantely removed</span></p>
-            <br>
-            <div class="card-actions justify-center">
-              <button class="rsvBtn"  for="my-modal" (click)=closeModal()>Back</button>
-              <button class="rsvBtn" >Buy</button>
-            </div>
-        </div>
-      </div>
- 
-      
-    </div>
-  </div>
-
-  <!-- <input type="checkbox" id="my-modal" class="modal-toggle" />
-
-  <div class="modal" *ngFor="let animal of livestok">
-    <div class="modal-box">
- 
-      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
-      
-        <div class="card-body" >
-          <figure><img src="{{animal.image}}" alt="" /></figure>
-          <h3 class="card-title justify-center">{{animal.categoryName}}</h3>
-          <p class="w-3/4 mx-auto desc">{{animal.description}}</p>
-          <h3 class="color">Brown and black</h3>
-          <h3 class="weigh">{{animal.weight}}</h3>
-          <br>
-          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-          <h3 class="price"><b>{{animal.price}}</b></h3>
-          <br>
-          <div class="card-actions justify-center">
-            <button class="rsvBtn"  for="my-modal" (click)=closeModal()>Back</button>
-            <button class="rsvBtn" >Buy</button>
-          </div>
-        </div>
-      </div>
- 
-      
-    </div>
-  </div> -->
 
