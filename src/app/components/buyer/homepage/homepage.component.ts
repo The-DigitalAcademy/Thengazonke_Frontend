@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentRouteService } from 'src/app/services/current-route.service';
 //import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
@@ -10,13 +11,26 @@ import { LivestockService } from 'src/app/services/livestock.service';
 })
 export class HomepageComponent implements OnInit {
 
+  
+
   lid!:any;
+  usid!:any
   livestok!:any;
   results!:any;
 
+  addUserId(userID: string){
+    this.usid = userID;
+    console.log('i am user id',this.usid)
+  }
+
   addItem(newItem: string) {
-   
+    
+ 
     this.lid = newItem;
+    //this.usid = userID;
+
+    console.log('i am lisc if',this.lid)
+    
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.results = messages
@@ -29,16 +43,20 @@ export class HomepageComponent implements OnInit {
     let modalCheckbox:any = document.getElementById('my-modal')
       modalCheckbox.checked = event
 
+  
+    
   }
+  
 
   
 
   filterTerm!: string;
 
 
-  constructor(private livestoc:LivestockService, private router: Router) { }
+  constructor(private livestoc:LivestockService, private router: Router,private currentRoute:CurrentRouteService) { }
 
   ngOnInit(): void {
+    this.currentRoute.currentRoute();
   }
 
 

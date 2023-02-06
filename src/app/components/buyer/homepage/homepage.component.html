@@ -2,7 +2,7 @@
 
   <div class="bodysz">
     <h1>Find livestock</h1>
-    <app-availablelivestock (newItemEvent)="addItem($event)"></app-availablelivestock>
+    <app-availablelivestock (newItemEvent)="addItem($event)" (useridd)="addUserId($event)" ></app-availablelivestock>
  </div>
 
 
@@ -25,7 +25,7 @@
          <br>
          <div class="card-actions justify-center">
            <button class="rsvBtn"  for="my-modal" (click)=closeModal()>Back</button>
-           <button class="rsvBtn" >Buy</button>
+           <button class="rsvBtn" routerLinkActive="router-link-active" >Buy</button>
          </div>
        </div>
      </div>

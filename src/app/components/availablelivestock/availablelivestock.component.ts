@@ -1,6 +1,7 @@
 import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
-//import { AuthService } from 'src/app/services/auth.service';
+import { CurrentRouteService } from 'src/app/services/current-route.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
@@ -10,25 +11,84 @@ import { LivestockService } from 'src/app/services/livestock.service';
 })
 export class AvailablelivestockComponent implements OnInit {
   post_id:any
+  userId:any
   livestocks!:any;
   categories!:any;
-  filterTerm!: string;
+  filterTerm: string='';
+  filterSearch!:string;
   livestok!:any;
 
+  trans!:any;
+  live!:any;
+  transaction!:any;
+  users:any[] = [];
+
+  result!:any;
+  result2!:any;
+
   @Output() newItemEvent = new EventEmitter<string>();
+  @Output() useridd = new EventEmitter<string>();
+  myCurrentRoute: any;
+  
   // @Output('openModal') openModal = new EventEmitter()
+
+  
+  constructor(private livestoc:LivestockService, private router: Router , private currentRoute: CurrentRouteService,private authservice:AuthService) { }
+
+  ngOnInit(): void {
+
+    this.myCurrentRoute  = this.currentRoute.currentRoute();
+
+    console.log(this.myCurrentRoute);
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
+      this.livestocks = messages
+      console.log('i am livestock',this.livestocks)
+    })
+    
+    this.GetCategories();
+    this.GetProducts();
+    this.getUser();
+  }
+  
+  onCategoryChange(e:any){
+    this.filterTerm=e.target.value
+
+    if(e.target.value=='All'){
+      this.filterTerm='';
+      this.GetProducts();
+      
+    }
+  }
+
+  onCategoryChange2(catItem:any){
+  
+    this.filterTerm = catItem
+
+  }
+  onCategoryChange3(){
+    this.filterTerm=''
+  }
 
   reserve(ind: any) {
     this.post_id = this.livestocks[ind].livestockID
-    this.addNewItem(this.post_id)
+    this.userId = this.livestocks[ind].UserID
+
+    this.addNewItem(this.post_id,this.userId)
+    
     //this.openModal.emit(true)
     // this.openModal()
   }
+  delete(ind: any) {
+    this.post_id = this.trans[ind].livestockID
+    this.addNewItem(this.post_id,this.userId)
+    console.log('delete id',this.post_id)
+  }
 
 
-  addNewItem(post_id: any) {
+  addNewItem(post_id: any,userId: any) {
     this.newItemEvent.emit(post_id);
-    
+    this.useridd.emit(userId)
   }
 
   GetCategories(){
@@ -45,33 +105,32 @@ export class AvailablelivestockComponent implements OnInit {
     })
   }
 
-  constructor(private livestoc:LivestockService, private router: Router) { }
-
-  ngOnInit(): void {
-
-    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
-      this.livestocks = messages
-      console.log('i am livestock',this.livestocks)
-    })
-    
-    this.GetCategories();
-    this.GetProducts();
-  }
   
-  onCategoryChange(e:any){
-    this.filterTerm=e.target.value
-    if(e.target.value=='All'){
-      this.filterTerm='';
-      this.GetProducts();
-    }
+
+  //GET SELLERS LIVESTOCK
+  getUser()
+  {
+    this.authservice.GetAllUsers().subscribe((res:any) => {
+      let result = res;
+      this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
+       console.log('i ran',this.users)
+
+       this.getMyLivestock();
+    })
   }
 
-  onCategoryChange2(catItem:any){
-    this.filterTerm=catItem
+  getMyLivestock()
+  {
+    this.livestoc.GetAllPostedLivestock().subscribe((res:any) => {
+      this.result2 = res;
+      
+      let transTemp = this.result2.filter((res:any) => Number(res.UserID) === Number(this.users[0].Userid));
+      this.trans = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
+      console.log('What i am looking for',this.trans);
+    }); 
   }
-  onCategoryChange3(){
-    this.filterTerm=''
-  }
+
+
 
   // openModal(){
    
