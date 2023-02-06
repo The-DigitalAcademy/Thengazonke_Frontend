@@ -5,6 +5,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { LivestockService } from '../../services/livestock.service';
+import { Livestock } from 'src/app/model/livestock';
 
 @Component({
   selector: 'app-rate',
@@ -22,7 +23,7 @@ export class RateComponent implements OnInit {
   ratedUsers! :any;
   result2: any [] = [];
   trans! : any;
-  livestock: any [] = [];
+  livestock: Livestock [] = [];
   transaction! :any;
   review! : any;
   sub!:any;
@@ -107,9 +108,9 @@ export class RateComponent implements OnInit {
       
     }
     console.log(rateDetails)
-    // return this.rateservice.createRate(rateDetails).subscribe((data:any)=>{
-    //   console.log(data);
-    // })
+    return this.rateservice.createRate(rateDetails).subscribe((data:any)=>{
+    
+    })
        
   }
 
