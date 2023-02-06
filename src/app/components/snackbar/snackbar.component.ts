@@ -12,9 +12,9 @@ export class SnackbarComponent implements OnInit {
   constructor(private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    this.notificationService.success("success");
+    // this.notificationService.success("success");
     this.notificationService.danger("danger");
-    this.notificationService.warning("warning");
+    // this.notificationService.warning("warning");
   }
 
 }
