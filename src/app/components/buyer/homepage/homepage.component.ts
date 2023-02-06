@@ -32,8 +32,6 @@ export class HomepageComponent implements OnInit {
     console.log('i am lisc if',this.lid)
     
 
-    
-
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.results = messages
       // console.log('i am livestock',this.livestocks)

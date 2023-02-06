@@ -65,5 +65,4 @@ export class LandingComponent implements OnInit {
     modalCheckbox.checked = false
   }
 
-
 }

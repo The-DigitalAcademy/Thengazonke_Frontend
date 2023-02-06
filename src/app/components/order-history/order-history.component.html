@@ -87,7 +87,9 @@
                             <br>
                             <div class="card-actions justify-center">
                               <button class="btn btn-sm btn-ghost btn1"  for="my-modal" routerLink="/order-history">Back</button>
-                              <button class=" btn btn-sm btn-ghost btn2" [routerLink]="['/rate']" routerLinkActive="router-link-active"  >Rate</button>
+                              <div *ngFor="let trs of transaction">
+                                <button class=" btn btn-sm btn-ghost btn2" [routerLink]="['/rate/',trs.transactionID,trs.livestockID]" routerLinkActive="router-link-active"  *ngIf="(trs.status).toUpperCase() === 'complete'.toUpperCase()">Rate</button>
+                              </div>
                             </div>
                           </div>
 
