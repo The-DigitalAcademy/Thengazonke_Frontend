@@ -32,5 +32,9 @@ export class LivestockService {
     let API_URL = environment.REST_API + '/livestock/createLivestock';
     return this.httpClient.post(API_URL, livestockDetails).pipe();
   }
+
+  updateLivestock(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/livestock/updateLivestock').pipe();
+  }
   
 }

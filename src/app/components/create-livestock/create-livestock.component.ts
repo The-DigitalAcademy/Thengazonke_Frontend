@@ -22,6 +22,10 @@ export class CreateLivestockComponent implements OnInit {
     // image: new FormControl(''),
     price: new FormControl(''),
     age: new FormControl(''),
+    quantity:new FormControl(''),
+    color:new FormControl(''),
+    address:new FormControl(''),
+
     // status: new FormControl(''),
     weight: new FormControl(''),
     categoryID: new FormControl(''),
@@ -100,6 +104,9 @@ export class CreateLivestockComponent implements OnInit {
         age: this.AddLivestockForm.value.age,
         status: 'Available',
         weight: this.AddLivestockForm.value.weight,
+        quantity: this.AddLivestockForm.value.quantity,
+        color: this.AddLivestockForm.value.color,
+        address: this.AddLivestockForm.value.address,
         categoryID: this.AddLivestockForm.value.categoryID,
         breedID: this.AddLivestockForm.value.breedID
       }
