@@ -10,8 +10,6 @@ import { LivestockService } from 'src/app/services/livestock.service';
 })
 export class HomepageComponent implements OnInit {
 
-  
-
   lid!:any;
   livestok!:any;
   results!:any;
@@ -19,8 +17,6 @@ export class HomepageComponent implements OnInit {
   addItem(newItem: string) {
    
     this.lid = newItem;
-
-    
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.results = messages
@@ -33,8 +29,6 @@ export class HomepageComponent implements OnInit {
     let modalCheckbox:any = document.getElementById('my-modal')
       modalCheckbox.checked = event
 
-    
-    
   }
 
   
