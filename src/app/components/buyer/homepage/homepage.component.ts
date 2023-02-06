@@ -14,12 +14,23 @@ export class HomepageComponent implements OnInit {
   
 
   lid!:any;
+  usid!:any
   livestok!:any;
   results!:any;
 
+  addUserId(userID: string){
+    this.usid = userID;
+    console.log('i am user id',this.usid)
+  }
+
   addItem(newItem: string) {
-   
+    
+ 
     this.lid = newItem;
+    //this.usid = userID;
+
+    console.log('i am lisc if',this.lid)
+    
 
     
 
@@ -34,9 +45,10 @@ export class HomepageComponent implements OnInit {
     let modalCheckbox:any = document.getElementById('my-modal')
       modalCheckbox.checked = event
 
-    
+  
     
   }
+  
 
   
 
