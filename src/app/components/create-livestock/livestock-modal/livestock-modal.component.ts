@@ -1,20 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { BreedService } from 'src/app/services/breed.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { LivestockService } from 'src/app/services/livestock.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-livestock',
-  templateUrl: './create-livestock.component.html',
-  styleUrls: ['./create-livestock.component.scss']
+  selector: 'app-livestock-modal',
+  templateUrl: './livestock-modal.component.html',
+  styleUrls: ['./livestock-modal.component.scss']
 })
-export class CreateLivestockComponent implements OnInit {
-
+export class LivestockModalComponent implements OnInit {
   category!:any;
   breed!:any;
   image_link!:any;
+  sub!:any;
+  lid!:any;
+  livestock!:any;
 
 
   AddLivestockForm: FormGroup = new FormGroup({
@@ -22,10 +25,6 @@ export class CreateLivestockComponent implements OnInit {
     // image: new FormControl(''),
     price: new FormControl(''),
     age: new FormControl(''),
-    quantity:new FormControl(''),
-    color:new FormControl(''),
-    address:new FormControl(''),
-
     // status: new FormControl(''),
     weight: new FormControl(''),
     categoryID: new FormControl(''),
@@ -46,13 +45,38 @@ export class CreateLivestockComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient) { }
+    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.categoryService.GetAllCategory().subscribe((res:any) => {
-      this.category = res;
-      console.log(this.category);
+    this.sub = this.route.params.subscribe(params => {
+      return this.lid = params['id'];
+    });
+
+    console.log(this.lid);
+
+    this.livestockService.GetAllPostedLivestock().subscribe((res:any) => {
+      let result = res;
+
+      this.livestock = result.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+
+      console.log(this.livestock[0]);
+
+      if(this.livestock!= undefined)
+      {
+        this.AddLivestockForm.setValue({
+          UserID: this.livestock[0].UserID,
+          // image: this.livestock[0].image,
+          price: this.livestock[0].price,
+          age: this.livestock[0].age,
+          // status: new FormControl(''),
+          weight: this.livestock[0].weight,
+          categoryID: this.livestock[0].categoryID,
+          breedID: this.livestock[0].breedID
+        })
+
+      }
+
     });
 
   }
@@ -104,9 +128,6 @@ export class CreateLivestockComponent implements OnInit {
         age: this.AddLivestockForm.value.age,
         status: 'Available',
         weight: this.AddLivestockForm.value.weight,
-        quantity: this.AddLivestockForm.value.quantity,
-        color: this.AddLivestockForm.value.color,
-        address: this.AddLivestockForm.value.address,
         categoryID: this.AddLivestockForm.value.categoryID,
         breedID: this.AddLivestockForm.value.breedID
       }

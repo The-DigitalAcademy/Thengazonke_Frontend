@@ -231,61 +231,12 @@ figure{
 //////////////////////////
 /// phones and mobile/////
 /// //////////////////////
-
-@media only screen and (max-width: 1200px){
-    select{
-        display: none;
-    }
- 
-    // .grid-cols-4{
-    //     display: block;
-    // } 
-    //  .grid-cols-4{
-    //     display: block;
-    // } 
-   
-}
-
-@media only screen and (max-width: 600px){
-    .tbs{
-        display: none;
-    }
-    select{
-        display: block;
-    }
-    // .grid-cols-2{
-    //     display: block;
-    // }
-    // .grid-cols-2{
-    //     display: block;
-    // } 
-    // .grid-cols-4{
-    //     display: none;
-    // } 
-}
-
-@media only screen and (max-width: 425px){
-    .tbs{
-        display: none;
-    }
-    .card2{
-        padding: .5rem;
-    }
-    // .grid-cols-2{
-    //     display: block;
-    // }
-    // .grid-cols-2{
-    //     display: none;
-    // } 
-    // .grid-cols-2{
-    //     display: block;
-    // } 
-}
-
-
 @media only screen and (min-device-width: 1200px)  {
     .column{
         width: 25%;
+}
+select{
+    display: none;
 }
     
 }
@@ -294,6 +245,12 @@ figure{
     .column{
         width: 25%;
 }
+select{
+    display: none;
+}
+  .tbs{
+    display: block;
+    }
     
 }
 /* (768x1024) iPad 1 & 2, Portrait */
@@ -301,12 +258,24 @@ figure{
     .column{
         width: 33.3%;
 }
+select{
+    display: none;
+}
+  .tbs{
+    display: block;
+    }
 }
 /* (1024x768) iPad 1 & 2, Landscape */
 @media only screen and (min-width: 591px) and (max-width: 767px)  {
     .column{
         width: 33.3%;
 }
+select{
+    display: none;
+}
+  .tbs{
+    display: block;
+    }
 }
  
 /* (1024x768) iPad 1 & 2, Landscape */
@@ -314,6 +283,13 @@ figure{
     .column{
         width: 50%;
 }
+select{
+    display: block;
+}
+  .tbs{
+    display: none;
+    }
+
 }
  
 /* (2048x1536) iPad 3 */
@@ -321,17 +297,24 @@ figure{
     .column{
         width: 100%;
 }
+select{
+    display: block;
+}
+  .tbs{
+    display: none;
+    }
 
 }
 @media only screen and (max-width: 319px){ 
     .column{
         width: 100%;
 }
+select{
+    display: block;
+}
+  .tbs{
+    display: none;
+    }
 
 }
- 
- 
-
-
- 
  

@@ -22,16 +22,7 @@ label{
   
 }
 
-.status{
-  margin-left: 75%;
-  border-radius: 4px;
-  margin-top: -10px;
-  border-color: #FED607 ;
-  // margin: 10px 10px 10px 0px;
-  // padding-left: 10px;
-  
 
-}
 
 .ss{
   margin: 10px 10px 10px 0px;
@@ -91,4 +82,54 @@ padding-left: 10px;
 }
 
 
+.status{
+  border-color: var(--main-green);
+  background-color: var(--main-green);
+  width: 150px;
+  color: var(--white);
+  margin-left: 75%;
+  border-radius: 4px;
+  margin-top: -10px;
+}
+
+.status:hover{
+  border-color: var(--main-green);
+  background-color: var(--main-green);
+  width: 150px;
+  color: var(--white);
+}
+
+.status2{
+  border-color: var(--yellow);
+  background-color: var(--yellow);
+  width: 150px;
+  color: var(--white);
+  margin-left: 75%;
+  border-radius: 4px;
+  margin-top: -10px;
+}
+
+.status2:hover{
+  border-color: var(--yellow);
+  background-color: var(--yellow);
+  width: 150px;
+  color: var(--white);
+}
+
+.rounded-full
+{
+  margin: auto;
+  background-color: var(--gray);
+  width: 120px;
+  height: 120px;
+}
+
+.rounded-full i
+{
+  margin: auto;
+ font-size: 80px;
+ margin-top: 10%;
+}
+
 @import "~bootstrap/dist/css/bootstrap.css"
+

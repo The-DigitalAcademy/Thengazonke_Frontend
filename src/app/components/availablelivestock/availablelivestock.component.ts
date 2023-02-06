@@ -13,19 +13,22 @@ export class AvailablelivestockComponent implements OnInit {
   livestocks!:any;
   categories!:any;
   filterTerm!: string;
+  livestok!:any;
 
   @Output() newItemEvent = new EventEmitter<string>();
-  @Output('openModal') openModal = new EventEmitter()
+  // @Output('openModal') openModal = new EventEmitter()
 
   reserve(ind: any) {
     this.post_id = this.livestocks[ind].livestockID
     this.addNewItem(this.post_id)
-    this.openModal.emit(true)
+    //this.openModal.emit(true)
+    // this.openModal()
   }
 
 
   addNewItem(post_id: any) {
     this.newItemEvent.emit(post_id);
+    
   }
 
   GetCategories(){
@@ -69,5 +72,16 @@ export class AvailablelivestockComponent implements OnInit {
   onCategoryChange3(){
     this.filterTerm=''
   }
+
+  // openModal(){
+   
+  //   let modalCheckbox:any = document.getElementById('my-modal')
+  //  modalCheckbox.checked = true
+  // }
+
+  // closeModal() {
+  //   let modalCheckbox:any = document.getElementById('my-modal')
+  //   modalCheckbox.checked = false
+  // }
 
 }
