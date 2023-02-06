@@ -49,7 +49,6 @@ export class OrderHistoryComponent implements OnInit {
   }
 
 
-
 checkSelected(event:any, transID:any)
 {
   console.log(event, transID);

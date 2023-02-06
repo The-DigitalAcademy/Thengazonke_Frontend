@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'profile', component:ProfileComponent },
   { path: 'notification', component:NotificationsComponent },
   { path: 'homes', component:MylivestockComponent},
-  { path: 'rate', component:RateComponent},
+  { path: 'rate/:id/:lid', component:RateComponent},
   { path: 'edit-livestock/:id', component:LivestockModalComponent}
 ];
 
