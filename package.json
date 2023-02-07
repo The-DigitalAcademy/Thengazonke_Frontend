@@ -25,6 +25,7 @@
     "bootstrap": "^5.2.3",
     "daisyui": "^2.47.0",
     "filter": "^0.1.1",
+    "flowbite": "^1.6.3",
     "jquery": "^3.6.3",
     "jwt-decode": "^3.1.2",
     "ng-angular-popup": "^0.1.9",

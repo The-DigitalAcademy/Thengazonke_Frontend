@@ -1,0 +1,44 @@
+.con {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}
+
+.header {
+  top: 85px;
+  padding-top: 2rem;
+  text-align: center;
+  font-family: "Athiti";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 40px;
+  background: linear-gradient(177.39deg, #516951 32.77%, #ffffff 82.89%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.review {
+  width: 102px;
+  height: 21px;
+  left: 32px;
+  top: 195px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+
+  color: #000000;
+
+  opacity: 0.5;
+}
+
+.overall{
+
+    padding-left: 18.5rem;
+
+}

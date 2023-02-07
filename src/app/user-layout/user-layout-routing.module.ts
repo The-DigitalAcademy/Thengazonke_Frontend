@@ -10,6 +10,7 @@ import { MylivestockComponent } from '../components/seller/mylivestock/mylivesto
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { RateComponent } from '../components/rate/rate.component';
 import { LivestockModalComponent } from '../components/create-livestock/livestock-modal/livestock-modal.component';
+import { ReviewComponent } from '../components/review/review.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -21,12 +22,14 @@ const routes: Routes = [
   { path: 'notification', component:NotificationsComponent },
   { path: 'homes', component:MylivestockComponent},
   { path: 'rate/:id/:lid', component:RateComponent},
-  { path: 'edit-livestock/:id', component:LivestockModalComponent}
+  { path: 'edit-livestock/:id', component:LivestockModalComponent},
+  { path: 'review', component:ReviewComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
- 
+
+
 
 exports: [RouterModule]
 })
