@@ -92,7 +92,7 @@
 
               <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()"> 
                 <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
-                <option for="my-modal" class="btn m-2">Cancel Order</option>
+                <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
               </div>
 
               <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
