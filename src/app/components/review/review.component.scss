@@ -20,16 +20,16 @@
   background-clip: text;
 }
 
-.review {
+.review-head {
   width: 102px;
   height: 21px;
   left: 32px;
   top: 195px;
 
   font-family: "Inter";
-  font-style: normal;
+  font-style :normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 15px;
 
   color: #000000;
@@ -39,6 +39,19 @@
 
 .overall{
 
-    padding-left: 18.5rem;
+    padding-left: 17rem;
 
+}
+
+.review-con{
+
+
+  //margin: 2px;
+
+
+}
+
+.review-con div{
+//background-color: #ffff;
+margin: 1px;
 }
