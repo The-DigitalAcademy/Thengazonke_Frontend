@@ -17,6 +17,8 @@ import { OrderHistoryModalComponent } from '../components/order-history/order-hi
 import { AdminRateAndReviewComponent } from '../components/rate/admin-rate-and-review/admin-rate-and-review.component';
 import { UserReviewComponent } from '../components/rate/user-review/user-review.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UsersComponent } from './dashboard/users/users.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminOrderHistoryComponent,
     OrderHistoryModalComponent,
     AdminRateAndReviewComponent,
-    UserReviewComponent
+    UserReviewComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgApexchartsModule
   ]
 })
 export class AdminLayoutModule { }
