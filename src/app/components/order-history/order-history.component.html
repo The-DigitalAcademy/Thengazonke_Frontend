@@ -1,9 +1,9 @@
-<div class="heading bold">
-<h1>Order History</h1>
+<div class="header">
+  <h2 class="">RATE AND REVIEW</h2>
 </div>
 <div class="container mx-auto justify-center">
 
-        <table class="table table-compact w-full">
+        <table class="table table-compact table-zebra w-full">
           <thead>
             <tr>
               <th class="head ">No</th> 
@@ -33,7 +33,6 @@
             <div class="card-body">
 
               <div *ngFor="let tr of transaction">
-
         
                 <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">
                   <ul class="steps steps-horizontal lg:steps-horizonatl" >
@@ -44,7 +43,6 @@
                   </ul>
                 </div>
                 
-
                 <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
                   <ul class="steps steps-horizontal lg:steps-horizonatl" >
                     <li class="step">Pending</li>
@@ -84,25 +82,26 @@
                 <h3 class="weigh">Weight: {{item.weight}}kg</h3>
                 <br>
                 <h3 class="price"><b>Price: {{item.price}}</b></h3>
-                  <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
+                  <h3 class="address"><i class="fas fa-map-marker-alt"></i>{{item.address}}</h3>
                     <br>
                 <div class="card-actions justify-center">
 
             <div class="modal-action"  *ngFor="let tr of transaction">
 
               <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()"> 
+                <!-- <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">  -->
                 <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
                 <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
               </div>
 
               <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
                 <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
-                <option for="my-modal" class="btn m-2" routerLink="/Rate">Rate</option>              
+                <option for="my-modal" class="btn m-2" routerLink="/rate">Rate</option>              
               </div>
 
               <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
                 <option for="my-modal" class="btn" (click) = closeModal()>Back</option>
-                <option for="my-modal" class="btn m-2">Cancel Order</option>
+                <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
               </div>
 
               <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">

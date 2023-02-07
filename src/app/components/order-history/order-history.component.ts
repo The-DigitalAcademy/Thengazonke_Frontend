@@ -18,8 +18,19 @@ export class OrderHistoryComponent implements OnInit {
   users: Users[] = [];
   result!:any;
   result2!:any;
+  transact!:any;
   toggleModalButton :any;
   deleteID!:any;
+
+  cancelOrder()
+  {
+    let id = this.transaction[0].transactionID
+    console.log(this.transaction.transactionID)
+    let status = {status:"cancelled"};
+    this.transactionService.updateTransaction(id, status).subscribe(async (res) => {
+    })
+
+  }
 
   constructor( private transactionService : TransactionService, private livestockService: LivestockService, private authservice: AuthService ) { 
     this.getUser();

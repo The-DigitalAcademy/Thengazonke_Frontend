@@ -23,8 +23,15 @@ export class TransactionService {
   getTransaction(): Observable<any> {
     return this.httpClient.get(environment.REST_API + '/transaction/getAllTransaction').pipe();
   }
-  DeleteTransaction(id: any, data: any): Observable<any> {
+  DeleteTransaction(id: any, data: any) {
     let API_URL = environment.REST_API + '/transaction/deleteTransaction/'+id;
+    return this.httpClient.delete(API_URL, data).pipe();
+  }
+
+  updateTransaction(id: any, data: any) {
+    console.log("hbeevyywq",data)
+    let API_URL = environment.REST_API + '/transaction/updateTransaction/'+id;
     return this.httpClient.put(API_URL, data).pipe();
   }
+
 }

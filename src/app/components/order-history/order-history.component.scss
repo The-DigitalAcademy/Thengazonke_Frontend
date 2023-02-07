@@ -5,12 +5,28 @@
     color: #516951;
     font-size: 25px;
 }
+.header{
+    top: 85px;
+   padding-top: 2rem;
+   text-align: center;
+   font-family: 'Athiti';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 25px;
+   line-height: 40px;
+   background: linear-gradient(177.39deg, #516951 32.77%, #FFFFFF 82.89%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-clip: text; 
+   padding-bottom: 2rem;
+}
 .container{
  
     margin: auto;
 }
 .head{
     background-color: #516951;
+    color: #f7fbf7;
 }
 .act{
     text-align: center;
