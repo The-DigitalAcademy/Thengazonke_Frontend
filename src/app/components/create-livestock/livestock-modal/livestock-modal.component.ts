@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { BreedService } from 'src/app/services/breed.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { LivestockService } from 'src/app/services/livestock.service';
+import { Observable, of } from 'rxjs/';
+import { Livestock } from 'src/app/model/livestock';
 
 @Component({
   selector: 'app-livestock-modal',
@@ -12,12 +14,66 @@ import { LivestockService } from 'src/app/services/livestock.service';
   styleUrls: ['./livestock-modal.component.scss']
 })
 export class LivestockModalComponent implements OnInit {
+
+  myObservable$: Observable<any> | undefined;
+
+  myLivestock!:Livestock;
+
   category!:any;
   breed!:any;
   image_link!:any;
   sub!:any;
   lid!:any;
   livestock!:any;
+  selectedValue:any = null
+  dtbaseImage:boolean=true;
+  uplImage:boolean=false;
+
+  selectedFiles?: FileList;
+  currentFile?: File;
+  progress = 0;
+  message = '';
+  preview = '';
+
+  selectFile(event: any): void {
+    this.message = '';
+    this.preview = '';
+    this.progress = 0;
+    this.selectedFiles = event.target.files;
+  
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+  
+      
+      if (file) {
+        this.preview = '';
+        this.currentFile = file;
+  
+        const reader = new FileReader();
+  
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.preview = e.target.result;
+        };
+  
+        reader.readAsDataURL(this.currentFile);
+      }
+
+
+
+    }
+
+    this.uploadHide()
+
+  
+
+  }
+
+
+  selectedTeam = '';
+	onSelected(value:string): void {
+		this.selectedTeam = value;
+	}
 
 
   AddLivestockForm: FormGroup = new FormGroup({
@@ -55,12 +111,19 @@ export class LivestockModalComponent implements OnInit {
 
     console.log(this.lid);
 
+    console.log('i am added',this.category);
+    
+
     this.livestockService.GetAllPostedLivestock().subscribe((res:any) => {
       let result = res;
 
       this.livestock = result.filter((res:any) => Number(res.livestockID) === Number(this.lid))
 
-      console.log(this.livestock[0]);
+      console.log('data i need',this.livestock[0]);
+
+      this.myLivestock = this.livestock[0];
+
+      console.log("this.myLivestock",this.myLivestock)
 
       if(this.livestock!= undefined)
       {
@@ -74,7 +137,7 @@ export class LivestockModalComponent implements OnInit {
           categoryID: this.livestock[0].categoryID,
           breedID: this.livestock[0].breedID
         })
-
+        console.log(this.AddLivestockForm.value);
       }
 
     });
@@ -87,8 +150,10 @@ export class LivestockModalComponent implements OnInit {
     this.breedService.GetAllBreed().subscribe((res:any) => {
       let result = res;
 
+      console.log('breed from services',result)
+
       this.breed = result.filter((resss:any) => String(resss.categoryID) === String(event.target.value));
-      console.log(this.breed);
+      console.log('this is the breed',this.breed);
     });
 
   }
@@ -155,5 +220,9 @@ export class LivestockModalComponent implements OnInit {
     link : '' 
   }
 
+  uploadHide(){
+    this.dtbaseImage = false
+    this.uplImage = true
+}
 
 }

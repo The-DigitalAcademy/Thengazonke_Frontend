@@ -1,36 +1,124 @@
 
+
+
+
+  
+   
+     
+   
+  
+
+  <!-- <div class="col-4">
+    <button
+      class="btn btn-success btn-sm float-right"
+      [disabled]="!selectedFiles"
+     
+    >
+      Upload
+    </button>
+  </div> -->
+
+
+
+
+<!-- <div class="card mt-3" style="background-color: orange;">
+      <img src="{{ myLivestock.image}}" alt="{{ myLivestock.image}}" height="80px" />
+</div> -->
+
+
 <body>
+  <img id="file-ip-1-preview">
+
     <section class="clean-block clean-form dark" style="background: #fff;">
         <div class="container" style="background: #fff;">
             <div class="block-heading" style="padding-top: 0px;">
                 <h2 class="text-primary" style="border-color: #516951;"><span style="color: rgb(81, 105, 81);">Edit Livestock</span><br></h2>
             </div>
+         
             <form style="max-width: 700px; border-color: var(--bs-white);" role="form"  [formGroup] = "AddLivestockForm" novalidate>
+            <div style="margin-bottom: 1rem;">
+
+            
+              <div *ngIf="dtbaseImage">
+                <img src="{{myLivestock.image}}" class="preview">
+              </div>
+              <div *ngIf="uplImage">
+                <img [src]="preview" class="preview">
+              </div>
+
+              <div class="man">
+                <div class="center">
+                  <div class="form-input">  
+                    <label for="file-ip-1">Upload Image</label>
+                    <input type="file" id="file-ip-1" accept="image/*" (change)="selectFile($event)" />
+                  </div>
+                </div> 
+              </div>
+
+            </div>
+
+
+
+                <div class="form-group mb-3">
+               
+                  
+                  <a>Category :</a>
+                  <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
+                      <!-- <option value="" selected disabled hidden>Select Livestock</option>
+                      <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option> -->
+
+                      <option value="" selected disabled hidden>Choose here</option>
+                        <option value="2">{{myLivestock.categoryName}}</option>
+
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+
+                  </select>
+                  
+                </div>
+
+                <a>Breed :</a>
                 <div class="form-group mb-3">
                   <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
-                      <option value="" selected disabled hidden>Select Livestock</option>
-                      <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option>
-                  </select>
-                  </div>
-                <div class="form-group mb-3">
-                  <select class="form-select" required="" name="location" formControlName="breedID" style="border-width: 2px;border-color: #516951;">
-                      <option  value="" selected disabled hidden>Select Breed</option>
-                      <option  *ngFor="let br of breed" value="{{br.breedID}}" >{{br.breedName}}</option>
-                  </select>
+                    <!-- <option value="" selected disabled hidden>Select Livestock</option>
+                    <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option> -->
+
+                    <option value="" selected disabled hidden>Choose here</option>
+                      <option value="2">{{myLivestock.breedName}}</option>
+
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                      <option value="5">Five</option>
+
+                </select>
                </div>
+            
+                <a>Description :</a>
+                <div class="form-group mb-3">
+                    <div class="form-group mb-3">
+                      <textarea style="border: 2px solid black; width: 100%;border-radius: 6px;padding: .5rem" id="w3review" name="w3review"  rows="4">{{myLivestock.description}}
+                        </textarea>
+                      </div>
+                </div>
+               <!-- <a>Gender :</a>
               <div class="form-group mb-3">
-                  <div class="form-group mb-3"><select class="form-select" required="" formControlName="price" name="gender" style="border-width: 2px;border-color: #516951;">
-                    <option class="disabled selected">Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                  <div class="form-group mb-3">
+                    <select class="form-select" required="" formControlName="price" name="gender" style="border-width: 2px;border-color: #516951;">
+                          <option value="">Gender</option>
+                          <option>Male</option>
+                          <option>Female</option>
                       </select></div>
-              </div>
+              </div> -->
+              <a>Age :</a>
                 <div class="form-group mb-3">
                   <input class="form-control" type="text" autocomplete="off" required=""  formControlName="age" placeholder="Months" name="age" style="border-width: 2px;border-color: #516951;">
                 </div>
+                <a>Weight :</a>
                 <div class="form-group mb-3">
                   <input class="form-control" type="text" autocomplete="off" required="" formControlName="weight" placeholder="Weight" name="weight" style="border-width: 2px;border-color: #516951;">
                 </div>
+                <a>Price :</a>
                 <div class="form-group mb-3">
                   <input class="form-control" type="text" autocomplete="off" required="" formControlName="price" name="price" style="border-width: 2px;border-color: #516951;">
                 </div>
@@ -57,10 +145,18 @@
             </form>
         </div>
     </section>
+    <!-- <script>
+      function showPreview(event){
+        if(event.target.files.length > 0){
+          var src = URL.createObjectURL(event.target.files[0]);
+          var preview = document.getElementById("file-ip-1-preview");
+          preview.src = src;
+          preview.style.display = "block";
+        }
+      }
+      </script> -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="assets/js/Ludens---2-Create-with-Summernote-1.js"></script>
     <script src="assets/js/Ludens---2-Create-with-Summernote.js"></script>
   </body>
-  
-  

@@ -4,6 +4,8 @@ export interface Livestock {
     age?:string,
     breedID?:Number,
     categoryID?:Number,
+    categoryName?:string,
+    breedName?:string,
     color?:string,
     createdAT?:string,
     description?:string,
