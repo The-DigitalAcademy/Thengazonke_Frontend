@@ -154,24 +154,12 @@
    <app-availablelivestock (newItemEvent)="addItem($event)"></app-availablelivestock>
  </div>
  <app-contact-us></app-contact-us>
- 
-
- <!-- The button to open modal -->
-
-<!-- 
- <div class="bodysz">
-  <h1>Find livestock</h1>
-  <app-availablelivestock (newItemEvent)="addItem($event)"></app-availablelivestock>
-</div> -->
 
 
 <input type="checkbox" id="my-modal" class="modal-toggle" />
-
 <div class="modal" *ngFor="let animal of livestok">
  <div class="modal-box">
-
    <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
-   
      <div class="card-body" >
        <figure><img src="{{animal.image}}" alt="" /></figure>
        <h3 class="card-title justify-center head3">{{animal.categoryName}}</h3>
@@ -180,7 +168,6 @@
        <h3 class="weigh head3">{{animal.weight}}</h3>
        <h3 class="address head3"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
        <h3 class="price head3"><b>{{animal.price}}</b></h3>
-    
        <div class="card-actions justify-between">
        <label for="my-modal"  style="color:black;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</label>
          <button class=""  for="my-modal" (click)="closeModal()">Back</button>

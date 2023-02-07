@@ -1,5 +1,12 @@
 <div class="heading bold justify-center">
-    <h1>User List</h1>
+    <h1 *ngIf="isAllUsers" >Archieved Users</h1>
+    <h1 *ngIf="isArchievedUsers">Users List</h1>
+</div>
+
+<div class="flex justify-end">
+
+    <button class="btn" *ngIf="isAllUsers" (click)="AllUsers()">All Users</button>
+    <button class="btn" *ngIf="isArchievedUsers" (click)="achievedUsers()">Archived users</button>
 </div>
 
 <div class="container mx-auto justify-center">
@@ -27,9 +34,8 @@
           <td>{{user.status}}</td> 
           <td>{{user.usertype}}</td> 
           <td>
-            <a [routerLink]="['/admin/user',user.Userid]"><i class="fa fa-eye mx-2"></i>E</a>
-            <i class="fas fa-trash mx-2">D</i>
-            <label for="my-modal"><a (click)="deleteUsr(user.Userid)"><i class="fas fa-eye"></i>ss</a></label>
+            <a [routerLink]="['/admin/user',user.Userid]"><i class="fa fa-eye mx-2"></i></a>
+            <label for="my-modal"><a (click)="deleteUsr(user.Userid)"><i class="fa fa-trash mx-2"></i></a></label>
           </td> 
 
           

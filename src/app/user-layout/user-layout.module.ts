@@ -42,7 +42,7 @@ import { LivestockModalComponent } from '../components/create-livestock/livestoc
     CarouselComponent,
     AvailablelivestockComponent,
     MylivestockComponent,
-    LivestockModalComponent,
+    LivestockModalComponent
    
   ],
   imports: [
