@@ -13,7 +13,7 @@ export class MylivestockComponent implements OnInit {
   livestocks!:any;
   categories!:any;
   filterTerm!: string;
-  lid!:any;;
+  lid!:any;
   usid!:any;
   results!:any;
 

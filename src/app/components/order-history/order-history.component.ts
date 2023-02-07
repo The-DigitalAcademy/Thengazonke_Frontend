@@ -18,6 +18,21 @@ export class OrderHistoryComponent implements OnInit {
   users: Users[] = [];
   result!:any;
   result2!:any;
+  transact!:any;
+  transs!:any;
+
+  cancelOrder()
+  {
+    console.log('deleted') 
+    console.log(this.transact)
+    let st= {
+      status: "archieved"
+    }
+    this.transs.deleteTransaction(this.transact, st).subscribe(async (res:any) => {
+     console.log('status archived')
+    })
+
+  }
 
   constructor( private transactionService : TransactionService, private livestockService: LivestockService, private authservice: AuthService ) { 
     this.getUser();
