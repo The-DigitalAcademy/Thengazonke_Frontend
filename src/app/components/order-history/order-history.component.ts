@@ -19,18 +19,16 @@ export class OrderHistoryComponent implements OnInit {
   result!:any;
   result2!:any;
   transact!:any;
-  transs!:any;
+  toggleModalButton :any;
+  deleteID!:any;
 
   cancelOrder()
   {
-    console.log('deleted') 
-    console.log(this.transact)
-    let st= {
-      status: "archieved"
-    }
-    this.transs.deleteTransaction(this.transact, st).subscribe(async (res:any) => {
-     console.log('status archived')
-    })
+    let id = this.transaction[0].transactionID
+    console.log(this.transaction.transactionID)
+    let status = {status:"cancelled"};
+    this.transactionService.updateTransaction(id, status).subscribe(async (res) => {
+  transs!:any;
 
   }
 
@@ -67,6 +65,7 @@ export class OrderHistoryComponent implements OnInit {
       console.log(this.trans);
 
     }); 
+    console.log(this.trans)
   }
 
 
@@ -87,5 +86,44 @@ checkSelected(event:any, transID:any)
 
 }
 
+
+  getStatus(id:any){
+    this.toggleModalButton = this.result2[id].status;
+
+    console.log(id)
+
+    // this.getSpecificTransaction(id)
+    return console.log(this.toggleModalButton)
+  }
+
+  getSpecificTransaction(id:any){
+    this.transactionService.GetAllTransaction().subscribe(async(res:any) => {
+      this.result2 = await res;
+      this.transaction = this.result2.filter((res:any) => Number(res.transactionID) === Number(id));
+      console.log(this.transaction);
+    });
+  }
+
+  closeModal() {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
+  }
+
+  // DeleteTransaction()
+  // {
+  //   console.log('deleted') 
+  //   console.log(this.deleteID)
+  //   let status = "archieved"
+  //   this.transactionService.DeleteTransaction(this.deleteID, status).subscribe(async res => {
+  //     // this.decoded = jwt_decode(res.token);
+  //   })
+
+  // }
+
+
+  // deleteTrans(Transactionid:any)
+  // {
+  //   this.deleteID = Transactionid;
+  // }
 
 }
