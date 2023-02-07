@@ -29,9 +29,12 @@ export class TransactionService {
   }
 
   updateTransaction(id: any, data: any) {
-    console.log("hbeevyywq",data)
     let API_URL = environment.REST_API + '/transaction/updateTransaction/'+id;
     return this.httpClient.put(API_URL, data).pipe();
+  }
+  CreateTranstaction(transaction:any): Observable<any> {
+    let API_URL = environment.REST_API + '/transaction/createTransaction';
+    return this.httpClient.post(API_URL, transaction).pipe();
   }
 
 }

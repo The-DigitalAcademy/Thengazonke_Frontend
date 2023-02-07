@@ -28,7 +28,7 @@ export class OrderHistoryComponent implements OnInit {
     console.log(this.transaction.transactionID)
     let status = {status:"cancelled"};
     this.transactionService.updateTransaction(id, status).subscribe(async (res) => {
-    })
+  transs!:any;
 
   }
 
@@ -60,14 +60,13 @@ export class OrderHistoryComponent implements OnInit {
       console.log(this.result2)
       console.log(this.users[0].Userid)
 
-      let transTemp = this.result2.filter((res:any) => Number(res.userID) === Number(this.users[0].Userid));
+      let transTemp = this.result2.filter((res:any) => Number(res.buyerID) === Number(this.users[0].Userid));
       this.trans = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
       console.log(this.trans);
 
     }); 
     console.log(this.trans)
   }
-
 
 
 checkSelected(event:any, transID:any)
