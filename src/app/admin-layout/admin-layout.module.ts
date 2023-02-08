@@ -19,6 +19,11 @@ import { UserReviewComponent } from '../components/rate/user-review/user-review.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UsersComponent } from './dashboard/users/users.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { CategoryComponent } from './dashboard/category/category.component';
+import { RateAndReviewComponent } from './dashboard/rate-and-review/rate-and-review.component';
+import { BreedComponent } from './dashboard/breed/breed.component';
+import { TransactionComponent } from './dashboard/transaction/transaction.component';
+import { LivestocksComponent } from './dashboard/livestocks/livestocks.component';
 
 
 @NgModule({
@@ -34,7 +39,12 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     OrderHistoryModalComponent,
     AdminRateAndReviewComponent,
     UserReviewComponent,
-    UsersComponent
+    UsersComponent,
+    LivestocksComponent,
+    CategoryComponent,
+    RateAndReviewComponent,
+    BreedComponent,
+    TransactionComponent
   ],
   imports: [
     CommonModule,
