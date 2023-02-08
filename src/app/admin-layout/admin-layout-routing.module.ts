@@ -10,8 +10,7 @@ import { UserModalComponent } from '../components/user/user-modal/user-modal.com
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  // { path: 'das', component: DashboardComponent },
-  { path: '', component: ListUserComponent },
+  { path: '', component: DashboardComponent },
   { path: 'users', component: ListUserComponent },
   { path: 'user/:id', component: UserModalComponent },
   { path: 'livestock', component: LivestockComponent },
