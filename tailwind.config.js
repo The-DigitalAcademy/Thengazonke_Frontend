@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,js}",
-    "./node_modules/flowbite/**/*.js"
+   // "./node_modules/flowbite/**/*.js"
   
   ],
   theme: {
@@ -10,6 +10,6 @@ module.exports = {
   },
   plugins: [
     require("daisyui"),
-    require('flowbite/plugin')
+   // require('flowbite/plugin')
   ],
 }
