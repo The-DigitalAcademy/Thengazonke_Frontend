@@ -54,17 +54,31 @@ button{
 .label-text{
     text-align: start ;
 }
-
-.desc
-{
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    height:46px;
+.header{
+    top: 85px;
+   padding-top: 2rem;
+   text-align: center;
+   font-family: 'Athiti';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 25px;
+   line-height: 40px;
+   background: linear-gradient(177.39deg, #516951 32.7%, #FFFFFF 82.89%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-clip: text; 
+   padding-bottom: 2rem;
 }
+// .desc
+// {
+//     display: -webkit-box;
+//     -webkit-line-clamp: 3;
+//     -webkit-box-orient: vertical;
+//     max-width: 200px;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     height:46px;
+// }
 .modaL-action .btn
 {
     text-transform: capitalize;

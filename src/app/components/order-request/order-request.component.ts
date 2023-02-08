@@ -13,6 +13,7 @@ import { UserLayoutModule } from 'src/app/user-layout/user-layout.module';
 export class OrderRequestComponent implements OnInit {
 
   transaction!:any;
+  buyer!:any;
   tr!:any;
   live!:any;
   result!:any;
@@ -22,6 +23,31 @@ export class OrderRequestComponent implements OnInit {
   toggleModalButton :any;
   deleteID!:any;
  
+  // declineOrder()
+  // {
+  //   let id = this.transaction[0].transactionID
+
+  //   console.log(this.transaction[0].transactionID)
+
+  //   let status = {status:"cancelled"};
+
+  //   console.log(status)
+    
+  //   this.transactionService.updateTransaction(id, status).subscribe((res) => {})
+
+  // }
+
+  decline(id:any,dataIn:any)
+{
+
+  this.transactionService.updateTransaction(id,dataIn).subscribe((data:any) =>{
+   
+  }
+  )}
+
+data = {
+  transactionID: '',
+}
 
   constructor(private transactionService: TransactionService, private authservice: AuthService, private livestockService: LivestockService) { 
     this.getUser();
@@ -49,9 +75,7 @@ export class OrderRequestComponent implements OnInit {
     this.transactionService.getFullTransaction().subscribe((res:any) => {
 
       this.transaction = res;
-      // full trans
       console.log(this.transaction)
-    // trans id
       console.log(this.users[0].Userid)
   
       let transTemp = this.transaction.filter((res:any) => Number(res.Userid) === Number(this.users[0].Userid));
@@ -61,51 +85,9 @@ export class OrderRequestComponent implements OnInit {
     }); 
   }
 
-//   checkSelected(event:any, transID:any)
-// {
-//   // console.log(event, transID);
-
-//   this.livestockService.GetAllPostedLivestock().subscribe(async(res:any) => {
-//     this.result = await res;
-//     this.live = this.result.filter((res:any) => Number(res.livestockID) === Number(event));
-//   }); 
-
-//   this.transactionService.GetAllTransaction().subscribe(async(res:any) => {
-//     this.result2 = await res;
-//     this.transaction = this.result2.filter((res:any) => Number(res.transactionID) === Number(transID));
-//     // console.log(this.transaction);
-//   }); 
-
-// }
-  // getStatus(id:any){
-  //   this.toggleModalButton = this.result2[id].status;
-
-  //   console.log(id)
-  //   // this.getSpecificTransaction(id)
-  //   return console.log(this.toggleModalButton)
-  // }
-
-  // getSpecificTransaction(id:any){
-  //   this.transactionService.GetAllTransaction().subscribe(async(res:any) => {
-  //     this.result2 = await res;
-  //     this.transaction = this.result2.filter((res:any) => Number(res.transactionID) === Number(id));
-  //     // console.log(this.transaction);
-  //   });
-  // }
-
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
   }
 }
 
-//   getTransaction(){
-
-//     this.transactionService.getFullTransaction().subscribe(async(res:any) => {
-//       this.transaction = res;
-//       console.log(this.transaction);
-//     });
-    
-//   }
-
-// }
