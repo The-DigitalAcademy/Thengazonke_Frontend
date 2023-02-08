@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { StatsService } from "src/app/services/stats.service";
 import {
   ChartComponent,
@@ -10,8 +10,8 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
-import { UserDashboard } from "src/app/model/userDashboard";
 import { analyzeAndValidateNgModules } from "@angular/compiler";
+import { LivestockDashboard } from "src/app/model/livestockDashboard";
 
 
 export type ChartOptions = {
@@ -25,16 +25,16 @@ export type ChartOptions = {
 };
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  selector: 'app-livestocks',
+  templateUrl: './livestocks.component.html',
+  styleUrls: ['./livestocks.component.scss']
 })
-export class UsersComponent {
-   
+export class LivestocksComponent implements OnInit {
 
-  chatData : UserDashboard[] =[];
+  chatData : LivestockDashboard[] =[];
   dateData: any[] = [];
   numberData: any[] = [];
+  livestocks!:any;
 
   title:any;
   chart1:ApexChart;
@@ -45,7 +45,7 @@ export class UsersComponent {
   constructor(private statsService: StatsService) {
 
     this.title = {
-      text: "Users Registered by Month",
+      text: "Livestock Posted per Month",
       align: "left"
     };
 
@@ -57,9 +57,11 @@ export class UsersComponent {
       }
     }
 
-    this.statsService.GetRegUsersPerMon().subscribe(async(res:any) =>{
+    this.statsService.GetRegLivestockPerMon().subscribe(async(res:any) =>{
       this.chatData = res;
 
+      console.log(this.chatData);
+      
         this.chatData.forEach(element => {
           let temp = parseInt(element.count)
           let temp2 = String(element.registered_month)
@@ -78,7 +80,7 @@ export class UsersComponent {
 
     this.series1 = [
       {
-        name: "Users",
+        name: "Livestock",
         data: this.numberData,
       }
     ]
@@ -88,12 +90,13 @@ export class UsersComponent {
 
   }
 
-  users!:any;
+  
 
   ngOnInit(): void {
  
-    this.statsService.GetNumUsers().subscribe((res:any) =>{
-      this.users = res;
+    this.statsService.GetNumLivestock().subscribe((res:any) =>{
+      this.livestocks = res;
+      console.log(this.livestocks);
     });
     
   }
