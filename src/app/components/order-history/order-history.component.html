@@ -1,9 +1,9 @@
-<div class="heading bold">
-<h1>Order History</h1>
+<div class="header">
+  <h2 class="">ORDER HISTORY</h2>
 </div>
 <div class="container mx-auto justify-center">
 
-        <table class="table table-compact w-full">
+        <table class="table table-compact table-zebra w-full">
           <thead>
             <tr>
               <th class="head ">No</th> 
@@ -21,85 +21,96 @@
               <!-- The button to open modal -->
                   <!-- The button to open modal -->
                   <!-- Put this part before </body> tag -->
-                  <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal" >
-                    <div class="modal-box"> 
-                      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-                        <div class="card-body">
+ 
+      <input type="checkbox" id="my-modal" class="modal-toggle" />
+      <div class="modal" >
+        <div class="modal-box"> 
+          <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
+            <div class="card-body">
 
-                          <div *ngFor="let tr of transaction">
+              <div *ngFor="let tr of transaction">
+        
+                <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">
+                  <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                    <li class="step step-primary">Pending</li>
+                    <li class="step">In-progress</li>
+                    <li class="step">Cancelled</li>
+                    <li class="step">Completed</li>
+                  </ul>
+                </div>
+                
+                <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
+                  <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                    <li class="step">Pending</li>
+                    <li class="step step-primary">In-progress</li>
+                    <li class="step">Cancelled</li>
+                    <li class="step">Completed</li>
+                  </ul>
+                </div>
 
-                    
-                            <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">
-                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
-                                <li class="step step-primary">Pending</li>
-                                <li class="step">In-progress</li>
-                                <li class="step">Cancelled</li>
-                                <li class="step">Completed</li>
-                              </ul>
-                            </div>
-                            
+                <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">
+                  <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                    <li class="step">Pending</li>
+                    <li class="step">In-progress</li>
+                    <li class="step step-error">Cancelled</li>
+                    <li class="step">Completed</li>
+                  </ul>
+                </div>
 
-                            <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
-                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
-                                <li class="step">Pending</li>
-                                <li class="step step-primary">In-progress</li>
-                                <li class="step">Cancelled</li>
-                                <li class="step">Completed</li>
-                              </ul>
-                            </div>
+                <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
+                  <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                    <li class="step">Pending</li>
+                    <li class="step">In-progress</li>
+                    <li class="step">Cancelled</li>
+                    <li class="step step-accent">Completed</li>
+                  </ul>
+                </div>
+                <br>
+                <h4>Order: #{{tr.transactionID}}</h4>
+              </div>
 
-                            <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">
-                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
-                                <li class="step">Pending</li>
-                                <li class="step">In-progress</li>
-                                <li class="step step-error">Cancelled</li>
-                                <li class="step">Completed</li>
-                              </ul>
-                            </div>
+              <div *ngFor="let item of live"> 
 
-                            <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
-                              <ul class="steps steps-horizontal lg:steps-horizonatl" >
-                                <li class="step">Pending</li>
-                                <li class="step">In-progress</li>
-                                <li class="step">Cancelled</li>
-                                <li class="step step-accent">Completed</li>
-                              </ul>
-                            </div>
+                <h3 class="card-title justify-center">{{item.categoryName}}</h3>
+                <figure><img src="../../../assets//bg1.jpeg" alt="" /></figure>
+                <h2 class="mx-auto breed">{{item.breedName}}</h2>
+                <h3 class="months">{{item.age}} months</h3>
+                <h3 class="color">Color: {{item.color}}</h3>
+                <h3 class="weigh">Weight: {{item.weight}} kg</h3>
+                <br>
+                <h3 class="price"><b>Price: {{item.price}}</b></h3>
+                  <h3 class="address"><i class="fas fa-map-marker-alt"></i>{{item.address}}</h3>
+                    <br>
+                <div class="card-actions justify-center">
 
+            <div class="modal-action"  *ngFor="let tr of transaction">
 
-                            <br>
+              <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()"> 
+                <!-- <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">  -->
+                <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
+                <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
+              </div>
 
-                            <h4>Order: #{{tr.transactionID}}</h4>
-                          </div>
+              <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
+                <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
+                <option for="my-modal" class="btn m-2" routerLink="/rate">Rate</option>              
+              </div>
 
-                          <div *ngFor="let item of live"> 
-                            <figure><img src="../../../assets//bg1.jpeg" alt="" /></figure>
-                            <h3 class="card-title justify-center">{{item.categoryName}}</h3>
-                            <h2 class="w-3/4 mx-auto breed">{{item.breedName}}</h2>
-                            <h3 class="months">{{item.age}} months</h3>
-                            <h3 class="color">Brown and black</h3>
-                            <h3 class="weigh">Weight: {{item.weight}}kg</h3>
-                            <br>
-                            <!-- <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3> -->
-                            <h3 class="price"><b>Price: {{item.price}}</b></h3>
-                            <!-- <h3 class="price"><b>Price: {{item.price|currency:'ZAR':'symbol-narrow'}}</b></h3> -->
-                            <br>
-                            <div class="card-actions justify-center">
-                              <button class="btn btn-sm btn-ghost btn1"  for="my-modal" routerLink="/order-history">Back</button>
-                              <div *ngFor="let trs of transaction">
-                                <button class=" btn btn-sm btn-ghost btn2" [routerLink]="['/rate/',trs.transactionID,trs.livestockID]" routerLinkActive="router-link-active"  *ngIf="(trs.status).toUpperCase() === 'complete'.toUpperCase()">Rate</button>
-                              </div>
-                            </div>
-                          </div>
+              <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
+                <option for="my-modal" class="btn" (click) = closeModal()>Back</option>
+                <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
+              </div>
 
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-            </tr>
-          </tbody> 
-        </table>
+              <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">
+                <option for="my-modal" class="btn" (click) = closeModal() >Back</option>
+              </div>
+
+            </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-
+  </table>
+</div>

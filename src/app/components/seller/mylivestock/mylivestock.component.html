@@ -2,11 +2,36 @@
   <h1>My livestock</h1>
   <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock>
 </div>
+<div class="row">
+    <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
+      <div class="card card-compact shadow-sm" style="margin: 1rem;">
+        <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+        <div class="card-body">
+          <div class="headingss">
+            <h3 class="card-title">{{animal.categoryName}}</h3>
+            <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
+          </div>
+            <h2 class="breed" style="margin-left: -5px; color: #11998e;
+            color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
+            >{{animal.breedName}}</h2>
+            <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
+            <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+            <p><span> Age:</span> {{animal.age}}</p>
+            <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+            <div style="margin-bottom: 0rem;" class="card-actions justify-between">
+
+              <div>
+                <h5 style="font-size: 1rem; color: #11998e;
+                color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>  
+              </div>
+             
+              <div>
+                <a [routerLink]="['/edit-livestock',animal.livestockID]" routerLinkActive="router-link-active" ><i class="fa fa-pencil-alt mx-2" aria-hidden="true"></i></a>
+                <label for="my-modal"><i class="fa fa-trash" aria-hidden="true"></i></label>
+                <!-- The button to open modal -->
+                  <!-- <label for="my-modal" class="btn">open modal</label> -->
 
 
-<!--
-  MODAL TO DELETE
--->
 <input type="checkbox" id="my-modal" class="modal-toggle" />
 <div class="modal" *ngFor="let animal of livestok">
     <div class="modal-box" style="background-color: red;padding: 0;">
@@ -33,4 +58,5 @@
         </div>
     </div>
 </div>
+
 
