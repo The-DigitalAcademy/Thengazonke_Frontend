@@ -1,7 +1,12 @@
  <div class="header top-0 w-full flex justify-between p-2 lg:px-11" style="color: #516951">
 
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl ">
-    <a><img src="../../../assets/logo.png"></a>
+    <a [routerLink]="['/']"><img src="../../../assets/logo.png"></a>
+  </div>
+
+  <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl " *ngFor="let user of users">
+    <a [routerLink]="['/homes']" *ngIf="user.usertype == 'Seller'"><img src="../../../assets/logo.png"></a>
+    <a [routerLink]="['/home']" *ngIf="user.usertype == 'Buyer'"><img src="../../../assets/logo.png"></a>
   </div>
 
   <div class="desktop-nav hidden lg:flex text-sm">
@@ -67,8 +72,8 @@
 
         <ul  tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
           <li class="">
-              <a >Home</a>
-          </li> 
+              <a href="#" routerLink="/">Home</a>
+          </li> -->
           <li class="" *ngIf="!logEmail">
             <a [routerLink]="['/auth/login']">Login</a>
           </li>
@@ -81,7 +86,7 @@
 
           <li class="">
             <a href="#" routerLink="/">Home</a>
-          </li>
+        </li>
           <!-- <li class="" *ngIf="user.usertype!='Buyer'">
             <a href="#" routerLink="/rate">Rate</a>
           </li > -->

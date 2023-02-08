@@ -21,29 +21,32 @@ export class OrderRequestComponent implements OnInit {
   result2!:any;
   transact!:any;
   toggleModalButton :any;
-  deleteID!:any;
- 
-  // declineOrder()
-  // {
-  //   let id = this.transaction[0].transactionID
+  
+  isButtonVisible = true;
 
-  //   console.log(this.transaction[0].transactionID)
+  declineOrder(transactionID:any)
+  {
+    let status = {status: "cancelled"};
 
-  //   let status = {status:"cancelled"};
+   console.log(status)
 
-  //   console.log(status)
-    
-  //   this.transactionService.updateTransaction(id, status).subscribe((res) => {})
+    this.transactionService.updateTransaction(transactionID,status).subscribe((data:any) =>{
+      
 
-  // }
-
-  decline(id:any,dataIn:any)
-{
-
-  this.transactionService.updateTransaction(id,dataIn).subscribe((data:any) =>{
-   
+    })
   }
-  )}
+
+//   declineOrder()
+// {
+//   let id = this.transaction[0].transactionID
+
+//     console.log(this.transaction[0].transactionID)
+
+//     let status = {status: "cancelled"};
+//     console.log(status)
+   
+//   this.transactionService.updateTransaction(id,status).subscribe((data:any) =>{})
+// }
 
 data = {
   transactionID: '',

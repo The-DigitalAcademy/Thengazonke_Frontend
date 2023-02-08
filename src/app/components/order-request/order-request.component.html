@@ -18,7 +18,7 @@
         <br>
         <div class="card-actions justify-center">
           <button class="btn btn-sm btn-ghost btn1" >Approve</button>
-          <button class=" btn btn-sm btn-ghost btn2" (click)="decline(t.transactionID,t.userid)">Decline</button>
+          <button class=" btn btn-sm btn-ghost btn2" (click)="declineOrder(t.transactionID)" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">Decline</button>
         </div>
 
       </div>
