@@ -1,92 +1,28 @@
 <div class="header">
-    <h1>
-        ORDER REQUEST
-    </h1>
-    </div>
+  <h2 class="">ORDER REQUEST</h2>
+</div>
  
- <div class="flex flex-wrap w-fit mx-auto justify-center gap-4 ">
+  <div class="flex flex-wrap w-fit mx-auto justify-center gap-4 ">
 
-    <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content"  *ngFor="let tr of transaction" >
+    <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content"  *ngFor="let t of tr" >
       <div class="card-body">
-        <h3 class="card-title justify-center">{{tr.categoryName}}</h3>
+        <h3 class="card-title justify-center">{{t.categoryName}}</h3>
         <button class="btn btn-ghost btnn" routerLink="/profile">Profile</button>
 
-        <figure><img src="{{tr.image}}" alt="" /></figure>
-
-        <p class="w-3/4 mx-auto desc">{{tr.breedName}}. Age: {{tr.age}} Months</p>
-        <h6 class="weigh">Weight: {{tr.weight}} </h6>
-        <h6 class="price"><b>Price: {{tr.price}}</b></h6>
+        <figure><img src="{{t.image}}" alt="" /></figure>
+        <p class="w-3/4 mx-auto breed">{{t.breedName}}</p>
+          <h6 class="age" >Age: {{t.age}} Months</h6>
+        <h6 class="weigh">Weight: {{t.weight}} kg </h6>
+        <h6 class=" desc">Description: {{t.description}}</h6>
+        <h6 class="price"><b>Price: {{t.price}}</b></h6>
         <br>
         <div class="card-actions justify-center">
           <button class="btn btn-sm btn-ghost btn1" >Approve</button>
-          <button class=" btn btn-sm btn-ghost btn2" >Decline</button>
+          <button class=" btn btn-sm btn-ghost btn2" (click)="decline(t.transactionID,t.userid)">Decline</button>
         </div>
 
       </div>
-      
-    </div>
-
-    <!-- <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-        <div class="card-body">
-          <h3 class="card-title justify-center">COW</h3>
-
-            <button class="btn btn-ghost btnn">Profile</button>
-          <figure><img src="../../../assets/bg.jpg" alt="" /></figure>
-
-          <p class="w-3/4 mx-auto desc">Kalahari Cow Get it for Each 6 to 13 Months</p>
-          <h3 class="weigh">Weight 40kg to 75kg </h3>
-          <h3 class=""><b>Price: R8000</b></h3>
-          <br>
-          <div class="card-actions justify-center">
-            <button class="btn btn-sm btn-ghost btn1" >Approve</button>
-            <button class="btn btn-sm btn-ghost btn2" >Decline</button>
-          </div>
-  
-        </div>
         
-      </div>
-
-      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-        <div class="card-body">
-          <h3 class="card-title justify-center">CHICKEN</h3>
-          <button class="btn btn-ghost btnn">Profile</button>
-          <figure><img src="../../../assets/cows-g4651f9a5c_1920.jpg" alt="Shoes" /></figure>
-          <p class="w-3/4 mx-auto desc">Kalahari Chicken Get it for Each 6 to 13 Months</p>
-          <h3 class="weigh">Weight 40kg to 75kg </h3>
-          <h3 class=""><b>Price: R80</b></h3>
-          <br>
-          <div class="card-actions justify-center">
-            <button class="btn btn-sm btn-ghost btn1" >Approve</button>
-            <button class=" btn btn-sm btn-ghost btn2" >Decline</button>
-          </div>
-  
-        </div>
-        
-      </div>
-      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
-        <div class="card-body">
-          <h3 class="card-title justify-center">CHICKEN</h3>
-          <button class="btn btn-ghost btnn">Profile</button>
-          <figure><img src="../../../assets/cows-g4651f9a5c_1920.jpg" alt="" /></figure>
-          <p class="w-3/4 mx-auto desc">Kalahari chicken Get it for Each 6 to 13 Months</p>
-          <h3 class="weigh">Weight 40kg to 75kg </h3>
-          <h3 class=""><b>Price: R80</b></h3>
-          <br>
-          <div class="card-actions justify-center">
-            <button class="btn btn-sm btn-ghost btn1" >Approve</button>
-            <button class=" btn btn-sm btn-ghost btn2" >Decline</button>
-          </div>
-  
-        </div>
-        
-      </div> -->
+      </div> 
 
  </div>
- 
-
-
-
-
-
-
-
