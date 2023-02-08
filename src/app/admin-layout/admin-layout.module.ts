@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminOrderHistoryComponent } from '../components/order-history/admin-order-history/admin-order-history.component';
 import { OrderHistoryModalComponent } from '../components/order-history/order-history-modal/order-history-modal.component';
+import { AdminRateAndReviewComponent } from '../components/rate/admin-rate-and-review/admin-rate-and-review.component';
+import { UserReviewComponent } from '../components/rate/user-review/user-review.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { OrderHistoryModalComponent } from '../components/order-history/order-hi
     ListUserComponent,
     LivestockComponent,
     AdminOrderHistoryComponent,
-    OrderHistoryModalComponent
+    OrderHistoryModalComponent,
+    AdminRateAndReviewComponent,
+    UserReviewComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +39,8 @@ import { OrderHistoryModalComponent } from '../components/order-history/order-hi
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class AdminLayoutModule { }
