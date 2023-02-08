@@ -7,6 +7,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 import { Observable, of } from 'rxjs/';
 import { Livestock } from 'src/app/model/livestock';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-livestock-modal',
@@ -24,7 +25,7 @@ export class LivestockModalComponent implements OnInit {
   image_link!:any;
   sub!:any;
   lid!:any;
-  livestock!:any;
+  livestock: Livestock[] = [];
   selectedValue:any = null
   dtbaseImage:boolean=true;
   uplImage:boolean=false;
@@ -82,6 +83,7 @@ export class LivestockModalComponent implements OnInit {
     price: new FormControl(''),
     age: new FormControl(''),
     // status: new FormControl(''),
+    description: new FormControl(''),
     weight: new FormControl(''),
     categoryID: new FormControl(''),
     breedID: new FormControl('')
@@ -101,7 +103,7 @@ export class LivestockModalComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute) { }
+    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
 
@@ -133,6 +135,7 @@ export class LivestockModalComponent implements OnInit {
           price: this.livestock[0].price,
           age: this.livestock[0].age,
           // status: new FormControl(''),
+          description: this.livestock[0].description,
           weight: this.livestock[0].weight,
           categoryID: this.livestock[0].categoryID,
           breedID: this.livestock[0].breedID
@@ -171,50 +174,69 @@ export class LivestockModalComponent implements OnInit {
 
   }
 
-  addLivestock()
+  upload()
   {
+    // this.convertImage()
 
-    // ---------------------picture--------------
+    let id = this.myLivestock.livestockID;
 
-    const formData = new FormData();    
-    formData.append("file",this.file)    
-    formData.append("upload_preset","nq04upkl"); 
+    let livestockDetails = {
+      UserID: 9, 
+      image: this.image_link, 
+      price: this.AddLivestockForm.value.price, 
+      age: this.AddLivestockForm.value.age,
+      status: 'Available',
+      weight: this.AddLivestockForm.value.weight,
+      categoryID: this.AddLivestockForm.value.categoryID,
+      breedID: this.AddLivestockForm.value.breedID,
+      description: this.AddLivestockForm.value.description,
+      color:'color',
+      quantity:23,
+      address:'Pretoria soshanguve',
+      gender: 'male',
+    }
 
-    this.http.post(this.cloudinaryUrl,formData).subscribe((res:any)=>{     
-      this.image_link = res.url;
-      this.image.link = this.image_link;
-
-      console.log(this.image.link)
-
-      let livestockDetails = {
-        UserID: 8, 
-        image: this.image.link, 
-        price: this.AddLivestockForm.value.price, 
-        age: this.AddLivestockForm.value.age,
-        status: 'Available',
-        weight: this.AddLivestockForm.value.weight,
-        categoryID: this.AddLivestockForm.value.categoryID,
-        breedID: this.AddLivestockForm.value.breedID
-      }
+    console.log('Edit livestock',livestockDetails)
   
-        this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
-          console.log('Add successfully!');
+        this.livestockService.updateLivestock(id,livestockDetails).subscribe((next:any) => {
+          console.log('Edited succefully');
           // this.openSuccess();
-          // this.router.navigate(['/login']);
+          
     
           // sessionStorage.setItem('token', JSON.stringify(userDetails)); 
     
           this.submitted = false;
         }, (err) => {
-          // this.toast.warning({detail:'Warning',summary:'Fillup the form or Email already exist', sticky:false,position:'tr', duration:6000})
           console.log(err);
       });
+      this.router.navigate(['/homes']);
+  } 
   
 
-  
-    }) 
+  editLivestock(){
 
-  }  
+    const formData = new FormData();
+    if(this.preview){
+      formData.append("file",this.preview)    
+      formData.append("upload_preset","nq04upkl"); 
+  
+      this.http.post(this.cloudinaryUrl,formData).subscribe((res:any)=>{     
+        this.image_link = res.url;
+        this.image.link = this.image_link;
+        console.log('I am  dot',this.image.link)
+        console.log('I am  underscore',this.image_link)
+
+        this.upload();
+      })  
+
+    }
+
+    else{
+      this.image_link = this.myLivestock.image
+      this.upload()
+
+    }
+  }
 
   image = {
     link : '' 

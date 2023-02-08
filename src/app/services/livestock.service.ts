@@ -33,8 +33,9 @@ export class LivestockService {
     return this.httpClient.post(API_URL, livestockDetails).pipe();
   }
 
-  updateLivestock(): Observable<any> {
-    return this.httpClient.get(environment.REST_API + '/livestock/updateLivestock').pipe();
+  updateLivestock(id:any, data:any): Observable<any> {
+    let API_URL = environment.REST_API + '/livestock/updateLivestock/'+ id;
+    return this.httpClient.put(API_URL, data).pipe();
   }
 
   deleteLivestockl(id:any, status:any): Observable<any> {

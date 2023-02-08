@@ -39,8 +39,8 @@
             <div style="margin-bottom: 1rem;">
 
             
-              <div *ngIf="dtbaseImage">
-                <img src="{{myLivestock.image}}" class="preview">
+              <div style="height: 15em;" *ngIf="dtbaseImage">
+                <img style="width: 100%;max-height: 100%;object-fit: cover;" src="{{myLivestock.image}}" class="preview">
               </div>
               <div *ngIf="uplImage">
                 <img [src]="preview" class="preview">
@@ -97,7 +97,7 @@
                 <a>Description :</a>
                 <div class="form-group mb-3">
                     <div class="form-group mb-3">
-                      <textarea style="border: 2px solid black; width: 100%;border-radius: 6px;padding: .5rem" id="w3review" name="w3review"  rows="4">{{myLivestock.description}}
+                      <textarea style="border: 2px solid black; width: 100%;border-radius: 6px;padding: .5rem" class="form-control" type="text" autocomplete="off" required=""  formControlName="description"  rows="4">{{myLivestock.description}}
                         </textarea>
                       </div>
                 </div>
@@ -123,7 +123,7 @@
                   <input class="form-control" type="text" autocomplete="off" required="" formControlName="price" name="price" style="border-width: 2px;border-color: #516951;">
                 </div>
                 
-                <div class="color form-group mb-3"><label class="form-label" style="margin-top: 15px;height: 25px;">Livestock Image</label>
+                <!-- <div class="color form-group mb-3"><label class="form-label" style="margin-top: 15px;height: 25px;">Livestock Image</label>
                     <section>
                         <div class="container-fluid">
                             <div class="row">
@@ -136,11 +136,11 @@
                             </div>
                         </div>
                     </section>
-                </div>
+                </div> -->
                 <hr style="margin-top: 30px;margin-bottom: 10px;">
                 <div class="form-group mb-3">
-                  <button class="btn btn-primary d-block w-100" id="submitButton" [disabled]="update_dp.invalid" (click)="addLivestock()" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button>
-                  <a class="btn btn-danger d-block w-100" role="button" style="margin-top: 15px;">&nbsp;Cancel</a>
+                  <button class="btn btn-primary d-block w-100" id="submitButton" [disabled]="update_dp.invalid" (click)="editLivestock()" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button>
+                  <a [routerLink]="['/homes']" routerLinkActive="router-link-active"  class="btn btn-danger d-block w-100" role="button" style="margin-top: 15px;">&nbsp;Cancel</a>
                 </div>
             </form>
         </div>
