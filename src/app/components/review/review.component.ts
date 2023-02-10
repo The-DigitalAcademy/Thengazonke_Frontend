@@ -58,8 +58,6 @@ export class ReviewComponent implements OnInit {
 
      this.rate = data.filter((res:any)=> Number(res.userRateID) === Number(this.users[0].Userid))
 
-
-
      console.log(this.rate)
      
      let totRatings = this.rate.length;

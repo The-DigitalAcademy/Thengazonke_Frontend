@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-login-sel',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginSelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toast: HotToastService) { }
 
   ngOnInit(): void {
+
+    this.toast.show('Hello World!');
   }
 
 }

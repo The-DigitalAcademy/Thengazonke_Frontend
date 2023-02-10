@@ -9,6 +9,7 @@ import { LoginSelComponent } from './login-sel/login-sel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HotToastModule } from '@ngneat/hot-toast';
 // 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    // NgToastModule
+   HotToastModule.forRoot()
   ]
 })
 export class AuthModule { }
