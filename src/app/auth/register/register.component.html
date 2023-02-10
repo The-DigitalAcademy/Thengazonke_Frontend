@@ -1,5 +1,8 @@
 <div class="main">
     <div class="form flex justify-center ractangel">
+
+      <div class="w-96 pt-80 mt-36 pb-64 h-96 sm:w-10 md:w-5 sm:p-64 md:p-72 sm:mt-11 md:mt-11 sm:h-80 md:h-80 bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl sm:rounded-3xl md:rounded-3xl drop-shadow-lg">
+
         <form [formGroup] = "AddUserForm" novalidate>
             <div class="form-text">
               <div class="header flex justify-center">
@@ -42,7 +45,7 @@
                   <div>
                     <label class="label cursor-pointer">
                       <p class="label-text text-white mx-2">Buyer</p> 
-                      <input type="radio" name="radio" value="Buyer" formControlName="usertype"/>
+                      <input type="radio" name="radio" value="Buyer"  class="radio-btn" formControlName="usertype"/>
                     </label>
                   </div>
                   <div>
@@ -114,10 +117,6 @@
                 </div>
                 <div class="error-text">{{passwordErr}}</div>
               </div>
-
-
-              
-            
               <div  class="flex justify-center py-5">
                 <button (click)="AddUser()" class="btn border-transparent text-white">Submit</button>
              </div>
@@ -126,6 +125,9 @@
                <p class="text-center">Already have an account? <br><a class="login-btn" [routerLink]="['/auth/login']">Login</a></p>
              </div>
             </div>
+            
+          
         </form> 
+      </div>
     </div>
 </div>
