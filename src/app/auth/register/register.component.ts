@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RegisterComponent implements OnInit {
 
   tempStatus:any;
+  selected: any = 'Buyer';
 
   AddUserForm: FormGroup = new FormGroup({
     fullname: new FormControl(''),
@@ -115,6 +116,11 @@ AddUser()
       this.passwordErr = "Password does not match";
     }
  
+}
+
+checkSelected(event:any){
+  this.selected = event.target.value;
+  console.log(this.selected);
 }
 
 
