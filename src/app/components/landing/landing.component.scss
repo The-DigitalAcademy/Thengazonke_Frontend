@@ -288,12 +288,13 @@ p{
     position: relative;
     flex: 0 0 100%;
     width: 100%;
-    // background-color: orange;
+    background-color: orange;
+    background-image: url(../../../assets/images/seller.jpeg);
     counter-increment: item;
   }
   
   .carousel__slide:nth-child(even) {
-    // background-color: #99f;
+    background-color: #99f;
   }
   
   .carousel__slide:before {
@@ -378,7 +379,7 @@ p{
     top: 0;
     margin-top: 37.5%;
     width: 1rem;
-    height: rem;
+    height: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
     font-size: 0;

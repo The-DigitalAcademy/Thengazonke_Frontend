@@ -15,6 +15,14 @@ export class CreateLivestockComponent implements OnInit {
   category!:any;
   breed!:any;
   image_link!:any;
+  submitted = false;
+
+  preset :string = "nq04upkl";
+  cloudinaryUrl: string = 'https://api.cloudinary.com/v1_1/dbgjhr9ir/image/upload';
+  file: any;
+  isUpdating: boolean = false;
+  userId:string = String(sessionStorage.getItem('loggedID'));
+  
 
 
   AddLivestockForm: FormGroup = new FormGroup({
@@ -32,18 +40,14 @@ export class CreateLivestockComponent implements OnInit {
     breedID: new FormControl('')
   });
 
-  submitted = false;
-
-  preset :string = "nq04upkl";
+  
 
   update_dp = new FormGroup({
     file:new FormControl(),
     upload_preset: new FormControl()}
   );
 
-  cloudinaryUrl: string = 'https://api.cloudinary.com/v1_1/dbgjhr9ir/image/upload';
-  file: any;
-  isUpdating: boolean = false;
+
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
     public fb: FormBuilder, private http:HttpClient) { }
@@ -64,7 +68,7 @@ export class CreateLivestockComponent implements OnInit {
       let result = res;
 
       this.breed = result.filter((resss:any) => String(resss.categoryID) === String(event.target.value));
-      console.log(this.breed);
+      console.log('i am breed',this.breed);
     });
 
   }
@@ -98,7 +102,7 @@ export class CreateLivestockComponent implements OnInit {
       console.log(this.image.link)
 
       let livestockDetails = {
-        UserID: 8, 
+        UserID: this.userId, 
         image: this.image.link, 
         price: this.AddLivestockForm.value.price, 
         age: this.AddLivestockForm.value.age,

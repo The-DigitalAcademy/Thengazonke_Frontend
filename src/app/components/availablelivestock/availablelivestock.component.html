@@ -1,5 +1,5 @@
-<div class="serchB" style="width: 100%;">
-  <div class="form-group searchInput">
+<div class="serchB" >
+  <div class="form-group searchInput" style="width: 50%;">
 
       <div class="relative">
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none svg">
@@ -31,7 +31,16 @@
     </select>
     
   </div> -->
-
+  <div class="tbs" style="width: 50%;">
+    <ul class="flex flex-wrap">
+      <li  class="mr-2">
+          <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
+      </li>
+     <li class="mr-2" *ngFor="let category of categories">
+          <a (click)="onCategoryChange2(category.categoryName)" class="btn1">{{category.categoryName}}</a>
+    </li>
+  </ul>
+  </div>
 
 </div>
 
@@ -39,7 +48,7 @@
 
 <div class="tbs">
   <ul class="flex flex-wrap">
-    <li class="mr-2">
+    <li  class="mr-2">
         <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
     </li>
    <li class="mr-2" *ngFor="let category of categories">
@@ -136,8 +145,8 @@
 
     <div *ngSwitchCase="'/homes'">  
       <div class="row">
-        <div class="column" *ngFor="let animal of trans | filter: filterTerm | filter: filterSearch;let x = index">
-          <div class="card card-compact shadow-sm" style="margin: 1rem;">
+        <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of trans | filter: filterTerm | filter: filterSearch;let x = index">
+          <div class="card card-compact shadow-sm" style="margin: 1rem; height: 100%;">
             <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
             <div class="card-body">
               <div class="headingss">
