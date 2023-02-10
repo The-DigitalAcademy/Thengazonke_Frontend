@@ -3,12 +3,6 @@
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl ">
     <a [routerLink]="['/']"><img src="../../../assets/logo.png"></a>
   </div>
-
-  <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl " *ngFor="let user of users">
-    <a [routerLink]="['/homes']" *ngIf="user.usertype == 'Seller'"><img src="../../../assets/logo.png"></a>
-    <a [routerLink]="['/home']" *ngIf="user.usertype == 'Buyer'"><img src="../../../assets/logo.png"></a>
-  </div>
-
   <div class="desktop-nav hidden lg:flex text-sm">
 
       <ul  class="menu menu-horizontal">
