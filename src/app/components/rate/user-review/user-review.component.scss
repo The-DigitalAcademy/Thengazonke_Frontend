@@ -9,3 +9,10 @@
     font-size: 25px;
     font-weight: bold;
 }
+
+.ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: var(--main-green);
+    color: #fefefe;
+    cursor: default;
+}

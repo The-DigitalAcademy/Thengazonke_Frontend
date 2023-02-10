@@ -65,10 +65,7 @@ export class LoginComponent implements OnInit {
 
           await this.authServive.GetAllUsers().subscribe((ans:any) => {
             let result = ans;
-            console.log(result)
-            console.log(this.decoded.email)
             this.users = result.filter((ress:any) => String(ress.email) === String(this.decoded.email))
-            console.log(this.users);
 
             if(this.users[0].usertype === 'Admin')
             {
@@ -82,14 +79,9 @@ export class LoginComponent implements OnInit {
             {
               this.router.navigate(['/home']);
             }
-          
-
+            sessionStorage.setItem('loggedID', this.users[0].Userid);
           });
-          
-          
-
-
-          sessionStorage.setItem('loggedInToken', res.token);
+          // sessionStorage.setItem('loggedInToken', res.token);
           sessionStorage.setItem('loggedEmail', this.decoded.email);
 
           this.submitted = false;
