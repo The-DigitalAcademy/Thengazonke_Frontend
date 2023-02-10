@@ -132,6 +132,6 @@ export class ReviewComponent implements OnInit {
   }
 
   getInitial(){
-    
+
   }
 }
