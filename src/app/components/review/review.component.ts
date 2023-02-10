@@ -21,6 +21,11 @@ export class ReviewComponent implements OnInit {
   ratePg4:any;
   ratePg5:any;
   average:any;
+  sum1:number = 0
+  sum2:number = 0
+  sum3:number = 0
+  sum4:number = 0
+  sum5:number = 0
   
   constructor(private rateServ : RateService, private authservice : AuthService) { 
     this.getUser()
@@ -53,13 +58,11 @@ export class ReviewComponent implements OnInit {
 
      this.rate = data.filter((res:any)=> Number(res.userRateID) === Number(this.users[0].Userid))
 
-
-
      console.log(this.rate)
      
      let totRatings = this.rate.length;
 
-  
+    
 
      let result = this.rate;
     
@@ -68,9 +71,7 @@ export class ReviewComponent implements OnInit {
       ratings2 = result.filter((resss:any) => resss.rate === 2);
       ratings3 = result.filter((resss:any) => resss.rate === 3);
       ratings4 = result.filter((resss:any) => resss.rate === 4);
-      ratings5 = result.filter((resss:any) => String(resss.rate) === String(5));
-
-      
+      ratings5 = result.filter((resss:any) => Number(resss.rate) === Number(5));
 
       this.ratePg1 = ((ratings1.length / Number(totRatings)) * 100) + '%';
       this.ratePg2 = ((ratings2.length / Number(totRatings)) * 100) + '%';
@@ -78,12 +79,57 @@ export class ReviewComponent implements OnInit {
       this.ratePg4 = ((ratings4.length / Number(totRatings)) * 100) + '%';
       this.ratePg5 = ((ratings5.length / Number(totRatings)) * 100) + '%';
 
-      this.average = (totRatings * totRatings )/5
+      
+  
+      for (let index = 0; index < ratings1.length; index++) {
+       if(ratings1[index].rate === 1){
+        this.sum1 = this.sum1 + Number(ratings1[index].rate);
+       }
+      }
+      console.log(this.sum1)
 
-      console.log("average",this.average)
-     
+       
+      for (let index = 0; index < ratings2.length; index++) {
+        if(ratings2[index].rate === 2){
+          this.sum2 = this.sum2 + Number(ratings2[index].rate);
+         }
+      }
+      console.log(this.sum2)
+
+      for (let index = 0; index < ratings3.length; index++) {
+         if(ratings3[index].rate === 3){
+          this.sum3 = this.sum3 + Number(ratings3[index].rate);
+         }
+      }
+
+      console.log(this.sum3)
+
+      for (let index = 0; index < ratings4.length; index++) {
+        if(ratings4[index].rate === 4){
+          this.sum4 = this.sum4 + Number(ratings4[index].rate);
+         }
+      }
+      console.log(this.sum4)
+
+      for (let index = 0; index < ratings5.length; index++) {
+        if(ratings5[index].rate === 5){
+          this.sum5 = this.sum5 + Number(ratings5[index].rate);
+         }
+      }
+      console.log(this.sum5)
+      // for (let index = 0; index < this.rate.length; index++) {
+      //   let rates = this.rate[0].rate
+      //    sum =+ Number(this.rate[index]);
+      //   console.log(sum)
+      // }  
+
+      let totsum= this.sum1+ this.sum2+this.sum3+this.sum4+this.sum5
+      this.average = totsum/5;
+      console.log(this.average)
     })
   }
-  
 
+  getInitial(){
+
+  }
 }
