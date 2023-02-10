@@ -96,7 +96,7 @@ input:focus {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card-body{
-    padding:.5rem 1rem;
+    // padding:.5rem 1rem;
 }
 .card-title{
     font-weight: 200;
@@ -105,7 +105,7 @@ input:focus {
     margin: 0rem;
 }
 .card-actions{
-    // justify-content: right;
+    justify-content: center;
     position: relative;
     margin-bottom: 1rem;
 }
@@ -136,8 +136,8 @@ span{
     padding: 0rem;
 }
 button{
-    float: right;
-    position:absolute;right:0
+    // float: right;
+    // position:absolute;right:0
 }
 .btn3{
     
@@ -232,7 +232,28 @@ img{
 figure{
     height: 200px;
 }
-
+.warning{
+ padding: 1rem;
+    height: 5rem;
+    background-color: rgb(165, 108, 108);
+}
+.btnDelete{
+    background-color: red;
+   
+    color:white;
+}
+.btnDelete:hover {
+    background-color: rgb(179, 59, 59);
+    color: white;
+	//background-image: url(../../../../assets/headr.jpeg);
+    // background-color: #fff; background-repeat: repeat-y; background-size: 100% 88px; background-position: 0% 0%; background-image: repeating-linear-gradient(-25deg, grey, #fff 20px, grey 20px, grey 20px, #fff 20px, #fff 30px, #fff 30px, var(--main-green) 50px); animation: barberpole 4s linear infinite; 
+}
+.btnCancel{
+    background-color: rgb(141, 176, 141);
+}
+.btnCancel:hover{
+     background-color: rgb(210, 210, 210);
+}
 
 
 //////////////////////////

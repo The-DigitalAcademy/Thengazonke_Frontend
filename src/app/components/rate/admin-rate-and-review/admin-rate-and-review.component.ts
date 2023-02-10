@@ -32,4 +32,8 @@ export class AdminRateAndReviewComponent implements OnInit {
     });
   }
 
+  getShortName(fullName:any) { 
+    return fullName.slice(0,1);
+  }
+
 }

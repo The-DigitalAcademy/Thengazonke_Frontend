@@ -6,7 +6,7 @@
                 <h1 class="content-center">REGISTER</h1>
               </div>
 
-              <div class="form-control account-type">
+              <!-- <div class="form-control account-type">
                 <div class="flex justify-around ...">
                   <div>
                     <label class="label cursor-pointer">
@@ -14,13 +14,46 @@
                     </label>
                   </div>
                   <div>
-                    <label class="label cursor-pointer">
+                    <label class="label">
+                      <div class="flex justify-between">
+                        <input type="radio" value="Buyer" formControlName="usertype">
+                        <p class="">Buyer </p>
+                      </div>
+                      
+                      <div class="flex justify-between">
+                        <input type="radio" value="Buyer" formControlName="usertype">
+                        <p class="px-2">Seller </p>
+                      </div>
                       <input type="radio" value="Buyer" formControlName="usertype" class="radio checked:bg-white bg-white"  checked /><a class="px-2">Buyer </a>
                       <input type="radio" value="Seller" formControlName="usertype"  class="radio checked:bg-white bg-white" /><a class="px-2">Seller</a>
                     </label>
                   </div>
                 </div>
     
+              </div> -->
+
+              <div class="form-control">
+                <div class="flex justify-between" (change)="checkSelected($event)">
+                  <div>
+                    <label class="label cursor-pointer">
+                      <p class="label-text text-white">Account type</p> 
+                    </label>
+                  </div>
+                  <div>
+                    <label class="label cursor-pointer">
+                      <p class="label-text text-white mx-2">Buyer</p> 
+                      <input type="radio" name="radio" value="Buyer" formControlName="usertype"/>
+                    </label>
+                  </div>
+                  <div>
+                    <label class="label cursor-pointer">
+                      <p class="label-text text-white mx-2">Seller</p> 
+                      <input type="radio" name="radio" value="Seller" formControlName="usertype"/>
+                    </label>
+                  </div>
+                  
+                </div>
+      
               </div>
 
               <div class="form-control py-2">
@@ -81,6 +114,9 @@
                 </div>
                 <div class="error-text">{{passwordErr}}</div>
               </div>
+
+
+              
             
               <div  class="flex justify-center py-5">
                 <button (click)="AddUser()" class="btn border-transparent text-white">Submit</button>

@@ -22,4 +22,9 @@ export class LivestockComponent implements OnInit {
 
   }
 
+  getPriceCurrency(price:any) { 
+    return price.slice(1,price.length);
+  }
+
+
 }

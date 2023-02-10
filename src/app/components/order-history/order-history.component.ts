@@ -27,6 +27,7 @@ export class OrderHistoryComponent implements OnInit {
     let id = this.transaction[0].transactionID
     console.log(this.transaction.transactionID)
     let status = {status:"cancelled"};
+
     this.transactionService.updateTransaction(id, status).subscribe(async (res) => {
     })
 

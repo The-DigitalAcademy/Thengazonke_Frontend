@@ -7,8 +7,9 @@
           <div class="md:flex md:flex-row" [routerLink]="['/admin/user-rate-review/', item.userRateID]" >
             <div class="flex justify-center items-center mb-6 lg:mb-0 mx-auto md:mx-0" >
 
-              <div class="w-16 rounded-full">
-                <i class="fa fa-user" aria-hidden="true"></i>
+              <div class="w-14 h-14 rounded-full">
+                <span>{{getShortName(item.fullname)}}</span>
+                <!-- <i class="fa fa-user" aria-hidden="true"></i> -->
               </div>
             </div>
             <div class="md:ml-6">

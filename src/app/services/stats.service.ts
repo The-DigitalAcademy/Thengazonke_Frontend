@@ -21,5 +21,12 @@ export class StatsService {
     return this.httpClient.get(environment.REST_API + '/statistics/getRegisteredUserspermonth').pipe();
   }
 
+  GetNumLivestock(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/statistics/getNumberofLivestockPosted').pipe();
+  }
+
+  GetRegLivestockPerMon(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/statistics/getregisteredLivestockperMonth').pipe();
+  }
 
 }
