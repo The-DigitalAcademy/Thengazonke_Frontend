@@ -1,7 +1,8 @@
 <div class="bodysz">
   <h1>My livestock</h1>
-  <app-availablelivestock  (newItemEvent)="addItem($event)" (useridd)="addUserId($event)"></app-availablelivestock>
+  <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock>
 </div>
+
 <div class="row">
     <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
       <div class="card card-compact shadow-sm" style="margin: 1rem;">
@@ -31,48 +32,31 @@
                 <!-- The button to open modal -->
                   <!-- <label for="my-modal" class="btn">open modal</label> -->
 
-                  <!-- Put this part before </body> tag -->
-                  <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal">
-                    <div class="modal-box">
-                      <h3 class="text-lg text-center">Are you sure?</h3>
-                      <div class="modal-action">
-                        <label for="my-modal" class="btn ">Yes</label>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <!-- <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button> -->
-              <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button> -->
-              <!-- <button (click)="reserve(x)" style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
-            </div>
-        </div>
-      </div>
-    </div>
-  
-  </div>
 
 <input type="checkbox" id="my-modal" class="modal-toggle" />
+<div class="modal" *ngFor="let animal of livestok">
+    <div class="modal-box" style="background-color: red;padding: 0;">
+        <div class="flex flex-col p-5 rounded-lg shadow bg-white">
+          <div class="flex flex-col items-center text-center">
+              <svg class="w-12 h-12 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+              <div style="margin: 2rem;" class="">
+                    <h2 style="margin-bottom: 10px;" class="mt-2 font-semibold text-gray-800">Delete livestock?</h2>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">Are you sure you want to delete <span style="color: var(--main-green);">{{animal.breedName}}</span>?</p>
+                    <p style="font-size: 10px;font-style:bold">with id: <span style="color: var(--main-green);">{{animal.livestockID}}</span></p>
+                    <p style="color: rgb(255, 64, 64);margin-top: 10px;">You cant undo this action!!</p>
+              </div>
+          </div>
 
-  <div class="modal">
-    <div class="modal-box">
- 
-      <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
-      
-        <div class="card-body">
-            <figure><img src="../../../../assets/bg1.jpeg" alt="" /></figure>
-            <h3 class="card-title justify-center">Are you sure?</h3>
-            <p class="w-3/4 mx-auto desc">Binding<span>will be permanantely removed</span></p>
-            <br>
-            <div class="card-actions justify-center">
-              <button class="rsvBtn"  for="my-modal" (click)=closeModal()>`Cancel</button>
-              <button class="rsvBtn" (click)=deleteMyLivestock() >delete</button>
-            </div>
+          <div class="flex items-center mt-3" style="padding:1rem 3rem;">
+              <button  (click)=closeModal() class="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md btnCancel">
+              Cancel
+              </button>
+          
+              <button (click)=deleteMyLivestock()  class="flex-1 px-4 py-2 ml-2 bg-yellow-500 hover:var(--main-green) text-white text-sm font-medium rounded-md btnDelete">
+              Delete
+              </button>
+          </div>
         </div>
-      </div>
- 
-      
     </div>
-  </div>
-
+</div>
 
