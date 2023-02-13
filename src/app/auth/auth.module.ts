@@ -29,4 +29,4 @@ import { HotToastModule } from '@ngneat/hot-toast';
    HotToastModule.forRoot()
   ]
 })
-export class AuthModule { }
+export class AuthModule {}
