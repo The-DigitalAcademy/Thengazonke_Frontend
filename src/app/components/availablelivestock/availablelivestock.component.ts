@@ -17,21 +17,21 @@ export class AvailablelivestockComponent implements OnInit {
   filterTerm: string='';
   filterSearch!:string;
   livestok!:any;
-
   trans!:any;
   live!:any;
   transaction!:any;
   users:any[] = [];
-
   result!:any;
   result2!:any;
+
+  name = '!!!';
+  viewMode = 'mylivestock';
 
   @Output() newItemEvent = new EventEmitter<string>();
   @Output() useridd = new EventEmitter<string>();
   myCurrentRoute: any;
   
-  // @Output('openModal') openModal = new EventEmitter()
-
+  // @Output('openModal') openModal = new EventEmitter() 
   
   constructor(private livestoc:LivestockService, private router: Router , private currentRoute: CurrentRouteService,private authservice:AuthService) { }
 
@@ -131,18 +131,5 @@ export class AvailablelivestockComponent implements OnInit {
       console.log('What i am looking for',this.trans);
     }); 
   }
-
-
-
-  // openModal(){
-   
-  //   let modalCheckbox:any = document.getElementById('my-modal')
-  //  modalCheckbox.checked = true
-  // }
-
-  // closeModal() {
-  //   let modalCheckbox:any = document.getElementById('my-modal')
-  //   modalCheckbox.checked = false
-  // }
 
 }

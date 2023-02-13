@@ -24,6 +24,9 @@ import { MylivestockComponent } from '../components/seller/mylivestock/mylivesto
 import { HttpClientModule } from '@angular/common/http';
 import { LivestockModalComponent } from '../components/create-livestock/livestock-modal/livestock-modal.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { AvailableComponent } from '../components/availablelivestock/available/available.component';
+import { Mylivestock22Component } from '../components/mylivestock22/mylivestock22.component';
+
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     CarouselComponent,
     AvailablelivestockComponent,
     MylivestockComponent,
-    LivestockModalComponent
+    LivestockModalComponent,
+    AvailableComponent,
+    Mylivestock22Component
    
   ],
   imports: [

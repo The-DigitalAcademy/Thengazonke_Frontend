@@ -158,7 +158,7 @@ button{
 ul{
     height: 2rem;
 }
-li{
+.li2{
     background-color: var(--main-green);
     border: solid 2px var(--yellow);
     border-radius: 6px;
@@ -166,6 +166,7 @@ li{
     height: 2rem;
     margin-right: 1rem;
 }
+
 a{
     height: 2rem;
     
@@ -316,5 +317,8 @@ select{
     display: none;
     }
 
+}
+.tabs{
+margin: auto;
 }
  

@@ -19,43 +19,78 @@
       </select>
       
     </div>
-
-
-  <!-- <div  class="selectBox">
-    <select  (change)="onCategoryChange($event)" class="form-select">
-        <option style="background-color: pink;"  value="All">All</option>
-        <option style="background-color: pink;" *ngFor="let category of categories" [value]="category.categoryName">
-          {{category.categoryName}}
-  
-        </option>
-    </select>
-    
-  </div> -->
-
-
 </div>
 
 
 
 <div class="tbs">
   <ul class="flex flex-wrap">
-    <li class="mr-2">
+    <li class="mr-2 li2">
         <a (click)="onCategoryChange3()" aria-current="page" class="btn1 ">All</a>
     </li>
-   <li class="mr-2" *ngFor="let category of categories">
+   <li class="mr-2 li2" *ngFor="let category of categories">
         <a (click)="onCategoryChange2(category.categoryName)" class="btn1">{{category.categoryName}}</a>
   </li>
 </ul>
 </div>
+<br><br><br>
 
+<!-- 
+<div class="mx-auto">
+<div class="tabs">
+  <a class="tab tab-bordered" id="Availablelivestock" data-tabs-target="#Availablelivestock" role="tab" aria-controls="Availablelivestock" aria-selected="true">Available Livestock</a> 
+  <a class="tab tab-bordered " id="mylivestock" data-tabs-target="#mylivestock" role="tab" aria-controls="mylivestock" aria-selected="false">My Livestock</a> 
+</div>
+</div> -->
 
+<!-- 
+<div>     
+  <ul class="tabs" role="tablist">         
+    <li class="tab tab-bordered" role="presentation">
+      <a class="tab-link active" role="tab" data-bs-toggle="tab" for="myLivestock">My Live stock</a>
+    </li>         
+    <li class="tab tab-bordered" role="presentation">
+      <a class="tab-link" role="tab" data-bs-toggle="tab" for="#availablelivestock">Availablelivestock</a>
+    </li>            
+  </ul>   
 
+  <div class="tab-content">  
+      <div id="Order-history" class="tab-pane active" role="tabpanel">                
+    </div>         
+    <div id="availablelivestock-2" class="tab-pane" role="tabpanel">             
+          <p>esdftguyioytfrftgyhui</p>   
+</div> 
+</div> -->
 
+<div class="container">
+  <div class="flex ">
+    <div>
+      <ul class="tab">
+        <li class="tab tab-bordered" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'">My livestock</li>
+      </ul>
+    </div>
 
-  
-  
+    <div>
+      <ul>
+        <li class="tab tab-bordered" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'">Available Livestock</li>
+      </ul>
+    </div>
+    
+  </div>
+  <div class="tab-slider--container" [ngSwitch]="viewMode">
+    <div id="tab1" class="tab-slider--body" *ngSwitchCase="'tab1'">
+   <app-mylivestock22></app-mylivestock22>
 
+    <div id="tab2" class="tab-slider--body" *ngSwitchCase="'tab2'">
 
+      <h2>Second Tab</h2>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo
+        quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+</div>
+
+<br>
   <div [ngSwitch]="myCurrentRoute">
 
     <div *ngSwitchCase="'/'">
@@ -162,12 +197,13 @@
                 </div>
             </div>
           </div>
-       
-        
+  
       </div>
     </div>
     </div>
 
     
  </div>
+ 
+
  

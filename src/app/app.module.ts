@@ -13,16 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
-
 @NgModule({
     declarations: [
         AppComponent,
         RateComponent,
         AccountComponent,
         SellerComponent,
-        ReviewComponent
-        
-        
+        ReviewComponent,
+
+              
        
     ],
     providers: [],
