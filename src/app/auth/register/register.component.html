@@ -45,13 +45,13 @@
                   <div>
                     <label class="label cursor-pointer">
                       <p class="label-text text-white mx-2">Buyer</p> 
-                      <input type="radio" name="radio" value="Buyer"  class="radio-btn" formControlName="usertype"/>
+                      <input type="radio" name="usertype" value="Buyer"  class="radio-btn" formControlName="usertype"/>
                     </label>
                   </div>
                   <div>
                     <label class="label cursor-pointer">
                       <p class="label-text text-white mx-2">Seller</p> 
-                      <input type="radio" name="radio" value="Seller" formControlName="usertype"/>
+                      <input type="radio" name="usertype" value="Seller" formControlName="usertype"/>
                     </label>
                   </div>
                   
@@ -72,6 +72,7 @@
                         <div *ngIf="formValidation['fullname'].errors['required']">Full name is required</div>
                         <div *ngIf="formValidation['fullname'].errors['minlength']">Full name must be at least 3 characters</div>
                         <div *ngIf="formValidation['fullname'].errors['maxlength']">Full name must not exceed 50 characters</div>
+                        <div *ngIf="formValidation['fullname'].errors['pattern']">field should contain alaphabetical characters only</div>
                     </div>
               </div>
               <div class="form-control py-2">
@@ -100,6 +101,9 @@
                     <div *ngIf="submitted && formValidation['password'].errors" class="invalid-feedback error-text">
                     <div *ngIf="formValidation['password'].errors['required']">Password is required</div>
                     <div *ngIf="formValidation['password'].errors['minlength']">Password must be at least 8 characters</div>
+                    <div *ngIf="formValidation['password'].errors['pattern']">
+                      Password should contain atleast 1 lowercase,atleast 1 uppercase,atleast 1 number and one character.
+                  </div>
                 </div> 
 
               </div>
@@ -113,9 +117,11 @@
                 <div *ngIf="submitted && formValidation['confirmPassword'].errors" class="invalid-feedback error-text">
                   <div *ngIf="formValidation['confirmPassword'].errors['required']">Confirm password is required</div>
                   <div *ngIf="formValidation['confirmPassword'].errors['minlength']">Confirm Password must be at least 8 characters</div>
-    
+                  <div *ngIf="formValidation['confirmPassword'].errors['matching']">
+                    Confirm Password does not match
+                  </div>
                 </div>
-                <div class="error-text">{{passwordErr}}</div>
+                <!-- <div class="error-text">{{passwordErr}}</div> -->
               </div>
               <div  class="flex justify-center py-5">
                 <button (click)="AddUser()" class="btn border-transparent text-white">Submit</button>

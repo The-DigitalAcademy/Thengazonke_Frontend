@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import jwt_decode from 'jwt-decode';
 // import { NgToastService } from 'ng-angular-popup';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import jwt_decode from 'jwt-decode';
 export class LoginComponent implements OnInit {
 
  selected: any = 'Buyer';
-  
+ box!: any;
   UserLoginForm: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
@@ -24,8 +25,9 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private authServive:AuthService, private router: Router, public fb: FormBuilder) { 
+  constructor(private authServive:AuthService, private router: Router, public fb: FormBuilder, private toast :HotToastService) { 
   }
+
 
   myForm() {
     this.UserLoginForm = this.fb.group({
@@ -37,6 +39,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     // sessionStorage.setItem( JSON.stringify({loginName: "not yet", isLogged : "true"})); 
     this.myForm();
+
+    this.box = document.getElementById('box');
+
+    if (this.selected == 'Buyer') {
+      this.box.style.backgroundImage = "url('../../../assets/bg.jpg')";
+    }
+    if (this.selected == 'Seller') {
+     this.box.style.backgroundImage = "url('')";   
+    }
   }
 
   get formValidation(): { [key: string]: AbstractControl } {
@@ -52,33 +63,44 @@ export class LoginComponent implements OnInit {
         password: this.UserLoginForm.value.password
       }
 
-      // console.log(logingDetails)
-
       if(logingDetails.email != '' && logingDetails.password != '')
       {
 
         this.authServive.UserLogin(logingDetails).subscribe(async res => {
           this.decoded = jwt_decode(res.token); 
-          
-          // this.toast.success({detail:'Success',summary:'Successfully login!', sticky:false,position:'tr', duration:6000})
-          console.log('success');
 
           await this.authServive.GetAllUsers().subscribe((ans:any) => {
             let result = ans;
             this.users = result.filter((ress:any) => String(ress.email) === String(this.decoded.email))
 
-            if(this.users[0].usertype === 'Admin')
+            if(this.users[0].usertype === this.selected)
             {
-              this.router.navigate(['/admin/users']);
+              if(this.users[0].usertype === 'Seller')
+              {
+                this.successfullToast();
+                this.router.navigate(['/homes']);
+              }
+              if(this.users[0].usertype === 'Buyer')
+              {
+                this.successfullToast();
+                this.router.navigate(['/home']);
+              }
+                
             }
-            if(this.users[0].usertype === 'Seller')
-            {
-              this.router.navigate(['/homes']);
+            else{
+
+              if(this.users[0].usertype === 'Admin')
+              {
+                this.successfullToast();
+                this.router.navigate(['/admin/users']);
+              }
+              else{
+                let msg = 'Creaditials does not correspond';
+                this.errorToast(msg)
+              }
+              
             }
-            if(this.users[0].usertype === 'Buyer')
-            {
-              this.router.navigate(['/home']);
-            }
+
             sessionStorage.setItem('loggedID', this.users[0].Userid);
           });
           // sessionStorage.setItem('loggedInToken', res.token);
@@ -86,21 +108,73 @@ export class LoginComponent implements OnInit {
 
           this.submitted = false;
         }, (err) => {
-          // this.toast.warning({detail:'Warning',summary:'Email or Password is invalid', sticky:false,position:'tr', duration:6000})
-          console.log(err);
-      });
+          let msg = 'Please provide the correct creaditials!';
+          this.errorToast(msg);
 
-              
+          console.log(err);
+      });        
       }
       else{
-        // this.toast.warning({detail:'Warning',summary:'Enter your credentials details', sticky:false,position:'tr', duration:6000})
+        let msg = 'Please provide creaditials!';
+        this.errorToast(msg)
       }
-      
-   
   }
+
+
   checkSelected(event:any){
     this.selected = event.target.value;
     console.log(this.selected);
+
+    if (this.selected == 'Buyer') {
+      this.box.style.backgroundImage = "url('../../../assets/bg.jpg')";
+    }
+    if (this.selected == 'Seller') {
+      this.box.style.backgroundImage = "url('../../../assets/bulls-g7a739ebdb_1280.jpg')"; 
+    }
   }
 
+  successfullToast(){
+    this.toast.success('Successfully login!',{duration:6000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#4BB543',
+      secondary: '#FFFAEE',
+    },})
+  }
+
+  warningToast(){
+    this.toast.warning('Boo!',{duration:6000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#FFCC00',
+      secondary: '#FFFAEE',
+    },})
+  }
+
+  errorToast(message:any){
+    this.toast.error(message,{duration:2000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#DC3545',
+      secondary: '#FFFAEE',
+    },})
+  }
 }
