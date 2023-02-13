@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
@@ -15,7 +16,10 @@ export class Mylivestock22Component implements OnInit {
   filterTerm!: string;
   lid!:any;
   usid!:any;
+  trans!:any;
   results!:any;
+  users!:any;
+  userId!:any;
 
   livestok!:any;
 
@@ -53,17 +57,35 @@ export class Mylivestock22Component implements OnInit {
     this.closeModal();
   }
 
-  constructor(private livestoc:LivestockService, private router: Router) { }
+  constructor(private livestoc:LivestockService, private router: Router, private authservice: AuthService) { }
 
   ngOnInit(): void {
-    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
-      this.livestocks = messages
+
+    this.authservice.GetAllUsers().subscribe((res:any) => {
+      let result = res;
+      this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
+    })
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages:any) => {
+      let results = messages;
+      this.livestocks = results.filter((res:any) => String(res.UserID) === String(8))
     }) 
   }
   
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
+  }
+  getPriceCurrency(price:any){
+    return price.slice(1,price.length);
+  }
+
+  delete(ind: any) {
+    this.post_id = this.trans[ind].livestockID
+    this.addNewItem(this.post_id)
+    this.userId = this.livestocks[ind].UserID
+    
+    console.log('delete id',this.post_id)
   }
 
 }

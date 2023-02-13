@@ -33,7 +33,7 @@
   </li>
 </ul>
 </div>
-<br><br><br>
+
 
 <!-- 
 <div class="mx-auto">
@@ -62,7 +62,7 @@
 </div> 
 </div> -->
 
-<div class="container">
+<!-- <div class="container">
   <div class="flex ">
     <div>
       <ul class="tab">
@@ -78,19 +78,17 @@
     
   </div>
   <div class="tab-slider--container" [ngSwitch]="viewMode">
-    <div id="tab1" class="tab-slider--body" *ngSwitchCase="'tab1'">
-   <app-mylivestock22></app-mylivestock22>
-
-    <div id="tab2" class="tab-slider--body" *ngSwitchCase="'tab2'">
-
-      <h2>Second Tab</h2>
-      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean eu leo
-        quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    <div id="tab1" class="tab-slider--body w-full" *ngSwitchCase="'tab1'">
+      <br>
+        <app-mylivestock22></app-mylivestock22>
+    </div>
+    <div id="tab2" class="tab-slider--body w-full" *ngSwitchCase="'tab2'">
+      <app-available></app-available>
     </div>
   </div>
-</div>
+</div> -->
 
-<br>
+ 
   <div [ngSwitch]="myCurrentRoute">
 
     <div *ngSwitchCase="'/'">
@@ -156,20 +154,20 @@
           <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
           <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
           <p><span> Age:</span> {{animal.age}}</p>
-          <!-- <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p> -->
+           <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p> 
           <div style="margin-bottom: 0rem;" class="card-actions">
             <h5 style="font-size: 1rem; color: #11998e;
             color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
             <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
-            <!-- <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
-            <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> -->
+            <button style="padding: 0rem;" class="btn3" ><i style="background-color:white;color: red;margin: 0rem;padding: 0rem;height: 100%;width: 100%;" class="fas fa-pencil-alt"></i></button>
+            <button style="background-color: black;" class="" ><i style="background-color:white;color: black;" class="fas fa-trash" aria-hidden="true"></i></button> 
           </div>
       </div>
     </div>
   </div>
 </div>
 
-    <div *ngSwitchCase="'/homes'">  
+    <!-- <div *ngSwitchCase="'/homes'">  
       <div class="row">
         <div class="column" *ngFor="let animal of trans | filter: filterTerm | filter: filterSearch;let x = index">
           <div class="card card-compact shadow-sm" style="margin: 1rem;">
@@ -200,10 +198,10 @@
   
       </div>
     </div>
-    </div>
+    </div> -->
 
     
  </div>
  
 
- 
+  

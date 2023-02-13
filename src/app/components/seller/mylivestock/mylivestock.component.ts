@@ -19,6 +19,9 @@ export class MylivestockComponent implements OnInit {
 
   livestok!:any;
 
+  name = '!!!';
+  viewMode = 'tab1';
+
   @Output() newItemEvent = new EventEmitter<string>();
   @Output('openModal') openModal = new EventEmitter()
 
