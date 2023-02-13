@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import jwt_decode from 'jwt-decode';
+import { HotToastService } from '@ngneat/hot-toast';
 // import { NgToastService } from 'ng-angular-popup';
 
 @Component({
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private authServive:AuthService, private router: Router, public fb: FormBuilder) { 
+  constructor(private authServive:AuthService, private router: Router, public fb: FormBuilder,private toast: HotToastService) { 
   }
 
   myForm() {
