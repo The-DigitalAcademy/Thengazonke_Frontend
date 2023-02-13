@@ -131,5 +131,7 @@ export class AvailablelivestockComponent implements OnInit {
       console.log('What i am looking for',this.trans);
     }); 
   }
-
+  getPriceCurrency(price:any){
+    return price.slice(1,price.length);
+  }
 }
