@@ -20,17 +20,32 @@
   <form class="form-inline" [formGroup]="EditUserForm">
     <div id="change-me"></div>
     <div class="text-center profile-card" style="margin:15px;background-color:#ffffff; color:#516951; font-weight: bolder; font-size: 30px;">Profile</div>
-    <div class="text-center profile-card" style="margin:15px;background-color:#ffffff;">
-        <div class="profile-card-img" style="background-image:url(&quot;iceland.jpg&quot;);height:150px;background-size:cover;"></div>
-        <div *ngFor="let item of users">
-          
-          <div class="rounded-full justify-items-center">
-            <i class="fa fa-user" aria-hidden="true"></i>
-          </div>
-          <!-- <img class="rounded-circle" style="margin-top:-70px;" src="https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/308911430_108303705377008_7036349960742585677_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHqxS3WZUYy4z5ESA5_4h6s9q6Cw4HkgZj2roLDgeSBmMg6AH_s5bPekZt5L5JEf6zu5erLfLzJMdcpIt_GEhoA&_nc_ohc=fvE77dL-6BwAX_kfwDt&_nc_ht=scontent-jnb1-1.xx&oh=00_AfDU0srfag_5hj6yoe_gzV70pst-4fbgyBRx_OAprE5fqw&oe=63DC48E1"> -->
-            <h3 class="my-4">{{item.fullname}}</h3>
+
+
+        <div class="profile-card-img" style="height:150px;background-size:cover;">
+        
+
+          <div class="avatar-upload">
+            <div class="avatar-edit">
+               
+                
+            </div>
+            <div class="avatar-preview">
+                <div id="imagePreview" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG91Ivd0CD1UA-3GKi8OPGqO9BZvrfsclJFujvxLWQU6z0UR5xNec89_mVGFysedGeUo0&usqp=CAU');">
+                </div>
+            </div>
         </div>
-    </div><div><hr></div>
+    </div><br><br>
+
+          
+        
+       
+
+        <div *ngFor="let item of users">
+          <!-- <img class="rounded-circle" style="margin-top:-70px;" src="https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/308911430_108303705377008_7036349960742585677_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHqxS3WZUYy4z5ESA5_4h6s9q6Cw4HkgZj2roLDgeSBmMg6AH_s5bPekZt5L5JEf6zu5erLfLzJMdcpIt_GEhoA&_nc_ohc=fvE77dL-6BwAX_kfwDt&_nc_ht=scontent-jnb1-1.xx&oh=00_AfDU0srfag_5hj6yoe_gzV70pst-4fbgyBRx_OAprE5fqw&oe=63DC48E1"> -->
+            <h3 class="my-4" style="text-align: center;">{{item.fullname}}</h3>
+        </div>
+    <div><hr></div>
   <div class="form-group" >
     <label >Phone Number</label>
      <input formControlName ="phone" type="phone" class="form-control"  placeholder="">
@@ -59,17 +74,20 @@
       </div>
     </h1>
   </span>
+  <hr>
   
   <div class="custom" *ngFor="let item of users">
-    <input formControlName ="identity" type="file"  class="custom-file-input" id="inputGroupFile01"  *ngIf="item.usertype=='Seller'">
-   <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">ID Document</label>
-   </div><br>
-  
-   <div class="custom-file" *ngFor="let item of users">
-    <input formControlName ="agric" type="file"  class="custom-file-input" id="inputGroupFile01"  *ngIf="item.usertype=='Seller'">
-   <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Dept of Agriculture Identification</label>
+    <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">ID Document</label><br>
+    <input formControlName ="identity" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01"  *ngIf="item.usertype=='Seller'">
    </div>
   
+   <div class="custom-file" *ngFor="let item of users">
+    <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Dept of Agriculture Identification</label><br>
+    <input formControlName ="agric" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01"  *ngIf="item.usertype=='Seller'">
+   </div>
+  
+   <!-- <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" /> -->
+
   <div><hr></div>
   
   <div class="text-center">
