@@ -2,6 +2,9 @@
 {
     box-shadow: 5px 0 10px #516951;
     background-color: var(--white);
+    z-index: 1000;
+    top:0;
+    position: sticky;
     
 }
 
