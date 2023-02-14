@@ -1,0 +1,6 @@
+{
+    "/api": {
+    "target": "https://thengazonke-backend-v3.vercel.app/",
+    "secure": false
+    }
+}
