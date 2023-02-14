@@ -10,56 +10,31 @@ import { CurrentRouteService } from 'src/app/services/current-route.service';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-
-  
-
   myCurrentRoute!:string;  // Landing componet current route
   lid!:any;
   livestok!:any;
   results!:any;
+  filterTerm!: string;
 
   addItem(newItem: string) {
-   
     this.lid = newItem;
-
     
-
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.results = messages
-      // console.log('i am livestock',this.livestocks)
-
       this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
       console.log('One livestokokoko',this.livestok)
     })
 
     let modalCheckbox:any = document.getElementById('my-modal')
-      modalCheckbox.checked = event
-
-    
-    
+      modalCheckbox.checked = Event
   }
-
-  
-
-  filterTerm!: string;
-
 
   constructor(private livestoc:LivestockService, private router: Router,private currentRoute:CurrentRouteService) { }
 
   ngOnInit(): void {
      this.myCurrentRoute  = this.currentRoute.currentRoute();
-
-     console.log(this.myCurrentRoute);
-     
+     console.log(this.myCurrentRoute); 
   }
-
-
-  // openModal(event:any):void {
-   
-  //   let modalCheckbox:any = document.getElementById('my-modal')
-  //  modalCheckbox.checked = event
-  // }
-
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
