@@ -34,6 +34,7 @@ export class AdminHeaderComponent implements OnInit {
   LogOut()
   {
     this.logEmail = sessionStorage.removeItem('loggedEmail'); 
+    this.logEmail = sessionStorage.removeItem('loggedID'); 
     this.logEmail = sessionStorage.removeItem('loggedInToken'); 
     this.router.navigate(['/auth/login']);
     // this.islogin = false;
