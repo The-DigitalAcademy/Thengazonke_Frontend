@@ -64,7 +64,7 @@
 
         <div class="form-control">
           <label class="label cursor-pointer">
-            <input type="checkbox" class="checkbox" />
+            <input type="checkbox" class="checkbox" [value]="theCheckbox"  data-md-icheck (change)="checkRemember($event)"/>
             <p class="label-text text-white">Remember me</p> 
           </label>
         </div>
