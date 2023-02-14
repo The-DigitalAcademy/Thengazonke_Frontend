@@ -17,6 +17,7 @@ export class CreateLivestockComponent implements OnInit {
   breed!:any;
   image_link!:any;
   fileUploaded: any = 'no';
+  submitted :boolean = false;
 
 
   AddLivestockForm: FormGroup = new FormGroup({
@@ -35,9 +36,7 @@ export class CreateLivestockComponent implements OnInit {
     breedID: new FormControl('')
   });
 
-  submitted = false;
-
-  preset :string = "nq04upkl";
+  
 
   update_dp = new FormGroup({
     file:new FormControl(),
@@ -89,7 +88,7 @@ export class CreateLivestockComponent implements OnInit {
       let result = res;
 
       this.breed = result.filter((resss:any) => String(resss.categoryID) === String(event.target.value));
-      console.log(this.breed);
+      console.log('i am breed',this.breed);
     });
 
   }

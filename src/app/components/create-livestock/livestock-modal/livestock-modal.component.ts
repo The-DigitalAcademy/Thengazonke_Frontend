@@ -35,6 +35,7 @@ export class LivestockModalComponent implements OnInit {
   progress = 0;
   message = '';
   preview = '';
+  userId:string = String(sessionStorage.getItem('loggedID'));
 
   selectFile(event: any): void {
     this.message = '';
@@ -181,7 +182,7 @@ export class LivestockModalComponent implements OnInit {
     let id = this.myLivestock.livestockID;
 
     let livestockDetails = {
-      UserID: 9, 
+      UserID: this.userId, 
       image: this.image_link, 
       price: this.AddLivestockForm.value.price, 
       age: this.AddLivestockForm.value.age,
