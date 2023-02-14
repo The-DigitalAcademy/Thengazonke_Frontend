@@ -288,12 +288,13 @@ p{
     position: relative;
     flex: 0 0 100%;
     width: 100%;
-    // background-color: orange;
+    background-color: orange;
+    background-image: url(../../../assets/images/seller.jpeg);
     counter-increment: item;
   }
   
   .carousel__slide:nth-child(even) {
-    // background-color: #99f;
+    background-color: #99f;
   }
   
   .carousel__slide:before {
@@ -320,6 +321,18 @@ p{
     background-image: url(../../../assets/images/Livestock_grazing_in_Armenia.jpeg);
     
   }
+  h3{
+    margin-top: .5rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    // background-image: url(../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: rgb(186, 186, 186);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
   
   @media (hover: hover) {
     .carousel__snapper {
@@ -378,7 +391,7 @@ p{
     top: 0;
     margin-top: 37.5%;
     width: 1rem;
-    height: rem;
+    height: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
     font-size: 0;

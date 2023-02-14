@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   REST_API:'http://localhost:3000',
+  // REST_API:'https://thengazonke-backend-v3.vercel.app',
+  // https://thengazonke-backend-v3.vercel.app/
 };
 
 /*

@@ -12,17 +12,21 @@ import { LivestockService } from 'src/app/services/livestock.service';
 export class AvailablelivestockComponent implements OnInit {
   post_id:any
   userId:any
-  livestocks!:any;
+  livestocks:any =[];
   categories!:any;
   filterTerm: string='';
   filterSearch!:string;
+  filterSearch1!:string;
   livestok!:any;
   trans!:any;
   live!:any;
   transaction!:any;
   users:any[] = [];
+  //courses:any =this.livestocks;
+
   result!:any;
   result2!:any;
+  public isActive:boolean = true;
 
   name = '!!!';
   viewMode = 'mylivestock';
@@ -62,12 +66,13 @@ export class AvailablelivestockComponent implements OnInit {
   }
 
   onCategoryChange2(catItem:any){
-  
-    this.filterTerm = catItem
+    
+    this.filterSearch = catItem
+    console.log('Categgorrrryyy',this.filterTerm)
 
   }
   onCategoryChange3(){
-    this.filterTerm=''
+    this.filterSearch=''
   }
 
   reserve(ind: any) {
@@ -98,6 +103,7 @@ export class AvailablelivestockComponent implements OnInit {
     this.livestoc.GetLivestockCategories().subscribe((res) => { 
       this.categories = res;
       console.log('this are categories',this.categories)
+
     })
   }
   GetProducts(){

@@ -1,6 +1,8 @@
-<div class="main">
+<div class="main" id="box">
   <div class="form flex justify-center ractangel">
     
+    <div class="w-96 pt-80 mt-36 pb-64 h-96 sm:w-10 md:w-5 sm:p-64 md:p-72 sm:mt-11 md:mt-11 sm:h-80 md:h-80 bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl sm:rounded-3xl md:rounded-3xl drop-shadow-lg">
+
     <form [formGroup] = "UserLoginForm" novalidate>
       <div class="form-text">
         <div class="header flex justify-center">
@@ -9,22 +11,23 @@
 
         <div class="form-control">
           <div class="flex justify-between" (change)="checkSelected($event)">
+
             <div>
               <label class="label cursor-pointer">
-                <p class="label-text text-white">BUYER</p> 
+                <p class="label-text text-white">Account type</p> 
+              </label>
+            </div>
+
+            <div>
+              <label class="label cursor-pointer">
+                <p class="label-text text-white">Buyer</p> 
                 <input type="radio" name="radio" value="Buyer" class="radio checked:bg-white" checked />
               </label>
             </div>
             <div>
               <label class="label cursor-pointer">
-                <p class="label-text text-white">SELLER</p> 
+                <p class="label-text text-white">Seller</p> 
                 <input type="radio" name="radio" value="Seller" class="radio checked:bg-white"/>
-              </label>
-            </div>
-            <div>
-              <label class="label cursor-pointer">
-                <p class="label-text text-white">ADMIN</p> 
-                <input type="radio" name="radio" value="Admin" class="radio checked:bg-white"/>
               </label>
             </div>
           </div>
@@ -33,9 +36,9 @@
 
          <div class="form-control">
           <label class="input-group input-group-sm">
-            <span>
-              <i class="fas fa-envelope"></i>
-            </span>
+            <span *ngIf="selected == 'Buyer'" style="background-color: #625141;"><i class="fas fa-envelope"></i></span>
+            <span *ngIf="selected == 'Seller'" style="background-color: #cdae3f;"><i class="fas fa-envelope"></i></span>
+            
             <input type="text" formControlName="email" class="input input-bordered input-sm w-full max-w-xs"  placeholder="Enter Email"
             [ngClass]="{ 'is-invalid': submitted && formValidation['email'].errors }">
                                                     
@@ -48,13 +51,14 @@
         <br>
         <div class="form-control">
           <label class="input-group input-group-sm">
-            <span><i class="fas fa-lock"></i></span>
+            <span *ngIf="selected == 'Buyer'" style="background-color: #625141;"><i class="fas fa-lock"></i></span>
+            <span *ngIf="selected == 'Seller'" style="background-color: #cdae3f;"><i class="fas fa-lock"></i></span>
             <input formControlName="password" type="password" class="input input-bordered input-sm w-full max-w-xs" placeholder="Enter Password"
             [ngClass]="{ 'is-invalid': submitted && formValidation['password'].errors }">
           </label>
           
             <div *ngIf="submitted && formValidation['password'].errors" class="invalid-feedback">
-              <div *ngIf="formValidation['password'].errors['required']">Password is required</div>
+              <div *ngIf="formValidation['password'].errors['required']" class="error-text">Password is required</div>
             </div>
         </div>
 
@@ -76,5 +80,6 @@
       </div>
     </form>
 
+    </div>
   </div>
 </div>

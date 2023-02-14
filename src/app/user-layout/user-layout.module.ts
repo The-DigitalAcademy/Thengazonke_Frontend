@@ -26,7 +26,7 @@ import { LivestockModalComponent } from '../components/create-livestock/livestoc
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { AvailableComponent } from '../components/availablelivestock/available/available.component';
 import { Mylivestock22Component } from '../components/mylivestock22/mylivestock22.component';
-
+import { HotToastModule } from '@ngneat/hot-toast';
 
 
 @NgModule({
@@ -57,7 +57,8 @@ import { Mylivestock22Component } from '../components/mylivestock22/mylivestock2
   UserLayoutRoutingModule, FormsModule,Ng2SearchPipeModule,
   HttpClientModule,
   ReactiveFormsModule,
-  NgApexchartsModule
+  NgApexchartsModule,
+  HotToastModule.forRoot()
   ]
 })
 export class UserLayoutModule { }

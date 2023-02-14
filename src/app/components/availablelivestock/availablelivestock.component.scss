@@ -23,15 +23,22 @@
 .searchInput{
     //border-radius: 10px;
     // border:solid 1rem;
-    border:solid var(--main-green);
-    border-radius: 10px;
+    //border:solid var(--main-green);
+    border: none;
+    outline:none;
+    border-radius: 2px;
+    background-color: #fff;
+    height: 2.5rem;
+    //box-shadow: 5px 10px;
+    filter: drop-shadow(0px 0px 5px rgba(46, 45, 45, 0.169));
+    box-shadow: 0px 0px 0px 0px 
 
 }
 .selectBox{
     // background-color: red;
     margin-top:  .5rem;
     //padding: 1.5rem;
-    box-shadow: 0 30px 8px 0 rgba(0,0,0,0.2);
+    //box-shadow: 0 30px 8px 0 rgba(0,0,0,0.2);
   
 }
 .svgB{
@@ -40,7 +47,13 @@
 }
 .serchB{
     // background-color: var(--main-green);
-    padding: 1rem;
+    width: 90%;
+    
+    z-index: 9;
+    margin:10px 60px;
+    //margin-top: 10rem;
+  
+    padding: 2.5rem;
 }
 option{
     background-color: red;
@@ -57,6 +70,42 @@ input:focus {
     padding-right: 1rem;
     
     
+}
+h1{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 400;
+    background-image: url(../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.nocontent{
+    margin: 4rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    // background-image: url(../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: rgb(186, 186, 186);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+h3{
+    margin-top: .5rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    // background-image: url(../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: rgb(186, 186, 186);
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 
@@ -77,12 +126,15 @@ input:focus {
     
 }
 .card {
-  //box-shadow: 3px 30px 8px 3px rgba(0,0,0,0.2);
+  box-shadow: 0px 1px .5px 0px rgba(0, 0, 0, 0.081);
 //     transition: 0.3s;
 //    margin-bottom: 1rem;
     // margin-bottom: 1rem;
     // border-radius: 2px;
-    border: solid #B4A5A5 .01px;
+    border: solid #b4a5a500 .01px;
+    filter: drop-shadow(0px 0px 5px rgba(46, 45, 45, 0.142));
+    //box-shadow: 0px 0px 0px 0px 
+    
 
             
   }
@@ -141,18 +193,29 @@ button{
     
 }
 .btn1{
-    padding:5px 30px;
-    margin: 0rem;
+    padding:10px 30px;
+    width: auto;
     color: white;
-    border-radius: 5px;
-    //border: solid 1.2px var(--yellow);
-}
-.tbs{
+    border-radius: 15px;
+    background-color: var(--main-green) !important;
+    position:relative;
+
+    padding-top: 5px;
+    //height: 2rem;
+    //margin-right: 1rem;
     
+
+}
+
+.tbs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding:0 1rem;
     width: 100%;
     height: 2rem;
     margin-bottom: 1rem;
+   
 
 }
 ul{
@@ -165,6 +228,17 @@ ul{
     padding: 0rem;
     height: 2rem;
     margin-right: 1rem;
+li{
+    //background-color: var(--main-green);
+    //border: solid 2px var(--yellow);
+    //background-color: var(--main-green);
+    //border: solid 2px var(--yellow);
+    //border-radius: 6px;
+    //padding: 0rem;
+    padding-top: 2px;
+    //height: 2rem;
+    //margin-right: 1rem;
+   
 }
 
 a{
@@ -229,6 +303,59 @@ figure{
     height: 200px;
 }
 
+
+.container {
+    // width: 150px;
+    // height: 150px;
+    width: 100%;
+    height: 4rem;
+    position: relative;
+    //margin-top: 1rem;
+    //margin-bottom: 30rem;
+    margin: 0 30px;
+    //background: #009938;
+    // background: var(--main-green);
+
+    //background:  rgb(186, 186, 186);
+  }
+  .box {
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    opacity: 0.7;
+    background: #a0a6b1;
+    border-radius: 5px;
+    background: #009938;
+    
+    //margin-right: 14rem;
+  }
+  .overlay {
+    width: 95%;
+    z-index: 9;
+    margin: 30px;
+    margin-top: 20rem;
+    background: #009938;
+    
+  }
+  .btn1:hover{
+    color:var(--yellow); 
+    box-shadow: 3px 3px 8px #111111;
+  }
+
+.btn1:active{
+    box-shadow: 4px 4px 8px #444444;
+    //color: red;
+    top:2px;
+}
+
+
+
+
+    
+   
+
 //////////////////////////
 /// phones and mobile/////
 /// //////////////////////
@@ -277,6 +404,18 @@ select{
   .tbs{
     display: block;
     }
+    .serchB{
+        width: 100%;
+        z-index: 9;
+        margin:5px 0px;
+      
+    }
+    .container {
+        width: 100%;
+        height: 4rem;
+        position: relative;
+        margin: 0 0px;
+      }
 }
  
 /* (1024x768) iPad 1 & 2, Landscape */
@@ -290,6 +429,30 @@ select{
   .tbs{
     display: none;
     }
+    .serchB{
+        width: 100%;
+        z-index: 9;
+        margin:10px 0px;
+       
+    }
+    .container {
+        width: 100%;
+        height: 4rem;
+        position: relative;
+        margin: 0 0px;
+      }
+      .serchB{
+        width: 100%;
+        z-index: 9;
+        margin:5px 0px;
+       
+    }
+    .container {
+        width: 100%;
+        height: 4rem;
+        position: relative;
+        margin: 0 0px;
+      }
 
 }
  
@@ -304,6 +467,19 @@ select{
   .tbs{
     display: none;
     }
+
+    .serchB{
+        width: 100%;
+        z-index: 9;
+        margin:5px 0px;
+    
+    }
+    .container {
+        width: 100%;
+        height: 4rem;
+        position: relative;
+        margin: 0 0px;
+      }
 
 }
 @media only screen and (max-width: 319px){ 
@@ -321,5 +497,3 @@ select{
 .tabs{
 margin: auto;
 }
-
- 
