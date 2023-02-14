@@ -196,11 +196,24 @@ img{
 // }
 .tab{
     margin-right: 1rem;
+    width: 16rem;
 }
 // .tab-active{
  
     
 // }
+
+.active{
+    width: 16rem;
+    height: .2rem;
+    background-color: var(--yellow-dark);
+}
+.tab1,.tab2,.tab3{
+    width: 1rem;
+    height: .2rem;
+    background-color: var(--yellow-dark);
+}
+
 .tab-active{
     width: 8rem;
     height: .2rem;
@@ -209,7 +222,7 @@ img{
 .tab-not-active{
     width: 8rem;
     height: .2rem;
-    // background-color: var(--main-green);
+    background-color: var(--yellow);
 }
 .tab-text{
     position: absolute;
@@ -351,4 +364,5 @@ select{
     }
 
 }
+
  

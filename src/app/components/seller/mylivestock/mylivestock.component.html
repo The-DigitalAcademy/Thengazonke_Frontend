@@ -5,13 +5,13 @@
     <div class="flex ">
       <div>
         <ul class="tab">
-          <li class="tab tab-bordered" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'" >My livestock</li>
+          <li class="tab tab-bordered" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'"  [ngClass]="{'active': viewMode ==='tab1'}">My livestock</li>
         </ul>
       </div>
   
       <div>
         <ul>
-          <li class="tab tab-bordered" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'">Available Livestock</li>
+          <li class="tab tab-bordered" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'" [ngClass]="{'active': viewMode ==='tab2'}">Available Livestock</li>
         </ul>
       </div>
     </div>

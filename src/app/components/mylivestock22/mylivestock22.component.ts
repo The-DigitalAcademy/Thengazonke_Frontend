@@ -80,12 +80,13 @@ export class Mylivestock22Component implements OnInit {
     return price.slice(1,price.length);
   }
 
-  delete(ind: any) {
-    this.post_id = this.trans[ind].livestockID
-    this.addNewItem(this.post_id)
-    this.userId = this.livestocks[ind].UserID
+  // delete(ind: any) {
+  //   this.post_id = this.trans[ind].livestockID
+  //   this.addNewItem(this.post_id)
+  //   this.userId = this.livestocks[ind].UserID
     
-    console.log('delete id',this.post_id)
-  }
+  //   console.log('delete id',this.post_id,this.userId)
+  // }
+ 
 
 }

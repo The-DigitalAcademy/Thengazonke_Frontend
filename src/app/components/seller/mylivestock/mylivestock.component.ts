@@ -22,6 +22,22 @@ export class MylivestockComponent implements OnInit {
   name = '!!!';
   viewMode = 'tab1';
 
+  tab : any = 'tab1';
+  tab1 : any
+  tab2 : any
+  tab3 : any
+  Clicked!: boolean
+  
+  onClick(check:any){
+    //    console.log(check);
+        if(check==1){
+          this.tab = 'tab1';
+        }else if(check==2){
+          this.tab = 'tab2';
+        }  
+      
+    }
+
   @Output() newItemEvent = new EventEmitter<string>();
   @Output('openModal') openModal = new EventEmitter()
 
