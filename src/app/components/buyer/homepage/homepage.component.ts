@@ -85,4 +85,9 @@ export class HomepageComponent implements OnInit {
     modalCheckbox.checked = false
   }
 
+  getPriceCurrency(price:any) { 
+    return price.slice(1,price.length);
+  }
+
+
 }

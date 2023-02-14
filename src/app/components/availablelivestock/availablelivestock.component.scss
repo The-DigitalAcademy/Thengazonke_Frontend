@@ -266,12 +266,12 @@ img{
 .tab-active{
     width: 8rem;
     height: .2rem;
-    background-color: var(--main-green);
+    background-color: red;
 }
 .tab-not-active{
     width: 8rem;
     height: .2rem;
-    // background-color: var(--main-green);
+    background-color: var(--main-green);
 }
 .tab-text{
     position: absolute;
@@ -338,7 +338,7 @@ figure{
 
 .btn1:active{
     box-shadow: 4px 4px 8px #444444;
-    //color: red;
+    color: red;
     top:2px;
 }
 
