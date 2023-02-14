@@ -15,6 +15,8 @@ export class ReviewComponent implements OnInit {
 
   users : Users[] = []
   rate : Rate[] = []
+  rater :Rate[] = []
+  rating :any;
   ratePg1:any;
   ratePg2:any;
   ratePg3:any;
@@ -37,6 +39,12 @@ export class ReviewComponent implements OnInit {
       console.log(data)
     })
 
+    this.rateServ.getReviewByUser().subscribe((res:any) => {
+      let result = res;
+      this.rating = result.filter((res:any) => Number(res.userRateID) === Number(this.users[0].Userid))
+      console.log(this.rating)
+    });
+
     this.getRate();
 
   }
@@ -52,8 +60,18 @@ export class ReviewComponent implements OnInit {
 
   }
 
+  async getRaterUser()
+  {
+    this.rateServ.getReviewByUser().subscribe(async (res:any) => {
+      let ress = res;
+      this.rater = ress.filter((res:any)=> Number(res.userRaterID) === Number(this.users[0].Userid))
+      console.log(this.users)
+      
+    })
+
+  }
   getRate(){
-    this.rateServ.getRates().subscribe((res:any)=>{
+    this.rateServ.getReviewByUser().subscribe((res:any)=>{
      let data = res; 
 
      this.rate = data.filter((res:any)=> Number(res.userRateID) === Number(this.users[0].Userid))
@@ -129,7 +147,8 @@ export class ReviewComponent implements OnInit {
     })
   }
 
-  getInitial(){
-
+  getShortName(fullName:any) { 
+    return fullName.slice(0,1);
   }
+
 }
