@@ -10,7 +10,6 @@ h1{
     -webkit-background-clip: text;
     background-clip: text;
 }
-
 .column {
     float: left;
     width: 25%;
@@ -22,9 +21,6 @@ h1{
     display: table;
     clear: both;
   }
-
-
-
 .searchInput{
     //border-radius: 10px;
     // border:solid 1rem;
@@ -47,9 +43,6 @@ h1{
     // background-color: var(--main-green);
     padding: 1rem;
 }
-option{
-    background-color: red;
-}
 button{
     background-color: var(--main-green);
 }
@@ -59,12 +52,9 @@ input:focus {
     background-color: transparent;
     resize: none;
     outline: none;
-    padding-right: 1rem;
-    
+    padding-right: 1rem;   
     
 }
-
-
 .form-select{
     padding: 10px;
     width: 100%;
@@ -72,7 +62,6 @@ input:focus {
     border-radius: 5px;
     
 }
-
 .card3{
     background-color: pink;
     // box-shadow: 0 15px 8px 0 rgba(0,0,0,0.2);
@@ -91,12 +80,8 @@ input:focus {
 
             
   }
-  
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-.card-body{
-    // padding:.5rem 1rem;
 }
 .card-title{
     font-weight: 200;
@@ -135,10 +120,6 @@ span{
     margin: 0rem;
     padding: 0rem;
 }
-button{
-    // float: right;
-    // position:absolute;right:0
-}
 .btn3{
     
         float: right;
@@ -160,8 +141,10 @@ button{
     margin-bottom: 1rem;
 
 }
-ul{
-    height: 2rem;
+li{
+  // height: 2rem;
+   //margin-left: 80%;
+  // padding-left: 80%;
 }
 // li{
 //     background-color: var(--main-green);
@@ -189,20 +172,10 @@ img{
     padding: 0rem;
     margin: 0rem;
 }
-// .tabs{
-//     width: 100%;
-//     background-color: white;
-//     padding:1rem;
-// }
 .tab{
     margin-right: 1rem;
     width: 16rem;
 }
-// .tab-active{
- 
-    
-// }
-
 .active{
     width: 16rem;
     height: .2rem;
@@ -229,9 +202,6 @@ img{
     font-size:small;
     width: 8rem;
     height: 3rem;
-}
-.tabs-boxed{
-
 }
 .rsvBtn{
     background-color: var(--yellow);
@@ -267,8 +237,6 @@ figure{
 .btnCancel:hover{
      background-color: rgb(210, 210, 210);
 }
-
-
 //////////////////////////
 /// phones and mobile/////
 /// //////////////////////
@@ -332,7 +300,6 @@ select{
     }
 
 }
- 
 /* (2048x1536) iPad 3 */
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .column{
