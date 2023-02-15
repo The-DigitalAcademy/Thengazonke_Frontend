@@ -97,7 +97,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/admin/users']);
               }
               else{
-                let msg = 'Creaditials does not correspond';
+                let msg = 'Credentials does not correspond';
                 this.errorToast(msg)
               }
               
@@ -119,14 +119,14 @@ export class LoginComponent implements OnInit {
 
           this.submitted = false;
         }, (err) => {
-          let msg = 'Please provide the correct creaditials!';
+          let msg = 'Please provide the correct credentials!';
           this.errorToast(msg);
 
           console.log(err);
       });        
       }
       else{
-        let msg = 'Please provide creaditials!';
+        let msg = 'Please provide credentials!';
         this.errorToast(msg)
       }
   }

@@ -132,7 +132,7 @@ AddUser()
     }
     else  
     {
-      let msg = 'Please provide creaditials!';
+      let msg = 'Please provide credentials!';
         this.errorToast(msg)
     }
  
@@ -144,7 +144,7 @@ checkSelected(event:any){
 }
 
 successfullToast(){
-  this.toast.success('Successfully registered!',{duration:6000 , style: {
+
     padding: '35px',
     width: '48%',
     height: '100px',
