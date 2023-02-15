@@ -137,5 +137,9 @@ errorToast(message:any){
     secondary: '#FFFAEE',
   },})
 }
+  getPriceCurrency(price:any) { 
+    return price.slice(1,price.length);
+  }
+
 
 }

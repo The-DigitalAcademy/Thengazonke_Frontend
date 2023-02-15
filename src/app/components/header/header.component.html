@@ -1,7 +1,19 @@
  <div class="header top-0 w-full flex justify-between p-2 lg:px-11">
 
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl ">
-    <a [routerLink]="['/']"><img src="../../../assets/logo.png"></a>
+    <div [ngSwitch]="myCurrentRoute">
+      <div *ngSwitchCase="'/'">
+        <a [routerLink]="['/']"><img src="../../../assets/logo.png"></a>
+      </div>
+      <div *ngSwitchCase="'/home'">
+        <a [routerLink]="['/home']"><img src="../../../assets/logo.png"></a>
+      </div>
+      <div *ngSwitchCase="'/homes'">
+        <a [routerLink]="['/homes']"><img src="../../../assets/logo.png"></a>
+      </div>
+
+    </div>
+    
   </div>
   <div class="desktop-nav hidden lg:flex text-sm">
       <ul  class="menu menu-horizontal">
@@ -26,6 +38,8 @@
             <!-- <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/notifications">Notifications</a>
             </li> -->
+
+            
             <li class="" *ngIf="user.usertype == 'Seller'">
               <a routerLink="/homes">Home</a>
             </li>

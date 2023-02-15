@@ -137,6 +137,9 @@ export class AvailablelivestockComponent implements OnInit {
     }); 
   }
 
+  getPriceCurrency(price:any) { 
+    return price.slice(1,price.length);
+  }
 
 
   // openModal(){

@@ -5,7 +5,7 @@ background-color:#516951;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  
  
 }
 
@@ -14,15 +14,15 @@ background-color:#516951;
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
-  margin-bottom: 10px;
-  overflow: auto;
-  
+  justify-content: flex-end;
+  margin-bottom: 0%;
+
 }
 
 .contact-links, .contact-form-wrapper {
   width: 50%;
   padding-top:20px;
- 
+ bottom: 0;
 
 }
 
@@ -45,7 +45,7 @@ background-color:#516951;
     #1f2e43;
     padding-top:20px;
   margin-top: 10px;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
 
 }
 
@@ -53,7 +53,7 @@ background-color:#516951;
   background-color: #ffffff8f;
   padding-top:20px;
   margin-top: 10px;
-  margin-bottom: 15px;
+  // margin-bottom: 15px;
   
  
 }
@@ -64,18 +64,18 @@ background-color:#516951;
   }
   
   .contact-links {
-    border-radius: 10px 10px 0 0;
+  
   }
   
   .contact-form-wrapper {
-    border-radius: 0 0 10px 10px;
+    
   }
 }
 
 @media only screen and (max-width: 400px) {
   .contact-box {
-    width: 95%;
-    margin: 8% 5%;
+    width: 100%;
+    // margin: 8% 5%;
   }
 }
 
