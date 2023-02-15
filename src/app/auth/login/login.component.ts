@@ -3,8 +3,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import jwt_decode from 'jwt-decode';
-// import { NgToastService } from 'ng-angular-popup';
 import { HotToastService } from '@ngneat/hot-toast';
+// import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   users!:any;
 
   submitted = false;
+  marked = false;
+  theCheckbox = false;
 
   constructor(private authServive:AuthService, private router: Router, public fb: FormBuilder, private toast :HotToastService) { 
   }
@@ -102,9 +104,18 @@ export class LoginComponent implements OnInit {
             }
 
             sessionStorage.setItem('loggedID', this.users[0].Userid);
+            if(this.marked === true)
+            {
+              localStorage.setItem('loggedID', this.users[0].Userid);
+            }
+            
           });
           // sessionStorage.setItem('loggedInToken', res.token);
           sessionStorage.setItem('loggedEmail', this.decoded.email);
+          if(this.marked === true)
+          {
+            localStorage.setItem('loggedEmail', this.decoded.email);
+          }
 
           this.submitted = false;
         }, (err) => {
@@ -120,6 +131,11 @@ export class LoginComponent implements OnInit {
       }
   }
 
+  checkRemember(event:any)
+  {
+    this.marked = event.target.checked;
+    // console.log(this.marked);
+  }
 
   checkSelected(event:any){
     this.selected = event.target.value;

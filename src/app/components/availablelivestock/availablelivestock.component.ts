@@ -12,26 +12,31 @@ import { LivestockService } from 'src/app/services/livestock.service';
 export class AvailablelivestockComponent implements OnInit {
   post_id:any
   userId:any
-  livestocks!:any;
+  livestocks:any =[];
   categories!:any;
   filterTerm: string='';
   filterSearch!:string;
+  filterSearch1!:string;
   livestok!:any;
-
   trans!:any;
   live!:any;
   transaction!:any;
   users:any[] = [];
+  noLivestock = 0
+  //courses:any =this.livestocks;
 
   result!:any;
   result2!:any;
+  public isActive:boolean = true;
+
+  name = '!!!';
+  viewMode = 'mylivestock';
 
   @Output() newItemEvent = new EventEmitter<string>();
   @Output() useridd = new EventEmitter<string>();
   myCurrentRoute: any;
   
-  // @Output('openModal') openModal = new EventEmitter()
-
+  // @Output('openModal') openModal = new EventEmitter() 
   
   constructor(private livestoc:LivestockService, private router: Router , private currentRoute: CurrentRouteService,private authservice:AuthService) { }
 
@@ -62,12 +67,13 @@ export class AvailablelivestockComponent implements OnInit {
   }
 
   onCategoryChange2(catItem:any){
-  
-    this.filterTerm = catItem
+    
+    this.filterSearch = catItem
+    console.log('Categgorrrryyy',this.filterTerm)
 
   }
   onCategoryChange3(){
-    this.filterTerm=''
+    this.filterSearch=''
   }
 
   reserve(ind: any) {
@@ -97,7 +103,8 @@ export class AvailablelivestockComponent implements OnInit {
 
     this.livestoc.GetLivestockCategories().subscribe((res) => { 
       this.categories = res;
-     // console.log('this are categories',this.categories)
+      console.log('this are categories',this.categories)
+
     })
   }
   GetProducts(){
@@ -131,18 +138,7 @@ export class AvailablelivestockComponent implements OnInit {
      // console.log('What i am looking for',this.trans);
     }); 
   }
-
-
-
-  // openModal(){
-   
-  //   let modalCheckbox:any = document.getElementById('my-modal')
-  //  modalCheckbox.checked = true
-  // }
-
-  // closeModal() {
-  //   let modalCheckbox:any = document.getElementById('my-modal')
-  //   modalCheckbox.checked = false
-  // }
-
+  getPriceCurrency(price:any){
+    return price.slice(1,price.length);
+  }
 }

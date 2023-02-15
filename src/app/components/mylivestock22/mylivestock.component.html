@@ -1,14 +1,16 @@
-<div class="bodysz">
+<!-- <!--<div class="bodysz">
+  <h1>My livestock</h1>
   <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock>
 </div>
 
 <div class="row">
-    <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index" >
-   <div *ngIf="animal.status">
+    <div class="column my-3" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
       <div class="card card-compact shadow-sm" style="margin: 1rem;">
-        <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+        <figure>
+          <img src="{{animal.image}}" alt=""></figure>
         <div class="card-body">
-          <div class="headingss">
+
+          <div class="flex items-center justify-between leading-tight p-2 md:p-4">
             <h3 class="card-title">{{animal.categoryName}}</h3>
             <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
           </div>
@@ -22,8 +24,7 @@
             <div style="margin-bottom: 0rem;" class="card-actions justify-between">
 
               <div>
-                <h5 style="font-size: 1rem; color: #11998e;
-                color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>  
+                <h5><span></span>{{animal.createdAT | date:'dd-MM-yy'}}</h5>  
               </div>
              
               <div>
@@ -31,41 +32,9 @@
                 <label for="my-modal"><i class="fa fa-trash" aria-hidden="true"></i></label>
                 <!-- The button to open modal -->
                   <!-- <label for="my-modal" class="btn">open modal</label> -->
-</div>
-</div>
-  <h1>My livestock</h1>
-  <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock> 
-  <div class="container">
-    <div class="flex ">
-      <div>
-        <ul class="tab">
-          <li class="tab tab-bordered" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'"  [ngClass]="{'active': viewMode ==='tab1'}">My livestock</li>
-        </ul>
-      </div>
-  
-      <div>
-        <ul>
-          <li class="tab tab-bordered" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'" [ngClass]="{'active': viewMode ==='tab2'}">Available Livestock</li>
-        </ul>
-      </div>
-    </div>
-    <div class="tab-slider--container" [ngSwitch]="viewMode">
-      <div id="tab1" class="tab-slider--body w-full" *ngSwitchCase="'tab1'">
-        <br>
-          <app-mylivestock22></app-mylivestock22> 
-      </div>
-      <div id="tab2" class="tab-slider--body" *ngSwitchCase="'tab2'">
-        <app-available></app-available>
-      </div>
-    </div>
-  </div>
-</div>
 
 
-<!-- <input type="checkbox" id="my-modal" class="modal-toggle" />
-
-
-<input type="checkbox" id="my-modal" class="modal-toggle" />
+<!--<input type="checkbox" id="my-modal" class="modal-toggle" />
 <div class="modal" *ngFor="let animal of livestok">
     <div class="modal-box" style="background-color: red;padding: 0;">
         <div class="flex flex-col p-5 rounded-lg shadow bg-white">
@@ -90,8 +59,4 @@
           </div>
         </div>
     </div>
-</div> -->
-
-<!-- </div> -->
-<br><br><br>
-<app-footer></app-footer>
+</div>
