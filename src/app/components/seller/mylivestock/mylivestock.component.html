@@ -1,10 +1,10 @@
 <div class="bodysz">
-  <h1>My livestock</h1>
   <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock>
 </div>
 
 <div class="row">
-    <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index">
+    <div class="column" *ngFor="let animal of livestocks | filter: filterTerm;let x = index" >
+   <div *ngIf="animal.status">
       <div class="card card-compact shadow-sm" style="margin: 1rem;">
         <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
         <div class="card-body">
@@ -31,7 +31,8 @@
                 <label for="my-modal"><i class="fa fa-trash" aria-hidden="true"></i></label>
                 <!-- The button to open modal -->
                   <!-- <label for="my-modal" class="btn">open modal</label> -->
-
+</div>
+</div>
 
 <input type="checkbox" id="my-modal" class="modal-toggle" />
 <div class="modal" *ngFor="let animal of livestok">
