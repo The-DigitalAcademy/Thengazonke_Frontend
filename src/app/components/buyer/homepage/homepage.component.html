@@ -21,7 +21,7 @@
          <h3 class="weigh">{{animal.weight}}</h3>
          <br>
          <h3 class="address"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
-         <h3 class="price"><b>{{animal.price}}</b></h3>
+         <h3 class="price"><b>R{{getPriceCurrency(animal.price)}}</b></h3>
          <br>
          <div class="card-actions justify-center">
            <button class="rsvBtn"  for="my-modal" (click)=closeModal()>Back</button>

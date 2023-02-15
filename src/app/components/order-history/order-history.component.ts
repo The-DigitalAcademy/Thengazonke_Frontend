@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { async } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { Users } from 'src/app/model/users';
 import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
@@ -29,11 +31,30 @@ export class OrderHistoryComponent implements OnInit {
     let status = {status:"cancelled"};
 
     this.transactionService.updateTransaction(id, status).subscribe(async (res) => {
-    })
+      this.closeModal()
+    }, (err) => {
+
+      if(Number(err.status) === Number(0)){
+        let msg = `There's been an error please try again`;
+        this.errorToast(msg)
+      }
+      else if(err.status === 200){
+        this.successfullToast();
+        this.closeModal()
+      }
+      else if(err.status === 201){
+
+        this.successfullToast();
+        this.closeModal()
+        }
+      else{
+        this.errorToast("Something went wrong, please try again")
+      }
+  });
 
   }
 
-  constructor( private transactionService : TransactionService, private livestockService: LivestockService, private authservice: AuthService ) { 
+  constructor( private transactionService : TransactionService, private livestockService: LivestockService, private authservice: AuthService,private toast :HotToastService, private router: Router) { 
     this.getUser();
   }
 
@@ -46,8 +67,6 @@ export class OrderHistoryComponent implements OnInit {
     this.authservice.GetAllUsers().subscribe(async(res:any) => {
       let result = res;
       this.users = await result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
-       console.log(this.users)
-
       this.getTransaction();
        
     })
@@ -57,16 +76,10 @@ export class OrderHistoryComponent implements OnInit {
   {
     this.transactionService.GetAllTransaction().subscribe((res:any) => {
       this.result2 = res;
-      
-      console.log(this.result2)
-      console.log(this.users[0].Userid)
-
-      let transTemp = this.result2.filter((res:any) => Number(res.userID) === Number(this.users[0].Userid));
+      let transTemp = this.result2.filter((res:any) => Number(res.buyerID) === Number(this.users[0].Userid));
       this.trans = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
-      console.log(this.trans);
-
     }); 
-    console.log(this.trans)
+    // console.log(this.trans)
   }
 
 
@@ -109,6 +122,52 @@ checkSelected(event:any, transID:any)
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
+  }
+
+
+  successfullToast(){
+    this.toast.success('Order Cancelled!',{duration:4000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#4BB543',
+      secondary: '#FFFAEE',
+    },})
+  }
+
+  warningToast(){
+    this.toast.warning('Boo!',{duration:4000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#FFCC00',
+      secondary: '#FFFAEE',
+    },})
+  }
+
+  errorToast(message:any){
+    this.toast.error(message,{duration:2000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#DC3545',
+      secondary: '#FFFAEE',
+    },})
   }
 
   // DeleteTransaction()

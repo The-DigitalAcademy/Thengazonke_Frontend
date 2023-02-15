@@ -112,6 +112,26 @@ button{
 h4{
     color: #516951;
 }
+
+.btn-pending{
+    background-color: #17a2b8;
+    color: var(--white);
+}
+
+.btn-cancelled{
+    background-color: #dc3545;
+    color: var(--white);
+}
+
+.btn-complete{
+    background-color: #28a745;
+    color: var(--white);
+}
+
+.btn-in-progress{
+    background-color: #ffc107;
+    color: var(--white);
+}
 .step{
-    color: #516951;
+    color: black;
 }

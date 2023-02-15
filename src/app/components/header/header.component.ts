@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CurrentRouteService } from 'src/app/services/current-route.service';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +16,12 @@ export class HeaderComponent implements OnInit {
   dashboardRoute: string ='';
   logEmail!:any;
   users!:any;
+  myCurrentRoute: any;
 
-  constructor(private router : Router,  private authService: AuthService) { }
+  constructor(private router : Router,  private authService: AuthService, private currentRoute: CurrentRouteService) { }
 
   ngOnInit(): void {
+    this.myCurrentRoute  = this.currentRoute.currentRoute();
 
     if('loggedEmail' in sessionStorage)
     {

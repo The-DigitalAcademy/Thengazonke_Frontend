@@ -5,6 +5,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-livestock',
@@ -68,7 +69,7 @@ export class CreateLivestockComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private toast :HotToastService) { }
+    public fb: FormBuilder, private http:HttpClient, private toast :HotToastService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -76,19 +77,15 @@ export class CreateLivestockComponent implements OnInit {
 
     this.categoryService.GetAllCategory().subscribe((res:any) => {
       this.category = res;
-      console.log(this.category);
     });
 
   }
   checkSelected(event:any)
   {
-    console.log(event.target.value);
-
     this.breedService.GetAllBreed().subscribe((res:any) => {
       let result = res;
 
       this.breed = result.filter((resss:any) => String(resss.categoryID) === String(event.target.value));
-      console.log('i am breed',this.breed);
     });
 
   }
@@ -140,17 +137,14 @@ export class CreateLivestockComponent implements OnInit {
         this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
           console.log('Add successfully!');
           this.successfullToast();
-          // this.router.navigate(['/login']);
-    
-          // sessionStorage.setItem('token', JSON.stringify(userDetails)); 
+          this.router.navigate(['/homes']);
     
           this.submitted = false;
         }, (err) => {
-
-          console.log('jvugjvbhhjbjhfmbn', err)
           if(err.status === 201)
           {
             this.successfullToast();
+            this.router.navigate(['/homes']);
           }
           else if(err.status === 400)
           {
@@ -165,11 +159,10 @@ export class CreateLivestockComponent implements OnInit {
   
     }
     , (ERROR) => {
-
-      console.log('jvugjvbhhjbjhfmbn', ERROR)
       if(ERROR.status === 201)
       {
         this.successfullToast();
+        this.router.navigate(['/homes']);
       }
       else if(ERROR.status === 400)
       {

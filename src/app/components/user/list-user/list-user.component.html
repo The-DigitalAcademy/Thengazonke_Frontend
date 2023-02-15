@@ -35,7 +35,7 @@
           <td>{{user.usertype}}</td> 
           <td>
             <a [routerLink]="['/admin/user',user.Userid]"><i class="fa fa-eye mx-2"></i></a>
-            <label for="my-modal"><a (click)="deleteUsr(user.Userid)"><i class="fa fa-trash mx-2"></i></a></label>
+            <label for="my-modal" *ngIf="isArchievedUsers"><a (click)="deleteUsr(user.Userid)"><i class="fa fa-trash mx-2"></i></a></label>
           </td> 
 
           
