@@ -1,42 +1,27 @@
-import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
-
 @Component({
-  selector: 'app-mylivestock',
-  templateUrl: './mylivestock.component.html',
-  styleUrls: ['./mylivestock.component.scss']
+  selector: 'app-mylivestock22',
+  templateUrl: './mylivestock22.component.html',
+  styleUrls: ['./mylivestock22.component.scss']
 })
-export class MylivestockComponent implements OnInit {
+export class Mylivestock22Component implements OnInit {
+
   post_id:any
   livestocks!:any;
   categories!:any;
   filterTerm!: string;
   lid!:any;
   usid!:any;
+  trans!:any;
   results!:any;
+  users!:any;
+  userId!:any;
 
   livestok!:any;
-
-  name = '!!!';
-  viewMode = 'tab1';
-
-  tab : any = 'tab1';
-  tab1 : any
-  tab2 : any
-  tab3 : any
-  Clicked!: boolean
-  
-  onClick(check:any){
-    //    console.log(check);
-        if(check==1){
-          this.tab = 'tab1';
-        }else if(check==2){
-          this.tab = 'tab2';
-        }  
-      
-    }
 
   @Output() newItemEvent = new EventEmitter<string>();
   @Output('openModal') openModal = new EventEmitter()
@@ -72,11 +57,18 @@ export class MylivestockComponent implements OnInit {
     this.closeModal();
   }
 
-  constructor(private livestoc:LivestockService, private router: Router) { }
+  constructor(private livestoc:LivestockService, private router: Router, private authservice: AuthService) { }
 
   ngOnInit(): void {
-    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
-      this.livestocks = messages
+
+    this.authservice.GetAllUsers().subscribe((res:any) => {
+      let result = res;
+      this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
+    })
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages:any) => {
+      let results = messages;
+      this.livestocks = results.filter((res:any) => String(res.UserID) === String(8))
     }) 
   }
   
@@ -84,6 +76,17 @@ export class MylivestockComponent implements OnInit {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
   }
+  getPriceCurrency(price:any){
+    return price.slice(1,price.length);
+  }
+
+  // delete(ind: any) {
+  //   this.post_id = this.trans[ind].livestockID
+  //   this.addNewItem(this.post_id)
+  //   this.userId = this.livestocks[ind].UserID
+    
+  //   console.log('delete id',this.post_id,this.userId)
+  // }
+ 
 
 }
-

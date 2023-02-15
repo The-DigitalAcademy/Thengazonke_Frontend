@@ -224,6 +224,13 @@ button{
 ul{
     height: 2rem;
 }
+.li2{
+    background-color: var(--main-green);
+    border: solid 2px var(--yellow);
+    border-radius: 6px;
+    padding: 0rem;
+    height: 2rem;
+    margin-right: 1rem;
 li{
     //background-color: var(--main-green);
     //border: solid 2px var(--yellow);
@@ -236,6 +243,7 @@ li{
     //margin-right: 1rem;
    
 }
+
 a{
     height: 2rem;
     
@@ -476,4 +484,7 @@ select{
     }
 
 }
- 
+.tabs{
+margin: auto;
+}
+}
