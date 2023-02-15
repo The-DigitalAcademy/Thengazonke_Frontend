@@ -22,3 +22,21 @@
     background-color: var(--main-green) !important;
 }
 
+
+.steps .step-primary:after {
+    background-color: #17a2b8 !important;
+    color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
+.steps .step-error:after {
+    background-color: #dc3545 !important;
+    color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.steps .step-accent:after {
+    background-color: #28a745 !important;
+    color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+.steps .step-warning:after {
+    background-color: #ffc107 !important;
+    color: hsl(var(--pc) / var(--tw-text-opacity));
+}

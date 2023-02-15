@@ -23,6 +23,7 @@ export class AvailablelivestockComponent implements OnInit {
   live!:any;
   transaction!:any;
   users:any[] = [];
+  noLivestock = 0
   //courses:any =this.livestocks;
 
   result!:any;

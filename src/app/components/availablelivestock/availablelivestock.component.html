@@ -36,17 +36,10 @@
 </div>
 
 
-
-
-
-  
-  
-
-
 <div [ngSwitch]="myCurrentRoute">
 
   <div *ngSwitchCase="'/'">
-    <div class="row" *ngIf="livestocks.length; else noLivestock">
+    <div class="row" *ngIf="livestocks.length > 0">
       <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index">
         <div class="card card-compact shadow-sm" style="margin: 1rem; height: 100%;">
           <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
@@ -74,70 +67,39 @@
       </div>
     </div>
   </div>
-
+  
   <div *ngSwitchCase="'/home'">
-    <div class="row" *ngIf="livestocks.length; else noLivestock">
-      <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index">
-        <div class="card card-compact shadow-sm" style="margin: 1rem; height: 100%;">
-          <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
-          <div class="card-body">
-                  <div class="headingss">
-                    <h3 class="card-title">{{animal.categoryName}}</h3>
-                    <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
-                  </div>
-              <h2 class="breed" style="margin-left: -5px; color: #11998e;
-              color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
-              >{{animal.breedName}}</h2>
-              <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
-              <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
-              <p><span> Age:</span> {{animal.age}}</p>
-              <p><span> Color:</span>{{animal.color}}</p>
-              <p><span> Color:</span>{{animal.gender}}</p>
-
-                  <div style="margin-bottom: 0rem;" class="card-actions">
-                    <h5 style="font-size: 1rem; color: #11998e;
-                  color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>R{{getPriceCurrency(animal.price)}}</h5>
-                    <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
-                  </div>
-              </div>
+    <br>
+  
+    <div class="row" >
+    <div class="column"  *ngFor="let animal of livestocks | filter: filterTerm | filter: filterSearch;let x = index">
+      <div class="card card-compact shadow" style="margin: 1rem;" >
+        <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+        <div class="card-body">
+          <div class="headingss">
+            <h3 class="card-title">{{animal.categoryName}}</h3>
+            <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
           </div>
-      </div>
-    </div>
-</div>
+            <h2 class="breed" style="margin-left: -5px; color: #11998e;
+            color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
+            >{{animal.breedName}}</h2>
+            <p style="font-size: .5rem;" maxlength="4"><span> Description:</span> {{animal.description}}</p>
+            <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
+            <p><span> Age:</span> {{animal.age}}</p>
+            <p><span> Color:</span> a dog chews shoes whose shoes does he choose?</p>
+            <div style="margin-bottom: 0rem;" class="card-actions">
+              <h5 style="font-size: 1rem; color: #11998e;
+              color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
+          
 
-  <div *ngSwitchCase="'/homes'">  
-      <div class="row" *ngIf="livestocks.length; else noLivestock">
-        <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of trans | filter: filterSearch1 | filter: filterSearch;let x = index">
-          <div class="card card-compact shadow-sm" style="margin: 1rem; height: 100%;">
-            <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
-            <div class="card-body">
-              <div class="headingss">
-                <h3 class="card-title">{{animal.categoryName}}</h3>
-                <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
-              </div>
-                <h2 class="breed" style="margin-left: -5px; color: #11998e;
-                color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
-                >{{animal.breedName}}</h2>
-                <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
-                <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
-                <p><span> Age:</span> {{animal.age}}</p>
-                <p><span> Color:</span> {{animal.gender}}</p>
-                <div style="margin-bottom: 0rem;" class="card-actions">
-                  <h5 style="font-size: 1rem; color: #11998e;
-                  color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>{{animal.price}}</h5>
-                  <div>
-                    <a [routerLink]="['/edit-livestock',animal.livestockID]" routerLinkActive="router-link-active" ><i class="fa fa-pencil-alt mx-2" aria-hidden="true"></i></a>
-                    <a (click)="delete(x)"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                  </div>
-                   
-                </div>
+                <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
+               
             </div>
-          </div>
         </div>
       </div>
     </div>
-
-
+  </div>
+  </div>
 
  </div>
  
