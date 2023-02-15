@@ -1,9 +1,34 @@
 <div class="bodysz">
   <h1>My livestock</h1>
-  <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock>
+  <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock> 
+  <div class="container">
+    <div class="flex ">
+      <div>
+        <ul class="tab">
+          <li class="tab tab-bordered" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'"  [ngClass]="{'active': viewMode ==='tab1'}">My livestock</li>
+        </ul>
+      </div>
+  
+      <div>
+        <ul>
+          <li class="tab tab-bordered" [class.active]="viewMode == 'tab2'" rel="tab2" (click)="viewMode ='tab2'" [ngClass]="{'active': viewMode ==='tab2'}">Available Livestock</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tab-slider--container" [ngSwitch]="viewMode">
+      <div id="tab1" class="tab-slider--body w-full" *ngSwitchCase="'tab1'">
+        <br>
+          <app-mylivestock22></app-mylivestock22> 
+      </div>
+      <div id="tab2" class="tab-slider--body" *ngSwitchCase="'tab2'">
+        <app-available></app-available>
+      </div>
+    </div>
+  </div>
 </div>
 
 
+<!-- <input type="checkbox" id="my-modal" class="modal-toggle" />
 
 
 <input type="checkbox" id="my-modal" class="modal-toggle" />
@@ -31,6 +56,8 @@
           </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<!-- </div> -->
 <br><br><br>
 <app-footer></app-footer>

@@ -5,57 +5,48 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
 @Component({
-  selector: 'app-availablelivestock',
-  templateUrl: './availablelivestock.component.html',
-  styleUrls: ['./availablelivestock.component.scss']
+  selector: 'app-available',
+  templateUrl: './available.component.html',
+  styleUrls: ['./available.component.scss']
 })
-export class AvailablelivestockComponent implements OnInit {
+export class AvailableComponent implements OnInit {
+
   post_id:any
   userId:any
-  livestocks:any =[];
+  livestocks!:any;
   categories!:any;
   filterTerm: string='';
   filterSearch!:string;
-  filterSearch1!:string;
   livestok!:any;
   trans!:any;
   live!:any;
   transaction!:any;
   users:any[] = [];
-  noLivestock = 0
-  //courses:any =this.livestocks;
-
   result!:any;
   result2!:any;
-  public isActive:boolean = true;
-
+  
   name = '!!!';
   viewMode = 'mylivestock';
 
   @Output() newItemEvent = new EventEmitter<string>();
   @Output() useridd = new EventEmitter<string>();
+
   myCurrentRoute: any;
-  
-  // @Output('openModal') openModal = new EventEmitter() 
-  
-  constructor(private livestoc:LivestockService, private router: Router , private currentRoute: CurrentRouteService,private authservice:AuthService) { }
+
+  constructor(private livestoc:LivestockService, private authservice: AuthService) { }
 
   ngOnInit(): void {
-
-    this.myCurrentRoute  = this.currentRoute.currentRoute();
-
-    console.log(this.myCurrentRoute);
-
-    this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
-      this.livestocks = messages
-      console.log('i am livestock',this.livestocks)
+    this.authservice.GetAllUsers().subscribe((res:any) => {
+      let result = res;
+      this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
     })
-    
-    this.GetCategories();
-    this.GetProducts();
-    this.getUser();
+
+    this.livestoc.GetAllPostedLivestock().subscribe((messages:any) => {
+      this.livestocks = messages;
+      // this.livestocks = results.filter((res:any) => String(res.UserID) === String(8))
+    }) 
   }
-  
+
   onCategoryChange(e:any){
     this.filterTerm=e.target.value
 
@@ -67,13 +58,12 @@ export class AvailablelivestockComponent implements OnInit {
   }
 
   onCategoryChange2(catItem:any){
-    
-    this.filterSearch = catItem
-    console.log('Categgorrrryyy',this.filterTerm)
+  
+    this.filterTerm = catItem
 
   }
   onCategoryChange3(){
-    this.filterSearch=''
+    this.filterTerm=''
   }
 
   reserve(ind: any) {
@@ -104,7 +94,6 @@ export class AvailablelivestockComponent implements OnInit {
     this.livestoc.GetLivestockCategories().subscribe((res) => { 
       this.categories = res;
       console.log('this are categories',this.categories)
-
     })
   }
   GetProducts(){
@@ -114,31 +103,8 @@ export class AvailablelivestockComponent implements OnInit {
     })
   }
 
-  
-
-  //GET SELLERS LIVESTOCK
-  getUser()
-  {
-    this.authservice.GetAllUsers().subscribe((res:any) => {
-      let result = res;
-      this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
-       console.log('i ran',this.users)
-
-       this.getMyLivestock();
-    })
-  }
-
-  getMyLivestock()
-  {
-    this.livestoc.GetAllPostedLivestock().subscribe((res:any) => {
-      this.result2 = res;
-      
-      let transTemp = this.result2.filter((res:any) => Number(res.UserID) === Number(this.users[0].Userid));
-      this.trans = transTemp.filter((ress:any) => String(ress.status) != String('pending'));
-      console.log('What i am looking for',this.trans);
-    }); 
-  }
   getPriceCurrency(price:any){
     return price.slice(1,price.length);
   }
+
 }

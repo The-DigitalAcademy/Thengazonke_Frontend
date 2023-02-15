@@ -124,6 +124,9 @@ AddUser()
 
           this.successfullToast();
           }
+          else{
+            this.errorToast("Something went wrong, please try again")
+          }
       });
 
     }
@@ -141,7 +144,7 @@ checkSelected(event:any){
 }
 
 successfullToast(){
-  this.toast.success('Successfully logged in!',{duration:6000 , style: {
+
     padding: '35px',
     width: '48%',
     height: '100px',

@@ -1,162 +1,153 @@
+<div class="heading bold justify-center">
+  <h1>Edit Livestock</h1>
+</div>
 
+  <div class="mt-10 sm:mt-0 mx-10 mb-36">
+    <form role="form"  [formGroup] = "AddLivestockForm" novalidate>
+      <div class="md:grid md:grid-cols-3 md:gap-6">
+        <div class="md:col-span-1">
+          <div class="px-4 sm:px-0">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">Livestock Image</h3>
+            <p class="mt-1 text-sm text-gray-600">Change livestock image below.</p>
+          </div>
 
-
-
-  
-   
-     
-   
-  
-
-  <!-- <div class="col-4">
-    <button
-      class="btn btn-success btn-sm float-right"
-      [disabled]="!selectedFiles"
-     
-    >
-      Upload
-    </button>
-  </div> -->
-
-
-
-
-<!-- <div class="card mt-3" style="background-color: orange;">
-      <img src="{{ myLivestock.image}}" alt="{{ myLivestock.image}}" height="80px" />
-</div> -->
-
-
-<body>
-  <img id="file-ip-1-preview">
-
-    <section class="clean-block clean-form dark" style="background: #fff;">
-        <div class="container" style="background: #fff;">
-            <div class="block-heading" style="padding-top: 0px;">
-                <h2 class="text-primary" style="border-color: #516951;"><span style="color: rgb(81, 105, 81);">Edit Livestock</span><br></h2>
-            </div>
-         
-            <form style="max-width: 700px; border-color: var(--bs-white);" role="form"  [formGroup] = "AddLivestockForm" novalidate>
-            <div style="margin-bottom: 1rem;">
-
+          <div class="col-span-12 sm:col-span-12 livestock-img mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
             
-              <div style="height: 15em;" *ngIf="dtbaseImage">
-                <img style="width: 100%;max-height: 100%;object-fit: cover;" src="{{myLivestock.image}}" class="preview">
-              </div>
-              <div *ngIf="uplImage">
-                <img [src]="preview" class="preview">
-              </div>
-
-              <div class="man">
-                <div class="center">
-                  <div class="form-input">  
-                    <label for="file-ip-1">Upload Image</label>
-                    <input type="file" id="file-ip-1" accept="image/*" (change)="selectFile($event)" />
-                  </div>
-                </div> 
-              </div>
-
-            </div>
-
-
-
-                <div class="form-group mb-3">
-               
-                  
-                  <a>Category :</a>
-                  <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
-                      <!-- <option value="" selected disabled hidden>Select Livestock</option>
-                      <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option> -->
-
-                      <option value="" selected disabled hidden>Choose here</option>
-                        <option value="2">{{myLivestock.categoryName}}</option>
-
-                        <option value="3">Three</option>
-                        <option value="4">Four</option>
-                        <option value="5">Five</option>
-
-                  </select>
-                  
-                </div>
-
-                <a>Breed :</a>
-                <div class="form-group mb-3">
-                  <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" style="border-width: 2px;border-color: #516951;" (change)="checkSelected($event)">
-                    <!-- <option value="" selected disabled hidden>Select Livestock</option>
-                    <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option> -->
-
-                    <option value="" selected disabled hidden>Choose here</option>
-                      <option value="2">{{myLivestock.breedName}}</option>
-
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                      <option value="5">Five</option>
-
-                </select>
-               </div>
-            
-                <a>Description :</a>
-                <div class="form-group mb-3">
-                    <div class="form-group mb-3">
-                      <textarea style="border: 2px solid black; width: 100%;border-radius: 6px;padding: .5rem" class="form-control" type="text" autocomplete="off" required=""  formControlName="description"  rows="4">{{myLivestock.description}}
-                        </textarea>
-                      </div>
-                </div>
-               <!-- <a>Gender :</a>
-              <div class="form-group mb-3">
-                  <div class="form-group mb-3">
-                    <select class="form-select" required="" formControlName="price" name="gender" style="border-width: 2px;border-color: #516951;">
-                          <option value="">Gender</option>
-                          <option>Male</option>
-                          <option>Female</option>
-                      </select></div>
-              </div> -->
-              <a>Age :</a>
-                <div class="form-group mb-3">
-                  <input class="form-control" type="text" autocomplete="off" required=""  formControlName="age" placeholder="Months" name="age" style="border-width: 2px;border-color: #516951;">
-                </div>
-                <a>Weight :</a>
-                <div class="form-group mb-3">
-                  <input class="form-control" type="text" autocomplete="off" required="" formControlName="weight" placeholder="Weight" name="weight" style="border-width: 2px;border-color: #516951;">
-                </div>
-                <a>Price :</a>
-                <div class="form-group mb-3">
-                  <input class="form-control" type="text" autocomplete="off" required="" formControlName="price" name="price" style="border-width: 2px;border-color: #516951;">
-                </div>
+            <div class="upload w-80">
+              <form>
+                <label class="uploader" ondragover="return false;"
+                [class.loaded]="loaded" 
+                [style.outlineColor]="dragging ? activeColor : baseColor"
+                (dragenter)="handleDragEnter()"
+                (dragleave)="handleDragLeave()"
+                (drop)="handleDrop($event)">
                 
-                <!-- <div class="color form-group mb-3"><label class="form-label" style="margin-top: 15px;height: 25px;">Livestock Image</label>
-                    <section>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12">
-                                    <div class="file-upload-wrapper">
-                                        <div class="view file-upload" style="padding-bottom: 7px;padding-right: 4px;height: 60px;border-width: 2px;border-color: #516951;">
-                                          <input class="form-control file_upload" type="file" id="input-file-now" (change)="onFileChange($event)"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div> -->
-                <hr style="margin-top: 30px;margin-bottom: 10px;">
-                <div class="form-group mb-3">
-                  <button class="btn btn-primary d-block w-100" id="submitButton" [disabled]="update_dp.invalid" (click)="editLivestock()" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button>
-                  <a [routerLink]="['/homes']" routerLinkActive="router-link-active"  class="btn btn-danger d-block w-100" role="button" style="margin-top: 15px;">&nbsp;Cancel</a>
-                </div>
-            </form>
+                <i class="icon icon-upload glyphicon glyphicon-upload" 
+                    [style.color]="dragging 
+                        ? ((imageSrc.length > 0) ? overlayColor : activeColor)
+                        : ((imageSrc.length > 0) ? overlayColor : baseColor)"></i>
+                
+                <img 
+                    [src]="imageSrc" 
+                    (load)="handleImageLoad()" 
+                    [class.loaded]="imageLoaded"/>
+              
+            </label>
+              </form>
+            </div>
+            
+            <div *ngIf="dtbaseImage && fileUploaded == 'no'">
+              <img style="width: 100%;max-height: 100%;object-fit: cover;" src="{{myLivestock.image}}" class="preview">
+            </div>
+
+            <div *ngIf="uplImage">
+              <img [src]="preview" class="preview">
+            </div>
+          </div>
+
+          <div class="">
+            <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium">
+              <span class="btn my-5">Change a file</span>
+              <input id="file-upload" name="file-upload" type="file" class="sr-only"accept="image/*" (change)="handleInputChange($event)">
+            </label>
+          </div>
+
+          <p class="text-xs text-gray-500">PNG, JPG, JPEG up to 10MB</p>
         </div>
-    </section>
-    <!-- <script>
-      function showPreview(event){
-        if(event.target.files.length > 0){
-          var src = URL.createObjectURL(event.target.files[0]);
-          var preview = document.getElementById("file-ip-1-preview");
-          preview.src = src;
-          preview.style.display = "block";
-        }
-      }
-      </script> -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script src="assets/js/Ludens---2-Create-with-Summernote-1.js"></script>
-    <script src="assets/js/Ludens---2-Create-with-Summernote.js"></script>
-  </body>
+        
+
+        <div class="mt-5 md:col-span-2 md:mt-0">
+            <div class="overflow-hidden shadow sm:rounded-md">
+              <div class="bg-white px-4 py-5 sm:p-6 vw-100">
+                <div class="grid grid-cols-6 gap-4">
+                  
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="first-name" class="block text-sm font-medium text-gray-700">Livestock</label>
+                    <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" (change)="checkSelected($event)">
+                      <option value="" selected disabled hidden>Choose here</option>
+                      <option value="{{myLivestock.categoryID}}">{{myLivestock.categoryName}}</option>
+                      <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option>
+                    </select>
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3">
+                    <label for="last-name" class="block text-sm font-medium text-gray-700">Breed</label>
+                    <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                      <option value="" selected disabled hidden>Choose here</option>
+                        <option value="{{myLivestock.breedID}}">{{myLivestock.breedName}}</option>
+                        <option  *ngFor="let brd of breed" value="{{brd.breedName}}">{{brd.breedName}}</option>
+                    </select>
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <label for="city" class="block text-sm font-medium text-gray-700">Gender</label>
+                    <select class="form-select" required="" formControlName="gender" name="gender" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                      <option value="" selected disabled >Gender</option>
+                      <option value="{{myLivestock.gender}}" >{{myLivestock.gender}}</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label for="region" class="block text-sm font-medium text-gray-700">Color</label>
+                    <input type="text" formControlName="color" placeholder="Colour" name="color" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label for="postal-code" class="block text-sm font-medium text-gray-700">Quantity</label>
+                    <input type="number" name="quantity" formControlName="quantity" autocomplete="postal-code" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                    <label for="city" class="block text-sm font-medium text-gray-700">Age type</label>
+                    <select class="form-select" required="" formControlName="agetype" name="agetype" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                      <option value="" selected disabled >Select age type</option>
+                      <option value="{{agetypes}}">{{agetypes}}</option>
+                      <option>Years</option>
+                      <option>Months</option>
+                      <option>Weeks</option>
+                    </select>
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label for="region" class="block text-sm font-medium text-gray-700">Age</label>
+                    <input type="number" name="age" formControlName="age" autocomplete="address-level1" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label for="postal-code" class="block text-sm font-medium text-gray-700">Weight</label>
+                    <input class="form-control" type="text" autocomplete="off" required="" formControlName="weight" placeholder="Weight" name="weight"  class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-6">
+                    <label for="region" class="block text-sm font-medium text-gray-700">Discription</label>
+                    <textarea type="text" name="description" formControlName="description" placeholder="Description" autocomplete="address-level1" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"></textarea>
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                    <label for="region" class="block text-sm font-medium text-gray-700">Price</label>
+                    <input type="text" name="price" formControlName="price" placeholder="000.00" autocomplete="address-level1" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                    <!-- <div *ngIf="submitted && formValidation['price'].errors" class="invalid-feedback error-text">
+                        <div *ngIf="formValidation['price'].errors['required']" class="text-error">Price is required</div>
+                        <div *ngIf="formValidation['price'].errors['pattern']" class="text-error">Password should be in 000.00 formart.</div>
+                    </div> -->
+                  </div>
+    
+                  <div class="col-span-6 sm:col-span-4">
+                    <label for="email-address" class="block text-sm font-medium text-gray-700">Location</label>
+                    <input type="text" name="address" formControlName="address" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                  </div>
+    
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 justify-between sm:px-6 flex flex-wrap">
+                <button class="btn btn-primary d-block w-100" id="submitButton" [disabled]="update_dp.invalid" (click)="editLivestock()" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button>
+                <a [routerLink]="['/homes']" routerLinkActive="router-link-active"  class="btn btn-danger d-block w-100" role="button" style="margin-top: 15px;">&nbsp;Cancel</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
