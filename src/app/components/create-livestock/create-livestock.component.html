@@ -140,104 +140,11 @@
           </div>
           <div class="bg-gray-50 px-4 py-3 justify-between sm:px-6 flex flex-wrap">
             <button type="submit" (click)="addLivestock()"  class="btn-save rounded-md border border-transparent py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2">Save</button>
-            <button type="submit" class="btn-cancel rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Cancel</button>
+            <button type="submit" [routerLink]="['/homes']"  class="btn-cancel rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Cancel</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-
-
-
-  <!-- <section class="clean-block clean-form light" style="background: #fff;">
-    <div class="container" style="background: #fff;">
-        <div class="block-heading" style="padding-top: 0px;">
-            <h2 class="text-primary" style="border-color: #516951;"><span style="color: rgb(81, 105, 81);">Create Livestock</span><br></h2>
-        </div>
-        <form style="max-width: 700px;border-color: var(--bs-white);" role="form"  [formGroup] = "AddLivestockForm" novalidate>
-            <div class="form-group mb-3">
-              <select class="form-select" required="" name="location" formControlName="categoryID" style="border-width: 1px;border-color: #516951;" (change)="checkSelected($event)">
-                  <option value="" selected disabled hidden>Select Livestock</option>
-                  <option  *ngFor="let cat of category" value="{{cat.categoryID}}">{{cat.categoryName}}</option>
-              </select>
-              </div>
-            <div class="form-group mb-3">
-              <select class="form-select" required="" name="location" formControlName="breedID" style="border-width: 1px;border-color: #516951;">
-                  <option  value="" selected disabled hidden>Select Breed</option>
-                  <option  *ngFor="let br of breed" value="{{br.breedID}}">{{br.breedName}}</option>
-              </select>
-           </div>
-          <div class="form-group mb-3">
-              <div class="form-group mb-3"><select class="form-select" required="" formControlName="price" name="gender" style="border-width: 1px;border-color: #516951;">
-                <option value="" selected disabled >Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                  </select></div>
-          </div>
-            <div class="form-group mb-3">
-              <input class="form-control" type="text" autocomplete="off" required=""  formControlName="color" placeholder="Colour" name="color" style="border-width: 1px;border-color: #516951;">
-            </div>
-            <div class="form-group mb-3">
-              <input class="form-control" type="text" autocomplete="off" required=""  formControlName="quantity" placeholder="Quantity" name="quantity" style="border-width: 1px;border-color: #516951;">
-            </div>
-            <div class="form-group mb-3">
-              <span class="form-group mb-3">
-             
-              <input class="form-control" type="text" autocomplete="off" required=""  formControlName="age" placeholder="Age" name="age" style="border-width: 1px;border-color: #516951;">
-             <span class="agetype">
-              <select formControlName="agetype">
-                <option selected disabled hidden>Select age type</option>
-                <option>Years</option>
-                <option>Months</option>
-                <option>Weeks</option>
-              </select>
-             </span>
-            
-
-            </span>
-            </div>
-            
-            <div class="form-group mb-3">
-              <input class="form-control" type="text" autocomplete="off" required="" formControlName="weight" placeholder="Weight" name="weight" style="border-width: 1px;border-color: #516951;">
-            </div>
-            <div class="form-group mb-3">
-              <textarea class="form-control" name="description" placeholder="Description" style="border-width: 1px;border-color: #516951;"></textarea>
-             </div>
-             <div class="form-group mb-3">
-              <input class="form-control" type="text" autocomplete="off" required="" formControlName="price" placeholder="Price" name="price" style="border-width: 1px;border-color: #516951;">
-            </div>
-            <div class="form-group mb-3">
-              <input class="form-control" type="text" autocomplete="off" required=""  formControlName="address" placeholder="Location" name="address" style="border-width: 1px;border-color: #516951;">
-            </div>
-            <div class="color form-group mb-3"><label class="form-label" style="margin-top: 15px;height: 25px;">Livestock Image</label>
-                <section>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12">
-                                <div class="file-upload-wrapper">
-                                    <div class="view file-upload" style="padding-bottom: 7px;padding-right: 4px;height: 60px;border-width: 1px;border-color: #516951;">
-                                      <input class="form-control file_upload" type="file" id="input-file-now" (change)="onFileChange($event)"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                </section>
-            </div>
-            <hr style="margin-top: 30px;margin-bottom: 10px;">
-            <div class="form-group mb-3">
-              <button class="btn btn-primary d-block w-100" id="submitButton" [disabled]="update_dp.invalid" (click)="addLivestock()" type="submit" style="background: #516951;border-color: var(--bs-white);">&nbsp;Save</button>
-              <a class="btn btn-danger d-block w-100" role="button" style="margin-top: 15px;">&nbsp;Cancel</a>
-            </div>
-        </form>
-    </div>
-</section> -->
-<!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script src="assets/js/Ludens---2-Create-with-Summernote-1.js"></script>
-<script src="assets/js/Ludens---2-Create-with-Summernote.js"></script> -->
-
-
 <app-footer></app-footer>

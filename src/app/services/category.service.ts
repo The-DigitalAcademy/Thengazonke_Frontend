@@ -8,13 +8,19 @@ import { environment } from '../../environments/environment';
 })
 export class CategoryService {
 
-  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  // httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
 
   constructor(private httpClient: HttpClient) { }
 
   GetAllCategory(): Observable<any> {
-    return this.httpClient.get(environment.REST_API + '/category/getCategory').pipe();
+    return this.httpClient.get(environment.REST_API + '/category/getCategory', this.httpOptions).pipe();
   }
+ 
   
 
 }

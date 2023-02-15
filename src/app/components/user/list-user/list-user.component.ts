@@ -23,7 +23,6 @@ export class ListUserComponent implements OnInit {
     this.authService.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result
-      console.log(this.users)
       this.users = result.filter((res:any) => String(res.status) != String("archieved"));
       // this.users = result.filter((res:any) => String(res.status) === String("archieved"));
     });
@@ -49,7 +48,6 @@ export class ListUserComponent implements OnInit {
     this.authService.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result
-      console.log(this.users)
       this.users = result.filter((res:any) => String(res.status) === String("archieved"));
     });
     this.isAllUsers = true;

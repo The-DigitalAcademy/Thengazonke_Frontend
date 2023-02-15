@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth.service';
 // import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
@@ -46,7 +47,7 @@ export class HomepageComponent implements OnInit {
   filterTerm!: string;
 
 
-  constructor(private livestoc:LivestockService, private router: Router, private transactionService: TransactionService, private authservice: AuthService) { }
+  constructor(private livestoc:LivestockService, private router: Router, private transactionService: TransactionService, private authservice: AuthService, private toast :HotToastService) { }
 
   ngOnInit(): void {
 
@@ -60,9 +61,6 @@ export class HomepageComponent implements OnInit {
 
   btnBuy(): void {
 
-      console.log("buy active")
-      console.log(this.lid)
-
       let transationDetails = {
         livestockID: this.lid,
         userID: this.livestok[0].UserID,
@@ -70,19 +68,74 @@ export class HomepageComponent implements OnInit {
         buyerID: this.users[0].Userid
       }
 
-      console.log(transationDetails)
-
       this.transactionService.CreateTranstaction(transationDetails).subscribe((next:any) => {
-        console.log("Transaction successfully created");
-      });
+        this.router.navigate(['/order-history']);
+      }, (err) => {
+        if(err.status === 201)
+        {
+          this.successfullToast();
+          this.router.navigate(['/order-history']);
+        }
+        else if(err.status === 400)
+        {
+          this.errorToast("Something went wrong, please try again!");
+        }
+        else{
+          this.errorToast("Something went wrong, please try again!");
+        }
+    });
    
   }
-
-  
 
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
   }
+
+
+successfullToast(){
+  this.toast.success('Transaction was added successfully!',{duration:6000 , style: {
+    padding: '35px',
+    width: '48%',
+    height: '100px',
+    margin: '12px auto',
+    background: '#fff',
+    border: '2px solid #fff',
+  },
+  iconTheme: {
+    primary: '#4BB543',
+    secondary: '#FFFAEE',
+  },})
+}
+
+warningToast(){
+  this.toast.warning('Boo!',{duration:6000 , style: {
+    padding: '35px',
+    width: '48%',
+    height: '100px',
+    margin: '12px auto',
+    background: '#fff',
+    border: '2px solid #fff',
+  },
+  iconTheme: {
+    primary: '#FFCC00',
+    secondary: '#FFFAEE',
+  },})
+}
+
+errorToast(message:any){
+  this.toast.error(message,{duration:2000 , style: {
+    padding: '35px',
+    width: '48%',
+    height: '100px',
+    margin: '12px auto',
+    background: '#fff',
+    border: '2px solid #fff',
+  },
+  iconTheme: {
+    primary: '#DC3545',
+    secondary: '#FFFAEE',
+  },})
+}
 
 }

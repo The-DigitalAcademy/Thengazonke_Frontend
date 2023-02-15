@@ -23,7 +23,7 @@ import { CategoryComponent } from './dashboard/category/category.component';
 import { RateAndReviewComponent } from './dashboard/rate-and-review/rate-and-review.component';
 import { BreedComponent } from './dashboard/breed/breed.component';
 import { TransactionComponent } from './dashboard/transaction/transaction.component';
-import { LivestocksComponent } from './dashboard/livestocks/livestocks.component';
+import { LivestocksComponent } from './dashboard/livestock/livestocks.component';
 
 
 @NgModule({
