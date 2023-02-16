@@ -10,8 +10,11 @@ import { SellerComponent } from './components/seller/seller.component';
 import { ReviewComponent } from './components/review/review.component';
 import { UserLayoutModule } from "./user-layout/user-layout.module";
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
     declarations: [
@@ -19,8 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
         RateComponent,
         AccountComponent,
         SellerComponent,
-        ReviewComponent
-       
+        ReviewComponent,
+        SnackbarComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -32,7 +35,18 @@ import { HttpClientModule } from '@angular/common/http';
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
+<<<<<<< HEAD
     ]
+=======
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        MatSidenavModule,
+
+
+    ],
+    exports: [MatSidenavModule],
+>>>>>>> 4c1b12583efdb77d5db832260360d936d1e39729
 
 })
 export class AppModule { }

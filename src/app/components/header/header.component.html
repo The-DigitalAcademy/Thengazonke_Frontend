@@ -30,15 +30,16 @@
           <a routerLink="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         </li>
       </ul>
-      
+
       <ul  class="menu menu-horizontal" *ngFor="let user of users">
             <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
               <a href="#" routerLink="/rate">Rate</a>
-            </li > -->
-            <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
-                <a href="#" routerLink="/notifications">Notifications</a>
-            </li> -->
-            <!-- <li class="" *ngIf="user.usertype == 'Seller'">
+            </li >
+            <li class="" *ngIf="user.usertype == 'Buyer'">
+                <a href="#" routerLink="/notifications">
+                  Notifications</a>
+            </li>
+            <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/notifications">Notifications</a>
             </li> -->
 
@@ -56,7 +57,7 @@
               <li class="" *ngIf="user.usertype == 'Seller'">
                 <a href="#" routerLink="/order-request">Order request</a>
             </li>
-    
+
               <div class="dropdown dropdown-end" *ngIf="logEmail">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                   <div class="w-8 rounded-full">
@@ -72,7 +73,7 @@
                   <li><a (click)="LogOut()">Logout</a></li>
                 </ul>
               </div>
-            
+
 
         </ul>
     </div>
