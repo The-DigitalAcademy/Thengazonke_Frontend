@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 
@@ -20,6 +21,7 @@ export class Mylivestock22Component implements OnInit {
   results!:any;
   users!:any;
   userId!:any;
+  DeleteLivestockID!:any;
 
   livestok!:any;
 
@@ -32,7 +34,6 @@ export class Mylivestock22Component implements OnInit {
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.results = messages
       this.livestok = this.results.filter((res:any) => Number(res.livestockID) === Number(this.lid))
-      //console.log('Got this One livestock',this.livestok)
     })
 
     let modalCheckbox:any = document.getElementById('my-modal')
@@ -44,20 +45,7 @@ export class Mylivestock22Component implements OnInit {
     this.newItemEvent.emit(post_id);
   }
 
-  deleteMyLivestock()
-  {
-    let st= {
-      status: "archived"
-    }
-
-    this.livestoc.deleteLivestockl(this.lid, st).subscribe(async res => {
-     //console.log('status archived')
-    })
-
-    this.closeModal();
-  }
-
-  constructor(private livestoc:LivestockService, private router: Router, private authservice: AuthService) { }
+  constructor(private livestoc:LivestockService, private router: Router, private authservice: AuthService, private toast :HotToastService) { }
 
   ngOnInit(): void {
 
@@ -68,8 +56,46 @@ export class Mylivestock22Component implements OnInit {
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages:any) => {
       let results = messages;
-      this.livestocks = results.filter((res:any) => String(res.UserID) === String(8))
+      let livestocks1 = results.filter((res:any) => String(res.UserID) === String(sessionStorage.getItem('loggedID')))
+      this.livestocks = livestocks1.filter((res:any) => String(res.status) != String("archieved"));
     }) 
+  }
+
+  DeleteMyLivestock()
+  {
+    console.log('deleted') 
+    console.log(this.DeleteLivestockID)
+    let st= {
+      status: "archieved"
+    }
+    this.livestoc.deleteLivestockl(this.DeleteLivestockID, st).subscribe(async res => {
+      // await this.getUsers();
+    }, (err) => {
+
+      if(Number(err.status) === Number(0)){
+        let msg = `There's been an error please try again`;
+        this.errorToast(msg)
+      }
+      else if(err.status === 200){
+        this.successfullToast();
+        this.closeModal()
+      }
+      else if(err.status === 201){
+
+        this.successfullToast();
+        this.closeModal()
+        }
+      else{
+        this.errorToast("Something went wrong, please try again")
+      }
+  });
+    this.closeModal();
+
+  }
+
+  deleteMyLivestock(livestockID:any)
+  {
+    this.DeleteLivestockID = livestockID;
   }
   
   closeModal() {
@@ -80,13 +106,50 @@ export class Mylivestock22Component implements OnInit {
     return price.slice(1,price.length);
   }
 
-  // delete(ind: any) {
-  //   this.post_id = this.trans[ind].livestockID
-  //   this.addNewItem(this.post_id)
-  //   this.userId = this.livestocks[ind].UserID
-    
-  //   console.log('delete id',this.post_id,this.userId)
-  // }
- 
+
+  successfullToast(){
+    this.toast.success('Livestock deleted!',{duration:4000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#4BB543',
+      secondary: '#FFFAEE',
+    },})
+  }
+
+  warningToast(){
+    this.toast.warning('Boo!',{duration:4000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#FFCC00',
+      secondary: '#FFFAEE',
+    },})
+  }
+
+  errorToast(message:any){
+    this.toast.error(message,{duration:2000 , style: {
+      padding: '35px',
+      width: '48%',
+      height: '100px',
+      margin: '12px auto',
+      background: '#fff',
+      border: '2px solid #fff',
+    },
+    iconTheme: {
+      primary: '#DC3545',
+      secondary: '#FFFAEE',
+    },})
+  }
 
 }

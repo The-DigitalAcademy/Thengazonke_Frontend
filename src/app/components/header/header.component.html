@@ -17,14 +17,17 @@
   </div>
   <div class="desktop-nav hidden lg:flex text-sm">
       <ul  class="menu menu-horizontal">
-        <!-- <li class="">
-            <a href="#" routerLink="/">Home</a>
-        </li> -->
+        <li class="" *ngIf="!logEmail">
+            <a href="#contact-us">Contact Us</a>
+        </li>
         <li class="" *ngIf="!logEmail">
           <a [routerLink]="['/auth/login']">Login</a>
         </li>
         <li class="" *ngIf="!logEmail">
           <a [routerLink]="['/auth/register']">Register</a>
+        </li>
+        <li class="" *ngIf="!logEmail">
+          <a routerLink="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         </li>
       </ul>
       

@@ -87,17 +87,17 @@
   <div class="modal-box">
     <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
       <div class="card-body" >
-          <figure><img src="{{animal.image}}" alt="" /></figure>
+          <figure><img class="rounded" src="{{animal.image}}" alt="" /></figure>
           <h3 class="card-title justify-center head3">{{animal.categoryName}}</h3>
-          <p class="w-3/4 mx-auto desc">{{animal.description}}</p>
-          <h3 class="color head3">Brown and black</h3>
+          <h3 class="card-title justify-center address head3">{{animal.description}}</h3>
+          <h3 class="color head3">{{animal.color}}</h3>
           <h3 class="weigh head3">{{animal.weight}}</h3>
-          <h3 class="address head3"><i class="fas fa-map-marker-alt"></i>soshanguve</h3>
+          <h3 class="address head3"><i class="fas fa-map-marker-alt"></i>{{animal.address}}</h3>
           <h3 class="price head3"><b>{{animal.price}}</b></h3>
           <div class="card-actions justify-between">
               <label for="my-modal"  style="color:black;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</label>
                 <button class=""  for="my-modal" (click)="closeModal()">Back</button>
-                <button class="rsvBtn" [routerLink]="['/auth/login']">Buy</button>
+                <button class="rsvBtn" [routerLink]="['/auth/login']">Add to cart</button>
           </div>
       </div>
     </div>

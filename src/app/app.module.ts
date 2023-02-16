@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
         RateComponent,
         AccountComponent,
         SellerComponent,
-        ReviewComponent 
+        ReviewComponent
        
     ],
     providers: [],

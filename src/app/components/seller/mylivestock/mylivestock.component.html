@@ -1,8 +1,8 @@
 <div class="bodysz">
   <h1>My livestock</h1>
   <app-availablelivestock  (newItemEvent)="addItem($event)"></app-availablelivestock> 
-  <div class="container">
-    <div class="flex ">
+  <div class="container mt-10">
+    <div class="flex mx-8">
       <div>
         <ul class="tab">
           <li class="tab tab-bordered" [class.active]="viewMode == 'tab1'" rel="tab1" (click)="viewMode ='tab1'"  [ngClass]="{'active': viewMode ==='tab1'}">My livestock</li>

@@ -27,6 +27,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { AvailableComponent } from '../components/availablelivestock/available/available.component';
 import { Mylivestock22Component } from '../components/mylivestock22/mylivestock22.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { CartComponent } from '../components/cart/cart.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     MylivestockComponent,
     LivestockModalComponent,
     AvailableComponent,
-    Mylivestock22Component
+    Mylivestock22Component,
+    CartComponent
    
   ],
   imports: [
