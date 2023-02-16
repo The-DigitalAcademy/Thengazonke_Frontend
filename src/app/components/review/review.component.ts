@@ -3,8 +3,6 @@ import { RateService } from 'src/app/services/rate.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Users } from 'src/app/model/users';
 import { Rate } from 'src/app/model/Rate';
-import { filter } from 'rxjs/operators';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-review',
@@ -36,13 +34,13 @@ export class ReviewComponent implements OnInit {
   ngOnInit(): void {
 
     this.rateServ.getRates().subscribe((data:any)=>{
-      console.log(data)
+      
     })
 
     this.rateServ.getReviewByUser().subscribe((res:any) => {
       let result = res;
       this.rating = result.filter((res:any) => Number(res.userRateID) === Number(this.users[0].Userid))
-      console.log(this.rating)
+    
     });
 
     this.getRate();
@@ -54,7 +52,7 @@ export class ReviewComponent implements OnInit {
     this.authservice.GetAllUsers().subscribe(async (res:any) => {
       let ress = res;
       this.users = ress.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
-      console.log(this.users)
+     
       
     })
 
@@ -65,7 +63,7 @@ export class ReviewComponent implements OnInit {
     this.rateServ.getReviewByUser().subscribe(async (res:any) => {
       let ress = res;
       this.rater = ress.filter((res:any)=> Number(res.userRaterID) === Number(this.users[0].Userid))
-      console.log(this.users)
+ 
       
     })
 
@@ -76,7 +74,7 @@ export class ReviewComponent implements OnInit {
 
      this.rate = data.filter((res:any)=> Number(res.userRateID) === Number(this.users[0].Userid))
 
-     console.log(this.rate)
+     
      
      let totRatings = this.rate.length;
 
@@ -104,7 +102,7 @@ export class ReviewComponent implements OnInit {
         this.sum1 = this.sum1 + Number(ratings1[index].rate);
        }
       }
-      console.log(this.sum1)
+      
 
        
       for (let index = 0; index < ratings2.length; index++) {
@@ -112,7 +110,7 @@ export class ReviewComponent implements OnInit {
           this.sum2 = this.sum2 + Number(ratings2[index].rate);
          }
       }
-      console.log(this.sum2)
+      
 
       for (let index = 0; index < ratings3.length; index++) {
          if(ratings3[index].rate === 3){
@@ -120,30 +118,24 @@ export class ReviewComponent implements OnInit {
          }
       }
 
-      console.log(this.sum3)
+     
 
       for (let index = 0; index < ratings4.length; index++) {
         if(ratings4[index].rate === 4){
           this.sum4 = this.sum4 + Number(ratings4[index].rate);
          }
       }
-      console.log(this.sum4)
+  
 
       for (let index = 0; index < ratings5.length; index++) {
         if(ratings5[index].rate === 5){
           this.sum5 = this.sum5 + Number(ratings5[index].rate);
          }
       }
-      console.log(this.sum5)
-      // for (let index = 0; index < this.rate.length; index++) {
-      //   let rates = this.rate[0].rate
-      //    sum =+ Number(this.rate[index]);
-      //   console.log(sum)
-      // }  
 
       let totsum= this.sum1+ this.sum2+this.sum3+this.sum4+this.sum5
       this.average = totsum/5;
-      console.log(this.average)
+      
     })
   }
 
