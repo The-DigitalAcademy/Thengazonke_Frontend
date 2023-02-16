@@ -41,7 +41,6 @@ const routes: Routes = [
   },
   {path: 'header', component:HeaderComponent},
   {path: 'profile', component:ProfileComponent},
-  {path: 'admin-header', component:AdminHeaderComponent},
 
 ];
 
