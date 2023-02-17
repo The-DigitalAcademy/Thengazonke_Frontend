@@ -15,6 +15,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { BellComponent } from './bell/bell.component';
+
 
 
 @NgModule({
@@ -25,9 +27,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         SellerComponent,
         ReviewComponent,
         SnackbarComponent,
+        BellComponent,
+       
     ],
     providers: [],
     bootstrap: [AppComponent],
+    exports: [MatSidenavModule],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -41,9 +46,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatSnackBarModule,
         MatSidenavModule,
 
-
-    ],
-    exports: [MatSidenavModule],
-
+    ]
 })
 export class AppModule { }
