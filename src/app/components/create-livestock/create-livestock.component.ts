@@ -103,8 +103,7 @@ export class CreateLivestockComponent implements OnInit {
   addLivestock()
   {
 
-    // ---------------------picture--------------
-    
+    // ---------------------picture-------------- 
 
     const formData = new FormData();    
     formData.append("file",this.file)    

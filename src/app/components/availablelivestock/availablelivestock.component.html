@@ -40,28 +40,38 @@
 <div [ngSwitch]="myCurrentRoute">
 
   <div *ngSwitchCase="'/'">
-    <div class="row" *ngIf="livestocks.length > 0">
-      <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index">
-        <div class="card card-compact shadow-sm" style="margin: 1rem; height: 100%;">
-          <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
+    <div class="flex flex-wrap -mx-1 lg:-mx-4" *ngIf="livestocks.length > 0">
+      <!-- <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index"> -->
+        <div class="my-3 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index">
+        <div class="card card-compact shadow">
+          <div class="img-card">
+            <a>
+                <img alt="Placeholder" class="block h-auto w-full" src="{{animal.image}}" >
+            </a>
+            
+          </div>
           <div class="card-body">
-                  <div class="headingss">
-                    <h3 class="card-title">{{animal.categoryName}}</h3>
-                    <h4>{{animal.createdAT | date:'dd-MM-yy'}}</h4>
-                  </div>
-              <h2 class="breed" style="margin-left: -5px; color: #11998e;
-              color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #0000, #11998e);"
-              >{{animal.breedName}}</h2>
-              <p style="font-size: .5rem;"><span> Description:</span> {{animal.description}}</p>
-              <p><span> Weight:</span> {{animal.weight}}<span>kgs</span></p>
-              <p><span> Age:</span> {{animal.age}}</p>
-              <p><span> Color:</span>{{animal.color}}</p>
-              <p><span> Color:</span>{{animal.gender}}</p>
+              <div class="flex flex-wrap justify-between">
+                <div>
+                  <p><b>{{animal.categoryName}}</b></p>
+                </div>
+                <div>
+                  <p class="post-date">{{animal.createdAT | date:'dd-MM-yy'}}</p>
+                </div>
+              </div>
 
-                  <div style="margin-bottom: 0rem;" class="card-actions">
-                    <h5 style="font-size: 1rem; color: #11998e;
-                  color: -webkit-linear-gradient(to right, #38ef7d, #11998e);color: linear-gradient(to right, #38ef7d, #11998e);"><span></span>R{{getPriceCurrency(animal.price)}}</h5>
-                    <button type="button" (click)="reserve(x)" class="rsvBtn" >Reserve</button>
+                <h2 class="breed" style="color:var(--yellow-dark)"> <b>Breed: {{animal.breedName}}</b>
+              </h2>
+                <p class="description"><span><b>Description:</b></span> {{animal.description}}</p>
+                <p><span><b>Weight:</b></span> {{animal.weight}}<span>kgs</span></p>
+                <p><span><b>Age:</b></span> {{animal.age}}</p>
+                <p><span><b>Color:</b></span>{{animal.color}}</p>
+                <p><span><b>Age:</b></span>{{animal.gender}}</p>
+                <div class="card-actions justify-between mb-3">
+                  <div>
+                    <h5 class="post-date"><span></span>R {{getPriceCurrency(animal.price)}}</h5>  
+                  </div>
+                    <button type="button" (click)="reserve(x)" class="rsvBtn px-7 py-2" >Reserve</button>
                   </div>
               </div>
           </div>

@@ -11,3 +11,11 @@
     color: var(--gray-dark);
     font-size: 14px;
 }
+
+.description{
+
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: 70px;
+
+}

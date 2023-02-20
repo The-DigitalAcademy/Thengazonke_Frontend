@@ -11,6 +11,7 @@ import { NotificationsComponent } from '../notifications/notifications.component
 import { RateComponent } from '../components/rate/rate.component';
 import { LivestockModalComponent } from '../components/create-livestock/livestock-modal/livestock-modal.component';
 import { ReviewComponent } from '../components/review/review.component';
+import { CartComponent } from '../components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'rate/:id/:lid', component:RateComponent},
   { path: 'edit-livestock/:id', component:LivestockModalComponent},
   { path: 'review', component:ReviewComponent},
+  { path: 'cart', component:CartComponent},
   
 ];
 
