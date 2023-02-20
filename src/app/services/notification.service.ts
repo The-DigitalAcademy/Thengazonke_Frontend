@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { MatSnackBar,MatSnackBarConfig } from '@angular/material/snack-bar';
+
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +33,4 @@ export class NotificationService {
     this.snackBar.open(msg, 'Close', this.config);
   }
 
-}
+  }

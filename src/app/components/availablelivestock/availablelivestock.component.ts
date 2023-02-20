@@ -48,7 +48,7 @@ export class AvailablelivestockComponent implements OnInit {
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.livestocks = messages
-      console.log('i am livestock',this.livestocks)
+     // console.log('i am livestock',this.livestocks)
     })
     
     this.GetCategories();
@@ -90,7 +90,7 @@ export class AvailablelivestockComponent implements OnInit {
     this.addNewItem(this.post_id,this.userId)
     this.userId = this.livestocks[ind].UserID
     
-    console.log('delete id',this.post_id)
+    //console.log('delete id',this.post_id)
   }
 
 
@@ -110,7 +110,7 @@ export class AvailablelivestockComponent implements OnInit {
   GetProducts(){
     this.livestoc.GetAllPostedLivestock().subscribe((res) => {
       this.livestocks =res;
-      console.log('from funtion',this.livestocks)
+      //console.log('from funtion',this.livestocks)
     })
   }
 
@@ -122,7 +122,7 @@ export class AvailablelivestockComponent implements OnInit {
     this.authservice.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
-       console.log('i ran',this.users)
+       console.log('im',this.users)
 
        this.getMyLivestock();
     })
@@ -135,7 +135,7 @@ export class AvailablelivestockComponent implements OnInit {
       
       let transTemp = this.result2.filter((res:any) => Number(res.UserID) === Number(this.users[0].Userid));
       this.trans = transTemp.filter((ress:any) => String(ress.status) != String('pending'));
-      console.log('What i am looking for',this.trans);
+     // console.log('What i am looking for',this.trans);
     }); 
   }
   getPriceCurrency(price:any){

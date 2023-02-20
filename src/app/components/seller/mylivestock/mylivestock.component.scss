@@ -141,19 +141,7 @@ span{
     margin-bottom: 1rem;
 
 }
-li{
-  // height: 2rem;
-   //margin-left: 80%;
-  // padding-left: 80%;
-}
-// li{
-//     background-color: var(--main-green);
-//     border: solid 2px var(--yellow);
-//     border-radius: 6px;
-//     padding: 0rem;
-//     height: 2rem;
-//     margin-right: 1rem;
-// }
+
 a{
     height: 2rem;
     
@@ -173,25 +161,28 @@ img{
     margin: 0rem;
 }
 .tab{
-    margin-right: 1rem;
-    width: 16rem;
+    // margin-right: 2rem;
+    width: 10rem;
 }
+
 .active{
-    width: 16rem;
+    width: 12rem;
     height: .2rem;
     background-color: var(--yellow-dark);
 }
+
 .tab1,.tab2,.tab3{
-    width: 1rem;
+    width: 12rem;
     height: .2rem;
     background-color: var(--yellow-dark);
 }
 
 .tab-active{
-    width: 8rem;
+    width: 12rem;
     height: .2rem;
     background-color: var(--main-green);
 }
+
 .tab-not-active{
     width: 8rem;
     height: .2rem;

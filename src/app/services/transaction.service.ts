@@ -12,6 +12,10 @@ export class TransactionService {
 
   constructor(private httpClient: HttpClient) { }
 
+  getTransaction(): Observable<any> {
+    return this.httpClient.get(environment.REST_API + '/transaction/gettransaction').pipe();
+  }
+
   GetAllTransaction(): Observable<any> {
     return this.httpClient.get(environment.REST_API + '/transaction/getAllTransaction').pipe();
   }
@@ -20,9 +24,6 @@ export class TransactionService {
     return this.httpClient.get(environment.REST_API + '/transaction/getFullTransaction').pipe();
   }
 
-  getTransaction(): Observable<any> {
-    return this.httpClient.get(environment.REST_API + '/transaction/getAllTransaction').pipe();
-  }
   DeleteTransaction(id: any, data: any) {
     let API_URL = environment.REST_API + '/transaction/deleteTransaction/'+id;
     return this.httpClient.delete(API_URL, data).pipe();

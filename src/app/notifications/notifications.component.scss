@@ -6,7 +6,7 @@
     font-size: 25px;
 }
 .fas{
-    color: var(--red) 
+    color: var(--red)
 }
 .card-all{
     justify-content: space-between;
@@ -15,4 +15,29 @@ img {
     border-radius: 50%;
     height:50px;
     width:50px;
-  } 
+  }
+
+
+
+  .example-container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .example-sidenav {
+    padding: 20px;
+  }
+.drawer
+{
+  .drawer-content{
+    overflow: false !important;
+  }
+}
