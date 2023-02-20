@@ -29,20 +29,29 @@
                         <div class="justify-center mb-10 mt-1">
                           <h1>Contact us</h1>
                         </div>
-                        <form>
+                       <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm.value)">
+                          <!-- <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)"> -->
                           <div class="form-item">
-                            <input type="text" name="sender" required>
+                            <input type="text" name="sender"  formControlName="sender" required>
                             <label>Name:</label>
                           </div>
                           <div class="form-item">
-                            <input type="text" name="email" required>
+                            <input type="text" name="email"  formControlName="email" required>
                             <label>Email:</label>
                           </div>
                           <div class="form-item">
-                            <textarea class="" name="message" required></textarea>
+                            <textarea class="" name="message"  formControlName="message" required></textarea>
                             <label>Message:</label>
                           </div>
-                          <button class="submit-btn btn-sm" style="background-color: #FED607;">Send</button>  <br><br>
+                          <button class="submit-btn btn-sm" style="background-color: #FED607;" type="submit">Send</button>  <br><br>
+                          <!-- <button
+                          type="submit"
+                          class="btn btn-primary"
+                          [disabled]="!FormData.valid"
+                        >
+                          Submit
+                        </button>
+                      </form> -->
                         </form>
                       </div>
                     </div>
