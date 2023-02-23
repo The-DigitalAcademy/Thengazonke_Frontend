@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import jwt_decode from 'jwt-decode';
 import { HotToastService } from '@ngneat/hot-toast';
+
 // import { NgToastService } from 'ng-angular-popup';
 
 @Component({
@@ -118,11 +119,12 @@ export class LoginComponent implements OnInit {
           }
 
           this.submitted = false;
-        }, (err) => {
+        }, (error) => {
+          console.log(error)
           let msg = 'Please provide the correct credentials!';
           this.errorToast(msg);
 
-          console.log(err);
+          console.log(error);
       });        
       }
       else{

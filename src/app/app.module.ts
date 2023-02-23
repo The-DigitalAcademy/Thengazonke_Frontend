@@ -16,6 +16,8 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SellerRequestComponent } from './components/seller-request/seller-request.component';
+import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
     declarations: [
@@ -30,8 +32,7 @@ import { SellerRequestComponent } from './components/seller-request/seller-reque
     providers: [],
     bootstrap: [AppComponent],
     imports: [
-    
-    BrowserModule,
+        BrowserModule,
         AppRoutingModule,
         RouterModule,
         HttpClientModule,
@@ -41,8 +42,7 @@ import { SellerRequestComponent } from './components/seller-request/seller-reque
         MatButtonModule,
         MatSnackBarModule,
         MatSidenavModule,
-
-
+        DataTablesModule
     ],
     exports: [MatSidenavModule],
 

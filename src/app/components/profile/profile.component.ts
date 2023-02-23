@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { async } from '@angular/core/testing';
+import { NotificationService } from '../../services/notification.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +20,16 @@ export class ProfileComponent implements OnInit {
   fullname: any;
   email: any;
   phone: any;
-  
-    constructor(private router: Router,private route: ActivatedRoute, private authservice: AuthService, private fb: FormBuilder) { }
+  cloudinaryUrl: string = 'https://api.cloudinary.com/v1_1/dbgjhr9ir/image/upload';
+  idFile: any;
+  agricFile: any;
+  idfile_link:any
+  agrifile_link:any
+  isUpdating: boolean = false;
+  userData:any;
+
+    constructor(private sanitizer: DomSanitizer,private notificationService: NotificationService, private router: Router,private route: ActivatedRoute, private authservice: AuthService,
+       private fb: FormBuilder,private http: HttpClient) { }
   
     EditUserForm:FormGroup = new FormGroup({
       fullname:new FormControl(''),
@@ -66,47 +78,151 @@ export class ProfileComponent implements OnInit {
               email: this.users[0].email,
               phone: this.users[0].phone,
               address: this.users[0].address,
-              identity: this.users[0].address,
-              agric: this.users[0].address,
+              identity: this.users[0].id_document,
+              agric: this.users[0].agric_document,
               status: this.users[0].status,
             })
           }
       })
   
     }
-  
-    updateUser(){
-      
-  
-      // let userDetails= {
-      //   fullname: this.EditUserForm.value.fullname,
-      //   email: this.EditUserForm.value.email,
-      //   phone: this.EditUserForm.value.phone,
-      //   address: this.EditUserForm.value.address,
-      //   identity: this.EditUserForm.value.address,
-      //   agric: this.EditUserForm.value.address,
-      //   status: this.EditUserForm.value.status,
-      //   usertype: this.users[0].usertype
-      // }
 
-      let userDetails= {
-        fullname: this.EditUserForm.value.fullname,
-        email: this.EditUserForm.value.email,
-        phone: this.EditUserForm.value.phone,
-        address: this.EditUserForm.value.address,
-        status: this.EditUserForm.value.status,
-        usertype: this.users[0].usertype
-      }
-      
-      console.log(userDetails)
+ async onFileChange(event :any)
+  {
+    if(event.target.files.length>0)
+    {
+      this.idFile =  event.target.files[0];
+      console.log(this.idFile)
+    }
 
-     
-     
-      this.authservice.updateUser(this.users[0].Userid, userDetails).subscribe((next) => {
-        // console.log('Successfully Updated!');
-        this.router.navigate(['/profile']);
+  }
+
+  async onFileChange2(event :any)
+  {
+    if(event.target.files.length>0)
+    {
+      this.agricFile =  event.target.files[0];
+      console.log(this.agricFile)
+    }
+
+  }
+
+  files = {
+    link : '' 
+  }
+
+  downloadFile(file:any){
+
+    // this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(file));
+
+    let link = document.createElement("a");
+    link.download = file;
+    link.href = file;
+    // fl_attachment
+    link.click();
+  }
+
+  updateUser(){
+      
+      // this.spinner.show();
+
+      // setTimeout(()=>
+      // {
+      //   this.spinner.hide();
+      // },6000);
+
+      const formData = new FormData();    
+      formData.append("file",this.idFile)    
+      formData.append("upload_preset","nq04upkl"); 
+
+      this.http.post(this.cloudinaryUrl,formData).subscribe((res:any)=>{     
+        let link = res.url;
+        this.files.link = link;
+        this.idfile_link = this.files.link
+
+        const form = new FormData();    
+        form.append("file",this.agricFile)    
+        form.append("upload_preset","nq04upkl"); 
+    
+        this.http.post(this.cloudinaryUrl,formData).subscribe((res:any)=>{     
+          let link = res.url;
+          this.files.link = link;
+          this.agrifile_link = this.files.link
+
+          let userDetails= {
+            fullname: this.EditUserForm.value.fullname,
+            email: this.EditUserForm.value.email,
+            phone: this.EditUserForm.value.phone,
+            address: this.EditUserForm.value.address,
+            status: this.EditUserForm.value.status,
+            usertype: this.users[0].usertype,
+            id_document : this.idfile_link,
+            agric_document : this.agrifile_link
+          }
+          this.authservice.updateUser(this.users[0].Userid,userDetails).subscribe((next) => {
+            this.router.navigate(['/profile']);
+          }, (err) => {
+          console.log(err.status);
+
+          if(Number(err.status) === Number(0)){
+            let msg = `There's been an error please try again`;
+            this.notificationService.danger(msg);
+          }
+          else if(err.status === 200){
+
+            this.notificationService.success("Profile successfully updated");
+          }
+          else if(err.status === 201){
+
+            this.notificationService.success("Profile successfully updated");
+          }
+          else{
+            let msg = "Something went wrong, please try again";
+            this.notificationService.danger(msg);
+          }
       });
 
-    }
-  
+          
+        })
+        
+
+      })
+
+      
+    //  this.dataInitialisation();
+    
   }
+  notSellerUpdate()
+  {
+    let userDetails= {
+      fullname: this.EditUserForm.value.fullname,
+      email: this.EditUserForm.value.email,
+      phone: this.EditUserForm.value.phone,
+      address: this.EditUserForm.value.address,
+      status: this.EditUserForm.value.status,
+      usertype: this.users[0].usertype
+    }
+    this.authservice.updateUser(this.users[0].Userid,userDetails).subscribe((next) => {
+      this.router.navigate(['/profile']);
+    }, (err) => {
+    console.log(err.status);
+
+    if(Number(err.status) === Number(0)){
+      let msg = `There's been an error please try again`;
+      this.notificationService.danger(msg);
+    }
+    else if(err.status === 200){
+
+      this.notificationService.success("Profile successfully updated");
+    }
+    else if(err.status === 201){
+
+      this.notificationService.success("Profile successfully updated");
+    }
+    else{
+      let msg = "Something went wrong, please try again";
+      this.notificationService.danger(msg);
+    }
+});
+  }
+}

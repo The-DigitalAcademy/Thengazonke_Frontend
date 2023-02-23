@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-user-modal',
@@ -14,7 +15,7 @@ export class UserModalComponent implements OnInit {
   uid!:any;
   users!:any;
 
-  constructor(private router: Router,private route: ActivatedRoute, private authservice: AuthService, private fb: FormBuilder) { }
+  constructor(private router: Router,private route: ActivatedRoute, private authservice: AuthService, private fb: FormBuilder, private natification: NotificationService) { }
 
   EditUserForm:FormGroup = new FormGroup({
     fullname:new FormControl(''),
@@ -78,7 +79,25 @@ export class UserModalComponent implements OnInit {
     this.authservice.updateUser(this.uid, userDetails).subscribe((next) => {
       // console.log('Successfully Updated!');
       this.router.navigate(['/admin/users']);
-    });
+    }, (err) => {
+      if(err.status === 200)
+      {
+        this.natification.success("Successfully Updated!");
+        this.router.navigate(['/admin/users']);
+      }
+      else if(err.status === 201)
+      {
+        this.natification.success("Successfully Updated!");
+        this.router.navigate(['/admin/users']);
+      }
+      else if(err.status === 400)
+      {
+        this.natification.danger("Something went wrong, please try again!");
+      }
+      else{
+        this.natification.danger("Something went wrong, please try again!");
+      }
+  });;
   }
 
 }

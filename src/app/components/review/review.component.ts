@@ -83,10 +83,10 @@ export class ReviewComponent implements OnInit {
      let result = this.rate;
     
       let ratings1, ratings2, ratings3, ratings4, ratings5;
-      ratings1 = result.filter((resss:any) => resss.rate === 1);
-      ratings2 = result.filter((resss:any) => resss.rate === 2);
-      ratings3 = result.filter((resss:any) => resss.rate === 3);
-      ratings4 = result.filter((resss:any) => resss.rate === 4);
+      ratings1 = result.filter((resss:any) => Number(resss.rate )=== Number(1));
+      ratings2 = result.filter((resss:any) => Number(resss.rate )=== Number(2));
+      ratings3 = result.filter((resss:any) => Number(resss.rate )=== Number(3));
+      ratings4 = result.filter((resss:any) => Number(resss.rate )=== Number(4));
       ratings5 = result.filter((resss:any) => Number(resss.rate) === Number(5));
 
       this.ratePg1 = ((ratings1.length / Number(totRatings)) * 100) + '%';
@@ -97,47 +97,58 @@ export class ReviewComponent implements OnInit {
 
       
   
-      for (let index = 0; index < ratings1.length; index++) {
-       if(ratings1[index].rate === 1){
-        this.sum1 = this.sum1 + Number(ratings1[index].rate);
-       }
-      }
+      // for (let index = 0; index < ratings1.length; index++) {
+      //  if(ratings1[index].rate === 1){
+      //   this.sum1 = this.sum1 + Number(ratings1[index].rate);
+      //  }
+      // }
       
 
        
-      for (let index = 0; index < ratings2.length; index++) {
-        if(ratings2[index].rate === 2){
-          this.sum2 = this.sum2 + Number(ratings2[index].rate);
-         }
-      }
+      // for (let index = 0; index < ratings2.length; index++) {
+      //   if(ratings2[index].rate === 2){
+      //     this.sum2 = this.sum2 + Number(ratings2[index].rate);
+      //    }
+      // }
       
 
-      for (let index = 0; index < ratings3.length; index++) {
-         if(ratings3[index].rate === 3){
-          this.sum3 = this.sum3 + Number(ratings3[index].rate);
-         }
-      }
+      // for (let index = 0; index < ratings3.length; index++) {
+      //    if(ratings3[index].rate === 3){
+      //     this.sum3 = this.sum3 + Number(ratings3[index].rate);
+      //    }
+      // }
 
      
 
-      for (let index = 0; index < ratings4.length; index++) {
-        if(ratings4[index].rate === 4){
-          this.sum4 = this.sum4 + Number(ratings4[index].rate);
-         }
-      }
+      // for (let index = 0; index < ratings4.length; index++) {
+      //   if(ratings4[index].rate === 4){
+      //     this.sum4 = this.sum4 + Number(ratings4[index].rate);
+      //    }
+      // }
   
 
-      for (let index = 0; index < ratings5.length; index++) {
-        if(ratings5[index].rate === 5){
-          this.sum5 = this.sum5 + Number(ratings5[index].rate);
-         }
-      }
+      // for (let index = 0; index < ratings5.length; index++) {
+      //   if(ratings5[index].rate === 5){
+      //     this.sum5 = this.sum5 + Number(ratings5[index].rate);
+      //    }
+      // }
+      let sum = ratings1.length + ratings2.length + ratings3.length + ratings4.length + ratings5.length;
 
-      let totsum= this.sum1+ this.sum2+this.sum3+this.sum4+this.sum5
-      this.average = totsum/5;
+      this.average = ((1*(ratings1.length)+2*(ratings2.length)+3*(ratings3.length)+4*(ratings4.length)+5*(ratings5.length))/(sum)).toFixed(1);
+
+      console.log(this.average);
+      console.log(ratings1.length);
+      console.log(ratings2.length);
+      console.log(ratings3.length);
+      console.log(ratings4.length);
+      console.log(ratings5.length);
+
+      // let totsum= this.sum1+ this.sum2+this.sum3+this.sum4+this.sum5
+      // this.average = totsum/5;
       
     })
   }
+
 
   getShortName(fullName:any) { 
     return fullName.slice(0,1);

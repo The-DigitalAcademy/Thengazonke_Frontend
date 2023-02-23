@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,11 +13,20 @@ export class ListUserComponent implements OnInit {
   deleteID!:any;
   isAllUsers:boolean = false;
   isArchievedUsers:boolean = true;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
     this.getUsers();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      lengthMenu : [5, 10, 25],
+      processing: true
+     };
   }
 
   getUsers(){
@@ -24,7 +34,8 @@ export class ListUserComponent implements OnInit {
       let result = res;
       this.users = result
       this.users = result.filter((res:any) => String(res.status) != String("archieved"));
-      // this.users = result.filter((res:any) => String(res.status) === String("archieved"));
+
+      this.dtTrigger.next(this.users);
     });
   }
 

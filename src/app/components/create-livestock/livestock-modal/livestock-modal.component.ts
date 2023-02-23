@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs/';
 import { Livestock } from 'src/app/model/livestock';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-livestock-modal',
@@ -120,7 +121,8 @@ export class LivestockModalComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router, private toast :HotToastService) { }
+    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router, private toast :HotToastService,
+    private natification: NotificationService) { }
 
   ngOnInit(): void {
 
@@ -219,20 +221,20 @@ export class LivestockModalComponent implements OnInit {
       }, (err) => {
         if(err.status === 200)
         {
-          this.successfullToast();
+          this.natification.success("Successfully Updated!");
           this.router.navigate(['/homes']);
         }
         else if(err.status === 201)
         {
-          this.successfullToast();
+          this.natification.success("Successfully Updated!");
           this.router.navigate(['/homes']);
         }
         else if(err.status === 400)
         {
-          this.errorToast("Something went wrong, please try again!");
+          this.natification.danger("Something went wrong, please try again!");
         }
         else{
-          this.errorToast("Something went wrong, please try again!");
+          this.natification.danger("Something went wrong, please try again!");
         }
     });
       // this.router.navigate(['/homes']);

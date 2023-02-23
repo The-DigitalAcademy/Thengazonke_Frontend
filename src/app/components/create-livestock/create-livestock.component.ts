@@ -6,6 +6,7 @@ import { LivestockService } from 'src/app/services/livestock.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-create-livestock',
@@ -69,7 +70,7 @@ export class CreateLivestockComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private toast :HotToastService, private router: Router) { }
+    public fb: FormBuilder, private http:HttpClient, private toast :HotToastService, private router: Router, private natification: NotificationService) { }
 
   ngOnInit(): void {
 
@@ -134,23 +135,22 @@ export class CreateLivestockComponent implements OnInit {
       console.log(livestockDetails)
 
         this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
-          console.log('Add successfully!');
-          this.successfullToast();
+          this.natification.success("Successfully Added!");
           this.router.navigate(['/homes']);
     
           this.submitted = false;
         }, (err) => {
           if(err.status === 201)
           {
-            this.successfullToast();
+            this.natification.success("Successfully Added!");
             this.router.navigate(['/homes']);
           }
           else if(err.status === 400)
           {
-            this.errorToast("Something went wrong, please try again!");
+            this.natification.danger("Something went wrong, please try again!")
           }
           else{
-            this.errorToast("Something went wrong, please try again!");
+            this.natification.warning("Something went wrong, please try again!");
           }
       });
   
@@ -160,15 +160,15 @@ export class CreateLivestockComponent implements OnInit {
     , (ERROR) => {
       if(ERROR.status === 201)
       {
-        this.successfullToast();
+        this.natification.success("Successfully Added!");
         this.router.navigate(['/homes']);
       }
       else if(ERROR.status === 400)
       {
-        this.errorToast("Something went wrong, please try again!");
+        this.natification.danger("Something went wrong, please try again!");
       }
       else{
-        this.errorToast("Something went wrong, please try again!");
+        this.natification.danger("Something went wrong, please try again!");
       }
     }) 
 
