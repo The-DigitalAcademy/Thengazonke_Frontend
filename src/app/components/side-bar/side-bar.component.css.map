@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CACL;EACI,gBAAgB,EAAE,iBAAiB;EACnC,KAAK,EAAE,YAAY;EACnB,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,CAAC;CACZ;;AACD,AAAA,EAAE,AAAA,MAAM,CAAC,CAAC,CAAC;EACV,KAAK,EAAE,aAAa;CACpB;;AAED,AAAA,EAAE,AAAA,OAAO,CAAA;EACL,KAAK,EAAE,aAAa;CACvB",
+    "sources": [
+        "side-bar.component.scss"
+    ],
+    "names": [],
+    "file": "side-bar.component.css"
+}

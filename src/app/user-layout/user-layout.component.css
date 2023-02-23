@@ -1,0 +1,20 @@
+.bodysz {
+  padding: 2rem;
+}
+
+/* (768x1024) iPad 1 & 2, Portrait */
+/* (1024x768) iPad 1 & 2, Landscape */
+/* (1024x768) iPad 1 & 2, Landscape */
+/* (2048x1536) iPad 3 */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .bodysz {
+    padding: 0rem;
+  }
+}
+
+@media only screen and (max-width: 319px) {
+  .bodysz {
+    padding: 0rem;
+  }
+}
+/*# sourceMappingURL=user-layout.component.css.map */

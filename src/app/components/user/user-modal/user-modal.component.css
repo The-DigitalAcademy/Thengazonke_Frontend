@@ -1,0 +1,12 @@
+.heading {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+  color: var(--main-green);
+  font-size: 25px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=user-modal.component.css.map */

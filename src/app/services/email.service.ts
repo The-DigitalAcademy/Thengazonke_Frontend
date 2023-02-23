@@ -9,12 +9,12 @@ import { Email } from '../model/email'
 export class EmailService {
 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  
+
 
   constructor(private http: HttpClient) { }
 
-    sendEmail({ body }: { body: Email; }): Observable<Email> {
-      return this.http.post<Email>('/sendEmail',body).pipe();
+    sendEmail(body:Email): Observable<Email> {
+      return this.http.post<Email>('http://localhost:3100/sendmail',body);
     }
 
 }

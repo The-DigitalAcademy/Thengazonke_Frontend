@@ -1,0 +1,113 @@
+.heading {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #516951;
+  font-size: 25px;
+}
+
+.container {
+  margin: auto;
+}
+
+.head {
+  background-color: #516951;
+}
+
+.act {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.card {
+  margin-top: 19px;
+  background-color: white;
+  border-radius: 2rem;
+  border: solid 1px #f7fbf7;
+  -webkit-box-shadow: inset;
+          box-shadow: inset;
+  margin: auto;
+}
+
+img {
+  width: 250px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+}
+
+.btn-modal {
+  background-color: aqua;
+  border-color: aqua;
+  color: black;
+}
+
+h3 {
+  color: black;
+}
+
+h2 {
+  color: black;
+}
+
+.ppp {
+  margin-top: 1rem;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.icon {
+  gap: 2rem;
+  padding: 1rem;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.icon:hover {
+  font-size: 18px;
+}
+
+.label-text {
+  text-align: start;
+}
+
+.desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 46px;
+}
+
+.modaL-action .btn {
+  text-transform: capitalize;
+}
+
+.btn1 {
+  background-color: #516951;
+}
+
+.btn2 {
+  background-color: #516951;
+}
+
+h4 {
+  color: #516951;
+}
+
+.step {
+  color: #516951;
+}
+/*# sourceMappingURL=order-history.component.css.map */

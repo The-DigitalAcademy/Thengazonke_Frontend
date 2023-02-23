@@ -1,0 +1,121 @@
+.heading {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: var(--main-green);
+  font-size: 25px;
+}
+
+.container {
+  margin: auto;
+}
+
+.head {
+  background-color: var(--main-green);
+}
+
+.act {
+  text-align: center;
+}
+
+th {
+  text-align: center;
+  background-color: var(--main-green);
+  color: var(--white);
+}
+
+td {
+  text-align: center;
+  background-color: var(--gray);
+  color: var(--main-green);
+}
+
+.card {
+  margin-top: 19px;
+  background-color: white;
+  border-radius: 2rem;
+  border: solid 1px #f7fbf7;
+  -webkit-box-shadow: inset;
+          box-shadow: inset;
+  margin: auto;
+}
+
+img {
+  width: 250px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1rem;
+}
+
+.btn-modal {
+  background-color: aqua;
+  border-color: aqua;
+  color: black;
+}
+
+h3 {
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+.ppp {
+  margin-top: 1rem;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.icon {
+  gap: 2rem;
+  padding: 1rem;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.icon:hover {
+  font-size: 18px;
+}
+
+.label-text {
+  text-align: start;
+}
+
+.desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 46px;
+}
+
+.modaL-action .btn {
+  text-transform: capitalize;
+}
+
+.btn1 {
+  background-color: var(--main-green);
+}
+
+.btn2 {
+  background-color: var(--main-green);
+}
+
+h4 {
+  color: var(--main-green);
+}
+
+.step {
+  color: var(--main-green);
+}
+
+thead th {
+  width: 200px;
+}
+/*# sourceMappingURL=admin-order-history.component.css.map */

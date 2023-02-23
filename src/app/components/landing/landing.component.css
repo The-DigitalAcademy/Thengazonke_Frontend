@@ -1,0 +1,555 @@
+.land_button {
+  height: 2rem;
+  top: 80%;
+  bottom: 0px;
+  right: 10rem;
+  top: 60%;
+  width: auto;
+}
+
+button {
+  background-color: var(--main-green);
+  -webkit-filter: drop-shadow(0px 10px 10px #aa9e65);
+          filter: drop-shadow(0px 10px 10px #aa9e65);
+  -webkit-box-shadow: 0px 1px 0px 0px #ecec94;
+          box-shadow: 0px 1px 0px 0px #ecec94;
+  border-radius: 5px;
+  float: right;
+  position: absolute;
+  right: 0;
+  padding: 5px 1rem;
+  width: 7rem;
+  font-size: 10px;
+  height: 2rem;
+  color: white;
+}
+
+.carousel_pictures {
+  fill: solid rgba(81, 105, 81, 0.6);
+}
+
+.carousel-item {
+  height: 15rem;
+  margin-bottom: 0rem;
+  padding: 0rem;
+}
+
+img {
+  height: 100vh;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bodysz {
+  padding: 2rem;
+}
+
+h1 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+  background-image: url(../../../assets/headr.jpeg);
+  background-size: 250px;
+  background-repeat: repeat;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+span {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+h3 {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  background-color: transparent;
+  font-size: 2rem;
+  text-align: start;
+}
+
+h5 {
+  font-style: italic;
+  margin: 0rem;
+}
+
+p {
+  padding: 0;
+  margin: 0rem;
+  font-style: italic;
+  color: white;
+  text-align: start;
+}
+
+.carousel-texts {
+  position: absolute;
+  top: 29%;
+  left: 5rem;
+}
+
+@media only screen and (min-width: 900px) {
+  .carousel-item {
+    height: 30rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .carousel-item {
+    height: 18rem;
+  }
+  .carousel-texts h4 {
+    text-align: center;
+    color: red;
+    margin-bottom: 3rem;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  .tbs {
+    display: none;
+  }
+  .card2 {
+    padding: .5rem;
+  }
+  .carousel-item {
+    height: 15rem;
+    top: 80%;
+  }
+  .carousel-texts {
+    text-align: center;
+    color: red;
+    margin-bottom: 3rem;
+  }
+  .land_button {
+    text-align: center;
+  }
+  button {
+    margin-top: 4rem;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .tbs {
+    display: none;
+  }
+  .card2 {
+    padding: .5rem;
+  }
+  .carousel-item {
+    height: 12rem;
+    top: 80%;
+  }
+  .carousel-texts {
+    text-align: center;
+    color: red;
+    margin-bottom: 3rem;
+  }
+  .land_button {
+    text-align: center;
+  }
+  button {
+    text-align: center;
+  }
+}
+
+@-webkit-keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -300%;
+  }
+  98% {
+    left: -300%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -300%;
+  }
+  98% {
+    left: -300%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scrollbar-color: transparent transparent;
+  /* thumb and track color */
+  scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+  position: relative;
+  -webkit-filter: drop-shadow(0 0 10px #0003);
+          filter: drop-shadow(0 0 10px #0003);
+  -webkit-perspective: 100px;
+          perspective: 100px;
+  height: 70vh;
+  padding: 0rem;
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+}
+
+.carousel__slide {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  width: 100%;
+  counter-increment: item;
+}
+
+.carousel__slide:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -40%, 70px);
+          transform: translate3d(-50%, -40%, 70px);
+  font-size: 2em;
+}
+
+.carousel__snapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  text-align: center;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../../../assets/images/Livestock_grazing_in_Armenia.jpeg);
+}
+
+@media (hover: hover) {
+  .carousel__snapper {
+    -webkit-animation-name: tonext, snap;
+            animation-name: tonext, snap;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+  }
+  .carousel__slide:last-child .carousel__snapper {
+    -webkit-animation-name: tostart, snap;
+            animation-name: tostart, snap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__snapper {
+    -webkit-animation-name: none;
+            animation-name: none;
+  }
+}
+
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  -webkit-animation-name: none;
+          animation-name: none;
+}
+
+.carousel__navigation {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.carousel__navigation-list,
+.carousel__navigation-item {
+  display: inline-block;
+}
+
+.carousel__navigation-button {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #333;
+  background-clip: content-box;
+  border: 0.25rem solid transparent;
+  border-radius: 50%;
+  font-size: 0;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+}
+
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 0;
+  margin-top: 37.5%;
+  width: 1rem;
+  height: rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 50%;
+  font-size: 0;
+  outline: 0;
+  top: -12rem;
+}
+
+.carousel::before,
+.carousel__prev {
+  left: 10px;
+}
+
+.carousel::after,
+.carousel__next {
+  right: 10px;
+}
+
+.carousel::before,
+.carousel::after {
+  content: '';
+  z-index: 1;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--yellow);
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.carousel::after {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* Container holding the image and the text */
+.card3 {
+  background-color: pink;
+}
+
+.card {
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 1rem;
+  background-color: white;
+  margin: 0rem;
+  width: 100%;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+img {
+  height: 11.7rem;
+}
+
+.head1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+  background-size: 250px;
+  background-repeat: repeat;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.head3 {
+  color: black;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.rsvBtn {
+  background-color: var(--main-green);
+  border: solid 0.5px var(--yellow);
+  border-radius: 5px 2px;
+  color: white;
+  margin-bottom: 7rem;
+  padding-left: 3rem;
+}
+
+.pee {
+  color: black;
+}
+
+.modal-box {
+  background-color: var(--main-green);
+}
+/*# sourceMappingURL=landing.component.css.map */

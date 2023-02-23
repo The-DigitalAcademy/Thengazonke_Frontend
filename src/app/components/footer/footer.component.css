@@ -1,0 +1,22 @@
+footer {
+  background-color: #516951;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+p {
+  color: #fff;
+}
+
+.rights {
+  padding-bottom: 0rem;
+  margin-bottom: -12px;
+}
+
+.design {
+  padding-top: 0rem;
+  margin-top: 0rem;
+}
+/*# sourceMappingURL=footer.component.css.map */

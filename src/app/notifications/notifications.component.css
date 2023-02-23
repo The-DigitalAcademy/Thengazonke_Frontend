@@ -1,0 +1,74 @@
+.heading {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #516951;
+  font-size: 25px;
+}
+
+.fas {
+  color: var(--red);
+}
+
+.card-all {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+img {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.drawer .drawer-content {
+  overflow: false !important;
+}
+
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+/*# sourceMappingURL=notifications.component.css.map */

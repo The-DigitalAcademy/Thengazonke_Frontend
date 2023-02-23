@@ -16,6 +16,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BellComponent } from './bell/bell.component';
+import { EmailComponent } from './email/email.component';
 
 
 
@@ -28,6 +29,7 @@ import { BellComponent } from './bell/bell.component';
         ReviewComponent,
         SnackbarComponent,
         BellComponent,
+        EmailComponent,
        
     ],
     providers: [],

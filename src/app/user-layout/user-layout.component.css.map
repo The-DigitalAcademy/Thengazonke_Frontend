@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAA;EACH,OAAO,EAAE,IAAI;CAChB;;AAUD,qCAAqC;AASrC,sCAAsC;AAUtC,sCAAsC;AAUtC,wBAAwB;AACxB,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK,OAAO,SAAS,EAAE,KAAK;EAO/D,AAAA,OAAO,CAAA;IACH,OAAO,EAAE,IAAI;GAChB;;;AAGD,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK;EAOxC,AAAA,OAAO,CAAA;IACH,OAAO,EAAE,IAAI;GAChB",
+    "sources": [
+        "user-layout.component.scss"
+    ],
+    "names": [],
+    "file": "user-layout.component.css"
+}
