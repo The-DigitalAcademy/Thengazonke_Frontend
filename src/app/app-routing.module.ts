@@ -18,20 +18,26 @@ import { RateComponent } from './components/rate/rate.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 
-const routes: Routes = [
-  { path: 'auth',  loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 
-  { 
+const routes: Routes = [
+// Testing purpose routes
+
+  {path: 'not', component:NotificationsComponent},
+
+// End of Testing purpose routes
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+
+  {
     path: 'admin',
-    component: AdminLayoutComponent, 
+    component: AdminLayoutComponent,
     children: [
     {
       path: '',
       loadChildren: () => import('./admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
     }]
   },
-  { 
-    path: '', 
+  {
+    path: '',
     component: UserLayoutComponent,
     
     children: [
@@ -42,14 +48,13 @@ const routes: Routes = [
   },
   {path: 'header', component:HeaderComponent},
   {path: 'profile', component:ProfileComponent},
-  {path: 'admin-header', component:AdminHeaderComponent},
 
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  
+
 exports: [RouterModule]
 })
 export class AppRoutingModule { }

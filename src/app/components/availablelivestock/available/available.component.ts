@@ -42,8 +42,8 @@ export class AvailableComponent implements OnInit {
     })
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages:any) => {
-      this.livestocks = messages;
-      // this.livestocks = results.filter((res:any) => String(res.UserID) === String(8))
+      let livestocks1 = messages;
+      this.livestocks = livestocks1.filter((res:any) => String(res.status) != String("archieved"));
     }) 
   }
 
@@ -93,13 +93,12 @@ export class AvailableComponent implements OnInit {
 
     this.livestoc.GetLivestockCategories().subscribe((res) => { 
       this.categories = res;
-      console.log('this are categories',this.categories)
     })
   }
   GetProducts(){
     this.livestoc.GetAllPostedLivestock().subscribe((res) => {
-      this.livestocks =res;
-      console.log('from funtion',this.livestocks)
+      let livestocks1 =res;
+      this.livestocks = livestocks1.filter((res:any) => String(res.status) != String("archieved"));
     })
   }
 
