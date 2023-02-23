@@ -17,6 +17,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { RateComponent } from './components/rate/rate.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+
 const routes: Routes = [
   { path: 'auth',  loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path: 'header', component:HeaderComponent},
   {path: 'profile', component:ProfileComponent},
   {path: 'admin-header', component:AdminHeaderComponent},
+
 
 ];
 
