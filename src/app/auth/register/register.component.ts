@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators,ValidatorFn } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators,ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -14,12 +14,12 @@ export class RegisterComponent implements OnInit {
   tempStatus:any;
   selected: any = 'Buyer';
 
-  AddUserForm: FormGroup = new FormGroup({
-    fullname: new FormControl(''),
-    email: new FormControl(''),
+  AddUserForm: UntypedFormGroup = new UntypedFormGroup({
+    fullname: new UntypedFormControl(''),
+    email: new UntypedFormControl(''),
     // phone:  new FormControl(''),
-    password: new FormControl(''),
-    usertype:  new FormControl('')
+    password: new UntypedFormControl(''),
+    usertype:  new UntypedFormControl('')
 });
 
 decoded: any;
@@ -27,7 +27,7 @@ decoded: any;
 submitted = false;
 passwordErr!:any;
 
-constructor(private authService:AuthService, private router: Router, public fb: FormBuilder, private toast :HotToastService) { }
+constructor(private authService:AuthService, private router: Router, public fb: UntypedFormBuilder, private toast :HotToastService) { }
 
 myForm() {
   this.AddUserForm = this.fb.group({

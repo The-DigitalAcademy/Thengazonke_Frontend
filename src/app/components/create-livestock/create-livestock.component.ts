@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { BreedService } from 'src/app/services/breed.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { LivestockService } from 'src/app/services/livestock.service';
@@ -21,27 +21,27 @@ export class CreateLivestockComponent implements OnInit {
   submitted :boolean = false;
 
 
-  AddLivestockForm: FormGroup = new FormGroup({
-    UserID: new FormControl(''),
+  AddLivestockForm: UntypedFormGroup = new UntypedFormGroup({
+    UserID: new UntypedFormControl(''),
     // image: new FormControl(''),
-    price: new FormControl(''),
-    gender: new FormControl(''),
-    agetype: new FormControl(''),
-    age: new FormControl(''),
-    quantity:new FormControl(''),
-    color:new FormControl(''),
-    address:new FormControl(''),
-    description: new FormControl(''),
-    weight: new FormControl(''),
-    categoryID: new FormControl(''),
-    breedID: new FormControl('')
+    price: new UntypedFormControl(''),
+    gender: new UntypedFormControl(''),
+    agetype: new UntypedFormControl(''),
+    age: new UntypedFormControl(''),
+    quantity:new UntypedFormControl(''),
+    color:new UntypedFormControl(''),
+    address:new UntypedFormControl(''),
+    description: new UntypedFormControl(''),
+    weight: new UntypedFormControl(''),
+    categoryID: new UntypedFormControl(''),
+    breedID: new UntypedFormControl('')
   });
 
   
 
-  update_dp = new FormGroup({
-    file:new FormControl(),
-    upload_preset: new FormControl()}
+  update_dp = new UntypedFormGroup({
+    file:new UntypedFormControl(),
+    upload_preset: new UntypedFormControl()}
   );
 
   myForm() {
@@ -69,7 +69,7 @@ export class CreateLivestockComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private toast :HotToastService, private router: Router) { }
+    public fb: UntypedFormBuilder, private http:HttpClient, private toast :HotToastService, private router: Router) { }
 
   ngOnInit(): void {
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import jwt_decode from 'jwt-decode';
@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
 
  selected: any = 'Buyer';
  box!: any;
-  UserLoginForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+  UserLoginForm: UntypedFormGroup = new UntypedFormGroup({
+    email: new UntypedFormControl(''),
+    password: new UntypedFormControl('')
   });
 
   decoded: any;
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   marked = false;
   theCheckbox = false;
 
-  constructor(private authServive:AuthService, private router: Router, public fb: FormBuilder, private toast :HotToastService) { 
+  constructor(private authServive:AuthService, private router: Router, public fb: UntypedFormBuilder, private toast :HotToastService) { 
   }
 
 

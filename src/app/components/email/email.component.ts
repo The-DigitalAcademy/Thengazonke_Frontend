@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Email } from 'src/app/model/email';
 import { EmailService } from 'src/app/services/email.service';
-import { FormBuilder, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,16 +11,16 @@ import { FormBuilder, AbstractControl, FormControl, FormGroup, Validators } from
 })
 export class EmailComponent implements OnInit {
 
-  form: FormGroup = new FormGroup({
-    to: new FormControl(''),
-    subject: new FormControl(''),
-    message: new FormControl(''),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    to: new UntypedFormControl(''),
+    subject: new UntypedFormControl(''),
+    message: new UntypedFormControl(''),
 
   });
 
   submitted = false;
 
-  constructor(private email:EmailService,private formBuilder: FormBuilder) { }
+  constructor(private email:EmailService,private formBuilder: UntypedFormBuilder) { }
 
 
 

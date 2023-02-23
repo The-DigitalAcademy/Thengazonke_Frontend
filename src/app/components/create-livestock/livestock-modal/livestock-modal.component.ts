@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BreedService } from 'src/app/services/breed.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { LivestockService } from 'src/app/services/livestock.service';
-import { Observable, of } from 'rxjs/';
+import { Observable, of } from 'rxjs';
 import { Livestock } from 'src/app/model/livestock';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -91,21 +91,35 @@ export class LivestockModalComponent implements OnInit {
 		this.selectedTeam = value;
 	}
 
+  // AddLivestockForm: FormGroup = new FormGroup<Livestock>({
+  //   UserID: new FormControl(''),
+  //   // image: new FormControl(''),
+  //   price: new FormControl(''),
+  //   gender: new FormControl(''),
+  //   agetype: new FormControl(''),
+  //   age: new FormControl(''),
+  //   quantity:new FormControl(''),
+  //   color:new FormControl(''),
+  //   address:new FormControl(''),
+  //   description: new FormControl(''),
+  //   weight: new FormControl(''),
+  //   categoryID: new FormControl(''),
+  //   breedID: new FormControl(''),
+  // });
 
-  AddLivestockForm: FormGroup = new FormGroup({
-    UserID: new FormControl(''),
-    // image: new FormControl(''),
-    price: new FormControl(''),
-    gender: new FormControl(''),
-    agetype: new FormControl(''),
-    age: new FormControl(''),
-    quantity:new FormControl(''),
-    color:new FormControl(''),
-    address:new FormControl(''),
-    description: new FormControl(''),
-    weight: new FormControl(''),
-    categoryID: new FormControl(''),
-    breedID: new FormControl(''),
+  AddLivestockForm = new FormGroup<Livestock>({
+    UserID: new FormControl<Number>(0 , { nonNullable: false}),
+    price: new FormControl<number>(0, { nonNullable: false}),
+    gender: new FormControl<string>('', { nonNullable: true}),
+    agetype: new FormControl<string>('', { nonNullable: true}),
+    age: new FormControl<Number>(0, { nonNullable: false}),
+    quantity: new FormControl<number>(0, { nonNullable: false}),
+    color: new FormControl<string>('', { nonNullable: true}),
+    address: new FormControl<string>('', { nonNullable: true}),
+    description: new FormControl<string>('', { nonNullable: true}),
+    weight: new FormControl<number>(0, { nonNullable: false}),
+    categoryID: new FormControl<number>(0, { nonNullable: false}),
+    breedID: new FormControl<number>(0, { nonNullable: false}),
   });
 
   preset :string = "nq04upkl";
@@ -144,22 +158,22 @@ export class LivestockModalComponent implements OnInit {
         this.agetypes = String(this.livestock[0].age).slice((Number(indexofEmptyStr) + 1), Number(lenghtStr))
 
         this.AddLivestockForm.setValue({
-          UserID: this.livestock[0].UserID,
+          UserID: Number(this.livestock[0].UserID),
           // image: this.livestock[0].image,
-          price: Number(String(this.livestock[0].price).slice(1, this.livestock[0].price?.length)),
-          gender: this.livestock[0].gender,
+          // price: Number(String(this.livestock[0].price).slice(1, this.livestock[0].price?.length)),
+          gender: String(this.livestock[0].gender),
           agetype: String(this.livestock[0].age).slice((Number(indexofEmptyStr) + 1), Number(lenghtStr)),
           age: Number(String(this.livestock[0].age).slice(0, Number(indexofEmptyStr))),
-          quantity: this.livestock[0].quantity,
-          color: this.livestock[0].color,
-          address: this.livestock[0].address,
-          description: this.livestock[0].description,
-          weight: this.livestock[0].weight,
-          categoryID: this.livestock[0].categoryID,
-          breedID: this.livestock[0].breedID,
+          quantity: Number(this.livestock[0].quantity),
+          color: String(this.livestock[0].color),
+          address: String(this.livestock[0].address),
+          description: String(this.livestock[0].description),
+          weight: Number(this.livestock[0].weight),
+          categoryID: Number(this.livestock[0].categoryID),
+          breedID: Number(this.livestock[0].breedID),
         })
 
-        this.imageSrc == this.myLivestock.image;
+        this.imageSrc == String(this.myLivestock.image);
       }
 
     });
