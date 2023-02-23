@@ -17,7 +17,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { RateComponent } from './components/rate/rate.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
-import { NotificationsComponent } from './notifications/notifications.component';
+
 
 const routes: Routes = [
 // Testing purpose routes
@@ -48,6 +48,7 @@ const routes: Routes = [
   },
   {path: 'header', component:HeaderComponent},
   {path: 'profile', component:ProfileComponent},
+
 
 ];
 

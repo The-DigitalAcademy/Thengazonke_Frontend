@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SellerRequestComponent } from './components/seller-request/seller-request.component';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,7 +26,7 @@ import { SellerRequestComponent } from './components/seller-request/seller-reque
         SellerComponent,
         ReviewComponent,
         SnackbarComponent,
-        SellerRequestComponent,
+        SellerRequestComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

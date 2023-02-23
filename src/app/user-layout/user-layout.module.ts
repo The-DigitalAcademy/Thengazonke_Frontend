@@ -9,6 +9,7 @@ import { LandingComponent } from '../components/landing/landing.component';
 import { RouterModule } from '@angular/router';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { ContactUsComponent } from '../components/contact-us/contact-us.component';
+import { EmailComponent } from '../components/email/email.component';
 import { SearchComponent } from '../components/search/search.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +41,7 @@ import { CartComponent } from '../components/cart/cart.component';
     HomepageComponent,
     ContactUsComponent,
     OrderRequestComponent,
+    EmailComponent,
     OrderHistoryComponent,
     CreateLivestockComponent,
     NotificationsComponent,
