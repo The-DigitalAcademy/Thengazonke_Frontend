@@ -31,7 +31,7 @@ constructor(private authService:AuthService, private router: Router, public fb: 
 
 myForm() {
   this.AddUserForm = this.fb.group({
-    fullname: ['', [ Validators.required, Validators.minLength(3),Validators.maxLength(50), Validators.pattern("^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$") ]],
+    fullname: ['', [ Validators.required, Validators.minLength(3),Validators.maxLength(50) ]],
     email: ['', [Validators.required, Validators.email]],
     password:  ['', [ Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{6,15}') ]],
     confirmPassword:  ['', [ Validators.required, Validators.minLength(8) ]],

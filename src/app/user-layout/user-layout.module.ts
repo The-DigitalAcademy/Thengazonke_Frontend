@@ -31,6 +31,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { CartComponent } from '../components/cart/cart.component';
 
 
+
+
 @NgModule({
   declarations: [
     UserLayoutComponent,
@@ -62,7 +64,7 @@ import { CartComponent } from '../components/cart/cart.component';
   HttpClientModule,
   ReactiveFormsModule,
   NgApexchartsModule,
-  HotToastModule.forRoot()
+  HotToastModule.forRoot(),
   ]
 })
 export class UserLayoutModule { }

@@ -24,6 +24,7 @@ import { RateAndReviewComponent } from './dashboard/rate-and-review/rate-and-rev
 import { BreedComponent } from './dashboard/breed/breed.component';
 import { TransactionComponent } from './dashboard/transaction/transaction.component';
 import { LivestocksComponent } from './dashboard/livestock/livestocks.component';
+import {DataTablesModule} from 'angular-datatables';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { LivestocksComponent } from './dashboard/livestock/livestocks.component'
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    NgApexchartsModule
+    NgApexchartsModule,
   ]
 })
 export class AdminLayoutModule { }

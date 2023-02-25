@@ -16,6 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SellerRequestComponent } from './components/seller-request/seller-request.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import { BrowserModule } from '@angular/platform-browser';
     providers: [],
     bootstrap: [AppComponent],
     imports: [
-
         BrowserModule,
         AppRoutingModule,
         RouterModule,
@@ -42,8 +42,7 @@ import { BrowserModule } from '@angular/platform-browser';
         MatButtonModule,
         MatSnackBarModule,
         MatSidenavModule,
-
-
+        DataTablesModule
     ],
     exports: [MatSidenavModule],
 
