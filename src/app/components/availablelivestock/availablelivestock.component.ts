@@ -50,7 +50,7 @@ export class AvailablelivestockComponent implements OnInit {
 
     this.livestoc.GetAllPostedLivestock().subscribe((messages) => {
       this.livestocks = messages
-     // console.log('i am livestock',this.livestocks)
+     console.log('i am livestock',this.livestocks)
     })
     
     this.GetCategories();

@@ -57,6 +57,11 @@
               <li class="" *ngIf="user.usertype == 'Seller'">
                 <a href="#" routerLink="/order-request">Order request</a>
             </li>
+            <li class="" *ngIf="user.usertype == 'Seller'">
+              <a href="#" routerLink="/review">Rates and reviews</a>
+          </li>
+          
+            
 
               <div class="dropdown dropdown-end" *ngIf="logEmail">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
@@ -128,6 +133,9 @@
             <li class="" *ngIf="user.usertype == 'Seller'">
               <a href="#" routerLink="/order-request">Order request</a>
           </li>
+          <li class="" *ngIf="user.usertype == 'Seller'">
+            <a href="#" routerLink="/review">Rates and reviews</a>
+        </li>
           <li>
             <a class="justify-between" [routerLink]="['/profile']" >
               {{user.fullname}}

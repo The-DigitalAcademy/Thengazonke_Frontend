@@ -101,7 +101,7 @@ export class AvailableComponent implements OnInit {
   GetProducts(){
     this.livestoc.GetAllPostedLivestock().subscribe((res) => {
       let livestocks1 =res;
-      this.livestocks = livestocks1.filter((res:any) => String(res.status) != String("archieved"));
+      this.livestocks = livestocks1.filter((res:any) => String(res.status) != String("archived"));
     })
   }
 
