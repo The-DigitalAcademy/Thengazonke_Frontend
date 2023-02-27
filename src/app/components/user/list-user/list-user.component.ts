@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
+import { DataTableDirective } from 'angular-datatables';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.scss']
 })
+
 export class ListUserComponent implements OnInit {
+
+  @ViewChild(DataTableDirective, { static: false })
+  datatableElement!: DataTableDirective;
 
   users!:any;
   deleteID!:any;
@@ -16,7 +22,7 @@ export class ListUserComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -25,24 +31,34 @@ export class ListUserComponent implements OnInit {
       pagingType: 'full_numbers',
       pageLength: 10,
       lengthMenu : [5, 10, 25],
-      processing: true
+      processing: true,
+      paging: false,
+      searching: false,
+      deferRender: true,
+      destroy: true,
      };
   }
 
-  getUsers(){
-    this.authService.GetAllUsers().subscribe((res:any) => {
+  ngOnDestroy(){
+    this.dtTrigger.unsubscribe();
+    return true
+  }
+
+  async getUsers(){
+     this.authService.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result
       this.users = result.filter((res:any) => String(res.status) != String("archieved"));
 
-      this.dtTrigger.next(this.users);
+      this.dtTrigger.next(this.users)
+
     });
   }
 
   DeleteUser()
   {
-    console.log('deleted') 
-    console.log(this.deleteID)
+    this.showSpinner();
+    
     let st= {
       status: "archieved"
     }
@@ -60,13 +76,17 @@ export class ListUserComponent implements OnInit {
       let result = res;
       this.users = result
       this.users = result.filter((res:any) => String(res.status) === String("archieved"));
+
+      // this.dtTrigger.next(this.users)
     });
+
     this.isAllUsers = true;
     this.isArchievedUsers = false;
   }
 
   AllUsers()
   {
+    window.location.reload();
     this.getUsers();
     this.isAllUsers = false;
     this.isArchievedUsers = true;
@@ -83,5 +103,14 @@ export class ListUserComponent implements OnInit {
     modalCheckbox.checked = false
   }
 
+  showSpinner()
+  {
+    this.spinner.show();
+
+    setTimeout(()=>{
+      this.spinner.hide();
+    }, 2000)
+
+  }
 
 }

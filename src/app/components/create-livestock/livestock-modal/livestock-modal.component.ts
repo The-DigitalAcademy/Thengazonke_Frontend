@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BreedService } from 'src/app/services/breed.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -9,6 +9,8 @@ import { Observable, of } from 'rxjs';
 import { Livestock } from 'src/app/model/livestock';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Livestock1 } from '../../../model/livestock1';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -20,14 +22,14 @@ export class LivestockModalComponent implements OnInit {
 
   myObservable$: Observable<any> | undefined;
 
-  myLivestock!:Livestock;
+  myLivestock!:Livestock1;
 
   category!:any;
   breed!:any;
   image_link!:any;
   sub!:any;
   lid!:any;
-  livestock: Livestock[] = [];
+  livestock: Livestock1[] = [];
   agetypes!:any;
 
   selectedValue:any = null
@@ -49,14 +51,99 @@ export class LivestockModalComponent implements OnInit {
   dragging: boolean = false;
   loaded: boolean = false;
   imageLoaded: boolean = false;
-  imageSrc: string = '';
+  imageSrc: any = '';
+
+
+  AddLivestockForm: FormGroup = new FormGroup({
+    UserID: new FormControl(''),
+    // image: new FormControl(''),
+    price: new FormControl(''),
+    gender: new FormControl(''),
+    agetype: new FormControl(''),
+    age: new FormControl(''),
+    quantity:new FormControl(''),
+    color:new FormControl(''),
+    address:new FormControl(''),
+    description: new FormControl(''),
+    weight: new FormControl(''),
+    categoryID: new FormControl(''),
+    breedID: new FormControl(''),
+  });
+
+  preset :string = "nq04upkl";
+
+  update_dp = new FormGroup({
+    file:new FormControl(),
+    upload_preset: new FormControl()}
+  );
+
+  cloudinaryUrl: string = 'https://api.cloudinary.com/v1_1/dbgjhr9ir/image/upload';
+  file: any;
+  isUpdating: boolean = false;
+
+  constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
+    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router, private toast :HotToastService,
+    private spinner: NgxSpinnerService, private notificationService: NotificationService) { }
+
+  ngOnInit(): void {
+
+    this.sub = this.route.params.subscribe(params => {
+      return this.lid = params['id'];
+    });
+
+    this.getCategory();
     
+    this.livestockService.GetAllPostedLivestock().subscribe((res:any) => {
+      let result = res;
+      this.livestock = result.filter((res:any) => Number(res.livestockID) === Number(this.lid))
+      this.myLivestock = this.livestock[0];
+
+      if(this.livestock!= undefined)
+      {
+
+        let indexofEmptyStr = String(this.livestock[0].age).indexOf(" ");
+        let lenghtStr = String(this.livestock[0].age).length;
+        this.agetypes = String(this.livestock[0].age).slice((Number(indexofEmptyStr) + 1), Number(lenghtStr))
+
+        let priceStr = String(String(this.livestock[0].price).slice(1, this.livestock[0].price?.length));
+        let indexofEmptyStrprice = String(priceStr).indexOf(',');
+        let lenghtStrPrice = String(priceStr).length;
+        let prices = String(priceStr).slice(0, (Number(indexofEmptyStrprice) + 1)) + String(priceStr).slice((Number(indexofEmptyStrprice) + 1), Number(lenghtStrPrice))
+
+        console.log(prices.split(',').join(''));
+
+        this.AddLivestockForm.setValue({
+          UserID: this.livestock[0].UserID,
+          // image: this.livestock[0].image,
+          price: Number(prices.split(',').join('')),
+          gender: this.livestock[0].gender,
+          agetype: String(this.livestock[0].age).slice((Number(indexofEmptyStr) + 1), Number(lenghtStr)),
+          age: Number(String(this.livestock[0].age).slice(0, Number(indexofEmptyStr))),
+          quantity: this.livestock[0].quantity,
+          color: this.livestock[0].color,
+          address: this.livestock[0].address,
+          description: this.livestock[0].description,
+          weight: this.livestock[0].weight,
+          categoryID: this.livestock[0].categoryID,
+          breedID: this.livestock[0].breedID,
+        })
+
+        console.log("palesa", this.AddLivestockForm.value)
+
+        this.imageSrc == this.myLivestock.image;
+      }
+
+    });
+
+  }
+
 
   selectFile(event: any): void {
     this.message = '';
     this.preview = '';
     this.progress = 0;
     this.selectedFiles = event.target.files;
+    this.fileUploaded =  'yes';
   
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
@@ -92,95 +179,6 @@ export class LivestockModalComponent implements OnInit {
 		this.selectedTeam = value;
 	}
 
-  // AddLivestockForm: FormGroup = new FormGroup<Livestock>({
-  //   UserID: new FormControl(''),
-  //   // image: new FormControl(''),
-  //   price: new FormControl(''),
-  //   gender: new FormControl(''),
-  //   agetype: new FormControl(''),
-  //   age: new FormControl(''),
-  //   quantity:new FormControl(''),
-  //   color:new FormControl(''),
-  //   address:new FormControl(''),
-  //   description: new FormControl(''),
-  //   weight: new FormControl(''),
-  //   categoryID: new FormControl(''),
-  //   breedID: new FormControl(''),
-  // });
-
-  AddLivestockForm = new FormGroup<Livestock>({
-    UserID: new FormControl<Number>(0 , { nonNullable: false}),
-    price: new FormControl<number>(0, { nonNullable: false}),
-    gender: new FormControl<string>('', { nonNullable: true}),
-    agetype: new FormControl<string>('', { nonNullable: true}),
-    age: new FormControl<Number>(0, { nonNullable: false}),
-    quantity: new FormControl<number>(0, { nonNullable: false}),
-    color: new FormControl<string>('', { nonNullable: true}),
-    address: new FormControl<string>('', { nonNullable: true}),
-    description: new FormControl<string>('', { nonNullable: true}),
-    weight: new FormControl<number>(0, { nonNullable: false}),
-    categoryID: new FormControl<number>(0, { nonNullable: false}),
-    breedID: new FormControl<number>(0, { nonNullable: false}),
-  });
-
-  preset :string = "nq04upkl";
-
-  update_dp = new FormGroup({
-    file:new FormControl(),
-    upload_preset: new FormControl()}
-  );
-
-  cloudinaryUrl: string = 'https://api.cloudinary.com/v1_1/dbgjhr9ir/image/upload';
-  file: any;
-  isUpdating: boolean = false;
-
-  constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router, private toast :HotToastService,
-    private natification: NotificationService) { }
-
-  ngOnInit(): void {
-
-    this.sub = this.route.params.subscribe(params => {
-      return this.lid = params['id'];
-    });
-
-    this.getCategory();
-    
-    this.livestockService.GetAllPostedLivestock().subscribe((res:any) => {
-      let result = res;
-      this.livestock = result.filter((res:any) => Number(res.livestockID) === Number(this.lid))
-
-      this.myLivestock = this.livestock[0];
-
-      if(this.livestock!= undefined)
-      {
-
-        let indexofEmptyStr = String(this.livestock[0].age).indexOf( " ");
-        let lenghtStr = String(this.livestock[0].age).length;
-        this.agetypes = String(this.livestock[0].age).slice((Number(indexofEmptyStr) + 1), Number(lenghtStr))
-
-        this.AddLivestockForm.setValue({
-          UserID: Number(this.livestock[0].UserID),
-          // image: this.livestock[0].image,
-          // price: Number(String(this.livestock[0].price).slice(1, this.livestock[0].price?.length)),
-          gender: String(this.livestock[0].gender),
-          agetype: String(this.livestock[0].age).slice((Number(indexofEmptyStr) + 1), Number(lenghtStr)),
-          age: Number(String(this.livestock[0].age).slice(0, Number(indexofEmptyStr))),
-          quantity: Number(this.livestock[0].quantity),
-          color: String(this.livestock[0].color),
-          address: String(this.livestock[0].address),
-          description: String(this.livestock[0].description),
-          weight: Number(this.livestock[0].weight),
-          categoryID: Number(this.livestock[0].categoryID),
-          breedID: Number(this.livestock[0].breedID),
-        })
-
-        this.imageSrc == String(this.myLivestock.image);
-      }
-
-    });
-
-  }
   getCategory(){
     this.categoryService.GetAllCategory().subscribe((res:any) => {
       let result = res;
@@ -201,6 +199,7 @@ export class LivestockModalComponent implements OnInit {
     if(event.target.files.length>0)
     {
       this.file =  event.target.files[0];
+      this.fileUploaded =  'yes';
      
     }
 
@@ -235,20 +234,25 @@ export class LivestockModalComponent implements OnInit {
       }, (err) => {
         if(err.status === 200)
         {
-          this.natification.success("Successfully Updated!");
+          let msg ="Successfully Edited!";
+          this.notificationService.success(msg);
           this.router.navigate(['/homes']);
         }
         else if(err.status === 201)
         {
-          this.natification.success("Successfully Updated!");
+          let msg ="Successfully Edited!";
+          this.notificationService.success(msg);
+
           this.router.navigate(['/homes']);
         }
         else if(err.status === 400)
         {
-          this.natification.danger("Something went wrong, please try again!");
+          let msg ="Something went wrong, please try again!";
+          this.notificationService.danger(msg)
         }
         else{
-          this.natification.danger("Something went wrong, please try again!");
+          let msg = "Something went wrong, please try again!";
+          this.notificationService.danger(msg)
         }
     });
       // this.router.navigate(['/homes']);
@@ -257,16 +261,17 @@ export class LivestockModalComponent implements OnInit {
 
   editLivestock(){
 
+    this.showSpinner();
+
     const formData = new FormData();
-    if(this.preview){
-      formData.append("file",this.preview)    
+
+    if(this.fileUploaded ==  'yes'){
+      formData.append("file",this.file)    
       formData.append("upload_preset","nq04upkl"); 
   
       this.http.post(this.cloudinaryUrl,formData).subscribe((res:any)=>{     
         this.image_link = res.url;
         this.image.link = this.image_link;
-        // console.log('I am  dot',this.image.link)
-        // console.log('I am  underscore',this.image_link)
 
         this.upload();
       })  
@@ -336,49 +341,14 @@ export class LivestockModalComponent implements OnInit {
         this.loaded = true;
     }
 
-    successfullToast(){
-      this.toast.success('Successfully Edited!',{duration:6000 , style: {
-        padding: '35px',
-        width: '48%',
-        height: '100px',
-        margin: '12px auto',
-        background: '#fff',
-        border: '2px solid #fff',
-      },
-      iconTheme: {
-        primary: '#4BB543',
-        secondary: '#FFFAEE',
-      },})
-    }
-  
-    warningToast(){
-      this.toast.warning('Boo!',{duration:6000 , style: {
-        padding: '35px',
-        width: '48%',
-        height: '100px',
-        margin: '12px auto',
-        background: '#fff',
-        border: '2px solid #fff',
-      },
-      iconTheme: {
-        primary: '#FFCC00',
-        secondary: '#FFFAEE',
-      },})
-    }
-  
-    errorToast(message:any){
-      this.toast.error(message,{duration:2000 , style: {
-        padding: '35px',
-        width: '48%',
-        height: '100px',
-        margin: '12px auto',
-        background: '#fff',
-        border: '2px solid #fff',
-      },
-      iconTheme: {
-        primary: '#DC3545',
-        secondary: '#FFFAEE',
-      },})
-    }
+  showSpinner()
+  {
+    this.spinner.show();
+
+    setTimeout(()=>{
+      this.spinner.hide();
+    }, 2000)
+
+  }
 
 }

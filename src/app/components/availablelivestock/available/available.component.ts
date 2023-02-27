@@ -24,6 +24,9 @@ export class AvailableComponent implements OnInit {
   users:any[] = [];
   result!:any;
   result2!:any;
+  p: number = 1;
+  total: number = 0;
+
   
   name = '!!!';
   viewMode = 'mylivestock';
@@ -104,6 +107,11 @@ export class AvailableComponent implements OnInit {
 
   getPriceCurrency(price:any){
     return price.slice(1,price.length);
+  }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.GetProducts();
   }
 
 }

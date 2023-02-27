@@ -29,8 +29,9 @@ import { AvailableComponent } from '../components/availablelivestock/available/a
 import { Mylivestock22Component } from '../components/mylivestock22/mylivestock22.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { CartComponent } from '../components/cart/cart.component';
-
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DataTablesModule } from 'angular-datatables';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -64,6 +65,9 @@ import { CartComponent } from '../components/cart/cart.component';
   HttpClientModule,
   ReactiveFormsModule,
   NgApexchartsModule,
+  NgxPaginationModule,
+  DataTablesModule,
+  NgxSpinnerModule,
   HotToastModule.forRoot(),
   ]
 })

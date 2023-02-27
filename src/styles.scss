@@ -39,6 +39,8 @@ $frontend-theme: mat.define-light-theme((
 @tailwind components;
 @tailwind utilities;
 
+@import "~ngx-spinner/animations/ball-atom.css";
+
 :root{
     --main-green:#516951;
     --white:#ffffff;

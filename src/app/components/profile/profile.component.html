@@ -69,24 +69,20 @@
       </div>
       <div>
         <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Previous ID Document</label><br>
-      <!-- <input formControlName ="identity" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange($event)" *ngIf="item.usertype=='Seller'"> -->
-        <a (click)="downloadFile(item.id_document)" class="link">{{item.id_document}}</a>
-        <!-- <a [download]="item.id_document" [href]="item.id_document.url" target="_blank">
-          <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-          {{item.fullname}} ID Document.pdf
-          </a><br> --->
-      <!---- <a [href]="item.url" [download]="item.id_document">
-        {{ item.id_document }}
-          </a> -->
+         <a (click)="downloadFile(item.id_document)" class="link" target="_blank">ID document</a>
       </div>
     </div>
-    
-    <div class="custom-file mb-6" *ngFor="let item of users">
-      <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Dept of Agriculture Identification</label><br>
+
+    <div class="flex flex-wrap border-b-2 mb-6" *ngFor="let item of users">
+      <div>
+        <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Dept of Agriculture Identification</label><br>
       <input formControlName ="agric" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange2($event)"  *ngIf="item.usertype=='Seller'">
+      </div>
+      <div>
+        <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Previous Agriculture Identification</label><br>
+        <a (click)="downloadFile(item.agric_document)" class="link" target="_blank">Agriculture Identificationt</a>
+      </div>
     </div>
-    
-    <!-- <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" /> -->
 
     <div></div>
     

@@ -24,7 +24,11 @@ import { RateAndReviewComponent } from './dashboard/rate-and-review/rate-and-rev
 import { BreedComponent } from './dashboard/breed/breed.component';
 import { TransactionComponent } from './dashboard/transaction/transaction.component';
 import { LivestocksComponent } from './dashboard/livestock/livestocks.component';
-import {DataTablesModule} from 'angular-datatables';
+import { DataTablesModule } from 'angular-datatables';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CategoriesComponent } from '../components/categories/categories.component';
+import { BreedModalComponent } from '../components/breed/breed-modal/breed-modal.component';
+import { CategoryModalComponent } from '../components/categories/category-modal/category-modal.component';
 
 
 @NgModule({
@@ -45,7 +49,13 @@ import {DataTablesModule} from 'angular-datatables';
     CategoryComponent,
     RateAndReviewComponent,
     BreedComponent,
-    TransactionComponent
+    TransactionComponent,
+    CategoryComponent,
+    CategoryModalComponent,
+    BreedComponent,
+    BreedModalComponent,
+    CategoriesComponent,
+    CategoryModalComponent
   ],
   imports: [
     CommonModule,
@@ -56,6 +66,8 @@ import {DataTablesModule} from 'angular-datatables';
     ReactiveFormsModule,
     NgxPaginationModule,
     NgApexchartsModule,
+    DataTablesModule,
+    NgxSpinnerModule
   ]
 })
 export class AdminLayoutModule { }

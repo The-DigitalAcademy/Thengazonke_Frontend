@@ -7,6 +7,12 @@
     position: sticky;
     
 }
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: var(--main-green);
+}
 
 i{
     font-size: 17px;

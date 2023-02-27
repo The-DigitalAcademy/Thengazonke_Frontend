@@ -55,6 +55,22 @@
         </div>
     </div>
 
+    <div class="flex flex-wrap -mx-3 mb-2"  *ngFor="let item of users">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+          ID Document
+        </label><br>
+        <a (click)="downloadFile(item.id_document)" class="link" target="_blank">ID document</a>
+      </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+          Dept of Agriculture Identification
+        </label>
+        <a (click)="downloadFile(item.agric_document)" class="link" target="_blank">Agriculture Identificationt</a>
+      </div>
+    </div>
+
+
     <div class="flex justify-between">
         <button class="btn" [routerLink]="['/admin/users']" routerLinkActive="router-link-active" >Back</button>
         <button class="btn" (click)="updateUser()">Update</button>
@@ -63,3 +79,5 @@
 
 
   </form>
+
+  <ngx-spinner type="bell-scale-multiple"></ngx-spinner>

@@ -6,6 +6,7 @@ import { Users } from 'src/app/model/users';
 import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
 import { TransactionService } from 'src/app/services/transaction.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-order-history',
@@ -23,6 +24,8 @@ export class OrderHistoryComponent implements OnInit {
   transact!:any;
   toggleModalButton :any;
   deleteID!:any;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
   cancelOrder()
   {
@@ -59,6 +62,17 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      lengthMenu : [5, 10, 25],
+      processing: true,
+      paging: false,
+      searching: false,
+      deferRender: true,
+      destroy: true,
+     };
    
   }
 
@@ -78,6 +92,7 @@ export class OrderHistoryComponent implements OnInit {
       this.result2 = res;
       let transTemp = this.result2.filter((res:any) => Number(res.buyerID) === Number(this.users[0].Userid));
       this.trans = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
+      this.dtTrigger.next(this.trans)
     }); 
     // console.log(this.trans)
   }

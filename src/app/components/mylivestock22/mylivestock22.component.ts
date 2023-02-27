@@ -22,6 +22,8 @@ export class Mylivestock22Component implements OnInit {
   users!:any;
   userId!:any;
   DeleteLivestockID!:any;
+  p: number = 1;
+  total: number = 0;
 
   livestok!:any;
 
@@ -49,6 +51,11 @@ export class Mylivestock22Component implements OnInit {
 
   ngOnInit(): void {
 
+   this.getMyLivestocks();
+  }
+
+  getMyLivestocks()
+  {
     this.authservice.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
@@ -59,6 +66,11 @@ export class Mylivestock22Component implements OnInit {
       let livestocks1 = results.filter((res:any) => String(res.UserID) === String(sessionStorage.getItem('loggedID')))
       this.livestocks = livestocks1.filter((res:any) => String(res.status) != String("archieved"));
     }) 
+  }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.getMyLivestocks();
   }
 
   DeleteMyLivestock()

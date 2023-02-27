@@ -23,6 +23,8 @@ export class AvailablelivestockComponent implements OnInit {
   transaction!:any;
   users:any[] = [];
   noLivestock = 0
+  p: number = 1;
+  total: number = 0;
   //courses:any =this.livestocks;
 
   result!:any;
@@ -74,6 +76,16 @@ export class AvailablelivestockComponent implements OnInit {
   }
   onCategoryChange3(){
     this.filterSearch=''
+  }
+  viewDescription(){
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = Event
+  }
+  closeModal()
+  {
+    let modalCheckbox:any = document.getElementById('my-modal')
+    modalCheckbox.checked = false
+
   }
 
   reserve(ind: any) {
@@ -141,4 +153,10 @@ export class AvailablelivestockComponent implements OnInit {
   getPriceCurrency(price:any){
     return price.slice(1,price.length);
   }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.GetProducts();
+  }
+
 }

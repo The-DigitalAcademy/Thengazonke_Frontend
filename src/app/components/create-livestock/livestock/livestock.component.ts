@@ -13,17 +13,27 @@ export class LivestockComponent implements OnInit {
 
   livestock!:any;
   users!:any;
+  p: number = 1;
+  total: number = 0;
 
   ngOnInit(): void {
+   this.getLivestock()
+  }
 
+  getLivestock()
+  {
     this.livestockService.GetLivestockByUser().subscribe((res:any) => {
       this.livestock = res;
     });
-
   }
 
   getPriceCurrency(price:any) { 
     return price.slice(1,price.length);
+  }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.getLivestock();
   }
 
 

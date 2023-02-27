@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HotToastModule } from '@ngneat/hot-toast';
-// 
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -20,12 +20,13 @@ import { HotToastModule } from '@ngneat/hot-toast';
     LoginSelComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     AuthRoutingModule,
     RouterModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
    HotToastModule.forRoot()
   ]
 })

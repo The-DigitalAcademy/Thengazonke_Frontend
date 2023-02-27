@@ -8,6 +8,7 @@ import { UserReviewComponent } from '../components/rate/user-review/user-review.
 import { ListUserComponent } from '../components/user/list-user/list-user.component';
 import { UserModalComponent } from '../components/user/user-modal/user-modal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BreedComponent } from './dashboard/breed/breed.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -18,11 +19,12 @@ const routes: Routes = [
   { path: 'order-history/:id', component: OrderHistoryModalComponent },
   { path: 'rate-review', component: AdminRateAndReviewComponent },
   { path: 'user-rate-review/:id', component: UserReviewComponent },
+  { path: 'breed', component: BreedComponent },
 
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AdminLayoutRoutingModule { }

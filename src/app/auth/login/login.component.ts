@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import jwt_decode from 'jwt-decode';
 import { HotToastService } from '@ngneat/hot-toast';
 
 // import { NgToastService } from 'ng-angular-popup';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +26,16 @@ export class LoginComponent implements OnInit {
   decoded: any;
   users!:any;
 
+  
+  timer = localStorage.setItem("timer","1");
   submitted = false;
   marked = false;
   theCheckbox = false;
 
-  constructor(private authServive:AuthService, private router: Router, public fb: UntypedFormBuilder, private toast :HotToastService) { 
+  constructor(private authServive:AuthService, private router: Router, public fb: UntypedFormBuilder,private activatedRoute: ActivatedRoute,
+    private toast :HotToastService, private spinner:NgxSpinnerService, private notification: NotificationService) { 
+
+    // this.loadScript("https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js");
   }
 
 
@@ -43,6 +50,7 @@ export class LoginComponent implements OnInit {
     // sessionStorage.setItem( JSON.stringify({loginName: "not yet", isLogged : "true"})); 
     this.myForm();
 
+
     this.box = document.getElementById('box');
 
     if (this.selected == 'Buyer') {
@@ -53,12 +61,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  loadScript(url:any) { 
+    const body = <HTMLDivElement> document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    // script.async = false;
+    // script.defer = true;
+    body.removeChild(script);
+  }
+
   get formValidation(): { [key: string]: AbstractControl } {
     return this.UserLoginForm.controls;
   }
 
   async UserLogin()
   {
+    
+
     this.submitted = true;
    
       let logingDetails = {
@@ -68,6 +88,7 @@ export class LoginComponent implements OnInit {
 
       if(logingDetails.email != '' && logingDetails.password != '')
       {
+        this.showSpinner();
 
         this.authServive.UserLogin(logingDetails).subscribe(async res => {
           this.decoded = jwt_decode(res.token); 
@@ -80,12 +101,14 @@ export class LoginComponent implements OnInit {
             {
               if(this.users[0].usertype === 'Seller')
               {
-                this.successfullToast();
+                let msg = "Successful login!";
+                this.notification.success(msg);
                 this.router.navigate(['/homes']);
               }
               if(this.users[0].usertype === 'Buyer')
               {
-                this.successfullToast();
+                let msg = "Successful login!";
+                this.notification.success(msg);
                 this.router.navigate(['/home']);
               }
                 
@@ -94,12 +117,13 @@ export class LoginComponent implements OnInit {
 
               if(this.users[0].usertype === 'Admin')
               {
-                this.successfullToast();
+                let msg = "Successful login!";
+                this.notification.success(msg);
                 this.router.navigate(['/admin/users']);
               }
               else{
                 let msg = 'credentials does not correspond';
-                this.errorToast(msg)
+                this.notification.danger(msg);
               }
               
             }
@@ -122,14 +146,14 @@ export class LoginComponent implements OnInit {
         }, (error) => {
           console.log(error)
           let msg = 'Please provide the correct credentials!';
-          this.errorToast(msg);
+          this.notification.danger(msg);
 
           console.log(error);
       });        
       }
       else{
         let msg = 'Please provide credentials!';
-        this.errorToast(msg)
+        this.notification.danger(msg)
       }
   }
 
@@ -151,48 +175,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  successfullToast(){
-    this.toast.success('Logged in successfully!',{duration:6000 , style: {
-      padding: '35px',
-      width: '48%',
-      height: '100px',
-      margin: '12px auto',
-      background: '#fff',
-      border: '2px solid #fff',
-    },
-    iconTheme: {
-      primary: '#4BB543',
-      secondary: '#FFFAEE',
-    },})
-  }
+  showSpinner()
+  {
+    this.spinner.show();
 
-  warningToast(){
-    this.toast.warning('Boo!',{duration:6000 , style: {
-      padding: '35px',
-      width: '48%',
-      height: '100px',
-      margin: '12px auto',
-      background: '#fff',
-      border: '2px solid #fff',
-    },
-    iconTheme: {
-      primary: '#FFCC00',
-      secondary: '#FFFAEE',
-    },})
-  }
+    setTimeout(()=>{
+      this.spinner.hide();
+    }, 1000)
 
-  errorToast(message:any){
-    this.toast.error(message,{duration:2000 , style: {
-      padding: '35px',
-      width: '48%',
-      height: '100px',
-      margin: '12px auto',
-      background: '#fff',
-      border: '2px solid #fff',
-    },
-    iconTheme: {
-      primary: '#DC3545',
-      secondary: '#FFFAEE',
-    },})
   }
 }

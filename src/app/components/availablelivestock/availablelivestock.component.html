@@ -40,17 +40,19 @@
 <div [ngSwitch]="myCurrentRoute">
 
   <div *ngSwitchCase="'/'">
+
+    
     <div class="flex flex-wrap -mx-1 lg:-mx-4" *ngIf="livestocks.length > 0">
-      <!-- <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index"> -->
-        <div class="my-3 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/4" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index">
+      <div class="column col-lg-4 d-flex align-items-stretch" *ngFor="let animal of livestocks | filter: filterSearch1 | filter: filterSearch;let x = index">
+        <!-- <div class="my-3 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3" *ngFor="let animal of livestocks | paginate: { itemsPerPage: 6, currentPage: p, totalItems: total } | filter: filterSearch1 | filter: filterSearch;let x = index; "> -->
         <div class="card card-compact shadow">
-          <div class="img-card">
+          <!-- <div class="img-card">
             <a>
                 <img alt="Placeholder" class="block h-auto w-full" src="{{animal.image}}" >
             </a>
             
-          </div>
-          <div class="card-body">
+          </div> -->
+          <!-- <div class="card-body">
               <div class="flex flex-wrap justify-between">
                 <div>
                   <p><b>{{animal.categoryName}}</b></p>
@@ -74,16 +76,66 @@
                     <button type="button" (click)="reserve(x)" class="rsvBtn px-7 py-2" >Reserve</button>
                   </div>
               </div>
+          </div> -->
+
+
+          <div class=" w-full lg:max-w-full lg:flex">
+            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{animal.image}}')" title="Mountain">
+            </div>
+            <div class="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                <div class="text-gray-900 font-bold text-xl mb-2"> Breed: {{animal.breedName}}</div>
+                <p class="text-gray-700 text-base"><b>Category:</b> {{animal.categoryName}}</p>
+                <p class="text-gray-700 text-base"><b>Price:</b>R{{getPriceCurrency(animal.price)}}</p>
+              </div>
+              <div class="flex flex-wrep justify-between gap-3">
+                <div>
+                  <span (click)="viewDescription()" [routerLink]="['/auth/login']" class="py-2.5 px-1 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><label for="my-modal">View description</label></span>
+                </div>
+                <div>
+                  <span class="py-2.5 px-1 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" [routerLink]="['/auth/login']" routerLinkActive="router-link-active"  >Reserve</span>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <input type="checkbox" id="my-modal" class="modal-toggle" />
+                  
+          <div class="modal" id="my-modal" *ngFor="let animal of livestok">
+            <div class="modal-box">
+              <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content">
+                <div class="card-body" >
+                    <figure><img class="rounded" src="{{animal.image}}" alt="" /></figure>
+                    <h3 class="card-title justify-center head3">{{animal.categoryName}}</h3>
+                    <h3 class="card-title justify-center address head3">{{animal.description}}</h3>
+                    <h3 class="color head3">{{animal.color}}</h3>
+                    <h3 class="weigh head3">{{animal.weight}}</h3>
+                    <h3 class="address head3"><i class="fas fa-map-marker-alt"></i>{{animal.address}}</h3>
+                    <h3 class="price head3"><b>getPriceCurrency({{animal.price}})</b></h3>
+                    <div class="card-actions justify-between">
+                        <label for="my-modal"  style="color:black;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</label>
+                          <button class=""  for="my-modal" (click)="closeModal()">Back</button>
+                          <button class="rsvBtn" [routerLink]="['/auth/login']">Add to cart</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
       </div>
     </div>
+
+
+  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+
   </div>
+
   
   <div *ngSwitchCase="'/home'">
-    <br>
   
-    <div class="row" >
-    <div class="column"  *ngFor="let animal of livestocks | filter: filterTerm | filter: filterSearch;let x = index">
+  
+    <!-- <div class="row" > -->
+    <div class="colum"  *ngFor="let animal of livestocks | filter: filterTerm | filter: filterSearch;let x = index">
       <div class="card card-compact shadow" style="margin: 1rem;" >
         <figure><img src="{{animal.image}}" alt="Shoes" /></figure>
         <div class="card-body">
@@ -109,7 +161,7 @@
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   </div>
 
  </div>

@@ -75,17 +75,15 @@
                     <select  class="form-select" required="" name="location" formControlName="categoryID" placeholder="Select Livestock" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                       <option value="" selected disabled hidden>Choose here</option>
                         <option value="{{myLivestock.breedID}}">{{myLivestock.breedName}}</option>
-                        <option  *ngFor="let brd of breed" value="{{brd.breedName}}">{{brd.breedName}}</option>
+                        <option  *ngFor="let brd of breed" value="{{brd.breedID}}">{{brd.breedName}}</option>
                     </select>
                   </div>
     
                   <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                     <label for="city" class="block text-sm font-medium text-gray-700">Gender</label>
                     <select class="form-select" required="" formControlName="gender" name="gender" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                      <option value="" selected disabled >Gender</option>
-                      <option value="{{myLivestock.gender}}" >{{myLivestock.gender}}</option>
-                      <option>Male</option>
-                      <option>Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                   </div>
     
@@ -127,7 +125,7 @@
     
                   <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                     <label for="region" class="block text-sm font-medium text-gray-700">Price</label>
-                    <input type="text" name="price" formControlName="price" placeholder="000.00" autocomplete="address-level1" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                    <input type="number" name="price" formControlName="price" placeholder="000000.00" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                     <!-- <div *ngIf="submitted && formValidation['price'].errors" class="invalid-feedback error-text">
                         <div *ngIf="formValidation['price'].errors['required']" class="text-error">Price is required</div>
                         <div *ngIf="formValidation['price'].errors['pattern']" class="text-error">Password should be in 000.00 formart.</div>
@@ -151,3 +149,4 @@
     </form>
   </div>
   
+  <ngx-spinner bdColor = "rgba(0,0,0,0.8)" size = "large" color = "var(--main-green)" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

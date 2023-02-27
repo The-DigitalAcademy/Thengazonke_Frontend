@@ -3,6 +3,7 @@ import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGro
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,8 @@ decoded: any;
 submitted = false;
 passwordErr!:any;
 
-constructor(private authService:AuthService, private router: Router, public fb: UntypedFormBuilder, private toast :HotToastService) { }
+constructor(private authService:AuthService, private router: Router, public fb: UntypedFormBuilder, private toast :HotToastService,
+  private spinner:NgxSpinnerService) { }
 
 myForm() {
   this.AddUserForm = this.fb.group({
@@ -69,6 +71,8 @@ match(controlName: string, checkControlName: string): ValidatorFn {
 
 AddUser()
 {
+  this.showSpinner();
+
   this.submitted = true;
 
     if(this.AddUserForm.value.confirmPassword === this.AddUserForm.value.password && this.AddUserForm.value.firstname != '')
@@ -188,5 +192,14 @@ errorToast(message:any){
   },})
 }
 
+showSpinner()
+{
+  this.spinner.show();
+
+  setTimeout(()=>{
+    this.spinner.hide();
+  }, 2000)
+
+}
 
 }

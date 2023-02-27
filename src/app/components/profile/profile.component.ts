@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { async } from '@angular/core/testing';
 import { NotificationService } from '../../services/notification.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import * as saveAs from 'file-saver';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +30,7 @@ export class ProfileComponent implements OnInit {
   userData:any;
 
     constructor(private sanitizer: DomSanitizer,private notificationService: NotificationService, private router: Router,private route: ActivatedRoute, private authservice: AuthService,
-    private http: HttpClient) { }
+    private http: HttpClient, private fb: UntypedFormBuilder) { }
   
     EditUserForm:UntypedFormGroup = new UntypedFormGroup({
       fullname:new UntypedFormControl(''),
@@ -113,23 +114,16 @@ export class ProfileComponent implements OnInit {
 
   downloadFile(file:any){
 
-    // this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(file));
+    this.http.get(file, { responseType: 'blob' }).subscribe(response => {
+      saveAs(response, '.pdf');
+    },(error:HttpErrorResponse)=>{
+      //failed to retrieve pdf file
+      console.log(error);
 
-    let link = document.createElement("a");
-    link.download = file;
-    link.href = file;
-    // fl_attachment
-    link.click();
+    });
   }
 
   updateUser(){
-      
-      // this.spinner.show();
-
-      // setTimeout(()=>
-      // {
-      //   this.spinner.hide();
-      // },6000);
 
       const formData = new FormData();    
       formData.append("file",this.idFile)    

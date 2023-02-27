@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 //import { AuthService } from 'src/app/services/auth.service';
 import { LivestockService } from 'src/app/services/livestock.service';
@@ -16,6 +16,16 @@ export class LandingComponent implements OnInit {
   results!:any;
   filterTerm!: string;
 
+  constructor(private livestoc:LivestockService, private router: Router,private currentRoute:CurrentRouteService) { 
+    
+  }
+
+  ngOnInit(): void {
+     this.myCurrentRoute  = this.currentRoute.currentRoute();
+     console.log(this.myCurrentRoute); 
+   
+  }
+
   addItem(newItem: string) {
     this.lid = newItem;
     
@@ -29,15 +39,14 @@ export class LandingComponent implements OnInit {
       modalCheckbox.checked = Event
   }
 
-  constructor(private livestoc:LivestockService, private router: Router,private currentRoute:CurrentRouteService) { }
-
-  ngOnInit(): void {
-     this.myCurrentRoute  = this.currentRoute.currentRoute();
-     console.log(this.myCurrentRoute); 
+  getPriceCurrency(price:any) { 
+    return price.slice(1,price.length);
   }
+  
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
   }
+
 
 }
