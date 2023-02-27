@@ -10,7 +10,7 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
-import { analyzeAndValidateNgModules } from "@angular/compiler";
+import { analyzeAndValidateNgModules } from "node_modules/@angular/compiler";
 import { LivestockDashboard } from "src/app/model/livestockDashboard";
 
 

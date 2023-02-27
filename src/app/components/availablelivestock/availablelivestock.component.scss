@@ -63,6 +63,13 @@ option{
 }
 button{
     background-color: var(--main-green);
+    color: var(--white);
+    border-radius: 5px;
+}
+button:hover{
+    box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
+    color: var(--yellow-dark);
+    border-radius: 5px;
 }
 input:focus {
     outline: none !important;
@@ -129,25 +136,32 @@ h3{
     
 }
 .card {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.081);
-//     transition: 0.3s;
-//    margin-bottom: 1rem;
-    // margin-bottom: 1rem;
-    // border-radius: 2px;
-    border: solid #b4a5a500 .01px;
-    filter: drop-shadow(0px 0px 5px rgba(46, 45, 45, 0.142));
-    //box-shadow: 0px 0px 0px 0px 
-    
-
-            
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.081);
+    border-radius: 10px;
+    // filter: drop-shadow(0px 0px 5px rgba(46, 45, 45, 0.142));     
   }
   
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.card-body{
-    padding:.5rem 1rem;
+
+.description{
+
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: 60px;
+
 }
+
+.img-card img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover
+}
+.img-card{
+    height: 200px;
+}
+
 .card-title{
     font-weight: 200;
     float: left;
@@ -159,31 +173,10 @@ h3{
     position: relative;
     margin-bottom: 1rem;
 }
-h2{
-    font-size: large;
-}
-h4{
-    margin-top: 5px;
-    float: right;
-    color: #7E7C7C;
-    font-size: 8px;
-}
-h5{
-    float: left;
-    font-size: 10px;
-}
-p{
-    font-weight: bold;
-    font-size:.7rem;
-    padding: 0rem;
-    margin: -4px;
-    color: #7E7C7C;
-}
 span{
     color: var(--main-green);
-    font-size: 10px;
+    // font-size: 10px;
     margin: 0rem;
-    padding: 0rem;
 }
 button{
     float: right;
@@ -204,9 +197,6 @@ button{
     position:relative;
 
     padding-top: 5px;
-    //height: 2rem;
-    //margin-right: 1rem;
-    
 
 }
 
@@ -231,6 +221,7 @@ ul{
     padding: 0rem;
     height: 2rem;
     margin-right: 1rem;
+}
 li{
     //background-color: var(--main-green);
     //border: solid 2px var(--yellow);
@@ -290,14 +281,12 @@ img{
     width: 8rem;
     height: 3rem;
 }
-.tabs-boxed{
 
-}
 .rsvBtn{
     background-color: var(--yellow);
     // filter: drop-shadow(0px 10px 10px rgb(170, 158, 101));
     // box-shadow: 0px 1px 0px 0px rgb(236, 236, 148);
-    border: solid .5px var(--main-green);
+    // border: solid .5px var(--main-green);
     border-radius:5px 2px;
     padding: 2px 7px;
     color: var(--main-green);
@@ -369,6 +358,9 @@ figure{
 select{
     display: none;
 }
+  .tbs{
+    display: block;
+    }
     
 }
 /* (1280x720) Galaxy Note 2, WXGA */
@@ -402,10 +394,10 @@ select{
         width: 33.3%;
 }
 select{
-    display: block;
+    display: none;
 }
   .tbs{
-    display: none;
+    display: block;
     }
     .serchB{
         width: 100%;
@@ -427,10 +419,10 @@ select{
         width: 50%;
 }
 select{
-    display: block;
+    display: none;
 }
   .tbs{
-    display: none;
+    display: block;
     }
     .serchB{
         width: 100%;
@@ -487,4 +479,4 @@ select{
 .tabs{
 margin: auto;
 }
-}
+

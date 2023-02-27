@@ -11,7 +11,7 @@ import {
   ApexGrid
 } from "ng-apexcharts";
 import { UserDashboard } from "src/app/model/userDashboard";
-import { analyzeAndValidateNgModules } from "@angular/compiler";
+import { analyzeAndValidateNgModules } from "node_modules/@angular/compiler";
 
 
 export type ChartOptions = {

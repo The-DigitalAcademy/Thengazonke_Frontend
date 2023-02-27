@@ -217,7 +217,12 @@ export class LivestockModalComponent implements OnInit {
     
         this.submitted = false;
       }, (err) => {
-        if(err.status === 201)
+        if(err.status === 200)
+        {
+          this.successfullToast();
+          this.router.navigate(['/homes']);
+        }
+        else if(err.status === 201)
         {
           this.successfullToast();
           this.router.navigate(['/homes']);
@@ -316,7 +321,7 @@ export class LivestockModalComponent implements OnInit {
     }
 
     successfullToast(){
-      this.toast.success('Successfully Added!',{duration:6000 , style: {
+      this.toast.success('Successfully Edited!',{duration:6000 , style: {
         padding: '35px',
         width: '48%',
         height: '100px',

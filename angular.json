@@ -35,7 +35,9 @@
             ],
             "styles": [
 
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/ngx-spinner/animations/ball-beat.css"
+              
             ],
             "scripts": []
           },
@@ -104,8 +106,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/apexcharts/dist/apexcharts.min.js"
-              
+              "node_modules/apexcharts/dist/apexcharts.min.js"    
             ],
             "scripts": []
           }

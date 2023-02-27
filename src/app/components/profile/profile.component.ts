@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
   fullname: any;
   email: any;
   phone: any;
+
   
     constructor(private router: Router,private route: ActivatedRoute, private authservice: AuthService, private fb: FormBuilder) { }
   
@@ -108,5 +110,7 @@ export class ProfileComponent implements OnInit {
       });
 
     }
+
+
   
   }

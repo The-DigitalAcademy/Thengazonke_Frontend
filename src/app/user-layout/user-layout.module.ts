@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { ContactUsComponent } from '../components/contact-us/contact-us.component';
 import { SearchComponent } from '../components/search/search.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2SearchPipeModule } from 'node_modules/ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderRequestComponent } from '../components/order-request/order-request.component';
 import { OrderHistoryComponent } from '../components/order-history/order-history.component';
@@ -27,6 +27,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { AvailableComponent } from '../components/availablelivestock/available/available.component';
 import { Mylivestock22Component } from '../components/mylivestock22/mylivestock22.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { CartComponent } from '../components/cart/cart.component';
+
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     MylivestockComponent,
     LivestockModalComponent,
     AvailableComponent,
-    Mylivestock22Component
+    Mylivestock22Component,
+    CartComponent
    
   ],
   imports: [
