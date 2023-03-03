@@ -1,0 +1,58 @@
+<div class="container">
+  
+
+    <div class="grid grid-cols-12 justify-between mx-4">
+        <div class="col-span-6 col-end-6 pt-1 relative form-group" 
+ 
+      >
+            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none svg">
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+            <input  (change)="onSearchChange($event)" [(ngModel)]="filterSearch" ngDefaultControl type="text" id="default-search"
+                class="form-control block w-full pl-3 text-sm text-gray-900 bg-gray-50:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                placeholder="    Search for livestock..." required />
+                <!-- <input type="text" placeholder="search"/> -->
+            
+               
+        </div>
+        <div class="col-span-7 flex flex-row-reverse">
+            <div>
+                <div class="form-control">
+                    <div class="input-group-xs">
+
+                        <span>Filter <i style="color: rgb(143, 143, 143)" class="fa fa-filter" aria-hidden="true"></i></span>
+                      
+                    </div>
+
+                  </div>
+            </div>
+
+                <div *ngIf="myCurrentRoute != '/order-request'">
+                    <span>
+                        <select (change)="onCategoryChange($event)" name="filterSearch1">
+                            <option [(ngModel)]="filterSearch1" ngDefaultControl selected>All</option>
+                            <option *ngFor="let item of categories">{{item.categoryName}}</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div *ngIf="myCurrentRoute == '/order-request'">
+                    <span>
+                        <select  (change)="onCategoryChange($event)" name="filterSearch1">
+                            <option [(ngModel)]="filterSearch1" ngDefaultControl selected>All requests</option>
+                            <option value="pending">Pending</option>
+                            <option value="In-Progress">In-Progress</option>
+                            <option value="Cancelled">Cancelled</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        
+                    </span>
+                </div>
+
+          </div>
+        </div>
+</div>

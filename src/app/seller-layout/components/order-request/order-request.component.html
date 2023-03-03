@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="container">
+  <div class="grid grid-cols-6 gap-4">
+    <div class="col-start-1 col-end-7 justify-center mx-auto">
+        <p class="text-2xl header">
+            <b>Order Request</b>
+        </p>
+    </div>
+
+    <div class="col-start-1 col-end-7 mx-2">
+        <app-search (newItemEvent)="addItem($event)"></app-search>
+    </div>
+</div>
+
+  
+  <div class="col-start-1 col-end-7 ...">
+
+    <div class="row m-2 " *ngFor="let item of tr | filter: filterSearch1 | filter: filterSearch">
+        <div class="card card-side bg-base-100 shadow-xl h-48">
+            <figure>
+                <div class="avatar">
+                    <div class="w-36  rounded">
+                      <img src={{item.image}} />
+                    </div>
+                  </div>
+
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">Breed : {{item.breedName}}</h2>
+              <p>Category : {{item.categoryName}}</p>
+              <p>Price : R{{getPriceCurrency(item.price)}}</p>
+              <div class="card-actions justify-center" *ngIf="(item.status).toUpperCase() === 'Pending'.toUpperCase()" >
+                <button class="btn btn-sm btn-ghost btn1" (click)="approve(item.transactionID)" ><span class="text-xs">Approve</span></button>
+                <button class=" btn btn-sm btn-ghost btn2" (click)="declineOrder(item.transactionID)" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false"><span class="text-xs">Decline</span></button>
+              </div>
+      
+               <div class="card-actions justify-center" *ngIf="(item.status).toUpperCase() === 'In-progress'.toUpperCase()">
+                <button  class="btn btn-sm btn-ghost btn1" (click)="completeOrder(item.transactionID)" ><span class="text-xs">Complete</span></button>
+                <button class=" btn btn-sm btn-ghost btn2" (click)="declineOrder(item.transactionID)" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false"><span class="text-xs">Cancel</span></button>
+              </div>
+      
+              <div class="card-actions justify-center" *ngIf="(item.status).toUpperCase() === 'cancelled'.toUpperCase()">
+                <button  class="btn btn-sm btn-ghost" disabled (click)="completeOrder(item.transactionID)" ><span class="text-xs">Cancelled</span></button>
+              </div>
+      
+              <div class="card-actions justify-center" *ngIf="(item.status).toUpperCase() === 'complete'.toUpperCase()">
+                <button  class="btn btn-sm btn-ghost" disabled (click)="completeOrder(item.transactionID)" ><span class="text-xs">Completed</span></button>
+              </div>
+
+            </div>
+          </div>
+    </div>
+    <br><br><br><br><br>
+</div>
+
+  <!-- <div class="mb-11">
+  
+    <div class="flex flex-wrap w-fit mx-auto justify-center gap-4 ">
+  
+      <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"  *ngFor="let t of tr" >
+        <div class="card-body">
+          <h3 class="card-title justify-center">{{t.categoryName}}</h3>
+          <button class="btn btn-ghost btnn" routerLink="/profile">Profile</button>
+  
+          <figure><img src="{{t.image}}" alt="" /></figure>
+          <p class="w-3/4 mx-auto breed">{{t.breedName}}</p>
+            <h6 class="age" >Age: {{t.age}} Months</h6>
+          <h6 class="weigh">Weight: {{t.weight}} kg </h6>
+          <h6 class=" desc">Description: {{t.description}}</h6>
+          <h6 class="price"><b>Price: {{t.price}}</b></h6>
+          <br>
+          <div class="card-actions justify-center" *ngIf="(t.status).toUpperCase() === 'Pending'.toUpperCase()" >
+            <button class="btn btn-sm btn-ghost btn1" (click)="approve(t.transactionID)" >Approve Order</button>
+            <button class=" btn btn-sm btn-ghost btn2" (click)="declineOrder(t.transactionID)" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">Decline Order</button>
+          </div>
+  
+           <div class="card-actions justify-center" *ngIf="(t.status).toUpperCase() === 'In-progress'.toUpperCase()">
+            <button  class="btn btn-sm btn-ghost btn1" (click)="completeOrder(t.transactionID)" >Complete Order</button>
+            <button class=" btn btn-sm btn-ghost btn2" (click)="declineOrder(t.transactionID)" *ngIf="this.isButtonVisible" (click)="this.isButtonVisible = false">Cancel Order</button>
+          </div>
+  
+          <div class="card-actions justify-center" *ngIf="(t.status).toUpperCase() === 'cancelled'.toUpperCase()">
+            <button  class="btn btn-sm btn-ghost" disabled (click)="completeOrder(t.transactionID)" >Cancelled Order</button>
+          </div>
+  
+          <div class="card-actions justify-center" *ngIf="(t.status).toUpperCase() === 'complete'.toUpperCase()">
+            <button  class="btn btn-sm btn-ghost" disabled (click)="completeOrder(t.transactionID)" >Completed Order</button>
+          </div>
+  
+        </div>
+          
+        </div> 
+   </div>
+
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+  
+  </div> -->
+  
+</div>
+<app-footer></app-footer>

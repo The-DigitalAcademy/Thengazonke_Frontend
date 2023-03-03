@@ -1,0 +1,96 @@
+.header
+{
+    box-shadow: 5px 0 10px #516951;
+    background-color: var(--white);
+    z-index: 1000;
+    top:0;
+    position: sticky;
+    
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: var(--main-green);
+}
+
+i{
+    font-size: 17px;
+}
+
+ul{
+    margin: auto;
+    
+}
+
+.btm-nav
+{
+    background-color: #516951;
+    box-shadow: 0px 0 5px rgba(87, 179, 210, 0.14);
+}
+
+li:hover
+{
+    transition: 300ms;
+    transform: scale(1.03);
+}
+@media only screen and (max-width: 1200px){
+    /*Tablets [601px -> 1200px]*/
+    .header
+{
+    box-shadow: 10px 0 10px #516951;
+
+    
+}
+img{
+    width: 100%;
+     margin: -2%;
+}  
+}
+@media only screen and (max-width: 600px){
+	/*Big smartphones [426px -> 600px]*/
+    .header
+{
+    box-shadow: 10px 0 10px #516951;
+}
+}
+img{
+    width: 100px;
+    margin: -2%;
+}
+@media only screen and (max-width: 425px){
+	/*Small smartphones [325px -> 425px]*/
+    .mobile{
+        display: none;
+    }
+    .header
+{
+    box-shadow: 10px 0 10px #516951;
+}
+img{
+    width: 100px;
+    margin: -2%;
+}
+
+}
+
+@media (min-width: 768px) { 
+
+    .mobile{
+        display: none;
+    }
+}
+.navbar{
+    background-color: #516951;
+}
+
+.rounded-full{
+    background-color: var(--gray);
+
+}
+.rounded-full i{
+    color: var(--white);
+    margin: auto;
+    margin-top: 10%;
+    font-size: 20px;
+}

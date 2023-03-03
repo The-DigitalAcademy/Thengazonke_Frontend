@@ -1,0 +1,135 @@
+<app-header></app-header>
+<div class="header">
+    <h2 class="">ORDER HISTORY</h2>
+  </div>
+  <div class="container mx-auto justify-center mb-94">
+  
+          <table class="table table-compact table-zebra w-full">
+            <thead>
+              <tr>
+                <th class="head">No</th> 
+                <th class="head">Order#</th> 
+                <th class="head">Status</th> 
+                <th class="head">Action</th> 
+              </tr>
+            </thead> 
+            <tbody>
+              <tr *ngFor="let tra of trans; let i = index" >
+                <td ><b>{{ i + 1 }}</b></td> 
+                <td >G{{tra.transactionID}}</td> 
+                <td *ngIf="(tra.status).toUpperCase() === 'Pending'.toUpperCase()" >
+                  <span class="btn-pending primary px-5 py-1 rounded">{{tra.status}}</span>
+                </td> 
+                <td *ngIf="(tra.status).toUpperCase() === 'In-progress'.toUpperCase()" >
+                  <span class="btn-in-progress px-3 py-1 rounded">{{tra.status}}</span>
+                </td> 
+                <td *ngIf="(tra.status).toUpperCase() === 'Cancelled'.toUpperCase()" >
+                  <span class="btn-cancelled px-4 py-1 rounded">{{tra.status}}</span>
+                </td> 
+                <td *ngIf="(tra.status).toUpperCase() === 'complete'.toUpperCase()" >
+                  <span class="btn-complete px-4 py-1 rounded">{{tra.status}}</span>
+                </td> 
+                <td ><label for="my-modal"><a (click)="checkSelected(tra.livestockID, tra.transactionID)"><i class="fas fa-eye"></i></a></label></td> 
+                <!-- The button to open modal -->
+                    <!-- The button to open modal -->
+                    <!-- Put this part before </body> tag -->
+   
+        <input type="checkbox" id="my-modal" class="modal-toggle" />
+        <div class="modal" >
+          <div class="modal-box"> 
+            <div class="card card-compact text-center mx-auto w-80 bg-neutral text-neutral-content" >
+              <div class="card-body">
+  
+                <div *ngFor="let tr of transaction">
+          
+                  <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">
+                    <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                      <li class="step step-primary">Pending</li>
+                      <li class="step">In-progress</li>
+                      <li class="step">Cancelled</li>
+                      <li class="step">Completed</li>
+                    </ul>
+                  </div>
+                  
+                  <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
+                    <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                      <li class="step">Pending</li>
+                      <li class="step step-warning">In-progress</li>
+                      <li class="step">Cancelled</li>
+                      <li class="step">Completed</li>
+                    </ul>
+                  </div>
+  
+                  <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">
+                    <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                      <li class="step">Pending</li>
+                      <li class="step">In-progress</li>
+                      <li class="step step-error">Cancelled</li>
+                      <li class="step">Completed</li>
+                    </ul>
+                  </div>
+  
+                  <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
+                    <ul class="steps steps-horizontal lg:steps-horizonatl" >
+                      <li class="step">Pending</li>
+                      <li class="step">In-progress</li>
+                      <li class="step">Cancelled</li>
+                      <li class="step step-accent">Completed</li>
+                    </ul>
+                  </div>
+                  <br>
+                  <h4>Order: #{{tr.transactionID}}</h4>
+                </div>
+  
+                <div *ngFor="let item of live"> 
+  
+                  <h3 class="card-title justify-center">{{item.categoryName}}</h3>
+                  <figure><img src="{{item.image}}" alt="" /></figure>
+                  <h2 class="mx-auto breed">{{item.breedName}}</h2>
+                  <h3 class="months">{{item.age}} months</h3>
+                  <h3 class="color">Color: {{item.color}}</h3>
+                  <h3 class="weigh">Weight: {{item.weight}} kg</h3>
+                  <br>
+                  <h3 class="price"><b>Price: R{{getPriceCurrency(item.price)}}</b></h3>
+                    <h3 class="address"><i class="fas fa-map-marker-alt"></i>{{item.address}}</h3>
+                      <br>
+                  <div class="card-actions justify-center">
+  
+              <div class="modal-action"  *ngFor="let tr of transaction">
+  
+                <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()"> 
+                  <!-- <div *ngIf="(tr.status).toUpperCase() === 'Pending'.toUpperCase()">  -->
+                  <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
+                  <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
+                </div>
+  
+                <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
+                  <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
+                  <option for="my-modal" class="btn m-2" [routerLink]="['/rate/', tr.transactionID, tr.livestockID]">Rate</option>              
+                </div>
+  
+                <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
+                  <option for="my-modal" class="btn" (click) = closeModal()>Back</option>
+                  <option for="my-modal" class="btn m-2" (click)= cancelOrder()>Cancel Order</option>
+                </div>
+  
+                <div *ngIf="(tr.status).toUpperCase() === 'Cancelled'.toUpperCase()">
+                  <option for="my-modal" class="btn" (click) = closeModal() >Back</option>
+                </div>
+  
+              </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </table>
+    <br><br><br><br>
+  </div>
+
+  <app-footer></app-footer>
+  <br>
+  <br>
+  <br>
+  <br>

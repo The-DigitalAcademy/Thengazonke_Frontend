@@ -1,0 +1,47 @@
+<app-header></app-header>
+<div class="container-fluid mx-auto">
+    <div class="grid grid-cols-6 gap-4">
+        
+        <div class="col-start-1 col-end-7 bg-success">
+        
+
+
+            <div class="carousel w-full max-h-80">
+                <div id="slide1" class="carousel-item relative w-full">
+                  <img src="../../../assets/bg.jpg" class="w-full" />
+                  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide4" class="btn btn-circle">❮</a> 
+                    <a href="#slide2" class="btn btn-circle">❯</a>
+                  </div>
+                </div> 
+                <div id="slide2" class="carousel-item relative w-full">
+                  <img src="../../../assets/bg.jpg" class="w-full" />
+                  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide1" class="btn btn-circle">❮</a> 
+                    <a href="#slide3" class="btn btn-circle">❯</a>
+                  </div>
+                </div> 
+                <div id="slide3" class="carousel-item relative w-full">
+                  <img src="../../../assets/cows-g4651f9a5c_1920.jpg" class="w-full" />
+                  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide2" class="btn btn-circle">❮</a> 
+                    <a href="#slide4" class="btn btn-circle">❯</a>
+                  </div>
+                </div> 
+                <div id="slide4" class="carousel-item relative w-full">
+                  <img src="../../../assets/bulls-g7a739ebdb_1280.jpg" class="w-full" />
+                  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                    <a href="#slide3" class="btn btn-circle">❮</a> 
+                    <a href="#slide1" class="btn btn-circle">❯</a>
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
+        <div class="col-start-1 col-end-7">
+            <app-available-livestock></app-available-livestock>
+        </div>
+        <div class="col-start-1 col-end-7 bg-success"><app-footer></app-footer></div>
+      </div>
+</div>
