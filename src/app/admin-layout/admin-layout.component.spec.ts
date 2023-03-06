@@ -11,9 +11,7 @@ describe('AdminLayoutComponent', () => {
       declarations: [ AdminLayoutComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(AdminLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

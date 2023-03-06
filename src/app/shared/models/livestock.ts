@@ -1,0 +1,23 @@
+import { FormControl } from '@angular/forms';
+export interface Livestock {
+    UserID?:Number,
+    Userid?:Number,
+    address?:string,
+    age?:string,
+    breedID?:Number,
+    categoryID?:Number,
+    categoryName?:string,
+    breedName?:string,
+    color?:string,
+    createdAT?:string,
+    description:string,
+    gender?:string,
+    image?:string,
+    livestockID?:Number,
+    price?:string,
+    quantity?:Number,
+    status?:string,
+    weight?:Number,
+    transDate?:Date,
+    transactionID?:Number,
+}
