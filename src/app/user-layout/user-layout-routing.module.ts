@@ -1,43 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from '../components/buyer/homepage/homepage.component';
-import { CreateLivestockComponent } from '../components/create-livestock/create-livestock.component';
-import { LandingComponent } from '../components/landing/landing.component';
-import { OrderHistoryComponent } from '../components/order-history/order-history.component';
-import { OrderRequestComponent } from '../components/order-request/order-request.component';
-import { ProfileComponent } from '../components/profile/profile.component';
-import { MylivestockComponent } from '../components/seller/mylivestock/mylivestock.component';
-import { NotificationsComponent } from '../notifications/notifications.component';
-import { RateComponent } from '../components/rate/rate.component';
-import { LivestockModalComponent } from '../components/create-livestock/livestock-modal/livestock-modal.component';
-import { ReviewComponent } from '../components/review/review.component';
-import { CartComponent } from '../components/cart/cart.component';
+import { HomeComponent } from '../buyer-layout/components/home/home.component';
+import { OrderHistoryComponent } from '../buyer-layout/components/order-history/order-history.component';
+import { RateComponent } from '../buyer-layout/components/rate/rate.component';
+import { CreateLivestockComponent } from '../seller-layout/components/create-livestock/create-livestock.component';
+import { HomePageComponent } from '../seller-layout/components/home-page/home-page.component';
+import { OrderRequestComponent } from '../seller-layout/components/order-request/order-request.component';
+import { ReviewComponent } from '../seller-layout/components/review/review.component';
+import { CartComponent } from '../shared/cart/cart.component';
+import { LandingComponent } from '../shared/landing/landing.component';
+import { ProfileComponent } from '../shared/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'home', component:HomepageComponent },
-  { path: 'order-request', component:OrderRequestComponent },
-  { path: 'order-history', component:OrderHistoryComponent },
-  { path: 'create-livestock', component:CreateLivestockComponent },
+  { path: 'buyer', component: HomeComponent },
+  { path: 'seller', component: HomePageComponent },
+  { path: 'order-request', component: OrderRequestComponent },
+  { path: 'cart', component:CartComponent },
+  { path: 'orders', component:OrderHistoryComponent },
+  { path: 'rate/:id/:lid', component:RateComponent },
+  { path: 'livestock', component:CreateLivestockComponent },
+  { path: 'livestock/:id', component:CreateLivestockComponent },
+  { path: 'review', component:ReviewComponent },
   { path: 'profile', component:ProfileComponent },
-  { path: 'notification', component:NotificationsComponent },
-  { path: 'homes', component:MylivestockComponent},
-  { path: 'rate/:id/:lid', component:RateComponent},
-  { path: 'edit-livestock/:id', component:LivestockModalComponent},
-  { path: 'review', component:ReviewComponent},  
-  { path: 'cart', component:CartComponent},
-  
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-
-
-
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class UserLayoutRoutingModule { }
-
-// export const LayoutRoutes: Routes = [
-//   {  path: '',      component: LandingComponent }
-// ];
