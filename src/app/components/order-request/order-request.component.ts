@@ -63,6 +63,7 @@ data = {
       this.transaction = res;
       let transTemp = this.transaction.filter((res:any) => Number(res.Userid) === Number(this.users[0].Userid));
       this.tr = transTemp.filter((ress:any) => String(ress.status) != String('archieved'));
+      console.log(this.tr)
 
     }); 
   }

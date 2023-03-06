@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'homes', component:MylivestockComponent},
   { path: 'rate/:id/:lid', component:RateComponent},
   { path: 'edit-livestock/:id', component:LivestockModalComponent},
-  { path: 'review', component:ReviewComponent},
+  { path: 'review', component:ReviewComponent},  
   { path: 'cart', component:CartComponent},
   
 ];
