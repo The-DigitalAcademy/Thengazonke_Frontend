@@ -1,0 +1,114 @@
+<div class="profile overflow-hidden shadow-2xl sm:rounded-md w-full"> 
+  <div class="">
+    <form class="form-inline" [formGroup]="EditUserForm">
+     <div class="px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 m-12">
+      <div id="change-me"></div>
+      <div class="text-center profile-card" style="margin:15px;background-color:#ffffff; color:#516951; font-weight: bolder; font-size: 30px;">Profile</div>
+
+
+          <div class="profile-card-img" style="height:150px;background-size:cover;">
+          
+
+            <div class="avatar-upload">
+              <div class="avatar-edit">
+                
+                  
+              </div>
+              <div class="avatar-preview">
+                  <div id="imagePreview" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG91Ivd0CD1UA-3GKi8OPGqO9BZvrfsclJFujvxLWQU6z0UR5xNec89_mVGFysedGeUo0&usqp=CAU');">
+                  </div>
+              </div>
+          </div>
+      </div><br><br><br>
+
+            
+          
+        
+
+          <div *ngFor="let item of users">
+            <!-- <img class="rounded-circle" style="margin-top:-70px;" src="https://scontent-jnb1-1.xx.fbcdn.net/v/t39.30808-6/308911430_108303705377008_7036349960742585677_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHqxS3WZUYy4z5ESA5_4h6s9q6Cw4HkgZj2roLDgeSBmMg6AH_s5bPekZt5L5JEf6zu5erLfLzJMdcpIt_GEhoA&_nc_ohc=fvE77dL-6BwAX_kfwDt&_nc_ht=scontent-jnb1-1.xx&oh=00_AfDU0srfag_5hj6yoe_gzV70pst-4fbgyBRx_OAprE5fqw&oe=63DC48E1"> -->
+              <h3 class="my-4" style="text-align: center;">{{item.fullname}}</h3>
+          </div>
+      <div><hr></div>
+    <div class="flex flex-wrep border-b-2 mb-6 mt-6" >
+      <div>
+        <label><b>Phone Number : </b></label>
+      </div>
+      <div>
+        <input formControlName ="phone" type="phone" class="border-none mx-6"  placeholder="">
+      </div>
+    </div>
+
+    <div class="flex flex-wrep border-b-2 mb-6">
+      <label><b>Email Address : </b></label>
+      <input formControlName ="email" type="email" class="form-control mx-6"  placeholder="">
+    </div>
+  
+    <div class="form-group flex flex-wrep border-b-2 mb-6">
+      <label ><b>Residentail address : </b></label>
+      <input formControlName ="address" type="address" class="form-control mx-6"  placeholder=" ">
+    </div><br>
+    
+    
+    <div class="flex flex-wrap justify-between border-b-2">
+        <div>
+          <label class="my-2"><b>
+            <br>Status : </b></label> 
+        </div> 
+        <div *ngFor="let item of users">
+          <span type="button" class="status btn" *ngIf="item.status=='Verified'">{{item.status}}</span>
+          <span type="button" class="status2 btn" *ngIf="item.status!='Verified'">{{item.status}}</span>
+        </div>
+    </div>
+    <br>
+    
+    <div class="flex flex-wrap border-b-2 mb-6" *ngFor="let item of users">
+      <div>
+        <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">ID Document</label><br>
+        <input formControlName ="identity" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange($event)" *ngIf="item.usertype=='Seller'">
+      </div>
+      <div>
+        <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Previous ID Document</label><br>
+         <a (click)="downloadFile(item.id_document)" class="link" target="_blank">ID document</a>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap border-b-2 mb-6" *ngFor="let item of users">
+      <div>
+        <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Dept of Agriculture Identification</label><br>
+      <input formControlName ="agric" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange2($event)"  *ngIf="item.usertype=='Seller'">
+      </div>
+      <div>
+        <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Previous Agriculture Identification</label><br>
+        <a (click)="downloadFile(item.agric_document)" class="link" target="_blank">Agriculture Identificationt</a>
+      </div>
+    </div>
+
+    <div></div>
+    
+    <div class="text-center" *ngFor="let item of users">
+        <button type="button" class="btn "style="color: white ; background-color: #516951;" *ngIf="item.usertype=='Seller'" (click)="updateUser()">Update</button>
+        <button type="button" class="btn "style="color: white ; background-color: #516951;" *ngIf="item.usertype!='Seller'" (click)="notSellerUpdate()">Update</button>
+        
+    </div>
+    <br><br><br>
+    
+     </div>
+    </form>
+  </div>
+</div>
+  
+
+     
+  <app-footer></app-footer>
+
+  <!-- <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner> -->
+  
+  <!-- </html> -->
