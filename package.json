@@ -27,6 +27,7 @@
         "jwt-decode": "^3.1.2",
         "ng2-search-filter": "^0.5.1",
         "ngx-spinner": "^15.0.1",
+        "node": "^19.6.1",
         "npm": "^9.5.1",
         "rxjs": "~7.5.0",
         "tslib": "^2.3.0",
