@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { async } from '@angular/core/testing';
-import { NotificationService } from '../../services/notification.service';
+
 import { DomSanitizer } from '@angular/platform-browser';
 import * as saveAs from 'file-saver';
 
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   isUpdating: boolean = false;
   userData:any;
 
-    constructor(private sanitizer: DomSanitizer,private notificationService: NotificationService, private router: Router,private route: ActivatedRoute, private authservice: AuthService,
+    constructor(private sanitizer: DomSanitizer, private router: Router,private route: ActivatedRoute, private authservice: AuthService,
     private http: HttpClient, private fb: UntypedFormBuilder) { }
   
     EditUserForm:UntypedFormGroup = new UntypedFormGroup({
