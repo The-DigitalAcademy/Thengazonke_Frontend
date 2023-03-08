@@ -1,1 +1,42 @@
-<p>contact-us works!</p>
+<div class="example"><h2>Get in touch!</h2>
+    
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">  
+        <div class="space">
+            <input type="text" formControlName="to" placeholder="Email Address" class="input w-full max-w-xs" />
+        </div>
+            <div class="space">
+        <input type="text" formControlName="Subject" placeholder="Subject" class="input w-full max-w-xs" /> 
+    </div>
+    <div class="space">
+        <textarea rows="2" cols="36" class="textarea" formControlName="message" placeholder="Message"></textarea>
+    </div>
+    <div class="center-text"><button class="bh btn-sm" type="submit">Send</button></div>
+    </form>
+
+</div>
+
+  <div class="footer">
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="interior">
+          <a class="btn" href="#open-modal">Contact Us!</a>
+        </div>
+      <div id="open-modal" class="modal-window">
+        <div>
+          <a href="#" title="Close" class="modal-close">Close</a>
+        
+          <div>
+            <input type="text" formControlName="Subject" placeholder="Subject" class="input w-full max-w-xs" />
+          </div>
+          <div>
+            <input type="text" formControlName="to" placeholder="Email Address" class="input w-full max-w-xs" />
+          </div>
+          <div>
+          <textarea rows="2" cols="36" class="textarea" formControlName="message" placeholder="Message"></textarea>
+          </div>
+        <div class="text-center" style="margin-bottom: 3px;"><button class="btn btn-sm" type="submit">Send</button></div>
+        </div>
+      </div>
+    </form>
+
+    </div>
