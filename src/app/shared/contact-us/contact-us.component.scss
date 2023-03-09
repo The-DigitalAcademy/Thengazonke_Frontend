@@ -1,0 +1,129 @@
+.modal-window {
+    position: fixed;
+    background-color: rgba(28, 58, 34, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    &:target {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    & > div {
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2em;
+      background: #516951;
+    }
+  }
+  
+  .input{
+    border-radius:5px;
+  }
+  .modal-close {
+    color: white;
+    line-height: 50px;
+    font-size: 80%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    width: 70px;
+    text-decoration: none;
+    &:hover {
+      color: #cdae3f;
+    }
+  }
+    
+  html,
+  body {
+    height: 100%;
+  }
+  
+  html {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  
+  .modal-window {
+    & > div {
+      border-radius: 1rem;
+    }
+  }
+  
+  .modal-window div:not(:last-of-type) {
+    margin-bottom: 15px;
+  }
+  
+  .btn {
+    // background-color: #cdae3f;
+    color: white;
+    // padding: 1em 1.5em;
+    text-align: center;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    margin-top: 10px;
+    background-color: #cdae3f;
+    border: none;
+  }
+  
+  .footer {
+    left: 0;
+    flex-shrink: 0;
+    z-index: 99999;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 75px;
+    background-color: #516951;
+    justify-content: center;
+  }
+  
+  div.example {
+    background-color: #516951;
+    height: 275px;
+    width: 100%;
+    padding-top: 5px;
+    flex-shrink: 0;
+    z-index: 99999;
+    bottom: 0;
+  }
+  
+  @media screen and (max-width: 600px) {
+    div.example {
+      display: none;
+    }
+  }
+  
+  @media screen and (min-width: 600px) {
+    div.footer {
+      display:none;
+    }
+  }
+
+  .space{
+   margin-top: 10px;
+   justify-content: center;
+  }
+
+  .example,.bh{
+        color: white;
+        text-align: center;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        background-color: #cdae3f;
+        border: none;
+        
+      }
+  h2{
+    font-weight: 500;
+  }
