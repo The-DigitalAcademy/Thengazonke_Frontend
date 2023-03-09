@@ -30,9 +30,9 @@
         <li class="" *ngIf="!logEmail">
           <a [routerLink]="['/auth/register']">Register</a>
         </li>
-        <!-- <li class="" *ngIf="!logEmail">
+        <li class="" *ngIf="!logEmail">
           <a routerLink="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-        </li> -->
+        </li>
       </ul>
 
       <ul  class="menu menu-horizontal" *ngFor="let user of users">
@@ -58,6 +58,13 @@
               <li class="" *ngIf="user.usertype == 'Buyer'">
                 <a href="#" routerLink="/orders">Order history</a>
             </li>
+
+            <li  class="" *ngIf="user.usertype == 'Buyer'">
+              <a routerLink="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            </li>
+            
+
+
               <li class="" *ngIf="user.usertype == 'Seller'">
                 <a href="#" routerLink="/order-request">Order request</a>
             </li>

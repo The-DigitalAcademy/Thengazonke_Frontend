@@ -20,6 +20,7 @@ import { ProfileComponent } from '../shared/profile/profile.component';
 import { OrderRequestComponent } from '../seller-layout/components/order-request/order-request.component';
 import { HomeComponent } from '../buyer-layout/components/home/home.component';
 import { ReviewComponent } from '../seller-layout/components/review/review.component';
+import { CartComponent } from '../shared/cart/cart.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ReviewComponent } from '../seller-layout/components/review/review.compo
     ContactUsComponent,
     ProfileComponent,
     OrderRequestComponent,
-    ReviewComponent
+    ReviewComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
