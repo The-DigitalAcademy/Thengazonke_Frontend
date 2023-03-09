@@ -100,9 +100,19 @@ export class LoginComponent implements OnInit {
               }
               if(this.users[0].usertype === 'Buyer')
               {
-                let msg = "Successful login!";
+                var createOrder = localStorage.getItem('createOrder');
+                console.log('crea',createOrder)
+                if(Number(createOrder)==1){
+                  let msg = "Successful login!";
+                  // this.notification.success(msg);
+                  this.router.navigate(['/cart']);
+                  localStorage.setItem("createOrder", JSON.stringify(0));
+                }else
+                {  let msg = "Successful login!";
                 // this.notification.success(msg);
                 this.router.navigate(['/buyer']);
+              }
+              
               }
                 
             }

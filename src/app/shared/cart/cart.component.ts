@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
    total: String="";
    floatTotal: number =.0;
    beftotal: number =.0;
+   createOrder:number = 0;
    
    
 
@@ -30,9 +31,7 @@ export class CartComponent implements OnInit {
     .subscribe((res:any) => {
       let result = res;   
       this.livestockAll = result.filter((res:any) => String(res.status) != String("archived"));
-      
       this.getReserved(this.livestockAll)
-      // this.myReserves(this.livestockAll)
     });
    
   }
@@ -48,20 +47,10 @@ export class CartComponent implements OnInit {
       let liveValue = await livest.filter((res:any) => String(res.livestockID) === String(val[index]));
       this.livestocksInfo.push(liveValue[0])
       var temp=this.getPriceCurrency(liveValue[0].price).split(',').join('')
-      //console.log(temp);
-
       var newstr= temp.slice(0, temp.indexOf('.'));
-      //var newstr2= temp.slice(temp.indexOf('.'),0);
       var newstr2 = temp.slice(0+temp.indexOf('.')).trim();
       this.beftotal += parseFloat(newstr)
       this.floatTotal += parseFloat(newstr2)
-
-      console.log('value',this.total)
-      //var temp = temp.split('.').join('')
-      //prices.split('.').join('')
-      //temp.slice(1,price.length);
-      
-      //this.total += this.getPriceCurrency(liveValue[0].price)
     }
     this.total= String(this.beftotal) +"."+ String(this.floatTotal);
     
@@ -77,21 +66,13 @@ checkout(){
       status: "pending",
       buyerID: String(sessionStorage.getItem('loggedID'))
     }
-
-  
-    
     this.transactionService.CreateTranstaction(transationDetails).subscribe((next:any) => {
       console.log('iran',transationDetails)
-      
-  
-      //this.router.navigate(['/orders']);
   }, (err) => {
     console.log(err)
        if(err.status === 201)
        {
         for (let index = 0; index < this.fetchAnimal.length; index++) {
-          //console.log('first',this.fetchAnimal[index],'second',transationDetails.livestockID)
-
           if(String(this.fetchAnimal[index]) == String(transationDetails.livestockID)){
             const storageVal = localStorage.getItem('cartIds');
             const val = storageVal ? JSON.parse(storageVal) : []
@@ -117,66 +98,11 @@ checkout(){
   }
 }else
 {
+  this.createOrder = 1;
+   
+  localStorage.setItem("createOrder", JSON.stringify(this.createOrder));
      this.router.navigate(['/auth/login']);
 }
-
-  
-
-  // for (let index1 = 0; index1 < this.fetchAnimal.length; index1++) {
-
-  //   // let transationDetails = {
-  //   //   livestockID: this.livestocksInfo[index1].livestockID,
-  //   //   userID: this.livestocksInfo[index1].UserID,
-  //   //   status: "pending",
-  //   //   buyerID: String(sessionStorage.getItem('loggedID'))
-  //   // }
-  //   // this.transactionService.CreateTranstaction(transationDetails).subscribe((next:any) => {
-  //     // for (let index = 0; index < this.fetchAnimal.length; index++) {
-  //     //   console.log('first',this.fetchAnimal[index],'second',transationDetails.livestockID)
-
-  //     //   if(this.fetchAnimal[index] == transationDetails.livestockID){
-
-  //     //     const storageVal = localStorage.getItem('cartIds');
-  //     //     const val = storageVal ? JSON.parse(storageVal) : []
-  //     //     val.splice(index, 1);
-  //     //     // localStorage.setItem("cartIds", JSON.stringify(val));
-  //     //   }
-        
-  //     // }
-  //       //this.router.navigate(['/orders']);
-
-  //   }, (err) => {
-  //        if(err.status === 201)
-  //        {
-  //         for (let index = 0; index < this.fetchAnimal.length; index++) {
-  //           console.log('first',this.fetchAnimal[index],'second',transationDetails.livestockID)
-  
-  //           if(String(this.fetchAnimal[index]) == String(transationDetails.livestockID)){
-  //             const storageVal = localStorage.getItem('cartIds');
-  //             const val = storageVal ? JSON.parse(storageVal) : []
-  //             console.log('first',val)
-  //             val.splice(index, 1);
-  //             console.log('after',val)
-  //             localStorage.setItem("cartIds", JSON.stringify(val));
-  //           }
-  //       }
-  //       console.log('fi')
-  //       localStorage.removeItem('cartIds');
-  //       window.location.reload()
-  //          // this.successfullToast();
-  //          //this.router.navigate(['/orders']);
-  //        }
-  //        else if(err.status === 400)
-  //        {
-  //          // this.errorToast("Something went wrong, please try again!");
-  //        }
-  //        else{
-  //          // this.errorToast("Something went wrong, please try again!");
-  //        }
-  //  });
-  // }
-
-  // window.location.reload()
     
   }
 reserve(item:any){
@@ -192,10 +118,6 @@ reserve(item:any){
       }
       
       this.transactionService.CreateTranstaction(transationDetails).subscribe((next:any) => {
-        console.log('iran',transationDetails)
-        
-    
-        //this.router.navigate(['/orders']);
     }, (err) => {
       console.log(err)
          if(err.status === 201)
@@ -212,7 +134,6 @@ reserve(item:any){
               localStorage.setItem("cartIds", JSON.stringify(val));
             }
         }
-        //window.location.reload()
            // this.successfullToast();
            this.router.navigate(['/orders']);
          }
@@ -226,7 +147,10 @@ reserve(item:any){
       });
   }else
   {
+        this.createOrder = 1;
+        localStorage.setItem("createOrder", JSON.stringify(this.createOrder));
        this.router.navigate(['/auth/login']);
+
   }
 
 }
