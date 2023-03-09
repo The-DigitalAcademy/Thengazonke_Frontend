@@ -104,7 +104,7 @@
 
               <div *ngIf="(tr.status).toUpperCase() === 'complete'.toUpperCase()">
                 <option for="my-modal" class="btn m-2" (click) = closeModal()>Back</option>
-                <option for="my-modal" class="btn m-2" routerLink="/rate">Rate</option>              
+                <option for="my-modal" class="btn m-2" routerLink="/rate/:tr.Userid/:tr.lid">Rate</option>              
               </div>
 
               <div *ngIf="(tr.status).toUpperCase() === 'In-progress'.toUpperCase()">
