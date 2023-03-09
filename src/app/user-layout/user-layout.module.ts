@@ -22,6 +22,8 @@ import { HomeComponent } from '../buyer-layout/components/home/home.component';
 import { ReviewComponent } from '../seller-layout/components/review/review.component';
 import { NgxSpinnerModule } from "ngx-spinner";
   
+import { CartComponent } from '../shared/cart/cart.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ContactUsComponent,
     ProfileComponent,
     OrderRequestComponent,
-    ReviewComponent
+    ReviewComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,

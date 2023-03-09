@@ -25,6 +25,11 @@ export class AvailableLivestockComponent implements OnInit {
 
   isAvailable:boolean = false;
 
+  livestockC:string[] = [];
+  livestockAll: any;
+  livestockCart: any;
+  fetchAnimal:any;
+
   constructor(private livestockService:LivestockService, private currentRoute: CurrentRouteService, 
     private transactionService: TransactionService, private router: Router, private authService: AuthService) { }
 
@@ -37,9 +42,11 @@ export class AvailableLivestockComponent implements OnInit {
   getAllLivestocks(): void {
     this.isAvailable = false
    this.livestockService.GetAllPostedLivestock().subscribe((livestock:any) => {
-    this.livestock = livestock;
+    this.livestock = livestock.filter((res:any) => String(res.status) != String("archived"));
+    console.log('check archive',this.livestock)
     })
   }
+  
   getMyLivestocks(): void {
       
     this.isAvailable = true
@@ -96,30 +103,17 @@ export class AvailableLivestockComponent implements OnInit {
  
 }
 
-  addToCart(item:any)
-  {
-   
-   let itm = [];
-   console.log(item.livestockID)
 
-    // itm.push(item);
-    // localStorage.setItem('Livestock',  JSON.stringify(itm));
+  addToCart(livesId:any){
+    // this.livestockC.push(JSON.stringify(livesId));
+    // localStorage.setItem("cartIds", JSON.stringify(this.livestockC));
 
-    if ("Livestock" in localStorage)
-    { 
-      itm = [localStorage.getItem("Livestock")];
+    const storageVal = localStorage.getItem('cartIds');
+    const val = storageVal ? JSON.parse(storageVal) : []
+    // this.fetchAnimal = val;
 
-      localStorage.setItem('Livestock', JSON.stringify(itm));
-    }
-    else
-    {
-      itm.push(item.livestockID);
-      localStorage.setItem('Livestock', JSON.stringify(itm));
-    }
-    
-    // itm.push(item);
-    // localStorage.setItem('Livestock', JSON.stringify(itm));
-
+    val.push(JSON.stringify(livesId))
+    localStorage.setItem("cartIds", JSON.stringify(val));
   }
 
   addItem(event:any)
