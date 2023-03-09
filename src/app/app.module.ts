@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -12,19 +12,21 @@ import { Ng2SearchPipeModule } from 'node_modules/ng2-search-filter';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { OrderRequestComponent } from './seller-layout/components/order-request/order-request.component';
 import { BuyerLayoutModule } from './buyer-layout/buyer-layout.module';
+import { MatSnackBarModule  } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule,
-    Ng2SearchPipeModule,
+    CommonModule,MatSnackBarModule,
+    Ng2SearchPipeModule
    
   ],
   providers: [],

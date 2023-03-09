@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/auth-layout/services/auth.service';
 import { Users } from 'src/app/shared/models/Users';
 import { LivestockService } from 'src/app/shared/services/livestock.service';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-order-history',
@@ -26,6 +27,11 @@ export class OrderHistoryComponent implements OnInit {
   // dtOptions: DataTables.Settings = {};
   // dtTrigger: Subject<any> = new Subject<any>();
 
+  constructor( private transactionService : TransactionService,private livestockService: LivestockService,
+               private authservice: AuthService, private router: Router , private notificationService :NotificationService) { 
+    this.getUser();
+  }
+
   cancelOrder()
   {
     let id = this.transaction[0].transactionID
@@ -38,27 +44,25 @@ export class OrderHistoryComponent implements OnInit {
 
       if(Number(err.status) === Number(0)){
         let msg = `There's been an error please try again`;
-        // this.errorToast(msg)
+        this.errorToast(msg)
       }
       else if(err.status === 200){
-        // this.successfullToast();
+         this.successfullToast();
         this.closeModal()
       }
       else if(err.status === 201){
 
-        // this.successfullToast();
+        this.successfullToast();
         this.closeModal()
         }
       else{
-        // this.errorToast("Something went wrong, please try again")
+        this.errorToast("Something went wrong, please try again")
       }
   });
 
   }
 
-  constructor( private transactionService : TransactionService,private livestockService: LivestockService, private authservice: AuthService, private router: Router) { 
-    this.getUser();
-  }
+
 
   ngOnInit(): void {
 
@@ -145,28 +149,28 @@ checkSelected(event:any, transID:any)
   }
 
 
-  // successfullToast(){
-  //   this.notificationService.success('Order Cancelled!');
-  // }
+  successfullToast(){
+    this.notificationService.success('Order Cancelled!');
+  }
 
-  // warningToast(){
-  //   this.notificationService.warning('Boo!')
-  // }
+  warningToast(){
+    this.notificationService.warning('Boo!')
+  }
 
-  // errorToast(message:any){
-  //   this.notificationService.danger(message)
-  // }
+  errorToast(message:any){
+    this.notificationService.danger(message)
+  }
 
-  // DeleteTransaction()
-  // {
-  //   console.log('deleted') 
-  //   console.log(this.deleteID)
-  //   let status = "archieved"
-  //   this.transactionService.DeleteTransaction(this.deleteID, status).subscribe(async res => {
-  //     // this.decoded = jwt_decode(res.token);
-  //   })
+  DeleteTransaction()
+  {
+    console.log('deleted') 
+    console.log(this.deleteID)
+    let status = "archieved"
+    this.transactionService.DeleteTransaction(this.deleteID, status).subscribe(async res => {
+      // this.decoded = jwt_decode(res.token);
+    })
 
-  // }
+  }
 
 
   // deleteTrans(Transactionid:any)

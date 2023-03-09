@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import jwt_decode from 'node_modules/jwt-decode';
-// import { NotificationService } from 'src/app/shared/services/notification.service';
+import { NgxSpinnerService } from "ngx-spinner";
 import { AuthService } from '../../services/auth.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
   marked = false;
   theCheckbox = false;
 
-  constructor(private authServive:AuthService, private router: Router, public fb: UntypedFormBuilder,private activatedRoute: ActivatedRoute) { 
+  constructor(private authServive:AuthService,private spinner: NgxSpinnerService, private notification : NotificationService,
+    private router: Router, public fb: UntypedFormBuilder,private activatedRoute: ActivatedRoute) { 
   }
 
 
@@ -70,7 +72,7 @@ export class LoginComponent implements OnInit {
 
   async UserLogin()
   {
-    
+   // this.showSpinner();
 
     this.submitted = true;
    
@@ -81,7 +83,7 @@ export class LoginComponent implements OnInit {
 
       if(logingDetails.email != '' && logingDetails.password != '')
       {
-        // this.showSpinner();
+      
 
         this.authServive.UserLogin(logingDetails).subscribe(async res => {
           this.decoded = jwt_decode(res.token); 
@@ -95,13 +97,13 @@ export class LoginComponent implements OnInit {
               if(this.users[0].usertype === 'Seller')
               {
                 let msg = "Successful login!";
-                // this.notification.success(msg);
+                 this.notification.success(msg);
                 this.router.navigate(['/seller']);
               }
               if(this.users[0].usertype === 'Buyer')
               {
                 let msg = "Successful login!";
-                // this.notification.success(msg);
+                 this.notification.success(msg);
                 this.router.navigate(['/buyer']);
               }
                 
@@ -111,12 +113,12 @@ export class LoginComponent implements OnInit {
               if(this.users[0].usertype === 'Admin')
               {
                 let msg = "Successful login!";
-                // this.notification.success(msg);
+                 this.notification.success(msg);
                 this.router.navigate(['/admin/users']);
               }
               else{
                 let msg = 'credentials does not correspond';
-                // this.notification.danger(msg);
+                 this.notification.danger(msg);
               }
               
             }
@@ -139,14 +141,14 @@ export class LoginComponent implements OnInit {
         }, (error) => {
           console.log(error)
           let msg = 'Please provide the correct credentials!';
-          // this.notification.danger(msg);
+           this.notification.danger(msg);
 
           console.log(error);
       });        
       }
       else{
         let msg = 'Please provide credentials!';
-        // this.notification.danger(msg)
+         this.notification.danger(msg)
       }
   }
 
@@ -168,13 +170,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // showSpinner()
-  // {
-  //   this.spinner.show();
+  showSpinner()
+  {
+    this.spinner.show();
 
-  //   setTimeout(()=>{
-  //     this.spinner.hide();
-  //   }, 1000)
+    setTimeout(()=>{
+      this.spinner.hide();
+    }, 2000)
 
-  // }
+  }
 }

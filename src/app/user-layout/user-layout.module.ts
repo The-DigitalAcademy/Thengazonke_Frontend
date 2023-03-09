@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserLayoutRoutingModule } from './user-layout-routing.module';
 import { UserLayoutComponent } from './user-layout.component';
@@ -20,7 +20,8 @@ import { ProfileComponent } from '../shared/profile/profile.component';
 import { OrderRequestComponent } from '../seller-layout/components/order-request/order-request.component';
 import { HomeComponent } from '../buyer-layout/components/home/home.component';
 import { ReviewComponent } from '../seller-layout/components/review/review.component';
-
+import { NgxSpinnerModule } from "ngx-spinner";
+  
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { ReviewComponent } from '../seller-layout/components/review/review.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule,
-  ]
+    Ng2SearchPipeModule,NgxSpinnerModule
+  ],
+
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class UserLayoutModule { }
