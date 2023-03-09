@@ -17,6 +17,10 @@ export class CartComponent implements OnInit {
    livestockCart: any;
    fetchAnimal:any;
    livestocksInfo:any[]=[];
+   total: String="";
+   floatTotal: number =.0;
+   beftotal: number =.0;
+   
    
 
   constructor(private livestockService:LivestockService, private transactionService: TransactionService, private router: Router, private authService: AuthService) { }
@@ -43,8 +47,23 @@ export class CartComponent implements OnInit {
     for (let index = 0; index < val.length; index++) {
       let liveValue = await livest.filter((res:any) => String(res.livestockID) === String(val[index]));
       this.livestocksInfo.push(liveValue[0])
-      console.log('problem',this.livestocksInfo)
+      var temp=this.getPriceCurrency(liveValue[0].price).split(',').join('')
+      //console.log(temp);
+
+      var newstr= temp.slice(0, temp.indexOf('.'));
+      //var newstr2= temp.slice(temp.indexOf('.'),0);
+      var newstr2 = temp.slice(0+temp.indexOf('.')).trim();
+      this.beftotal += parseFloat(newstr)
+      this.floatTotal += parseFloat(newstr2)
+
+      console.log('value',this.total)
+      //var temp = temp.split('.').join('')
+      //prices.split('.').join('')
+      //temp.slice(1,price.length);
+      
+      //this.total += this.getPriceCurrency(liveValue[0].price)
     }
+    this.total= String(this.beftotal) +"."+ String(this.floatTotal);
     
   }
 checkout(){
