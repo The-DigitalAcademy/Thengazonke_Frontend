@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { forkJoin, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/auth-layout/services/auth.service';
 import { BreedService } from 'src/app/shared/services/breed.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { LivestockService } from 'src/app/shared/services/livestock.service';
 import { StatsService } from 'src/app/shared/services/stats.service';
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-admin-landing',
@@ -23,6 +25,8 @@ export class AdminLandingComponent implements OnInit {
   inprogressOrder!:any;
   load2:boolean = false;
   // load3:boolean = false;
+  @ViewChild('pdfReport', { static: false })
+  pdfReport!: ElementRef;
 
   constructor(private authService:AuthService , private livestockService:LivestockService, private categoryService: CategoryService,
     private breedService: BreedService, private statsService: StatsService) {       
@@ -57,6 +61,38 @@ export class AdminLandingComponent implements OnInit {
       this.breed = requestBreed;
       this.livestock = requestLivestock;
     });
+  }
+
+  downloadAsPDF(){
+
+
+    let DATA: any = document.getElementById('pdfReport');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
+
+    // const doc = new jsPDF();
+
+    // const specialElementHandlers = {
+    //   '#editor': function (element:any, renderer:any) {
+    //     return true;
+    //   }
+    // };
+
+    // const pdfReport = this.pdfReport.nativeElement;
+
+    // doc.addHTML(pdfReport.innerHTML, 15, 15, {
+    //   width: 190,
+    //   'elementHandlers': specialElementHandlers
+    // });
+
+    // doc.save('dashboard_report.pdf');
   }
 
  
