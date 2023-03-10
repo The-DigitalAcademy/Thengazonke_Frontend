@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
 import { BreedService } from 'src/app/shared/services/breed.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 
@@ -13,17 +15,36 @@ export class BreedComponent implements OnInit {
   breed!:any;
   deleteID!:any;
 
+  @ViewChild(DataTableDirective, { static: false })
+  datatableElement!: DataTableDirective;
+  
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   constructor(private BreedService: BreedService, private categoryService:CategoryService) { }
 
   ngOnInit(): void {
     this.getCategory();
     this.GetBreed();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      lengthMenu : [5, 10, 25],
+      processing: true,
+      paging: false,
+      searching: false,
+      deferRender: true,
+      destroy: true,
+     };
   }
 
   GetBreed(){
     this.BreedService.GetAllBreedWithCat().subscribe((res:any) => {
       let result = res;
       this.breed = result;
+
+      this.dtTrigger.next(this.breed)
     });
   }
 

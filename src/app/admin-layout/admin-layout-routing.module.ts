@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AdminLandingComponent } from './components/admin-landing/admin-landing.component';
 import { BreedModalComponent } from './components/breed/breed-modal/breed-modal.component';
 import { BreedComponent } from './components/breed/breed.component';

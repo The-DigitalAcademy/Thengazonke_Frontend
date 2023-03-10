@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { forkJoin, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/auth-layout/services/auth.service';
 import { BreedService } from 'src/app/shared/services/breed.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
@@ -20,76 +21,43 @@ export class AdminLandingComponent implements OnInit {
   pendingOrder!:any;
   allOrder!:any;
   inprogressOrder!:any;
+  load2:boolean = false;
+  // load3:boolean = false;
 
   constructor(private authService:AuthService , private livestockService:LivestockService, private categoryService: CategoryService,
-    private breedService: BreedService, private statsService: StatsService) { 
-      this.getTotalUsers();
-      this.getTotalLiveStock();
-      this.getTotalCategory();
-      this.getTotalUsers();
-      this.getTotalBreed();
-      // this.GetNumPendingOrders();
-      // this.GetNumInProgressOrders();
-      // this.GetNumCompleteOrders();
-      this.GetAllOrders();
+    private breedService: BreedService, private statsService: StatsService) {       
     }
 
-  ngOnInit(): void {
-    
+  async ngOnInit() {
+    await this.getFork();
+    this.load2= true;
+    // this.load3= true;
   }
 
 
-getTotalUsers()
-{
-  this.authService.GetAllUsers().subscribe((res:any) => {
-    this.users  = res;
- });
-}
+  getFork()
+  {
+    forkJoin({
+      // requestAllOrder: this.statsService.GetAllOrders(),
+      // requestPending: this.statsService.GetNumPendingOrders(),
+      // requestComplete: this.statsService.GetNumCompleteOrders(),
+      requestUsers: this.authService.GetAllUsers(),
+      requestCategory: this.categoryService.GetAllCategory(),
+      requestBreed: this.breedService.GetAllBreed(),
+      requestLivestock: this.livestockService.GetLivestockByUser(),
 
-getTotalLiveStock(){
-  this.livestockService.GetLivestockByUser().subscribe((res:any) => {
-    this.livestock = res;
-  });
-}
+    }).subscribe(({requestUsers, requestCategory, requestBreed, requestLivestock}) => {
+      // this.allOrder = requestAllOrder[0];
+      // console.log(this.allOrder);
+      // this.pendingOrder = requestPending[0];
+      // console.log(this.pendingOrder);
+      // this.completeOrder = requestComplete;
+      this.users  = requestUsers;
+      this.category = requestCategory;
+      this.breed = requestBreed;
+      this.livestock = requestLivestock;
+    });
+  }
 
-getTotalCategory(){
-  this.categoryService.GetAllCategory().subscribe((res:any) => {
-    this.category = res;
-  });
-}
-getTotalBreed(){
-  this.breedService.GetAllBreed().subscribe((res:any) => {
-    this.breed = res;
-  });
-}
-
-GetNumCompleteOrders(){
-  this.statsService.GetNumCompleteOrders().subscribe((res:any) => {
-    this.completeOrder = res;
-  });
-}
-
-GetAllOrders(){
-  this.statsService.GetAllOrders().subscribe((res:any) => {
-    this.allOrder = res[0].numberoforders;
-  });
-}
-
-GetNumPendingOrders(){
-  this.statsService.GetNumPendingOrders().subscribe((ress:any) => {
-    this.pendingOrder = ress[0].numberofpendingorders;
-    console.log(this.pendingOrder);
-  });
-} 
-GetNumInProgressOrders(){
-  this.statsService.GetNumInProgressOrders().subscribe((res:any) => {
-    this.inprogressOrder = res;
-  });
-}
-
-GetNumArchieveOrders(){
-  this.statsService.GetNumArchieveOrders().subscribe((res:any) => {
-    this.breed = res;
-  });
-}
+ 
 }

@@ -90,12 +90,7 @@ export class UsersComponent {
   users!:any;
 
   ngOnInit(): void {
- 
-    this.statsService.GetNumUsers().subscribe((res:any) =>{
-      this.users = res;
-      console.log(this.users)
-    });
-    
+   
   }
 
 

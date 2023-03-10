@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
 import { CategoryService } from 'src/app/shared/services/category.service';
 
 @Component({
@@ -11,16 +13,33 @@ export class CategoriesComponent implements OnInit {
   category!:any;
   deleteID!:any;
 
+  @ViewChild(DataTableDirective, { static: false })
+  datatableElement!: DataTableDirective;
+  
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.getCategory();
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      lengthMenu : [5, 10, 25],
+      processing: true,
+      paging: false,
+      searching: false,
+      deferRender: true,
+      destroy: true,
+     };
   }
 
   getCategory(){
     this.categoryService.GetAllCategory().subscribe((res:any) => {
       let result = res;
       this.category = result;
+      this.dtTrigger.next(this.category)
     });
   }
 
