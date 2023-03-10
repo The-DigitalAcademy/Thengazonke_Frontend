@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/auth-layout/services/auth.service';
 import { LivestockService } from 'src/app/shared/services/livestock.service';
 import { RateService } from '../../services/rate.service';
 import { Users } from 'src/app/shared/models/Users';
+import { NotificationService } from '../../../shared/services/notification.service';
+
 
 @Component({
   selector: 'app-rate',
@@ -31,7 +33,9 @@ export class RateComponent implements OnInit {
   tid!:any;
   lid!:any;
 
-  constructor(private rateservice : RateService , private transervice : TransactionService, private authservice : AuthService, private router: Router , private transactionService: TransactionService, private route: ActivatedRoute, private livestockService: LivestockService) { }
+  constructor(private rateservice : RateService , private transervice : TransactionService, private authservice : AuthService,
+    private router: Router , private transactionService: TransactionService, private route: ActivatedRoute,
+     private livestockService: LivestockService, private notificationService:NotificationService) { }
   ngOnInit(): void {
 
     this.sub = this.route.params.subscribe(params => {
@@ -103,22 +107,38 @@ export class RateComponent implements OnInit {
 
       if(Number(err.status) === Number(0)){
         let msg = `There's been an error please try again`;
-        // this.errorToast(msg)
+         this.errorToast(msg)
       }
       else if(err.status === 200){
-        // this.successfullToast();
+        let msg = "Rate submitted"
+        this.successfullToast(msg);
         // this.closeModal()
         this.router.navigate(['/orders']); 
       }
       else if(err.status === 201){
         this.router.navigate(['/orders']); 
-        // this.successfullToast();
+
+         this.successfullToast("Rate submitted");
         // this.closeModal()
         }
       else{
-        // this.errorToast("Something went wrong, please try again")
+       this.errorToast("Something went wrong, please try again")
       }
   });
 
   }
+
+  successfullToast(msg:any){
+    this.notificationService.success(msg)
+  }
+  
+  warningToast(msg:any){
+     this.notificationService.warning(msg)
+  }
+  
+  errorToast(message:any){
+     this.notificationService.warning(message)
+  }
+
+
 }

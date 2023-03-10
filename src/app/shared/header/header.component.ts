@@ -18,6 +18,8 @@ export class HeaderComponent implements OnInit {
   logEmail!:any;
   users!:any;
   myCurrentRoute: any;
+  notis:number = 0;
+  fetchAnimal: any;
 
   constructor(private router : Router,  
     private authService: AuthService, private currentRoute: CurrentRouteService) { }
@@ -44,6 +46,17 @@ export class HeaderComponent implements OnInit {
     {
       // this.router.navigate(['/auth/login']);
     }
+    const storageVal = localStorage.getItem('cartIds');
+    const val = storageVal ? JSON.parse(storageVal) : []
+    this.fetchAnimal = val
+
+    
+
+    for (let index = 0; index < this.fetchAnimal.length; index++) {
+      this.notis++
+      console.log(this.notis)
+    }
+   
   }
 
   LogOut()

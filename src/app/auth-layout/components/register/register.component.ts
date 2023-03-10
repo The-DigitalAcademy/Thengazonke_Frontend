@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators,ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +28,7 @@ decoded: any;
 submitted = false;
 passwordErr!:any;
 
-constructor(private authService:AuthService, private router: Router, public fb: UntypedFormBuilder) { }
+constructor(private authService:AuthService, private router: Router, public fb: UntypedFormBuilder,private spinner: NgxSpinnerService , private notificationService : NotificationService) { }
 
 myForm() {
   this.AddUserForm = this.fb.group({
@@ -68,7 +70,7 @@ match(controlName: string, checkControlName: string): ValidatorFn {
 
 AddUser()
 {
-  // this.showSpinner();
+  this.showSpinner();
 
   this.submitted = true;
 
@@ -145,25 +147,25 @@ checkSelected(event:any){
 }
 
 successfullToast(msg:any){
-  // this.notificationService.success(msg)
+  this.notificationService.success(msg)
 }
 
 warningToast(msg:any){
-  // this.notificationService.warning(msg)
+   this.notificationService.warning(msg)
 }
 
 errorToast(message:any){
-  // this.notificationService.warning(message)
+   this.notificationService.warning(message)
 }
 
-// showSpinner()
-// {
-//   this.spinner.show();
+showSpinner()
+{
+  this.spinner.show();
 
-//   setTimeout(()=>{
-//     this.spinner.hide();
-//   }, 2000)
+  setTimeout(()=>{
+    this.spinner.hide();
+  }, 2000)
 
-// }
+}
 
 }

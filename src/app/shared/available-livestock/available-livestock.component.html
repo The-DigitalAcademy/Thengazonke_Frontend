@@ -37,7 +37,7 @@
                     <div class="card-actions grid grid-cols-6 justify-end">
                       <label class="btn btn-outline  btn-sm col-span-3" (click)="getOneData(item)" for="my-modal"><span class="text-xs">view</span></label>
 
-                      <button class="btn btn-outline  btn-sm col-span-3" (click)="btnBuy(item)"><span class="text-xs">Reserve</span></button>
+                      <button class="btn btn-outline  btn-sm col-span-3" (click)="addToCart(item.livestockID)"><span class="text-xs">Reserve</span></button>
                     </div>
                     </div>
                     <div *ngSwitchCase="'/buyer'">

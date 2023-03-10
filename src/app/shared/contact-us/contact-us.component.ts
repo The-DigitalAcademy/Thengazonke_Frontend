@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, FormControl, FormGroup } from '@angular/forms';
-// import { NotificationService } from './notification.service';
+import { FormBuilder, AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmailService } from 'src/app/services/email.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -10,51 +10,63 @@ import { UntypedFormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class ContactUsComponent implements OnInit {
 
 
-  constructor(private fb: UntypedFormBuilder) {}
- 
-  contactForm = this.fb.group({
-    sender: [''],
-    email: [''],
-    message: [''],
-  })
- 
- 
-  ngOnInit(): void {}
- 
-  onSubmit(contactForm: any) {
-    console.log(contactForm)
-    // this.contact.PostMessage(FormData)
-    //   .subscribe(response => {
-    //     location.href = 'https://mailthis.to/confirm'
-    //     console.log(response)
-    //   }, error => {
-    //     console.warn(error.responseText)
-    //     console.log({ error })
-    //   })
+  form: FormGroup = new FormGroup({
+    to: new FormControl(''),
+    subject: new FormControl(''),
+    message: new FormControl(''),
+
+  });
+
+  submitted = false;
+
+  constructor(private email:EmailService,private formBuilder: FormBuilder) { }
+
+
+
+  ngOnInit(): void {
+
+    this.form = this.formBuilder.group(
+      {
+        subject: ['', Validators.required],
+        message: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(20)
+          ]
+        ],
+        to: ['', [Validators.required, Validators.email]],
+
+      }
+    );
   }
+
+
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+
+    // if (this.form.invalid) {
+    //   return;
+    // }
+
+    this.email.sendEmail(this.form.value).subscribe((next:any) => {
+      console.log('email sent')
+    })
+
+    // console.log(JSON.stringify(this.form.value, null, 2));
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.form.reset();
+  }
+
+
 }
 
-// FormData: FormGroup;
-// constructor(private builder: FormBuilder, private contact: ServicesService) { }
-
-// ngOnInit() {
-//   this.FormData = this.builder.group({
-//     Fullname: new FormControl('', [Validators.required]),
-//     Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
-//     Comment: new FormControl('', [Validators.required])
-//   });
-// }
-
-
-// onSubmit(FormData) {
-//   console.log(FormData)
-//   this.contact.PostMessage(FormData)
-//     .subscribe(response => {
-//       location.href = 'https://mailthis.to/confirm'
-//       console.log(response)
-//     }, error => {
-//       console.warn(error.responseText)
-//       console.log({ error })
-//     })
-// }
-// }

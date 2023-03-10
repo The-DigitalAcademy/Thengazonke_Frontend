@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { MatSnackBar,MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar,MatSnackBarConfig ,MatSnackBarHorizontalPosition ,MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -13,20 +13,30 @@ export class NotificationService {
 
   constructor(public snackBar: MatSnackBar,private httpClient: HttpClient) { }
 
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center'
+  verticalPosition: MatSnackBarVerticalPosition = 'top'
+  
   config: MatSnackBarConfig = {
-    duration: 5000,
-    horizontalPosition: 'right',
-    verticalPosition: 'top',
+    duration: 7000,
+    horizontalPosition : this.horizontalPosition,
+    verticalPosition: this.verticalPosition
   };
+
+
 
   success(msg: string): any {
     this.config.panelClass = 'success-snackbar';
-    this.snackBar.open(msg, 'Close', this.config);
+    this.snackBar.open(msg, 'Close', this.config)
   }
+
   danger(msg: string): any {
     this.config.panelClass = 'danger-snackbar';
-    this.snackBar.open(msg, 'Close', this.config);
+    this.snackBar.open(msg, 'Close', )
+   
   }
+
+  
   warning(msg: string): any {
     this.config.panelClass = 'warning-snackbar';
     this.snackBar.open(msg, 'Close', this.config);

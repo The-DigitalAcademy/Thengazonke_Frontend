@@ -6,6 +6,7 @@ import { LivestockService } from 'src/app/shared/services/livestock.service';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { BreedService } from 'src/app/shared/services/breed.service';
 import { Livestock } from 'src/app/shared/models/livestock';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-create-livestock',
@@ -75,7 +76,7 @@ export class CreateLivestockComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: UntypedFormBuilder, private http:HttpClient, private router: Router, private route: ActivatedRoute) { }
+    public fb: UntypedFormBuilder, private http:HttpClient, private router: Router, private route: ActivatedRoute,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
 
@@ -297,7 +298,7 @@ export class CreateLivestockComponent implements OnInit {
 
   editLivestock(){
 
-    // this.showSpinner();
+     this.showSpinner();
 
     const formData = new FormData();
 
@@ -324,8 +325,6 @@ export class CreateLivestockComponent implements OnInit {
   image = {
     link : '' 
   }
-
-
 
   activeColor: string = 'green';
     baseColor: string = '#ccc';
@@ -382,7 +381,15 @@ export class CreateLivestockComponent implements OnInit {
         this.imageSrc = reader.result;
         this.loaded = true;
     }
-
+    showSpinner()
+    {
+      this.spinner.show();
+  
+      setTimeout(()=>{
+        this.spinner.hide();
+      }, 2000)
+  
+    }
     // successfullToast(){
     //   this.toast.success('Successfully Added!',{duration:6000 , style: {
     //     padding: '35px',
