@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-categories',
@@ -18,6 +20,9 @@ export class CategoriesComponent implements OnInit {
   
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
+
+  @ViewChild('pdfReport', { static: false })
+  pdfReport!: ElementRef;
 
   constructor(private categoryService: CategoryService) { }
 
@@ -62,6 +67,19 @@ export class CategoriesComponent implements OnInit {
   deleteCat(categoryID:any)
   {
     this.deleteID = categoryID;
+  }
+
+  downloadAsPDF(){
+    let DATA: any = document.getElementById('table');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('users_report.pdf');
+    });
   }
 
   closeModal() {
