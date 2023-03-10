@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/auth-layout/services/auth.service';
+import {jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-list-user',
@@ -14,6 +16,10 @@ export class ListUserComponent implements OnInit {
 
   @ViewChild(DataTableDirective, { static: false })
   datatableElement!: DataTableDirective;
+
+  @ViewChild('pdfReport', { static: false })
+  pdfReport!: ElementRef;
+
 
   users!:any;
   deleteID!:any;
@@ -30,7 +36,7 @@ export class ListUserComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      lengthMenu : [5, 10, 25],
+      lengthMenu : [5, 10, 25, 50, 100, 200, 300],
       processing: true,
       paging: false,
       searching: false,
@@ -96,6 +102,19 @@ export class ListUserComponent implements OnInit {
   deleteUsr(userid:any)
   {
     this.deleteID = userid;
+  }
+
+  downloadAsPDF(){
+    let DATA: any = document.getElementById('table');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('users_report.pdf');
+    });
   }
 
   closeModal() {

@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { AdminLandingComponent } from './components/admin-landing/admin-landing.component';
+import { AdminRateAndReviewComponent } from './components/admin-rate-and-review/admin-rate-and-review.component';
+import { UserReviewComponent } from './components/admin-rate-and-review/user-review/user-review.component';
 import { BreedModalComponent } from './components/breed/breed-modal/breed-modal.component';
 import { BreedComponent } from './components/breed/breed.component';
 import { CategoriesComponent } from './components/categories/categories.component';
@@ -19,4 +21,6 @@ export const AdminLayoutRoutingModule: Routes = [
   { path: 'breed', component:BreedComponent },
   { path: 'addBreed', component:BreedModalComponent },
   { path: 'editBreed/:id', component:BreedModalComponent },
+  { path: 'rate', component:AdminRateAndReviewComponent },
+  { path: 'rate/:id', component:UserReviewComponent },
 ];
