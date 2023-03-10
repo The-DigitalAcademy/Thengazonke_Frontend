@@ -7,6 +7,7 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { BreedService } from 'src/app/shared/services/breed.service';
 import { Livestock } from 'src/app/shared/models/livestock';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NotificationService } from '../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-create-livestock',
@@ -76,7 +77,8 @@ export class CreateLivestockComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: UntypedFormBuilder, private http:HttpClient, private router: Router, private route: ActivatedRoute,private spinner: NgxSpinnerService) { }
+    public fb: UntypedFormBuilder, private http:HttpClient, private router: Router, private route: ActivatedRoute,
+    private spinner: NgxSpinnerService,private natification : NotificationService) { }
 
   ngOnInit(): void {
 
@@ -172,6 +174,7 @@ export class CreateLivestockComponent implements OnInit {
   {
 
     // ---------------------picture-------------- 
+    this.showSpinner();
 
     const formData = new FormData();    
     formData.append("file",this.file)    
@@ -199,27 +202,29 @@ export class CreateLivestockComponent implements OnInit {
         gender: this.AddLivestockForm.value.gender
       }
   
+
       console.log(livestockDetails)
 
-        this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
-          // this.natification.success("Successfully Added!");
-          this.router.navigate(['/seller']);
+      // this.showSpinner();
+      //   this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
+      //     this.natification.success("Successfully Added!");
+      //     this.router.navigate(['/seller']);
     
-          this.submitted = false;
-        }, (err:any) => {
-          if(err.status === 201)
-          {
-            // this.natification.success("Successfully Added!");
-            this.router.navigate(['/seller']);
-          }
-          else if(err.status === 400)
-          {
-            // this.natification.danger("Something went wrong, please try again!")
-          }
-          else{
-            // this.natification.warning("Something went wrong, please try again!");
-          }
-      });
+      //     this.submitted = false;
+      //   }, (err:any) => {
+      //     if(err.status === 201)
+      //     {
+      //       this.natification.success("Successfully Added!");
+      //       this.router.navigate(['/seller']);
+      //     }
+      //     else if(err.status === 400)
+      //     {
+      //       this.natification.danger("Something went wrong, please try again!")
+      //     }
+      //     else{
+      //       this.natification.warning("Something went wrong, please try again!");
+      //     }
+      // });
   
 
   
@@ -227,15 +232,15 @@ export class CreateLivestockComponent implements OnInit {
     , (ERROR) => {
       if(ERROR.status === 201)
       {
-        // this.natification.success("Successfully Added!");
+        this.natification.success("Successfully Added!");
         this.router.navigate(['/seller']);
       }
       else if(ERROR.status === 400)
       {
-        // this.natification.danger("Something went wrong, please try again!");
+         this.natification.danger("Something went wrong, please try again!");
       }
       else{
-        // this.natification.danger("Something went wrong, please try again!");
+        this.natification.danger("Something went wrong, please try again!");
       }
     }) 
 
@@ -243,8 +248,11 @@ export class CreateLivestockComponent implements OnInit {
 
   }  
 
+
+
   upload()
   {
+    this.showSpinner();
     let id = this.myLivestock.livestockID;
 
     let livestockDetails = {
@@ -272,24 +280,24 @@ export class CreateLivestockComponent implements OnInit {
         if(err.status === 200)
         {
           let msg ="Successfully Edited!";
-          // this.notificationService.success(msg);
+           this.natification.success(msg);
           this.router.navigate(['/homes']);
         }
         else if(err.status === 201)
         {
           let msg ="Successfully Edited!";
-          // this.notificationService.success(msg);
+          this.natification.success(msg);
 
           this.router.navigate(['/homes']);
         }
         else if(err.status === 400)
         {
           let msg ="Something went wrong, please try again!";
-          // this.notificationService.danger(msg)
+           this.natification.danger(msg)
         }
         else{
           let msg = "Something went wrong, please try again!";
-          // this.notificationService.danger(msg)
+         this.natification.danger(msg)
         }
     });
       // this.router.navigate(['/homes']);
@@ -298,7 +306,7 @@ export class CreateLivestockComponent implements OnInit {
 
   editLivestock(){
 
-     this.showSpinner();
+    
 
     const formData = new FormData();
 
@@ -381,6 +389,7 @@ export class CreateLivestockComponent implements OnInit {
         this.imageSrc = reader.result;
         this.loaded = true;
     }
+
     showSpinner()
     {
       this.spinner.show();
@@ -390,49 +399,6 @@ export class CreateLivestockComponent implements OnInit {
       }, 2000)
   
     }
-    // successfullToast(){
-    //   this.toast.success('Successfully Added!',{duration:6000 , style: {
-    //     padding: '35px',
-    //     width: '48%',
-    //     height: '100px',
-    //     margin: '12px auto',
-    //     background: '#fff',
-    //     border: '2px solid #fff',
-    //   },
-    //   iconTheme: {
-    //     primary: '#4BB543',
-    //     secondary: '#FFFAEE',
-    //   },})
-    // }
-  
-    // warningToast(){
-    //   this.toast.warning('Boo!',{duration:6000 , style: {
-    //     padding: '35px',
-    //     width: '48%',
-    //     height: '100px',
-    //     margin: '12px auto',
-    //     background: '#fff',
-    //     border: '2px solid #fff',
-    //   },
-    //   iconTheme: {
-    //     primary: '#FFCC00',
-    //     secondary: '#FFFAEE',
-    //   },})
-    // }
-  
-    // errorToast(message:any){
-    //   this.toast.error(message,{duration:2000 , style: {
-    //     padding: '35px',
-    //     width: '48%',
-    //     height: '100px',
-    //     margin: '12px auto',
-    //     background: '#fff',
-    //     border: '2px solid #fff',
-    //   },
-    //   iconTheme: {
-    //     primary: '#DC3545',
-    //     secondary: '#FFFAEE',
-    //   },})
-    // }
+    
 
 }

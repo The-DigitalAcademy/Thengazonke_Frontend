@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/auth-layout/services/auth.service';
