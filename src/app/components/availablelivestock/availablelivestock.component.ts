@@ -1,9 +1,8 @@
 import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
-import { CurrentRouteService } from 'src/app/services/current-route.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { LivestockService } from 'src/app/services/livestock.service';
-
+import { AuthService } from 'src/app/auth-layout/services/auth.service';
+import { CurrentRouteService } from 'src/app/shared/services/current-route.service';
+import { LivestockService } from 'src/app/shared/services/livestock.service';
 @Component({
   selector: 'app-availablelivestock',
   templateUrl: './availablelivestock.component.html',
