@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/auth-layout/services/auth.service';
 import { Livestock } from 'src/app/shared/models/livestock';
 import { LivestockService } from 'src/app/shared/services/livestock.service';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-order-request',
@@ -32,7 +33,8 @@ data = {
   transactionID: '',
 }
 
-  constructor(private transactionService: TransactionService, private authservice: AuthService, private livestockService: LivestockService) { 
+  constructor(private transactionService: TransactionService, private authservice: AuthService,
+   private livestockService: LivestockService, private notificationService : NotificationService) { 
     this.getUser();
   }
 
@@ -129,7 +131,7 @@ data = {
   onCategoryChange3(){
     this.filterSearch=''
   }
-  approve(x:any)
+  approve( x:any)
   {
 
     let id  = x
@@ -144,21 +146,21 @@ data = {
           if(ERROR.status === 200)
           {
             let message = "Order Approved"
-            // this.notificationService.success(message);
+             this.notificationService.success(message);
             window.location.reload();
           }
           else if(ERROR.status === 201)
           {
             let message = "Order Approved"
-            // this.notificationService.success(message);
+             this.notificationService.success(message);
             window.location.reload();
           }
           else if(ERROR.status === 400)
           {
-            // this.notificationService.danger("Something went wrong, please try again!");
+             this.notificationService.danger("Something went wrong, please try again!");
           }
           else{
-            // this.notificationService.danger("Something went wrong, please try again!");
+            this.notificationService.danger("Something went wrong, please try again!");
           }
         }) 
   }
@@ -178,21 +180,21 @@ data = {
           if(ERROR.status === 200)
           {
             let message = "Order Declined"
-            // this.notificationService.success(message);
+            this.notificationService.success(message);
             window.location.reload();
           }
           else if(ERROR.status === 201)
           {
             let message = "Order Declined"
-            // this.notificationService.success(message);
+             this.notificationService.success(message);
             window.location.reload();
           }
           else if(ERROR.status === 400)
           {
-            // this.notificationService.danger("Something went wrong, please try again!");
+            this.notificationService.danger("Something went wrong, please try again!");
           }
           else{
-            // this.notificationService.danger("Something went wrong, please try again!");
+            this.notificationService.danger("Something went wrong, please try again!");
           }
         })
   }
@@ -212,21 +214,21 @@ data = {
       if(ERROR.status === 200)
       {
         let message = "Order Completed"
-        // this.notificationService.success(message);
+        this.notificationService.success(message);
         window.location.reload();
       }
       else if(ERROR.status === 201)
       {
         let message = "Order Completed"
-        // this.notificationService.success(message);
+         this.notificationService.success(message);
         window.location.reload();
       }
       else if(ERROR.status === 400)
       {
-        // this.notificationService.danger("Something went wrong, please try again!");
+         this.notificationService.danger("Something went wrong, please try again!");
       }
       else{
-        // this.notificationService.danger("Something went wrong, please try again!");
+         this.notificationService.danger("Something went wrong, please try again!");
       }
     })
   }

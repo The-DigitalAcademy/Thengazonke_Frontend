@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
 
   async UserLogin()
   {
-   // this.showSpinner();
+    this.showSpinner();
 
     this.submitted = true;
    
@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
                 console.log('crea',createOrder)
                 if(Number(createOrder)==1){
                   let msg = "Successful login!";
-                  // this.notification.success(msg);
+                  this.notification.success(msg);
                   this.router.navigate(['/cart']);
                   localStorage.setItem("createOrder", JSON.stringify(0));
                 }else

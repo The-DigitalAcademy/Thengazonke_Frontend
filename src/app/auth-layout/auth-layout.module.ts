@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -23,7 +24,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   CommonModule,
     AuthLayoutRoutingModule,
     RouterModule,
-    HttpClientModule,
+    HttpClientModule,MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,NgxSpinnerModule
   ]

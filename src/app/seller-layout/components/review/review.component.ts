@@ -20,7 +20,7 @@ export class ReviewComponent implements OnInit {
   ratePg3:any;
   ratePg4:any;
   ratePg5:any;
-  average:any;
+  average:any = 0;
   sum1:number = 0
   sum2:number = 0
   sum3:number = 0

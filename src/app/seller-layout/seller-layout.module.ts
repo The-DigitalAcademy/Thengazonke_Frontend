@@ -12,17 +12,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../shared/header/header.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     SellerLayoutComponent,
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,NgxSpinnerModule,MatSnackBarModule,
     Ng2SearchPipeModule,
     RouterModule.forChild(SellerLayoutRoutingModule),
   ]
