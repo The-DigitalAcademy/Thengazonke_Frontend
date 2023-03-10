@@ -1,0 +1,88 @@
+<div class="grid grid-cols-6 gap-4">
+    <div class="col-start-1 col-end-1 col-span-1">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-end-7 col-span-5 mr-4">
+        <div class="heading bold justify-center">
+            <h1>Edit User</h1>
+        </div>
+        <div class="flex items-center justify-center my-9">
+        
+            <form class="w-full max-w-lg" [formGroup]="EditUserForm">
+                <div class="flex flex-wrap -mx-3 mb-6">
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        Fullname
+                    </label>
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" formControlName="fullname">
+                    <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+                  </div>
+                  <div class="w-full md:w-1/2 px-3">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                      Email
+                    </label>
+                    <input formControlName="email" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email" >
+                  </div>
+                </div>
+                
+            
+                 <!-- ,phone ,address ,status, usertype -->
+                <div class="flex flex-wrap -mx-3 mb-2">
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                      Phone
+                    </label>
+                    <input formControlName="phone" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text">
+                  </div>
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                      Status
+                    </label>
+                    <div class="relative">
+                      <select formControlName="status" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                        <option value="Verified">Verified</option>
+                        <option value="Not-Verified">Not-verified</option>
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                        Address
+                      </label>
+                      <textarea formControlName="address" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="******************">
+                      </textarea>
+                      <!-- <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> -->
+                    </div>
+                </div>
+            
+                <div class="flex flex-wrap -mx-3 mb-2"  *ngFor="let item of users">
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                      ID Document
+                    </label><br>
+                    <a (click)="downloadFile(item.id_document)" class="link" target="_blank">ID document</a>
+                  </div>
+                  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                      Dept of Agriculture Identification
+                    </label>
+                    <a (click)="downloadFile(item.agric_document)" class="link" target="_blank">Agriculture Identificationt</a>
+                  </div>
+                </div>
+            
+            
+                <div class="flex justify-between">
+                    <button class="btn" [routerLink]="['/admin/users']" routerLinkActive="router-link-active" >Back</button>
+                    <button class="btn" (click)="updateUser()">Update</button>
+                </div>
+            
+              </form>
+        </div>
+    </div>
+</div>

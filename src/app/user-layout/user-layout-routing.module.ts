@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'buyer', component: HomeComponent },
   { path: 'seller', component: HomePageComponent },
   { path: 'order-request', component: OrderRequestComponent },
-  { path: 'cart', component:CartComponent },
   { path: 'orders', component:OrderHistoryComponent },
   { path: 'rate/:id/:lid', component:RateComponent },
   { path: 'livestock', component:CreateLivestockComponent },
