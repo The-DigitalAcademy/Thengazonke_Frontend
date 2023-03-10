@@ -10,5 +10,4 @@ export const BuyerLayoutRoutingModule: Routes = [
   { path: 'cart', component:CartComponent },
   { path: 'orders', component:OrderHistoryComponent },
   { path: 'rate/:id/:lid', component:RateComponent },
-
 ];

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
 import { DataTableDirective } from 'angular-datatables';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from 'src/app/auth-layout/services/auth.service';
 
 @Component({
   selector: 'app-list-user',
@@ -48,7 +48,7 @@ export class ListUserComponent implements OnInit {
      this.authService.GetAllUsers().subscribe((res:any) => {
       let result = res;
       this.users = result
-      this.users = result.filter((res:any) => String(res.status) != String("archieved"));
+      this.users = result.filter((res:any) => String(res.status) != String("archived"));
 
       this.dtTrigger.next(this.users)
 
@@ -60,7 +60,7 @@ export class ListUserComponent implements OnInit {
     this.showSpinner();
     
     let st= {
-      status: "archieved"
+      status: "archived"
     }
     this.authService.DeleteUser(this.deleteID, st).subscribe(async res => {
       await this.getUsers();

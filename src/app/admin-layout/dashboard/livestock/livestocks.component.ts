@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { StatsService } from "src/app/services/stats.service";
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -10,7 +9,8 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
-import { LivestockDashboard } from "src/app/model/livestockDashboard";
+import { StatsService } from "src/app/shared/services/stats.service";
+import { LivestockDashboard } from "../../models/livestockDashboard";
 
 
 export type ChartOptions = {

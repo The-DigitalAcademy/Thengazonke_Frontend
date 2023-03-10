@@ -1,0 +1,129 @@
+
+.heading{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--main-green);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.container{
+ 
+    margin: auto;
+}
+
+.table
+{
+    background-color: var(--white);
+}
+
+.head{
+    background-color: var(--main-green);
+    color: var(--white);
+}
+.act{
+    text-align: center;
+}
+th{
+    text-align: center;
+    background-color: var(--gray-light);
+    color: var(--main-green);
+}
+td{
+    text-align: center;
+    background-color: var(--gray-light);
+    color: var(--main-green);
+}
+.card{
+    margin-top: 19px;
+    background-color: white;
+    border-radius: 1rem;
+    border: solid 1px #f7fbf7;
+    box-shadow: inset;
+    margin: auto;
+}
+img{
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+.btn-modal{
+    background-color: aqua;
+    border-color: aqua;
+    color: black;
+}
+h3{
+    color: black;
+}
+p{
+    color: black;
+}
+.ppp{
+    margin-top: 1rem;
+}
+
+button{
+
+    text-transform: capitalize;
+}
+.icon{
+    gap: 2rem;
+    padding: 1rem;
+    transition: 200ms;
+
+    &:hover
+    {
+        font-size: 18px;
+    }
+
+}
+.label-text{
+    text-align: start ;
+}
+
+.desc
+{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height:46px;
+}
+.modaL-action .btn
+{
+    text-transform: capitalize;
+
+}
+.btn1{
+    background-color: var(--main-green); 
+    
+    
+}
+.btn2{
+    background-color: var(--main-green); 
+}
+h4{
+    color: var(--main-green);
+}
+.step{
+    color: var(--main-green);
+}
+
+.modal-box{
+
+    height: 200px;
+}
+
+.btn{
+    background-color: var(--main-green);
+    height: 10px;
+    min-height: 35px;
+    margin-bottom: 10px;
+}

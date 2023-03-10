@@ -1,5 +1,4 @@
 import { Component, ViewChild } from "@angular/core";
-import { StatsService } from "src/app/services/stats.service";
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -10,7 +9,8 @@ import {
   ApexStroke,
   ApexGrid
 } from "ng-apexcharts";
-import { UserDashboard } from "src/app/model/userDashboard";
+import { StatsService } from "src/app/shared/services/stats.service";
+import { UserDashboard } from "../../models/userDashboard";
 
 
 export type ChartOptions = {
@@ -93,6 +93,7 @@ export class UsersComponent {
  
     this.statsService.GetNumUsers().subscribe((res:any) =>{
       this.users = res;
+      console.log(this.users)
     });
     
   }

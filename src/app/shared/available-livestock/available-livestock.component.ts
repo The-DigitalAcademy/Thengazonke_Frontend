@@ -152,8 +152,9 @@ export class AvailableLivestockComponent implements OnInit {
         // this.errorToast("Something went wrong, please try again")
       }
   });
-    this.closeModal();
 
+    this.closeModal();
+    window.location.reload();
   }
 
   deleteMyLivestock(livestockID:any)

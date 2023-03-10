@@ -72,7 +72,7 @@
 
 
     <div class="flex justify-between">
-        <button class="btn" [routerLink]="['/admin/users']" routerLinkActive="router-link-active" >Back</button>
+        <button class="btn" [routerLink]="['/users']" routerLinkActive="router-link-active" >Back</button>
         <button class="btn" (click)="updateUser()">Update</button>
     </div>
 
@@ -80,4 +80,4 @@
 
   </form>
 
-  <ngx-spinner type="bell-scale-multiple"></ngx-spinner>
+  <ngx-spinner bdColor = "rgba(0,0,0,0.8)" size = "large" color = "var(--main-green)" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

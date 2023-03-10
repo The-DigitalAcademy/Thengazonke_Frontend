@@ -9,11 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Ng2SearchPipeModule } from 'node_modules/ng2-search-filter';
-import { ProfileComponent } from './shared/profile/profile.component';
-import { OrderRequestComponent } from './seller-layout/components/order-request/order-request.component';
-import { BuyerLayoutModule } from './buyer-layout/buyer-layout.module';
-import { MatSnackBarModule  } from '@angular/material/snack-bar';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
