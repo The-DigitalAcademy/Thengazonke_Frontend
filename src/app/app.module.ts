@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Ng2SearchPipeModule } from 'node_modules/ng2-search-filter';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    DataTablesModule,
     ReactiveFormsModule,
     CommonModule,MatSnackBarModule,
     Ng2SearchPipeModule

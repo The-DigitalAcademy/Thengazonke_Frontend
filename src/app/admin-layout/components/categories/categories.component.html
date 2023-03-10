@@ -14,7 +14,7 @@
   
       <div class="container mx-auto justify-center">
     
-        <table class="table table-compact w-full table-auto">
+        <table class="table table-compact w-full table-auto" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
           <thead>
             <tr>
               <th class="head ">No</th> 
@@ -30,7 +30,7 @@
               <td>{{user.createdAt}}</td>
               <td>
                 <a [routerLink]="['/admin/editCategory/', user.categoryID]"><i class="fa fa-eye mx-2"></i></a>
-                <label for="my-modal"><a (click)="deleteCat(user.categoryID)"><i class="fa fa-trash mx-2"></i></a></label>
+                <!-- <label for="my-modal"><a (click)="deleteCat(user.categoryID)"><i class="fa fa-trash mx-2"></i></a></label> -->
               </td>
             </tr>
           </tbody> 
