@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { LivestockService } from 'src/app/services/livestock.service';
+import { AuthService } from 'src/app/auth-layout/services/auth.service';
+import { LivestockService } from 'src/app/shared/services/livestock.service';
 
 @Component({
   selector: 'app-livestock',

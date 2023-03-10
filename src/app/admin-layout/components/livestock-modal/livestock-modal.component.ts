@@ -2,16 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BreedService } from 'src/app/services/breed.service';
-import { CategoryService } from 'src/app/services/category.service';
-import { LivestockService } from 'src/app/services/livestock.service';
 import { Observable, of } from 'rxjs';
-import { Livestock } from 'src/app/model/livestock';
 import { Router } from '@angular/router';
-import { HotToastService } from '@ngneat/hot-toast';
-import { Livestock1 } from '../../../model/livestock1';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { NotificationService } from 'src/app/services/notification.service';
+import { Livestock } from 'src/app/shared/models/livestock';
+import { CategoryService } from 'src/app/shared/services/category.service';
+import { BreedService } from 'src/app/shared/services/breed.service';
+import { LivestockService } from 'src/app/shared/services/livestock.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-livestock-modal',
@@ -22,14 +20,14 @@ export class LivestockModalComponent implements OnInit {
 
   myObservable$: Observable<any> | undefined;
 
-  myLivestock!:Livestock1;
+  myLivestock!:Livestock;
 
   category!:any;
   breed!:any;
   image_link!:any;
   sub!:any;
   lid!:any;
-  livestock: Livestock1[] = [];
+  livestock: Livestock[] = [];
   agetypes!:any;
 
   selectedValue:any = null
@@ -82,7 +80,7 @@ export class LivestockModalComponent implements OnInit {
   isUpdating: boolean = false;
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
-    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router, private toast :HotToastService,
+    public fb: FormBuilder, private http:HttpClient, private route: ActivatedRoute,private router: Router,
     private spinner: NgxSpinnerService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
@@ -231,7 +229,7 @@ export class LivestockModalComponent implements OnInit {
         console.log('Edited succefully');
     
         this.submitted = false;
-      }, (err) => {
+      }, (err:any) => {
         if(err.status === 200)
         {
           let msg ="Successfully Edited!";

@@ -1,11 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { NotificationService } from 'src/app/services/notification.service';
 import * as saveAs from 'file-saver';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from 'src/app/auth-layout/services/auth.service';
 
 @Component({
   selector: 'app-user-modal',
@@ -15,20 +13,21 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class UserModalComponent implements OnInit {
 
   sub!:any;
-  uid!:any;
+  submitted!:false;
+  uid!:any
   users!:any;
-
-  constructor(private router: Router,private route: ActivatedRoute, private authservice: AuthService, 
-    private natification: NotificationService, private fb: UntypedFormBuilder, private http: HttpClient,
-    private spinner: NgxSpinnerService) { }
-
-  EditUserForm:UntypedFormGroup = new UntypedFormGroup({
-    fullname:new UntypedFormControl(''),
-    email:new UntypedFormControl(''),
-    phone:new UntypedFormControl(''),
-    address:new UntypedFormControl(''),
-    status:new UntypedFormControl('')
+  
+  EditUserForm:FormGroup = new FormGroup({
+    fullname:new FormControl(''),
+    email:new FormControl(''),
+    phone:new FormControl(''),
+    address:new FormControl(''),
+    status:new FormControl('')
   })
+
+  constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private authservice: AuthService,
+    private http: HttpClient) { }
+
 
   myForm() {
     this.EditUserForm = this.fb.group({
@@ -41,7 +40,6 @@ export class UserModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.myForm();
 
     this.sub = this.route.params.subscribe(params => {
@@ -66,8 +64,8 @@ export class UserModalComponent implements OnInit {
           })
         }
     })
-
   }
+
 
   downloadFile(file:any){
 
@@ -81,7 +79,7 @@ export class UserModalComponent implements OnInit {
   }
 
   updateUser(){
-    this.showSpinner();
+    // this.showSpinner();
    
     let userDetails= {
       fullname: this.EditUserForm.value.fullname,
@@ -98,32 +96,33 @@ export class UserModalComponent implements OnInit {
     }, (err) => {
       if(err.status === 200)
       {
-        this.natification.success("Successfully Updated!");
+        // this.natification.success("Successfully Updated!");
         this.router.navigate(['/admin/users']);
       }
       else if(err.status === 201)
       {
-        this.natification.success("Successfully Updated!");
+        // this.natification.success("Successfully Updated!");
         this.router.navigate(['/admin/users']);
       }
       else if(err.status === 400)
       {
-        this.natification.danger("Something went wrong, please try again!");
+        // this.natification.danger("Something went wrong, please try again!");
       }
       else{
-        this.natification.danger("Something went wrong, please try again!");
+        // this.natification.danger("Something went wrong, please try again!");
       }
   });;
   }
 
-  showSpinner()
-  {
-    this.spinner.show();
+  // showSpinner()
+  // {
+  //   this.spinner.show();
 
-    setTimeout(()=>{
-      this.spinner.hide();
-    }, 2000)
+  //   setTimeout(()=>{
+  //     this.spinner.hide();
+  //   }, 2000)
 
-  }
+  // }
+
 
 }
