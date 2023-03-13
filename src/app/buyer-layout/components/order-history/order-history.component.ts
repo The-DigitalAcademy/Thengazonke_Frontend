@@ -5,7 +5,8 @@ import { AuthService } from 'src/app/auth-layout/services/auth.service';
 import { Users } from 'src/app/shared/models/Users';
 import { LivestockService } from 'src/app/shared/services/livestock.service';
 import { TransactionService } from 'src/app/shared/services/transaction.service';
-import { NotificationService } from 'src/app/shared/services/notification.service';
+import { NotificationService } from '../../../shared/services/notification.service';
+
 
 @Component({
   selector: 'app-order-history',
@@ -23,11 +24,11 @@ export class OrderHistoryComponent implements OnInit {
   transact!:any;
   toggleModalButton :any;
   deleteID!:any;
-  // dtOptions: DataTables.Settings = {};
-  // dtTrigger: Subject<any> = new Subject<any>();
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
 
   constructor( private transactionService : TransactionService,private livestockService: LivestockService,
-               private authservice: AuthService, private router: Router , private notificationService :NotificationService) { 
+               private authservice: AuthService, private router: Router , private notificationService :NotificationService ) { 
     this.getUser();
   }
 
@@ -58,23 +59,23 @@ export class OrderHistoryComponent implements OnInit {
         this.errorToast("Something went wrong, please try again")
       }
   });
-
+      window.location.reload();
   }
 
 
 
   ngOnInit(): void {
 
-    // this.dtOptions = {
-    //   pagingType: 'full_numbers',
-    //   pageLength: 10,
-    //   lengthMenu : [5, 10, 25],
-    //   processing: true,
-    //   paging: false,
-    //   searching: false,
-    //   deferRender: true,
-    //   destroy: true,
-    //  };
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      lengthMenu : [5, 10, 25],
+      processing: true,
+      paging: false,
+      searching: false,
+      deferRender: true,
+      destroy: true,
+     };
    
   }
 
@@ -95,7 +96,7 @@ export class OrderHistoryComponent implements OnInit {
       let transTemp = this.result2.filter((res:any) => Number(res.buyerID) === Number(this.users[0].Userid));
       this.trans = transTemp.filter((ress:any) => String(ress.status) != String('archived'));
       console.log(this.trans)
-      // this.dtTrigger.next(this.trans)
+      this.dtTrigger.next(this.trans)
     }); 
     
   }
@@ -125,7 +126,7 @@ checkSelected(event:any, transID:any)
 
     console.log(id)
 
-    // this.getSpecificTransaction(id)
+    this.getSpecificTransaction(id)
     return console.log(this.toggleModalButton)
   }
 

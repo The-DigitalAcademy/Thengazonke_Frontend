@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { SellerLayoutRoutingModule } from '../seller-layout/seller-layout-routing.module';
 import { HeaderComponent } from '../shared/header/header.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule,DataTablesModule,
     ReactiveFormsModule,MatSnackBarModule,
     RouterModule.forChild(BuyerLayoutRoutingModule),
   ]
