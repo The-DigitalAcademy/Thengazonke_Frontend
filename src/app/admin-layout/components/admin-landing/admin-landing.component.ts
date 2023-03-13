@@ -64,8 +64,6 @@ export class AdminLandingComponent implements OnInit {
   }
 
   downloadAsPDF(){
-
-
     let DATA: any = document.getElementById('pdfReport');
     html2canvas(DATA).then((canvas) => {
       let fileWidth = 208;
@@ -74,25 +72,8 @@ export class AdminLandingComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
+      PDF.save('full_report.pdf');
     });
-
-    // const doc = new jsPDF();
-
-    // const specialElementHandlers = {
-    //   '#editor': function (element:any, renderer:any) {
-    //     return true;
-    //   }
-    // };
-
-    // const pdfReport = this.pdfReport.nativeElement;
-
-    // doc.addHTML(pdfReport.innerHTML, 15, 15, {
-    //   width: 190,
-    //   'elementHandlers': specialElementHandlers
-    // });
-
-    // doc.save('dashboard_report.pdf');
   }
 
  

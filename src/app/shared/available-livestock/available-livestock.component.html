@@ -1,140 +1,168 @@
-<div class="grid grid-cols-6 gap-4">
-    <div class="col-start-1 col-end-7 justify-center mx-auto"><p class="text-2xl"><b>Livestock</b></p></div>
-    <div class="col-start-1 col-end-7 mx-2">
-        <app-search (newItemEvent)="addItem($event)"></app-search>
-    </div>
 
-    <div class="col-start-1 col-end-7 mx-4" *ngIf="myCurrentRoute == '/seller'">
-      <div class="grid grid-cols-2 gap-4 text-center taps">
-        <button (click)="getAllLivestocks()" class="btn  btn-sm  btn-outline rounded-full hover:var(--main-green) focus:outline-none focus:ring h-5">
-         All Available
-        </button>
-        <button (click)="getMyLivestocks()" class="btn  btn-sm  btn-outline rounded-full hover:var(--main-green) focus:outline-none focus:ring ...">
-          My Livestock
-        </button>
+<div class="p-4">
+  <div class="col-start-1 col-end-7 text-center justify-center mx-auto"><p class="text-2xl"><b>Livestock</b></p></div>
+    <app-search class="mb-6" (newItemEvent)="addItem($event)"></app-search>
+      <div class="col-start-1 col-end-7 mx-4" *ngIf="myCurrentRoute == '/seller'">
+  <div class="grid grid-cols-2 gap-4 text-center taps">
+    <button (click)="getAllLivestocks()" class="btn btnCustom btn-sm active btn-outline rounded-full focus:outline-none h-3">
+     All Available
+    </button>
+    <button (click)="getMyLivestocks()" class="btn btnCustom btn-sm  btn-outline rounded-full hover:bg-violet-600 focus:outline-none">
+      My Livestock
+    </button>
+  </div>
       </div>
-    </div>
-
-    <div class="col-start-1 col-end-7 ...">
-
-        <div class="row m-2 " *ngFor="let item of livestock | filter: filterSearch1 | filter: filterSearch">
-            <div class="card card-side bg-base-100 shadow-xl">
-                <figure>
-                    <div class="avatar">
-                        <div class="w-36 rounded">
-                          <img src={{item.image}} />
-                        </div>
-                      </div>
-
-                </figure>
-                <div class="card-body">
-                  <h2 class="card-title">Breed : {{item.breedName}}</h2>
-                  <p>Category : {{item.categoryName}}</p>
-                  <p>Price : R{{getPriceCurrency(item.price)}}</p>
-
-                  <div [ngSwitch]="myCurrentRoute">
-                    <div *ngSwitchCase="'/'">
-                    <div class="card-actions grid grid-cols-6 justify-end">
-                      <label class="btn btn-outline  btn-sm col-span-3" (click)="getOneData(item)" for="my-modal"><span class="text-xs">view</span></label>
-
-                      <button class="btn btn-outline  btn-sm col-span-3" (click)="addToCart(item.livestockID)"><span class="text-xs">Reserve</span></button>
-                    </div>
-                    </div>
-                    <div *ngSwitchCase="'/buyer'">
-                      <div class="card-actions grid grid-cols-6 justify-end">
-                        <label class="btn btn-outline  btn-sm col-span-3" (click)="getOneData(item)" for="my-modal"><span class="text-xs">view</span></label>
-  
-                        <button class="btn btn-outline  btn-sm col-span-3" (click)="btnBuy(item)"><span class="text-xs">Reserve</span></button>
-                      </div>
-                      </div>
-                    <div *ngSwitchCase="'/seller'">
-                    <div class="card-actions grid grid-cols-6 justify-end">
-                      <a [routerLink]="['/livestock/', item.livestockID]"  *ngIf="isAvailable"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
-                      <label for="my-modal"><i *ngIf="isAvailable" class="fa fa-trash" (click)="deleteMyLivestock(item.livestockID)" aria-hidden="true"></i></label>
-  
-                          <input type="checkbox" id="my-modal" class="modal-toggle" />
-                          
-                          <div class="modal" id="modal">
-                            <!-- <div class="modal-box">  -->
-                                <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                                    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-                                  
-                                    <div class="fixed inset-0 z-10 overflow-y-auto">
-                                      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                                        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                                          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                                            <div class="sm:flex sm:items-start">
-                                              <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                                                <!-- Heroicon name: outline/exclamation-triangle -->
-                                                <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
-                                                </svg>
-                                              </div>
-                                              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Delete livestock</h3>
-                                                <div class="mt-2">
-                                                  <p class="text-sm text-gray-500">Are you sure you want to delete your livestock? All of your data will be permanently removed. This action cannot be undone.</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                                            <button for="my-modal" (click)="DeleteMyLivestock()" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm">Delete</button>
-                                            <button type="button" (click)="closeModal()" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                            <!-- </div> -->
-                          </div>
-                  
-                    </div>
-                    </div>
-                  </div>
-
+      <div class="w-full mt-8">
+  <div class="grid lg:grid-cols-3 gap-4" *ngIf="livestock.length>0 else noLivestock">
+    <div class="" *ngFor="let item of livestock | filter: filterSearch1 | filter: filterSearch">
+      <div class="card card-side bg-base-100 shadow-xl">
+        <figure>
+            <div class="avatar">
+                <div class="w-36 rounded">
+                  <img src={{item.image}} />
                 </div>
               </div>
-        </div>
-      
 
-<!-- The button to open modal -->
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Breed : {{item.breedName}}</h2>
+          <p>Category : {{item.categoryName}}</p>
+          <p>Price : R{{getPriceCurrency(item.price)}}</p>
 
-<!-- <label for="my-modal" class="btn">open modal</label> -->
+          <div [ngSwitch]="myCurrentRoute">
+            <div *ngSwitchCase="'/'">
+            <div class="card-actions grid grid-cols-6 justify-end">
+              <label class="btn btn-outline  btn-sm col-span-3" (click)="getOneData(item)" for="my-modal"><span class="text-xs">view</span></label>
 
-<!-- Put this part before </body> tag -->
-<input type="checkbox" id="my-modal" class="modal-toggle" />
-<div class="modal">
-  <div class="modal-box">
-    <div *ngFor="let liveObj of livestockData">
-      <figure>
-        <div class="avatar">
-            <div class="mx-16 justify-center h-56 rounded ">
-              <img src={{liveObj.image}} />
+              <button class="btn btn-outline  btn-sm col-span-3" (click)="addToCart(item.livestockID)"><span class="text-xs">Reserve</span></button>
+            </div>
+            </div>
+            <div *ngSwitchCase="'/buyer'">
+              <div class="card-actions grid grid-cols-6 justify-end">
+                <label class="btn btn-outline  btn-sm col-span-3" (click)="getOneData(item)" for="my-modal"><span class="text-xs">view</span></label>
+
+                <button class="btn btn-outline  btn-sm col-span-3" (click)="btnBuy(item)"><span class="text-xs">Reserve</span></button>
+              </div>
+              </div>
+            <div *ngSwitchCase="'/seller'">
+            <div class="card-actions grid grid-cols-6 justify-end">
+              <a [routerLink]="['/livestock/', item.livestockID]"  *ngIf="isAvailable"><i class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+              <label for="my-modal"><i *ngIf="isAvailable" class="fa fa-trash" (click)="deleteMyLivestock(item.livestockID)" aria-hidden="true"></i></label>
+
+                  <input type="checkbox" id="my-modal" class="modal-toggle" />
+                  
+                  <div class="modal" id="modal" >
+                    <!-- <div class="modal-box">  -->
+                      <div class="modal-box" style="background-color: red;padding: 0;">
+                        <div class="flex flex-col p-5 rounded-lg shadow bg-white">
+                          <div class="flex flex-col items-center text-center">
+                              <svg class="w-12 h-12 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+                              <div style="margin: 2rem;" class="">
+                                    <h2 style="margin-bottom: 10px;" class="mt-2 font-semibold text-gray-800">Delete livestock?</h2>
+                                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">Are you sure you want to delete <span style="color: var(--main-green);">{{item.breedName}}</span>?</p>
+                                    <!-- <p style="font-size: 10px;font-style:bold">with id: <span style="color: var(--main-green);"></span></p> -->
+                                    <p style="color: rgb(255, 64, 64);margin-top: 10px;">You cant undo this action!!</p>
+                              </div>
+                          </div>
+                
+                          <div class="flex items-center mt-3" style="padding:1rem 3rem;">
+                              <button  (click)=closeModal() class="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md btnCancel">
+                              Cancel
+                              </button>
+                          
+                              <button (click)="DeleteMyLivestock()"   class="flex-1 px-4 py-2 ml-2 bg-yellow-500 hover:var(--main-green) text-white text-sm font-medium rounded-md btnDelete">
+                              Delete
+                              </button>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                  </div>
+          
+            </div>
             </div>
           </div>
-  
-    </figure>
-    <div class="card-body">
-      <h2 class="card-title">Breed : {{liveObj.breedName}}</h2>
-      <p>Category : {{liveObj.categoryName}}</p> 
-      <p>Description: {{liveObj.description}}</p>
-      <p>color: {{liveObj.color}}</p>
-      <p>weight: {{liveObj.weight}}</p>
-      <p class="text-center"><i class="fas fa-map-marker pr-2 text-red-800"></i> {{liveObj.address}}</p>
-      <p class="text-center">Price : R{{getPriceCurrency(liveObj.price)}}</p>
-    </div> 
-    </div>
 
-    <!-- <div class="modal-action"> -->
-      <div class="card-actions grid grid-cols-6 justify-between" *ngFor="let liveObj of livestockData">
-        <button class="btn btn-outline reserve  btn-sm col-span-3" (click)="btnBuy(liveObj)"><span class="text-xs">Reserve</span></button>
-        <label class="btn btn-outline  btn-sm col-span-3" for="my-modal"><span class="text-xs">Cancel</span></label>
+        </div>
       </div>
-    <!-- </dsiv> -->
+      
+    </div>
+ 
   </div>
+
+      </div>
 </div>
 
+<ng-template #noLivestock>
+  <h2 class="nocontent">No livestock available</h2>
+</ng-template>
+
+
+
+
+
+
+
+ 
+
+
+
+  <input type="checkbox" id="my-modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <div *ngFor="let liveObj of livestockData">
+        <figure>
+          <div class="avatar">
+              <div class="mx-16 justify-center h-56 rounded ">
+                <img src={{liveObj.image}} />
+              </div>
+            </div>
+    
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">Breed : {{liveObj.breedName}}</h2>
+        <p>Category : {{liveObj.categoryName}}</p> 
+        <p>Description: {{liveObj.description}}</p>
+        <p>color: {{liveObj.color}}</p>
+        <p>weight: {{liveObj.weight}}</p>
+        <p class="text-center"><i class="fas fa-map-marker pr-2 text-red-800"></i> {{liveObj.address}}</p>
+        <p class="text-center">Price : R{{getPriceCurrency(liveObj.price)}}</p>
+      </div> 
+      </div>
+  
+      <!-- <div class="modal-action"> -->
+        <div class="card-actions grid grid-cols-6 justify-between" *ngFor="let liveObj of livestockData">
+          <button class="btn btn-outline reserve  btn-sm col-span-3" (click)="btnBuy(liveObj)"><span class="text-xs">Reserve</span></button>
+          <label class="btn btn-outline  btn-sm col-span-3" for="my-modal"><span class="text-xs">Cancel</span></label>
+        </div>
+      <!-- </dsiv> -->
     </div>
-   
   </div>
+
+
+<input type="checkbox" id="my-modal" class="modal-toggle" />
+<div class="modal" *ngFor="let animal of livestockData">
+    <div class="modal-box" style="background-color: red;padding: 0;">
+        <div class="flex flex-col p-5 rounded-lg shadow bg-white">
+          <div class="flex flex-col items-center text-center">
+              <svg class="w-12 h-12 fill-current text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z"/></svg>
+              <div style="margin: 2rem;" class="">
+                    <h2 style="margin-bottom: 10px;" class="mt-2 font-semibold text-gray-800">Delete livestock?</h2>
+                    <p class="mt-2 text-sm text-gray-600 leading-relaxed">Are you sure you want to delete <span style="color: var(--main-green);">{{animal.breedName}}</span>?</p>
+                    <p style="font-size: 10px;font-style:bold">with id: <span style="color: var(--main-green);">{{animal.livestockID}}</span></p>
+                    <p style="color: rgb(255, 64, 64);margin-top: 10px;">You cant undo this action!!</p>
+              </div>
+          </div>
+
+          <div class="flex items-center mt-3" style="padding:1rem 3rem;">
+              <button  (click)=closeModal() class="flex-1 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md btnCancel">
+              Cancel
+              </button>
+          
+              <button (click)="DeleteMyLivestock()"   class="flex-1 px-4 py-2 ml-2 bg-yellow-500 hover:var(--main-green) text-white text-sm font-medium rounded-md btnDelete">
+              Delete
+              </button>
+          </div>
+        </div>
+    </div>
+</div>

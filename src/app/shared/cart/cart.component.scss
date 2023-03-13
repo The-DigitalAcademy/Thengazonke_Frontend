@@ -1,0 +1,18 @@
+.bgColor{
+    background-color: var(--main-green);
+}
+.textColor{
+    color: var(--main-green);
+}
+.nocontent{
+    margin: 4rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    // background-image: url(../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: rgb(186, 186, 186);
+    -webkit-background-clip: text;
+    background-clip: text;
+}

@@ -4,3 +4,58 @@
     color: var(--white);
     border-radius: none;
 }
+
+.nocontent{
+    margin: 4rem;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    // background-image: url(../../../assets/headr.jpeg);
+    background-size: 250px;
+    background-repeat: repeat;
+    color: rgb(186, 186, 186);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.btnCustom:hover{
+    color: var(--white);
+    background-color: var(--main-hover);
+}
+.btnCustom:focus{
+    color: var(--yellow);
+    background-color: var(--main-green);
+}
+///////////@at-roo
+/// 
+/// 
+/// 
+figure{
+    height: 200px;
+}
+.warning{
+ padding: 1rem;
+    height: 5rem;
+    background-color: rgb(165, 108, 108);
+}
+.btnDelete{
+    background-color: red;
+   
+    color:white;
+}
+.btnDelete:hover {
+    background-color: rgb(179, 59, 59);
+    color: white;
+	//background-image: url(../../../../assets/headr.jpeg);
+    // background-color: #fff; background-repeat: repeat-y; background-size: 100% 88px; background-position: 0% 0%; background-image: repeating-linear-gradient(-25deg, grey, #fff 20px, grey 20px, grey 20px, #fff 20px, #fff 30px, #fff 30px, var(--main-green) 50px); animation: barberpole 4s linear infinite; 
+}
+
+.btnCancel{
+    background-color: rgb(141, 176, 141);
+}
+.btnCancel:hover{
+     background-color: rgb(210, 210, 210);
+}
+
+
+/// 
+/// 

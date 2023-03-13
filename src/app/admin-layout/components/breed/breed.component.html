@@ -2,7 +2,7 @@
     <div class="col-start-1 col-end-1 col-span-1">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="col-end-7 col-span-5 mr-4">
+    <div class="col-end-7 col-span-5 mr-4" id="table" #table>
        
     <div class="heading bold justify-center">
         <h1>Breed List</h1>
@@ -77,6 +77,12 @@
         </div>
      -->
     </div>
-    </div>
+    <div class="flex flex-wrap justify-end my-4">
+        <button class="btn bg-green-700 border-none btn-sm" (click)="downloadAsPDF()"><i class="fa fa-download mx-2" aria-hidden="true"></i> Export To PDF</button>
+    </div>    
+
+</div>
+
+
 
 </div>

@@ -21,6 +21,8 @@ import { UserModalComponent } from './components/user/list-user/user-modal/user-
 import { UsersComponent } from './dashboard/users/users.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { LivestocksComponent } from './dashboard/livestock/livestocks.component';
+import { AdminRateAndReviewComponent } from './components/admin-rate-and-review/admin-rate-and-review.component';
+import { UserReviewComponent } from './components/admin-rate-and-review/user-review/user-review.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { LivestocksComponent } from './dashboard/livestock/livestocks.component'
     CategoryModalComponent,
     BreedModalComponent,
     UsersComponent,
-    LivestocksComponent
+    LivestocksComponent,
+    AdminRateAndReviewComponent,
+    UserReviewComponent
   ],
   imports: [
     CommonModule,
