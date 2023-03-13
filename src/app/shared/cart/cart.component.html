@@ -1,18 +1,9 @@
 <app-header></app-header>
-<div class="relative" aria-labelledby="slide-over-title" role="dialog" aria-modal="true" *ngIf="fetchAnimal.length>0 else noLivestock">
+<div class="relative" aria-labelledby="slide-over-title" role="dialog" aria-modal="true" *ngIf="fetchAnimal?.length>0 else noLivestock">
     <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full">
 
           <div class="pointer-events-auto">
             <div class="flex h-full flex-col overflow-y-scroll shadow-xl mt-16 ">
-
-
-
-
-
-  
-         
-             
-
               <div class="grid lg:grid-cols-3 gap-4">
                 <div class="col-span-2 col">
 
@@ -52,9 +43,15 @@
                             <p class="text-gray-500">Quantinty : {{item.quantinty}}</p>
                           </div>
                           <div class="flex flex-1 items-end justify-between text-sm">
-                              <p class="text-gray-500">Quantinty : {{item.quantinty}}</p>
-                            <div class="flex">
-                              <button type="button" (click)="reserve(item)" class="font-medium textColor hover:text-indigo-500">Reserve</button>
+                            
+                            <div class="flex flex-wrap justify-end">
+                              <button (click)="removeOneItem(item.livestockID)" type="button" class="-mx-10 p-2 text-gray-400 hover:text-gray-500">
+                                <span class="sr-only">Close panel</span>
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                              </button>
+                              <button type="button" (click)="reserve(item)" class=" mx-20 font-medium textColor justify-end right-0">Reserve</button>
                             </div>
                           </div>
                         </div>

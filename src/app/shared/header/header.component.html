@@ -5,15 +5,7 @@
  <div class="header top-0 w-full flex justify-between p-2 lg:px-11 bg-white">
 
   <div class="logo-mobile text-3xl md:text-3xl lg:text-4xl">
-    <!-- <div [ngSwitch]="myCurrentRoute">
-      <div *ngSwitchCase="'/buyer'">
-        <a [routerLink]="['/buyer']"><img src="../../../assets/logo.png"></a>
-      </div>
-      <div *ngSwitchCase="'/seller'">
-        <a [routerLink]="['/seller']"><img src="../../../assets/logo.png"></a>
-      </div>
 
-    </div> -->
     <div>
       <a [routerLink]="['/']"><img src="../../../assets/logo.png" alt="logo"></a>
       
@@ -24,17 +16,17 @@
   </div>
   <div class="desktop-nav hidden lg:flex text-sm">
       <ul  class="menu menu-horizontal">
-        <li class="" *ngIf="!logEmail">
+        <li class="btnCustom" *ngIf="!logEmail">
             <a href="#contact-us">Contact Us</a>
         </li>
-        <li class="" *ngIf="!logEmail">
+        <li class="btnCustom" *ngIf="!logEmail">
          <a [routerLink]="['/auth/login']">Login</a>
         </li>
-        <li class="" *ngIf="!logEmail">
+        <li class="btnCustom" *ngIf="!logEmail">
           <a [routerLink]="['/auth/register']">Register</a>
         </li>
-        <li class="" *ngIf="!logEmail">
-          <a routerLink="cart">
+        <li class="btnCustom" *ngIf="!logEmail">
+          <a [routerLink]="['/cart']">
             <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">{{notis}}</div>
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           </a>
@@ -42,40 +34,32 @@
       </ul> 
 
       <ul  class="menu menu-horizontal" *ngFor="let user of users">
-            <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
-              <a href="#" routerLink="/rate">Rate</a>
-            </li >
-            <li class="" *ngIf="user.usertype == 'Buyer'">
-                <a href="#" routerLink="/notifications">
-                  Notifications</a>
-            </li>
-            <li class="" *ngIf="user.usertype == 'Seller'">
-              <a href="#" routerLink="/notifications">Notifications</a>
-            </li> -->
-
-            
-            <li class="" *ngIf="user.usertype == 'Seller'">
+      
+            <li class="btnCustom" *ngIf="user.usertype == 'Seller'">
               <a routerLink="/seller">Home</a>
             </li>
-            <li class="mx-4 " *ngIf="user.usertype == 'Seller'">
-              <a href="#" routerLink="/livestock">create-livestock</a>
+            <li class="mx-4 btnCustom" *ngIf="user.usertype == 'Seller'">
+              <a routerLink="/livestock">create-livestock</a>
           </li >
 
-              <li class="" *ngIf="user.usertype == 'Buyer'">
-                <a href="#" routerLink="/orders">Order history</a>
+              <li class="btnCustom" *ngIf="user.usertype == 'Buyer'">
+                <a routerLink="/buyer">Home</a>
+                <a  routerLink="/orders">Order history</a>
             </li>
 
-            <li  class="" *ngIf="user.usertype == 'Buyer'">
-              <a routerLink="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <li  class="btnCustom" *ngIf="user.usertype == 'Buyer'">
+              <a [routerLink]="['/cart']">
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full -top-1 mx-2 dark:border-gray-900">{{notis}}</div>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             </li>
             
 
 
-              <li class="" *ngIf="user.usertype == 'Seller'">
-                <a href="#" routerLink="/order-request">Order request</a>
+              <li class="btnCustom" *ngIf="user.usertype == 'Seller'">
+                <a  routerLink="/order-request">Order request</a>
             </li>
-            <li class="" *ngIf="user.usertype == 'Seller'">
-              <a href="#" routerLink="/review">Rates and reviews</a>
+            <li class="btnCustom" *ngIf="user.usertype == 'Seller'">
+              <a  routerLink="/review">Rates and reviews</a>
           </li>
           
             
@@ -86,8 +70,8 @@
                     <i class="fa fa-user" aria-hidden="true"></i>
                   </div>
                 </label>
-                <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100  rounded-box w-52 mydropdown">
-                  <li *ngFor="let user of users">
+                <ul tabindex="0" class="t-3 p-2 shadow menu menu-compact dropdown-content bg-base-100  rounded-box w-52 mydropdown">
+                  <li class="btnCustom" *ngFor="let user of users">
                     <a class="justify-between" [routerLink]="['/profile']" >
                       {{user.fullname}}
                     </a>
@@ -107,61 +91,48 @@
         </label>
 
         <ul  tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60">
-          <!-- <li class="">
-              <a href="#" routerLink="/">Home</a>
-          </li>  -->
+       
 
-          <li class="" *ngIf="!logEmail">
-            <a [routerLink]="['/auth/login']">Login</a>
+          <li class="btnCustom" *ngIf="!logEmail">
+            <a class="btnCustom" [routerLink]="['/auth/login']">Login</a>
           </li>
-          <li class="" *ngIf="!logEmail">
+          <li class="btnCustom" *ngIf="!logEmail">
             <a [routerLink]="['/auth/register']">Register</a>
           </li>
-          <li class="" *ngIf="!logEmail">
+          <li class="btnCustom" *ngIf="!logEmail">
             <a href="#contact-us">Contact Us</a>
         </li>
-           <li class="" *ngIf="!logEmail">
-            <a routerLink="cart">
-              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-green-500 border-2 border-white rounded-full -top-2 mx-3 dark:border-gray-900">{{notis}}</div>
+           <li class="btnCustom" *ngIf="!logEmail">
+            <a [routerLink]="['/cart']">
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full -top-2 mx-3 dark:border-gray-900">{{notis}}</div>
               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             </a>
           </li> 
         </ul>
 
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60" *ngFor="let user of users">
-
-          <!-- <li class="">
-            <a routerLink="/">Home</a>
-          </li> -->
-          <li class="" *ngIf="user.usertype=='Buyer'">
-            <a href="#" routerLink="/buyer">Home</a>
+          <li class="btnCustom" *ngIf="user.usertype=='Buyer'">
+            <a  routerLink="/buyer">Home</a>
           </li >
 
-          <li class="" *ngIf="user.usertype == 'Seller'">
-            <a href="#" routerLink="/livestock">create-livestock</a>
+          <li class="btnCustom" *ngIf="user.usertype == 'Seller'">
+            <a routerLink="/livestock">create-livestock</a>
           </li >
 
-          <!-- <li class="" *ngIf="user.usertype == 'Seller'">
-              <a href="#" routerLink="/seller">Seller</a>
+            <li class="btnCustom" *ngIf="user.usertype == 'Buyer'">
+              <a  routerLink="/orders">Order history</a>
+          </li>
+          <li  class="btnCustom" *ngIf="user.usertype == 'Buyer'">
+            <a [routerLink]="['/cart']">
+            <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-green-500 border-2 border-white rounded-full -top-1 mx-4 dark:border-gray-900">{{notis}}</div>
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
           </li>
 
-          <li class="" *ngIf="user.usertype == 'Seller'">
-              <a href="#" routerLink="/review">Review</a>
-          </li > -->
-
-            <li class="" *ngIf="user.usertype == 'Buyer'">
-              <a href="#" routerLink="/orders">Order history</a>
+            <li class="btnCustom" *ngIf="user.usertype == 'Seller'">
+              <a  routerLink="/order-request">Order request</a>
           </li>
-
-            <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
-              <a href="#" routerLink="/notification">Notifications</a>
-          </li> -->
-
-            <li class="" *ngIf="user.usertype == 'Seller'">
-              <a href="#" routerLink="/order-request">Order request</a>
-          </li>
-          <li class="" *ngIf="user.usertype == 'Seller'">
-            <a href="#" routerLink="/review">Rates and reviews</a>
+          <li class="btnCustom" *ngIf="user.usertype == 'Seller'">
+            <a routerLink="/review">Rates and reviews</a>
         </li>
           <li>
             <a class="justify-between" [routerLink]="['/profile']" >
@@ -169,8 +140,8 @@
             </a>
           </li>
 
-            <li class="">
-              <a href="" class="" (click)="LogOut()">logout</a>
+            <li class="btnCustom">
+              <a  class="" (click)="LogOut()">logout</a>
           </li>
 
         </ul>

@@ -5,6 +5,7 @@ import { Livestock } from '../models/livestock';
 import { Users } from '../models/Users';
 import { CurrentRouteService } from '../services/current-route.service';
 import { LivestockService } from '../services/livestock.service';
+import { NotificationService } from '../services/notification.service';
 import { TransactionService } from '../services/transaction.service';
 
 @Component({
@@ -30,14 +31,20 @@ export class AvailableLivestockComponent implements OnInit {
   livestockCart: any;
   fetchAnimal:any;
 
+  // filterSearch!:string;
+  // filterSearch1!:string;
+  filterTerm:string[] = [];
+  categories:any;
+
   constructor(private livestockService:LivestockService, private currentRoute: CurrentRouteService, 
-    private transactionService: TransactionService, private router: Router, private authService: AuthService) { }
+    private transactionService: TransactionService, private router: Router, private authService: AuthService,private notifications:NotificationService) { }
 
   ngOnInit(): void {
 
     this.myCurrentRoute  = this.currentRoute.currentRoute();
     this.getAllLivestocks();
     this.getUser();
+    this.  getCategory();
   }
   getAllLivestocks(): void {
     this.isAvailable = false
@@ -89,15 +96,16 @@ export class AvailableLivestockComponent implements OnInit {
     }, (err) => {
       if(err.status === 201)
       {
-        // this.successfullToast();
+        this.notifications.success("Added to cart");
         this.router.navigate(['/orders']);
       }
       else if(err.status === 400)
       {
-        // this.errorToast("Something went wrong, please try again!");
+        this.notifications.danger("There's been an error please try again");
+        
       }
       else{
-        // this.errorToast("Something went wrong, please try again!");
+        this.notifications.danger("There's been an error please try again");
       }
   });
  
@@ -114,6 +122,9 @@ export class AvailableLivestockComponent implements OnInit {
 
     val.push(JSON.stringify(livesId))
     localStorage.setItem("cartIds", JSON.stringify(val));
+    this.notifications.success("Added to cart");
+    this.closeModal();
+    window.location.reload();
   }
 
   addItem(event:any)
@@ -136,23 +147,25 @@ export class AvailableLivestockComponent implements OnInit {
     }, (err) => {
 
       if(Number(err.status) === Number(0)){
-        let msg = `There's been an error please try again`;
+        
+        this.notifications.danger("There's been an error please try again");
         // this.errorToast(msg)
       }
       else if(err.status === 200){
-        // this.successfullToast();
+        this.notifications.success("Successfully deleted");
         this.closeModal()
         window.location.reload()
       }
       else if(err.status === 201){
 
-        // this.successfullToast();
+     
+        this.notifications.success("Successfully deleted");
         this.closeModal()
         window.location.reload()
 
         }
       else{
-        // this.errorToast("Something went wrong, please try again")
+        this.notifications.danger("Something went wrong, please try again")
       }
   });
 
@@ -168,6 +181,38 @@ export class AvailableLivestockComponent implements OnInit {
   closeModal() {
     let modalCheckbox:any = document.getElementById('my-modal')
     modalCheckbox.checked = false
+  }
+  onCategoryChange2(catItem:any){
+    
+    this.filterSearch = catItem
+    console.log('Categgorrrryyy',this.filterTerm)
+
+  }
+  onCategoryChange3(){
+    this.filterSearch=''
+  }
+
+  onCategoryChange(e:any){
+
+    this.filterSearch1 =e.target.value;
+    this.filterSearch='';
+    
+    // this.filterTerm.push(e.target.value)
+
+    // if(e.target.value=='All'){
+    //   this.filterTerm.push('');
+    //   // this.GetProducts();
+    // }
+    // this.addNewItem(this.filterTerm)
+
+  }
+
+  getCategory()
+  {
+    this.livestockService.GetLivestockCategories().subscribe((res:any) => { 
+      this.categories = res;
+
+    })
   }
 
 }

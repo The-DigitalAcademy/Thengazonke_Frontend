@@ -1,6 +1,8 @@
 
 <div class="grid grid-cols-6 gap-4">
-  <div class="col-start-1 col-end-1 col-span-1"><app-sidebar></app-sidebar></div>
+  <div class="col-start-1 col-end-1 col-span-1 z-40">
+    <app-sidebar></app-sidebar>
+  </div>
   <div class="col-end-7 col-span-5 mr-4" id="table" #table>
 
     <div class="heading bold justify-center">
@@ -17,7 +19,7 @@
         <button class="btn" *ngIf="isArchievedUsers" (click)="achievedUsers()">Archived users</button>
       </div>
   
-      <table class="table table-compact w-full table-auto" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+      <table class="table table-compact w-full table-auto overflow-x-auto" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
         <thead>
           <tr>
             <th class="head ">No</th> 

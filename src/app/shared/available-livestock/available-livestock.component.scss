@@ -4,6 +4,20 @@
     color: var(--white);
     border-radius: none;
 }
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+   
+  }
+.btn:hover{
+    color: var(--white);
+    background-color: var(--main-hover);
+}
+.input-b{
+    outline: none;
+}
 
 .nocontent{
     margin: 4rem;

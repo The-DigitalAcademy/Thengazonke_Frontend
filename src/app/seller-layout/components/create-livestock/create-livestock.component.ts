@@ -8,6 +8,7 @@ import { BreedService } from 'src/app/shared/services/breed.service';
 import { Livestock } from 'src/app/shared/models/livestock';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { AuthService } from 'src/app/auth-layout/services/auth.service';
 
 @Component({
   selector: 'app-create-livestock',
@@ -27,6 +28,7 @@ export class CreateLivestockComponent implements OnInit {
   myLivestock!:Livestock;
   agetypes!:string;
   title:string = 'Create Livestock';
+  ifVerrified: boolean = false;
 
 
   AddLivestockForm: UntypedFormGroup = new UntypedFormGroup({
@@ -51,6 +53,7 @@ export class CreateLivestockComponent implements OnInit {
     file:new UntypedFormControl(),
     upload_preset: new UntypedFormControl()}
   );
+  users: any;
 
   myForm() {
     this.AddLivestockForm = this.fb.group({
@@ -78,7 +81,7 @@ export class CreateLivestockComponent implements OnInit {
 
   constructor(private categoryService: CategoryService, private breedService: BreedService, private livestockService: LivestockService, 
     public fb: UntypedFormBuilder, private http:HttpClient, private router: Router, private route: ActivatedRoute,
-    private spinner: NgxSpinnerService,private natification : NotificationService) { }
+    private spinner: NgxSpinnerService,private natification : NotificationService,private authServive:AuthService) { }
 
   ngOnInit(): void {
 
@@ -98,7 +101,7 @@ export class CreateLivestockComponent implements OnInit {
 
       this.populateDate(this.editLivestockId)
     }
-
+this.getAllUsers();
   }
 
   populateDate(editLivestockId:any)
@@ -174,6 +177,7 @@ export class CreateLivestockComponent implements OnInit {
   {
 
     // ---------------------picture-------------- 
+
     this.showSpinner();
 
     const formData = new FormData();    
@@ -205,26 +209,26 @@ export class CreateLivestockComponent implements OnInit {
 
       console.log(livestockDetails)
 
-      // this.showSpinner();
-      //   this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
-      //     this.natification.success("Successfully Added!");
-      //     this.router.navigate(['/seller']);
+      this.showSpinner();
+        this.livestockService.CreateLivestock(livestockDetails).subscribe((next:any) => {
+          this.natification.success("Successfully Added!");
+          this.router.navigate(['/seller']);
     
-      //     this.submitted = false;
-      //   }, (err:any) => {
-      //     if(err.status === 201)
-      //     {
-      //       this.natification.success("Successfully Added!");
-      //       this.router.navigate(['/seller']);
-      //     }
-      //     else if(err.status === 400)
-      //     {
-      //       this.natification.danger("Something went wrong, please try again!")
-      //     }
-      //     else{
-      //       this.natification.warning("Something went wrong, please try again!");
-      //     }
-      // });
+          this.submitted = false;
+        }, (err:any) => {
+          if(err.status === 201)
+          {
+            this.natification.success("Successfully Added!");
+            this.router.navigate(['/seller']);
+          }
+          else if(err.status === 400)
+          {
+            this.natification.danger("Something went wrong, please try again!")
+          }
+          else{
+            this.natification.warning("Something went wrong, please try again!");
+          }
+      });
   
 
   
@@ -248,6 +252,10 @@ export class CreateLivestockComponent implements OnInit {
 
   }  
 
+userNotVerified()
+{
+  this.natification.danger("Cannot create livestock,User not verified");
+}
 
 
   upload()
@@ -270,10 +278,11 @@ export class CreateLivestockComponent implements OnInit {
       gender: this.AddLivestockForm.value.gender,
     }
 
-    console.log('Edit livestock',livestockDetails)
+   
   
       this.livestockService.updateLivestock(id,livestockDetails).subscribe((next:any) => {
-        console.log('Edited succefully');
+        
+        this.router.navigate(['/seller']);
     
         this.submitted = false;
       }, (err) => {
@@ -281,14 +290,14 @@ export class CreateLivestockComponent implements OnInit {
         {
           let msg ="Successfully Edited!";
            this.natification.success(msg);
-          this.router.navigate(['/homes']);
+           this.router.navigate(['/seller']);
         }
         else if(err.status === 201)
         {
           let msg ="Successfully Edited!";
           this.natification.success(msg);
 
-          this.router.navigate(['/homes']);
+          this.router.navigate(['/seller']);
         }
         else if(err.status === 400)
         {
@@ -303,7 +312,23 @@ export class CreateLivestockComponent implements OnInit {
       // this.router.navigate(['/homes']);
   } 
   
+  async getAllUsers(){
+    await this.authServive.GetAllUsers().subscribe((ans:any) => {
+       let result = ans;   
+       this.users = result.filter((res:any) => String(res.email) === String(sessionStorage.getItem('loggedEmail')))
 
+       console.log(this.users)
+       if((this.users[0].status).toUpperCase === 'Not-Verified'.toUpperCase)
+       {
+        this.ifVerrified = false;
+        console.log(this.users[0].status)
+       }
+       else
+       {
+        this.ifVerrified = true;
+       }
+  });
+}
   editLivestock(){
 
     

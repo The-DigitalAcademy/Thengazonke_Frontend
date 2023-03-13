@@ -56,16 +56,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  loadScript(url:any) { 
-    const body = <HTMLDivElement> document.body;
-    const script = document.createElement('script');
-    script.innerHTML = '';
-    script.src = url;
-    // script.async = false;
-    // script.defer = true;
-    body.removeChild(script);
-  }
-
   get formValidation(): { [key: string]: AbstractControl } {
     return this.UserLoginForm.controls;
   }

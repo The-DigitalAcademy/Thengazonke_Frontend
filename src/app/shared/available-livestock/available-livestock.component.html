@@ -1,13 +1,64 @@
 
 <div class="p-4">
   <div class="col-start-1 col-end-7 text-center justify-center mx-auto"><p class="text-2xl"><b>Livestock</b></p></div>
-    <app-search class="mb-6" (newItemEvent)="addItem($event)"></app-search>
+  <div class="container">
+
+    <div class="grid grid-cols-12 justify-between mx-4">
+      <div class="col-span-6 col-end-6 relative form-group " 
+
+    >
+          <div class="absolute inset-y-0 left-0 p-4 flex items-center pointer-events-none svg">
+              <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg%22%3E">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+          </div>
+          <div class="input-box p-2">
+            <input   [(ngModel)]="filterSearch" ngDefaultControl type="text" id="default-search"
+            class="form-control input-b block w-full pl-10  text-sm text-gray-900 bg-gray-50:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+            placeholder="    Search for livestock..." required />
+            <!-- <input type="text" placeholder="search"/> -->
+
+          </div>
+   
+          
+             
+      </div>
+      <div class="col-span-7 flex flex-row-reverse">
+          <div>
+              <div class="form-control">
+                  <div class="input-group-xs">
+
+                      <span>Filter <i style="color: rgb(143, 143, 143)" class="fa fa-filter" aria-hidden="true"></i></span>
+                    
+                  </div>
+
+                </div>
+          </div>
+
+              
+                  <span>
+                      <select (change)="onCategoryChange($event)" name="filterSearch1">
+                          <option [(ngModel)]="filterSearch1" ngDefaultControl selected>All</option>
+                          <option *ngFor="let item of categories">{{item.categoryName}}</option>
+                      </select>
+                  </span>
+           
+
+
+        </div>
+      </div>
+ 
+  </div>
+
+
       <div class="col-start-1 col-end-7 mx-4" *ngIf="myCurrentRoute == '/seller'">
   <div class="grid grid-cols-2 gap-4 text-center taps">
     <button (click)="getAllLivestocks()" class="btn btnCustom btn-sm active btn-outline rounded-full focus:outline-none h-3">
      All Available
     </button>
-    <button (click)="getMyLivestocks()" class="btn btnCustom btn-sm  btn-outline rounded-full hover:bg-violet-600 focus:outline-none">
+    <button (click)="getMyLivestocks()" class="btn btnCustom btn-sm  btn-outline rounded-full focus:outline-none">
       My Livestock
     </button>
   </div>
@@ -41,7 +92,7 @@
               <div class="card-actions grid grid-cols-6 justify-end">
                 <label class="btn btn-outline  btn-sm col-span-3" (click)="getOneData(item)" for="my-modal"><span class="text-xs">view</span></label>
 
-                <button class="btn btn-outline  btn-sm col-span-3" (click)="btnBuy(item)"><span class="text-xs">Reserve</span></button>
+                <button class="btn btn-outline  btn-sm col-span-3" (click)="addToCart(item.livestockID)"><span class="text-xs">Reserve</span></button>
               </div>
               </div>
             <div *ngSwitchCase="'/seller'">
@@ -108,34 +159,33 @@
 
 
   <input type="checkbox" id="my-modal" class="modal-toggle" />
-  <div class="modal">
-    <div class="modal-box">
+  <div class="modal" >
+    <div class="modal-box p-0">
       <div *ngFor="let liveObj of livestockData">
-        <figure>
-          <div class="avatar">
-              <div class="mx-16 justify-center h-56 rounded ">
-                <img src={{liveObj.image}} />
+      
+         
+              <div class="content-center rounded ">
+                <img class="center" src={{liveObj.image}} />
               </div>
-            </div>
+       
     
-      </figure>
+     
       <div class="card-body">
         <h2 class="card-title">Breed : {{liveObj.breedName}}</h2>
-        <p>Category : {{liveObj.categoryName}}</p> 
-        <p>Description: {{liveObj.description}}</p>
-        <p>color: {{liveObj.color}}</p>
-        <p>weight: {{liveObj.weight}}</p>
+        <p ><b>Category</b> : {{liveObj.categoryName}}</p> 
+        <p> <b>Description</b>: {{liveObj.description}}</p>
+        <p><b>Color</b>: {{liveObj.color}}</p>
+        <p> <b>weight</b>: {{liveObj.weight}}</p>
         <p class="text-center"><i class="fas fa-map-marker pr-2 text-red-800"></i> {{liveObj.address}}</p>
-        <p class="text-center">Price : R{{getPriceCurrency(liveObj.price)}}</p>
+        <p class="text-center"><b>Price</b> : R{{getPriceCurrency(liveObj.price)}}</p>
       </div> 
       </div>
-  
-      <!-- <div class="modal-action"> -->
-        <div class="card-actions grid grid-cols-6 justify-between" *ngFor="let liveObj of livestockData">
-          <button class="btn btn-outline reserve  btn-sm col-span-3" (click)="btnBuy(liveObj)"><span class="text-xs">Reserve</span></button>
+ 
+        <div class="card-actions grid p-4 grid-cols-6 justify-between" *ngFor="let liveObj of livestockData">
+          <button class="btn btn-outline reserve  btn-sm col-span-3" (click)="addToCart(liveObj.livestockID)"><span class="text-xs">Reserve</span></button>
           <label class="btn btn-outline  btn-sm col-span-3" for="my-modal"><span class="text-xs">Cancel</span></label>
         </div>
-      <!-- </dsiv> -->
+   
     </div>
   </div>
 
