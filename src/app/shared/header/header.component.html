@@ -16,7 +16,10 @@
     </div> -->
     <div>
       <a [routerLink]="['/']"><img src="../../../assets/logo.png" alt="logo"></a>
+      
     </div>
+
+
     
   </div>
   <div class="desktop-nav hidden lg:flex text-sm">
@@ -25,7 +28,7 @@
             <a href="#contact-us">Contact Us</a>
         </li>
         <li class="" *ngIf="!logEmail">
-          <a [routerLink]="['/auth/login']">Login</a>
+         <a [routerLink]="['/auth/login']">Login</a>
         </li>
         <li class="" *ngIf="!logEmail">
           <a [routerLink]="['/auth/register']">Register</a>
@@ -36,7 +39,7 @@
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           </a>
         </li>
-      </ul>
+      </ul> 
 
       <ul  class="menu menu-horizontal" *ngFor="let user of users">
             <!-- <li class="" *ngIf="user.usertype == 'Buyer'">
@@ -107,12 +110,22 @@
           <!-- <li class="">
               <a href="#" routerLink="/">Home</a>
           </li>  -->
+
           <li class="" *ngIf="!logEmail">
             <a [routerLink]="['/auth/login']">Login</a>
           </li>
           <li class="" *ngIf="!logEmail">
             <a [routerLink]="['/auth/register']">Register</a>
           </li>
+          <li class="" *ngIf="!logEmail">
+            <a href="#contact-us">Contact Us</a>
+        </li>
+           <li class="" *ngIf="!logEmail">
+            <a routerLink="cart">
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-black bg-green-500 border-2 border-white rounded-full -top-2 mx-3 dark:border-gray-900">{{notis}}</div>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </a>
+          </li> 
         </ul>
 
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-60" *ngFor="let user of users">

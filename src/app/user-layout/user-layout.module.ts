@@ -21,7 +21,7 @@ import { OrderRequestComponent } from '../seller-layout/components/order-request
 import { HomeComponent } from '../buyer-layout/components/home/home.component';
 import { ReviewComponent } from '../seller-layout/components/review/review.component';
 import { NgxSpinnerModule } from "ngx-spinner";
-  
+import { DataTablesModule } from 'angular-datatables';
 import { CartComponent } from '../shared/cart/cart.component';
 
 
@@ -48,7 +48,7 @@ import { CartComponent } from '../shared/cart/cart.component';
   imports: [
     CommonModule,
     UserLayoutRoutingModule,
-    HttpClientModule,
+    HttpClientModule,DataTablesModule,
     FormsModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,NgxSpinnerModule
