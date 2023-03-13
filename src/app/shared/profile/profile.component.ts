@@ -6,6 +6,7 @@ import { async } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 import * as saveAs from 'file-saver';
 import { AuthService } from 'src/app/auth-layout/services/auth.service';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class ProfileComponent implements OnInit {
   userData:any;
 
     constructor(private sanitizer: DomSanitizer, private router: Router,private route: ActivatedRoute, private authservice: AuthService,
-    private http: HttpClient, private fb: UntypedFormBuilder) { }
+    private http: HttpClient, private fb: UntypedFormBuilder , private notificationService : NotificationService) { }
   
     EditUserForm:UntypedFormGroup = new UntypedFormGroup({
       fullname:new UntypedFormControl(''),
@@ -169,19 +170,19 @@ export class ProfileComponent implements OnInit {
 
           if(Number(err.status) === Number(0)){
             let msg = `There's been an error please try again`;
-            // this.notificationService.danger(msg);
+            this.notificationService.danger(msg);
           }
           else if(err.status === 200){
 
-            // this.notificationService.success("Profile successfully updated");
+            this.notificationService.success("Profile successfully updated");
           }
           else if(err.status === 201){
 
-            // this.notificationService.success("Profile successfully updated");
+            this.notificationService.success("Profile successfully updated");
           }
           else{
             let msg = "Something went wrong, please try again";
-            // this.notificationService.danger(msg);
+            this.notificationService.danger(msg);
           }
       });
 
@@ -193,6 +194,7 @@ export class ProfileComponent implements OnInit {
 
       
     //  this.dataInitialisation();
+    
     
   }
   notSellerUpdate()
@@ -212,19 +214,19 @@ export class ProfileComponent implements OnInit {
 
     if(Number(err.status) === Number(0)){
       let msg = `There's been an error please try again`;
-      // this.notificationService.danger(msg);
+      this.notificationService.danger(msg);
     }
     else if(err.status === 200){
 
-      // this.notificationService.success("Profile successfully updated");
+      this.notificationService.success("Profile successfully updated");
     }
     else if(err.status === 201){
 
-      // this.notificationService.success("Profile successfully updated");
+      this.notificationService.success("Profile successfully updated");
     }
     else{
       let msg = "Something went wrong, please try again";
-      // this.notificationService.danger(msg);
+      this.notificationService.danger(msg);
     }
 });
   }

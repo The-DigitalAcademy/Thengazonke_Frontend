@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SellerLayoutRoutingModule } from '../seller-layout/seller-layout-routing.module';
 import { HeaderComponent } from '../shared/header/header.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { HeaderComponent } from '../shared/header/header.component';
     CommonModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule,MatSnackBarModule,
     RouterModule.forChild(BuyerLayoutRoutingModule),
   ]
 })

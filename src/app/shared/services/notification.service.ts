@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatSnackBar,MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
@@ -14,8 +14,8 @@ export class NotificationService {
   constructor(public snackBar: MatSnackBar,private httpClient: HttpClient) { }
 
   config: MatSnackBarConfig = {
-    duration: 5000,
-    horizontalPosition: 'right',
+    duration: 7000,
+    horizontalPosition: 'center',
     verticalPosition: 'top',
   };
 
