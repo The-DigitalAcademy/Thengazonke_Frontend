@@ -39,7 +39,15 @@ export class OrderHistoryComponent implements OnInit {
     let status = {status:"cancelled"};
 
     this.transactionService.updateTransaction(id, status).subscribe(async (res:any) => {
-      this.closeModal()
+      this.successfullToast();
+      setTimeout(() => {
+        this.closeModal()
+      }, 2000);
+     
+   
+   
+
+     
     }, (err:any) => {
 
       if(Number(err.status) === Number(0)){
@@ -47,13 +55,22 @@ export class OrderHistoryComponent implements OnInit {
         this.errorToast(msg)
       }
       else if(err.status === 200){
-         this.successfullToast();
-        this.closeModal()
+        this.successfullToast();
+      setTimeout(() => {
+   
+       
+         this.closeModal()
+        }, 2000);
+       
+        
       }
       else if(err.status === 201){
 
         this.successfullToast();
-        this.closeModal()
+        setTimeout(() => {
+          this.closeModal()
+        }, 2000);
+       
         }
       else{
         this.errorToast("Something went wrong, please try again")

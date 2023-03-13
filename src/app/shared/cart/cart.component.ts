@@ -79,7 +79,8 @@ checkout(){
           if(String(this.fetchAnimal[index]) == String(transationDetails.livestockID)){
             const storageVal = localStorage.getItem('cartIds');
             const val = storageVal ? JSON.parse(storageVal) : []
-            val.splice(index, 1);
+            val.splice(index, val[index]);
+            console.log('values',val)
             localStorage.setItem("cartIds", JSON.stringify(val));
           }
       }
@@ -161,11 +162,31 @@ removeItems(){
   window.location.reload();
 
 }
+removeOneItem(item:any){item
+
+  for (let index = 0; index < this.fetchAnimal.length; index++) {
+    
+
+    if(String(this.fetchAnimal[index]) == String(item)){
+      const storageVal = localStorage.getItem('cartIds');
+      const val = storageVal ? JSON.parse(storageVal) : []
+      console.log('first',val)
+      val.splice(index, 1);
+      console.log('after',val)
+      localStorage.setItem("cartIds", JSON.stringify(val));
+     
+    }
+}
+window.location.reload();
+    
+}
 
 
 
   getPriceCurrency(price:any){
     return price.slice(1,price.length);
   }
+
+
 
 }

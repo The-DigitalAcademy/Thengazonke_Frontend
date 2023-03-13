@@ -15,7 +15,7 @@
                   
                     
                 </div>
-                <div class="avatar-preview h-10">
+                <div class="avatar-preview h-5">
                     <div id="imagePreview" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG91Ivd0CD1UA-3GKi8OPGqO9BZvrfsclJFujvxLWQU6z0UR5xNec89_mVGFysedGeUo0&usqp=CAU');">
                     </div>
                 </div>
@@ -63,27 +63,32 @@
       </div>
       <br>
       
-      <div class="flex flex-wrap border-b-2 mb-6" *ngFor="let item of users">
-        <div>
-          <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">ID Document</label><br>
-          <input formControlName ="identity" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange($event)" *ngIf="item.usertype=='Seller'">
-        </div>
-        <div>
-          <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Previous ID Document</label><br>
-           <a (click)="downloadFile(item.id_document)" class="link" target="_blank">ID document</a>
+      <div class="flex flex-wrap  mb-6" *ngFor="let item of users">
+        <div  class="border-b-2"  *ngIf="item.usertype=='Seller'">
+          <div>
+            <label class="custom-file-label" for="inputGroupFile01">ID Document</label><br>
+            <input formControlName ="identity" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange($event)" *ngIf="item.usertype=='Seller'">
+          </div>
+          <div>
+            <label class="custom-file-label" for="inputGroupFile01">Previous ID Document</label><br>
+            <a (click)="downloadFile(item.id_document)" class="link" target="_blank">ID document</a>
+          </div>
         </div>
       </div>
   
-      <div class="flex flex-wrap border-b-2 mb-6" *ngFor="let item of users">
-        <div>
-          <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Dept of Agriculture Identification</label><br>
-        <input formControlName ="agric" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange2($event)"  *ngIf="item.usertype=='Seller'">
-        </div>
-        <div>
-          <label class="custom-file-label" for="inputGroupFile01"  *ngIf="item.usertype=='Seller'">Previous Agriculture Identification</label><br>
-          <a (click)="downloadFile(item.agric_document)" class="link" target="_blank">Agriculture Identificationt</a>
+      <div class="flex flex-wrap mb-6" *ngFor="let item of users" >
+        <div class="border-b-2"  *ngIf="item.usertype=='Seller'">
+          <div>
+            <label class="custom-file-label" for="inputGroupFile01">Dept of Agriculture Identification</label><br>
+          <input formControlName ="agric" type="file" accept=".pdf" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange2($event)"  *ngIf="item.usertype=='Seller'">
+          </div>
+          <div>
+            <label class="custom-file-label" for="inputGroupFile01">Previous Agriculture Identification</label><br>
+            <a (click)="downloadFile(item.agric_document)" class="link" target="_blank">Agriculture Identificationt</a>
+          </div>
         </div>
       </div>
+
   
       <div></div>
       
@@ -92,7 +97,7 @@
           <button type="button" class="btn "style="color: white ; background-color: #516951;" *ngIf="item.usertype!='Seller'" (click)="notSellerUpdate()">Update</button>
           
       </div>
-      <br><br><br>
+      <br><br>
       
        </div>
       </form>

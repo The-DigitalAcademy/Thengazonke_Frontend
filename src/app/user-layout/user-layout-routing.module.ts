@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'livestock/:id', component:CreateLivestockComponent },
   { path: 'review', component:ReviewComponent },
   { path: 'profile', component:ProfileComponent },
+  { path: 'cart', component:CartComponent },
 ];
 
 @NgModule({

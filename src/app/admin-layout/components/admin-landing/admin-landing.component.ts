@@ -42,20 +42,20 @@ export class AdminLandingComponent implements OnInit {
   getFork()
   {
     forkJoin({
-      // requestAllOrder: this.statsService.GetAllOrders(),
-      // requestPending: this.statsService.GetNumPendingOrders(),
-      // requestComplete: this.statsService.GetNumCompleteOrders(),
+      requestAllOrder: this.statsService.GetAllOrders(),
+      requestPending: this.statsService.GetNumPendingOrders(),
+      requestComplete: this.statsService.GetNumCompleteOrders(),
       requestUsers: this.authService.GetAllUsers(),
       requestCategory: this.categoryService.GetAllCategory(),
       requestBreed: this.breedService.GetAllBreed(),
       requestLivestock: this.livestockService.GetLivestockByUser(),
 
-    }).subscribe(({requestUsers, requestCategory, requestBreed, requestLivestock}) => {
-      // this.allOrder = requestAllOrder[0];
-      // console.log(this.allOrder);
-      // this.pendingOrder = requestPending[0];
-      // console.log(this.pendingOrder);
-      // this.completeOrder = requestComplete;
+    }).subscribe(({requestAllOrder, requestPending,requestComplete, requestUsers, requestCategory, requestBreed, requestLivestock}) => {
+      this.allOrder = requestAllOrder[0];
+      console.log(this.allOrder);
+      this.pendingOrder = requestPending[0];
+      console.log(this.pendingOrder);
+      this.completeOrder = requestComplete;
       this.users  = requestUsers;
       this.category = requestCategory;
       this.breed = requestBreed;
