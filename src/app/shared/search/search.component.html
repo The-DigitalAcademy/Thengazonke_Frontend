@@ -1,5 +1,40 @@
 <div class="container">
   
+    <div  class="tbs"  style="margin-top: 2rem;" *ngIf="categories.length && myCurrentRoute != '/order-request'">
+        <ul class="flex flex-wrap">
+          <li  class="mr-2 active">
+              <a (click)="onCategoryChange3()" aria-current="page"  class="btn1 nav-primary"  >All</a>
+          </li>
+          <div class="cond" *ngFor="let category of categories;let x = index">
+            <li class="mr-2 justify-center" >
+              <a (click)="onCategoryChange2(category.categoryName)" class="btn1" >{{category.categoryName}}</a>
+            </li>
+          </div>
+       
+      </ul>
+      </div> 
+      
+      <div  class="tbs"  style="margin-top: 2rem;" *ngIf="categories.length && myCurrentRoute == '/order-request'">
+        <ul class="flex flex-wrap">
+            <li  class="mr-2 active">
+                <a  aria-current="page"  class="btn1 nav-primary" >All requests</a>
+            </li>
+            <li  class="mr-2 active">
+                <a  aria-current="page"  class="btn1 nav-primary" >Pending</a>
+            </li>
+            <li  class="mr-2 active">
+                <a  aria-current="page"  class="btn1 nav-primary" >In-progress</a>
+            </li>
+            <li  class="mr-2 active">
+                <a  aria-current="page"  class="btn1 nav-primary" >Cancelled</a>
+            </li>
+            <li  class="mr-2 active">
+                <a  aria-current="page"  class="btn1 nav-primary" >Completed</a>
+            </li>
+       
+      </ul>
+      </div>
+
 
     <div class="grid grid-cols-12 justify-between mx-4">
         <div class="col-span-6 col-end-6 pt-1 relative form-group" 
@@ -56,3 +91,4 @@
           </div>
         </div>
 </div>
+<br>

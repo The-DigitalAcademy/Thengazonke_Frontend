@@ -142,11 +142,14 @@ export class AvailableLivestockComponent implements OnInit {
       else if(err.status === 200){
         // this.successfullToast();
         this.closeModal()
+        window.location.reload()
       }
       else if(err.status === 201){
 
         // this.successfullToast();
         this.closeModal()
+        window.location.reload()
+
         }
       else{
         // this.errorToast("Something went wrong, please try again")

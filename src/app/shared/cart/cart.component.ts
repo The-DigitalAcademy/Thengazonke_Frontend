@@ -21,9 +21,9 @@ export class CartComponent implements OnInit {
    floatTotal: number =.0;
    beftotal: number =.0;
    createOrder:number = 0;
+   logged : boolean = false;
    
    
-
   constructor(private livestockService:LivestockService, private transactionService: TransactionService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -53,8 +53,13 @@ export class CartComponent implements OnInit {
       this.floatTotal += parseFloat(newstr2)
     }
     this.total= String(this.beftotal) +"."+ String(this.floatTotal);
-    
   }
+  
+checkLogin(){
+  if('loggedEmail' in sessionStorage){
+     this.logged =true;
+  }
+}
 checkout(){
 
   if('loggedEmail' in sessionStorage){
@@ -67,18 +72,14 @@ checkout(){
       buyerID: String(sessionStorage.getItem('loggedID'))
     }
     this.transactionService.CreateTranstaction(transationDetails).subscribe((next:any) => {
-      console.log('iran',transationDetails)
   }, (err) => {
-    console.log(err)
        if(err.status === 201)
        {
         for (let index = 0; index < this.fetchAnimal.length; index++) {
           if(String(this.fetchAnimal[index]) == String(transationDetails.livestockID)){
             const storageVal = localStorage.getItem('cartIds');
             const val = storageVal ? JSON.parse(storageVal) : []
-            console.log('first',val)
             val.splice(index, 1);
-            console.log('after',val)
             localStorage.setItem("cartIds", JSON.stringify(val));
           }
       }
@@ -154,6 +155,14 @@ reserve(item:any){
   }
 
 }
+
+removeItems(){
+  localStorage.removeItem('cartIds');
+  window.location.reload();
+
+}
+
+
 
   getPriceCurrency(price:any){
     return price.slice(1,price.length);
